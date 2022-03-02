@@ -8,7 +8,7 @@ RUN yarn build
 # server environment
 FROM bitnami/nginx
 
-COPY --from=react-build /app/dist /app
+COPY --from=react-build /app/build /app
 
 ENV PORT 8080
 EXPOSE 8080
