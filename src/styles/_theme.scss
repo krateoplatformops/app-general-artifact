@@ -1,0 +1,22 @@
+@import 'colors';
+@import 'mixin';
+
+:root {
+  --background: #{$background-light};
+  --background-transparent: #{rgba($text-color-rest-light, 0.9)};
+  --text-color: #{$text-color-light};
+  --card: #{$card-light};
+  --border: #{$border-light};
+  --nav: #{$nav-light};
+  --text-color-rest: #{$text-color-rest-light};
+}
+
+[data-theme='dark'] {
+  --background: #{$background-dark};
+  --background-transparent: #{rgba($text-color-rest-dark, 0.9)};
+  --text-color: #{$text-color-dark};
+  --card: #{$card-dark};
+  --border: #{$border-dark};
+  --nav: #{$nav-dark};
+  --text-color-rest: #{$text-color-rest-dark};
+}

@@ -1,0 +1,75 @@
+@import 'colors';
+@import 'mixin';
+
+.primary-button {
+  background: $primary;
+  color: $primary-text;
+  text-transform: capitalize;
+  @include border-radius($border-radius);
+  width: 120px;
+  height: 42px;
+  @extend .display-flex;
+  @extend .flex-center;
+  text-decoration: none;
+}
+
+.secondary-button {
+  @extend .primary-button;
+  background: var(--card);
+  border: 1px solid $primary;
+  color: var(--text-color);
+}
+
+.common-tooltip {
+  z-index: $zi-tooltip !important;
+  max-width: 200px;
+  overflow-wrap: break-word;
+}
+
+.button-container {
+  @extend .display-flex;
+  @extend .flex-center-end;
+  margin-top: 20px;
+}
+
+.button-container-double {
+  @extend .button-container;
+  @extend .flex-justify-between;
+}
+
+.ul-new-project {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  background: var(--card);
+  padding: 20px;
+  @include border-radius($border-radius);
+  width: 100%;
+  @extend .bsbb;
+  li {
+    &:first-of-type {
+      min-width: 50px;
+      img {
+        width: 30px;
+      }
+    }
+    &:last-of-type {
+      width: 100%;
+    }
+  }
+}
+
+.unknown {
+  color: var(--text-color-rest);
+}
+
+.success {
+  color: $notification-success;
+}
+
+.error {
+  color: $notification-error;
+}
+
+.warning {
+  color: $notification-warning;
+}
