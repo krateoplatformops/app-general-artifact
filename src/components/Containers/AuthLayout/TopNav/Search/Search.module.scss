@@ -1,0 +1,33 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.SearchContainer {
+  width: 100%;
+  @extend .bsbb;
+  padding: 0 10px;
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-center;
+  position: relative;
+  i {
+    position: absolute;
+    left: 20px;
+    color: var(--text-color-secondary);
+    @extend .trstn;
+  }
+}
+
+.Search {
+  background: var(--nav);
+  @include border-radius($border-radius * 2);
+  padding-left: 40px;
+  @extend .trstn;
+  &:focus {
+    @extend .trstn;
+    background: var(--background);
+    & + i {
+      @extend .trstn;
+      color: var(--text-color);
+    }
+  }
+}

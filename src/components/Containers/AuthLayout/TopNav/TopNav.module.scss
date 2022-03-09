@@ -1,0 +1,35 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.TopNav {
+  position: fixed;
+  top: 0;
+  background: var(--nav);
+  height: 60px;
+  left: 60px;
+  @include calc('width', '100% - 60px');
+  @extend .bsbb;
+  padding: 0 10px;
+  z-index: $zi-nav-button;
+  @extend .display-flex;
+  @extend .flex-center-start;
+  @include transition($menu-transition);
+  border-left: 1px solid var(--background);
+  button {
+    font-size: 20px;
+    padding: 10px;
+    color: var(--text-color-secondary);
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+}
+
+.IsOpen {
+  left: 60px;
+  @include calc('width', '100% - 60px');
+  @media screen and (min-width: 768px) {
+    left: 200px;
+    @include calc('width', '100% - 200px');
+  }
+}

@@ -1,19 +1,12 @@
 import axios from 'axios'
+import uris from './uris'
 import { store } from './redux/store'
-import {
-  dashboardReset,
-  insightReset,
-  logReset,
-  projectReset,
-  redirect
-} from './redux/actions'
+import { userReset, redirect } from './redux/actions'
 import { uiConstants } from './constants'
 
 const axiosInstance = axios.create()
 
-const { apiBaseUrl } = window['runConfig']
-
-axiosInstance.defaults.baseURL = apiBaseUrl
+axiosInstance.defaults.baseURL = uris.apiBase
 axiosInstance.defaults.withCredentials = true
 
 axiosInstance.interceptors.request.use(
@@ -44,12 +37,8 @@ axiosInstance.interceptors.response.use(
       return Promise.reject(err)
     }
     if (error.response.status === 401) {
-      // TODO: redirect to login page
-      // store.dispatch(dashboardReset())
-      // store.dispatch(insightReset())
-      // store.dispatch(logReset())
-      // store.dispatch(projectReset())
-      // store.dispatch(redirect('/'))
+      store.dispatch(userReset())
+      store.dispatch(redirect('/'))
     }
     return Promise.reject(error)
   }

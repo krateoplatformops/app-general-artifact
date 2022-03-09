@@ -1,0 +1,24 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.UlSocial {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  @extend .bsbb;
+  padding: 10px;
+  li {
+    margin: 0 20px;
+  }
+}
+
+.Link {
+  color: var(--text-color-secondary);
+  &:hover {
+    color: var(--text-color);
+  }
+}

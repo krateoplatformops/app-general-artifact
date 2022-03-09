@@ -3,20 +3,20 @@
 
 :root {
   --background: #{$background-light};
-  --background-transparent: #{rgba($text-color-rest-light, 0.9)};
+  --nav: #{$card-light};
+  --background-transparent: #{rgba($background-light, 0.9)};
   --text-color: #{$text-color-light};
+  --text-color-secondary: #{$text-color-secondary};
   --card: #{$card-light};
-  --border: #{$border-light};
-  --nav: #{$nav-light};
-  --text-color-rest: #{$text-color-rest-light};
+  --border: #{$text-color-secondary};
 }
 
 [data-theme='dark'] {
   --background: #{$background-dark};
-  --background-transparent: #{rgba($text-color-rest-dark, 0.9)};
+  --nav: #{$card-dark};
+  --background-transparent: #{rgba($background-dark, 0.9)};
   --text-color: #{$text-color-dark};
+  --text-color-secondary: #{$text-color-secondary};
   --card: #{$card-dark};
-  --border: #{$border-dark};
-  --nav: #{$nav-dark};
-  --text-color-rest: #{$text-color-rest-dark};
+  --border: #{$text-color-secondary};
 }

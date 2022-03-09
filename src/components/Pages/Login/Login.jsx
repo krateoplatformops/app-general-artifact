@@ -1,86 +1,42 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
 
+import packageJson from '../../../../package.json'
 import css from './Login.module.scss'
-// import Logo from '../../../assets/logo_full.svg'
-// import { login } from '../../../redux/actions'
-// import ButtonLoader from '../../UI/ButtonLoader/ButtonLoader'
-import { uiConstants } from '../../../constants/ui.constants'
+import { configLoad } from '../../../redux/actions'
+import Oauth from './Oauth/Oauth'
+import PageLoader from '../../UI/PageLoader/PageLoader'
+import KrateoLogo from '../../UI/KrateoLogo/KrateoLogo'
+import Social from './Social/Social'
+import Support from './Support/Support'
+import { uiConstants } from '../../../constants'
 
-const Login = (props) => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+const Login = ({ config }) => {
+  const dispatch = useDispatch()
 
-  const buttonIsDisabled = () => {
-    return username.length === 0 || password.length === 0
-  }
-
-  const loginButtonHandler = () => {
-    if (!props.auth.loading) {
-      props.login({
-        username,
-        password
-      })
-    }
-  }
-
-  const handleKeyUp = (event) => {
-    if (
-      event.keyCode === 13 &&
-      username !== '' &&
-      password !== '' &&
-      !props.auth.loading
-    ) {
-      props.login({
-        username,
-        password
-      })
-    }
-  }
+  useEffect(() => {
+    dispatch(configLoad())
+  }, [dispatch])
 
   return (
-    <div className={css.LoginContainer}>
-      <div className={css.LoginBox}>
-        login
-        <a
-          href={`http://localhost:8080/auth/github?redirect=${window.location.href}`}
-        >
-          github login
-        </a>
-        {/* <div className={css.LogoContainer}>
-          <img src={Logo} alt='pipem.io' className={css.Logo} />
-        </div>
-        <label>
-          username
-          <input
-            type='text'
-            placeholder={uiConstants.placeholders.username}
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            onKeyUp={handleKeyUp}
-          />
-        </label>
-        <label>
-          password
-          <input
-            type='password'
-            placeholder={uiConstants.placeholders.password}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            onKeyUp={handleKeyUp}
-          />
-        </label>
-        <div className='button-container'>
-          <button
-            className={css.LoginButton}
-            disabled={buttonIsDisabled()}
-            onClick={loginButtonHandler}
-          >
-            <ButtonLoader label='Login' loading={props.auth.loading} />
-          </button>
-        </div> */}
+    <React.Fragment>
+      <Social />
+      <div className={css.LoginContainer}>
+        <KrateoLogo css={css.BigLogo} file={uiConstants.logo.horizontal} />
+
+        <ul className={css.UlProviders}>
+          {(config.settings.strategies || []).map((p) => (
+            <li key={p._id}>
+              <Oauth provider={p} />
+            </li>
+          ))}
+        </ul>
+        <KrateoLogo css={css.SmallLogo} />
+        <span className={css.Version}>v. {packageJson.version}</span>
       </div>
-    </div>
+      <Support />
+      {config.loading && <PageLoader />}
+    </React.Fragment>
   )
 }
 

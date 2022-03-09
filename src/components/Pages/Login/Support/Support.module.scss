@@ -1,0 +1,30 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.UlSupport {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  @extend .bsbb;
+  padding: 10px;
+  li {
+    margin: 0 10px;
+    @include font-size(0.8em);
+    &:not(:last-of-type) {
+      padding-right: 20px;
+      border-right: 1px solid var(--text-color-secondary);
+    }
+  }
+}
+
+.Link {
+  color: var(--text-color-secondary);
+  text-transform: capitalize;
+  &:hover {
+    color: var(--text-color);
+  }
+}

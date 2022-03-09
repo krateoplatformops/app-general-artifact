@@ -1,0 +1,9 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.Bell {
+  color: var(--text-color-secondary);
+  &:hover {
+    color: var(--text-color);
+  }
+}

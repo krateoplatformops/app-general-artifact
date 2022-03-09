@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react'
 
 import css from './NotFound.module.scss'
-import Doll from '../../../assets/krateo/black_icon.svg'
+import KrateoLogo from '../../UI/KrateoLogo/KrateoLogo'
 
 const NotFound = ({ history }) => {
-  // useEffect(() => {
-  //   const timeoutID = window.setTimeout(() => {
-  //     history.back()
-  //   }, 3000)
+  useEffect(() => {
+    const timeoutID = window.setTimeout(() => {
+      history.back()
+    }, 3000)
 
-  //   return () => window.clearTimeout(timeoutID)
-  // }, [history])
+    return () => window.clearTimeout(timeoutID)
+  }, [history])
 
   return (
     <div className={css.NotFound}>
-      <img src={Doll} alt='Not found' />
+      <KrateoLogo alt='Not Found' />
       <p className={css.Title}>Not Found</p>
     </div>
   )

@@ -1,0 +1,71 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.NavContainer {
+  position: fixed;
+  top: 61px;
+  width: 0;
+  @media screen and (min-width: 768px) {
+    left: 0;
+    width: 60px;
+  }
+  z-index: $zi-nav;
+  background: var(--nav);
+  @include calc('height', '100% - 61px');
+  @extend .bsbb;
+  overflow: hidden;
+  @include transition($menu-transition);
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  @extend .flex-justify-between;
+}
+
+.UlNav {
+  width: 100%;
+  li {
+    margin-top: 10px;
+    &:first-of-type {
+      margin-top: 20px;
+    }
+  }
+}
+
+.NavLnk {
+  height: 40px;
+  @extend .display-flex;
+  @extend .flex-center-start;
+  @extend .flex-direction-row;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-left: 5px solid var(--nav);
+  font-size: 0.8em;
+  &:hover {
+    border-left: 5px solid $blue;
+  }
+  i {
+    @extend .display-flex;
+    @extend .flex-center;
+    font-size: 16px;
+    min-width: 50px;
+    padding-right: 10px;
+  }
+}
+
+.LogoutButton {
+  @extend .NavLnk;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.NavLnkActive {
+  @extend .NavLnk;
+  border-left: 5px solid $blue;
+  &:hover {
+    border-left: 5px solid $blue;
+  }
+}
+
+.IsOpen {
+  width: 200px;
+  @include transition($menu-transition);
+}

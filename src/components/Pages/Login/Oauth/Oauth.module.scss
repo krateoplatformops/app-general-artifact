@@ -1,0 +1,20 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.Link {
+  // display: block;
+  // text-align: center;
+  height: 60px;
+  @extend .display-flex;
+  @extend .flex-center;
+  width: 100%;
+  @extend .bsbb;
+  padding: 20px;
+  background: var(--card);
+  @include border-radius($border-radius);
+  text-transform: capitalize;
+  @include font-size(1.2em);
+  i {
+    margin-right: 10px;
+  }
+}

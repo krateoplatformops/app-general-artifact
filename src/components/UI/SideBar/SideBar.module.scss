@@ -1,0 +1,66 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.Bkg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background-transparent);
+  z-index: $zi-user-menu-bkg;
+  content: '';
+  display: none;
+  @extend .trstn;
+  &.IsOpen {
+    display: block;
+    @extend .trstn;
+  }
+}
+
+.SideBar {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  background: var(--nav);
+  z-index: $zi-user-menu;
+  @extend .trstn;
+
+  @media screen and (min-width: 320px) {
+    right: -100%;
+    width: 100%;
+  }
+  @media screen and (min-width: 768px) {
+    right: -60%;
+    width: 60%;
+  }
+  @media screen and (min-width: 1024px) {
+    right: -30%;
+    width: 30%;
+  }
+
+  &.IsOpen {
+    right: 0;
+    @extend .trstn;
+  }
+}
+
+.IsOpen {
+  right: 0;
+  @include transition(1s);
+}
+
+.Header {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-justify-between;
+  @extend .bsbb;
+  padding: 10px 20px;
+  height: 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.Body {
+  @extend .bsbb;
+  padding: 20px;
+}

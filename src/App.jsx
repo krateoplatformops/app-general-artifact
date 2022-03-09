@@ -7,7 +7,7 @@ import history from './history'
 import { store } from './redux/store'
 
 import Layout from './components/Containers/Layout/Layout'
-// import AuthLayout from './components/Containers/AuthLayout/AuthLayout'
+import AuthLayout from './components/Containers/AuthLayout/AuthLayout'
 import PageLoader from './components/UI/PageLoader/PageLoader'
 
 /* MOMENT */
@@ -17,6 +17,13 @@ moment.tz.setDefault('UTC')
 
 const LoginLazy = lazy(() => import('./components/Pages/Login/Login'))
 const NotFoundLazy = lazy(() => import('./components/Pages/NotFound/NotFound'))
+const DashboardLazy = lazy(() =>
+  import('./components/Pages/Dashboard/Dashboard')
+)
+const TemplatesLazy = lazy(() =>
+  import('./components/Pages/Templates/Templates')
+)
+const CreateLazy = lazy(() => import('./components/Pages/Create/Create'))
 
 function App() {
   return (
@@ -27,6 +34,11 @@ function App() {
             <Routes>
               <Route element={<Layout />}>
                 <Route index element={<LoginLazy />} />
+                <Route element={<AuthLayout />}>
+                  <Route path='dashboard' element={<DashboardLazy />} />
+                  <Route path='templates' element={<TemplatesLazy />} />
+                  <Route path='create' element={<CreateLazy />} />
+                </Route>
                 {/* <Route element={<AuthLayout />}>
                   <Route path='dashboard' element={<DashboardLazy />} />
                   <Route path='projects/' element={<ProjectsLazy />} />

@@ -285,6 +285,11 @@
   flex-direction: column-reverse;
 }
 
+@mixin font-size($value) {
+  font-size: $value;
+  line-height: $value;
+}
+
 @mixin flex-row {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;

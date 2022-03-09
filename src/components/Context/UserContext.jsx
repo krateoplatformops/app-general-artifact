@@ -7,14 +7,18 @@ export const UserContext = createContext(null)
 const UserProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(window.innerWidth > 768)
   const [theme, setTheme] = useLocalStorage('theme', uiConstants.themes.light)
-  // BUG: check if it is open on window size change
 
   const toggle = () => {
     setIsOpen(!isOpen)
   }
 
+  // System Theme
+  const isSystemDark = window.matchMedia('(prefers-color-scheme:dark)').matches
+  useEffect(() => {
+    setTheme(isSystemDark ? uiConstants.themes.dark : uiConstants.themes.light)
+  }, [isSystemDark, setTheme])
+
   const switchTheme = () => {
-    // console.log(html)
     const newTheme =
       theme === uiConstants.themes.light
         ? uiConstants.themes.dark

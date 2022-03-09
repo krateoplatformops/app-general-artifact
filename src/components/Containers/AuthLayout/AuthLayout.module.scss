@@ -1,0 +1,19 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.MainContainer {
+  @include transition($menu-transition);
+  padding: 80px 10px 10px 10px;
+  @media screen and (min-width: 768px) {
+    padding: 80px 20px 80px 80px;
+  }
+}
+
+.IsOpen {
+  @include transition($menu-transition);
+  padding: 80px 10px 10px 10px;
+
+  @media screen and (min-width: 768px) {
+    padding: 80px 20px 20px 220px;
+  }
+}
