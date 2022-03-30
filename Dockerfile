@@ -1,4 +1,5 @@
 FROM node:14-alpine as react-build
+LABEL maintainer "Krateo <contact@krateoplatformops.io>"
 
 WORKDIR /app
 COPY . ./

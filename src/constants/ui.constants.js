@@ -44,13 +44,18 @@ export const uiConstants = {
       icon: 'fa-solid fa-gauge-high'
     },
     {
+      to: 'catalog',
+      label: 'catalog',
+      icon: 'fa-solid fa-receipt'
+    },
+    {
       to: 'templates',
       label: 'templates',
       icon: 'fa-solid fa-puzzle-piece'
     },
     {
-      to: 'create',
-      label: 'create',
+      to: 'register',
+      label: 'register',
       icon: 'fa-solid fa-plus'
     }
   ],

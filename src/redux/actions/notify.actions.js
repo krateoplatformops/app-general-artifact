@@ -12,7 +12,7 @@ export function addNotification(message, severity) {
     dispatch(pushNotificationToQueue(notification))
     setTimeout(() => {
       dispatch(removeNotification(notification.guid))
-    }, 5000)
+    }, 7000)
   }
 }
 

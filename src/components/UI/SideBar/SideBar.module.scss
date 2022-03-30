@@ -4,14 +4,13 @@
 .Bkg {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
   background: var(--background-transparent);
   z-index: $zi-user-menu-bkg;
-  content: '';
-  display: none;
   @extend .trstn;
+  display: none;
   &.IsOpen {
     display: block;
     @extend .trstn;
@@ -58,9 +57,21 @@
   padding: 10px 20px;
   height: 60px;
   border-bottom: 1px solid var(--border);
+  text-transform: capitalize;
 }
 
 .Body {
   @extend .bsbb;
   padding: 20px;
+  overflow: auto;
+  @include calc('height', '100% - 60px');
+}
+
+.CloseBtn {
+  font-size: 20px;
+  padding: 10px;
+  color: var(--text-color-secondary);
+  &:hover {
+    color: var(--text-color);
+  }
 }

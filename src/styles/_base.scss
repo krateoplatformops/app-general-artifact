@@ -61,54 +61,65 @@ button {
   @include opacity(0.5);
 }
 
-label {
-  display: block;
-  text-transform: uppercase;
-  // color: $my-blue;
-  font-weight: 600;
-  font-size: 0.8em;
-  width: 100%;
-  input,
-  textarea,
-  select {
-    margin-top: 5px;
-  }
-  &:not(:first-of-type) {
-    padding-top: 20px;
-  }
-  &.npt {
-    padding-top: 0;
-  }
-}
+// label {
+//   display: block;
+//   text-transform: uppercase;
+//   color: $blue;
+//   font-weight: 600;
+//   font-size: 0.7em;
+//   width: 100%;
+//   input,
+//   textarea,
+//   select {
+//     margin-top: 5px;
+//   }
+//   &:not(:first-of-type) {
+//     padding-top: 20px;
+//   }
+//   &.npt {
+//     padding-top: 0;
+//   }
+// }
 
 input,
 textarea,
 select {
   width: 100%;
   // background: var(--border);
+  // background: var(--background);
+  background: var(--card);
+  border: 1px solid var(--background);
   padding: 10px;
   color: var(--text-color);
-  @include border-radius($border-radius);
+  @include border-radius($border-radius / 2);
   @extend .bsbb;
   height: 42px;
+  @extend .trstn;
+  &:focus {
+    border: 1px solid var(--border);
+    @extend .trstn;
+  }
 }
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--text-color);
   opacity: 0.5; /* Firefox */
+  text-transform: capitalize;
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   color: var(--text-color);
   opacity: 0.5;
+  text-transform: capitalize;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
   color: var(--text-color);
   opacity: 0.5;
+  text-transform: capitalize;
 }
 
 textarea {

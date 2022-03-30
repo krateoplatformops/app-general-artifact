@@ -1,36 +1,33 @@
-import { historyConstants } from '../constants'
+import { registerConstants } from '../constants'
 
 const initialState = {
   loading: false,
   error: null,
-  list: null,
   result: false
 }
 
-export default function history(state = initialState, action) {
+export default function register(state = initialState, action) {
   switch (action.type) {
-    case historyConstants.HISTORY_LOAD:
+    case registerConstants.REGISTER_IMPORT:
       return {
         ...state,
         loading: true,
-        result: false,
-        list: null
+        result: false
       }
-    case historyConstants.HISTORY_LOAD_SUCCESS:
+    case registerConstants.REGISTER_IMPORT_SUCCESS:
       return {
         ...state,
         result: true,
-        list: action.payload,
         loading: false
       }
-    case historyConstants.HISTORY_LOAD_FAILURE:
+    case registerConstants.REGISTER_IMPORT_FAILURE:
       return {
         ...state,
         loading: false,
         result: true,
         error: action.payload
       }
-    case historyConstants.HISTORY_RESET:
+    case registerConstants.REGISTER_RESET:
       return {
         ...initialState
       }

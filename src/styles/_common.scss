@@ -1,21 +1,48 @@
 @import 'colors';
 @import 'mixin';
 
-// .primary-button {
-//   background: $blue;
-//   color: $primary-text;
-//   text-transform: capitalize;
-//   @include border-radius($border-radius);
-//   width: 120px;
-//   height: 42px;
-//   @extend .display-flex;
-//   @extend .flex-center;
-//   text-decoration: none;
-// }
+.base-btn {
+  @include border-radius($border-radius / 2);
+  padding: 10px 20px;
+  text-transform: capitalize;
+  font-size: 0.8em;
+  height: 40px;
+  i {
+    margin-right: 10px;
+  }
+}
 
-// .secondary-button {
-//   @extend .primary-button;
-//   background: var(--card);
-//   border: 1px solid $primary;
-//   color: var(--text-color);
-// }
+.default-button {
+  border: 1px solid var(--border);
+  @extend .base-btn;
+  color: var(--text-color);
+  &:hover {
+    background-color: var(--background-transparent);
+  }
+}
+
+.primary-button {
+  @extend .base-btn;
+  background: $blue;
+  color: $white;
+  &:hover {
+    background-color: $blue-darker;
+  }
+  &:disabled {
+    background: $blue;
+  }
+}
+
+.minimal-button {
+  @extend .base-btn;
+  color: var(--text-color);
+  &:hover {
+    background-color: var(--background-transparent);
+  }
+}
+
+.submit-single-container {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-center-end;
+}

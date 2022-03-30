@@ -1,0 +1,23 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.Label {
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.Title {
+  text-transform: uppercase;
+  color: $blue;
+  font-weight: 600;
+  font-size: 0.7em;
+  margin-bottom: 5px;
+}
+
+.Description {
+  margin-top: 5px;
+  font-size: 0.7em;
+  color: var(--border);
+}

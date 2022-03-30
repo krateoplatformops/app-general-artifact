@@ -13,7 +13,10 @@ axiosInstance.interceptors.request.use(
   (config) => {
     config.headers = {
       Accepted: 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      Pragma: 'no-cache',
+      Expires: '0'
     }
     return config
   },

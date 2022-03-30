@@ -10,8 +10,10 @@ const CheckUser = (props) => {
   let location = useLocation()
 
   useEffect(() => {
-    dispatch(userLoadProfile())
-  }, [dispatch])
+    if (!props.user.profile) {
+      dispatch(userLoadProfile())
+    }
+  }, [dispatch, props.user.profile])
 
   useEffect(() => {
     if (props.user.profile && location.pathname === '/') {

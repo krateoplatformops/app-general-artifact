@@ -19,7 +19,7 @@ const Oauth = ({ provider }) => {
 
   return (
     <a
-      href={`${uris.apiBase}${uris.auth}/${provider.provider}`}
+      href={`${uris.apiBase}${uris.auth}/${provider.provider}?id=${provider._id}`}
       className={css.Link}
     >
       <i className={faIcon()}></i>

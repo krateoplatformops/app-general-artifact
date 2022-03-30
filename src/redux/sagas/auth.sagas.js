@@ -6,6 +6,7 @@ import {
   logoutSuccess,
   logoutFailure,
   addNotification,
+  userReset,
   redirect
 } from '../actions'
 import { uiConstants } from '../../constants'
@@ -14,6 +15,7 @@ export function* logoutSaga() {
   try {
     yield axios.get(uris.logout)
     yield put(logoutSuccess())
+    yield put(userReset())
     yield put(redirect('/'))
   } catch (error) {
     yield put(logoutFailure(error))

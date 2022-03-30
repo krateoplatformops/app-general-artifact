@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 
-// import NotificationQueue from '../../UI/NotificationQueue/NotificationQueue'
+import NotificationQueue from '../../UI/NotificationQueue/NotificationQueue'
 import CheckUser from './CheckUser/CheckUser'
 import Navigator from './Navigator/Navigator'
 
@@ -17,7 +17,7 @@ const Layout = () => {
       <CheckUser />
       <Navigator />
       <Outlet />
-      {/* <NotificationQueue /> */}
+      <NotificationQueue />
     </Fragment>
   )
 }

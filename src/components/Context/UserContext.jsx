@@ -13,10 +13,10 @@ const UserProvider = ({ children }) => {
   }
 
   // System Theme
-  const isSystemDark = window.matchMedia('(prefers-color-scheme:dark)').matches
-  useEffect(() => {
-    setTheme(isSystemDark ? uiConstants.themes.dark : uiConstants.themes.light)
-  }, [isSystemDark, setTheme])
+  // const isSystemDark = window.matchMedia('(prefers-color-scheme:dark)').matches
+  // useEffect(() => {
+  //   setTheme(isSystemDark ? uiConstants.themes.dark : uiConstants.themes.light)
+  // }, [isSystemDark, setTheme])
 
   const switchTheme = () => {
     const newTheme =

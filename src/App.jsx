@@ -23,7 +23,8 @@ const DashboardLazy = lazy(() =>
 const TemplatesLazy = lazy(() =>
   import('./components/Pages/Templates/Templates')
 )
-const CreateLazy = lazy(() => import('./components/Pages/Create/Create'))
+const RegisterLazy = lazy(() => import('./components/Pages/Register/Register'))
+const CatalogLazy = lazy(() => import('./components/Pages/Catalog/Catalog'))
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
                 <Route element={<AuthLayout />}>
                   <Route path='dashboard' element={<DashboardLazy />} />
                   <Route path='templates' element={<TemplatesLazy />} />
-                  <Route path='create' element={<CreateLazy />} />
+                  <Route path='register' element={<RegisterLazy />} />
+                  <Route path='catalog' element={<CatalogLazy />} />
                 </Route>
                 {/* <Route element={<AuthLayout />}>
                   <Route path='dashboard' element={<DashboardLazy />} />

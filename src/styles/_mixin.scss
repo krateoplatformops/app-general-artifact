@@ -39,26 +39,26 @@
   #{$property}: calc(#{$expression});
 }
 
-@mixin circleColors {
-  &.purple {
-    background-color: $purple;
-  }
-  &.green {
-    background-color: $green;
-  }
-  &.cyan {
-    background-color: $cyan;
-  }
-  &.indigo {
-    background-color: $indigo;
-  }
-  &.blue {
-    background-color: $blue;
-  }
-  &.orange {
-    background-color: $orange;
-  }
-}
+// @mixin circleColors {
+//   &.purple {
+//     background-color: $purple;
+//   }
+//   &.green {
+//     background-color: $green;
+//   }
+//   &.cyan {
+//     background-color: $cyan;
+//   }
+//   &.indigo {
+//     background-color: $indigo;
+//   }
+//   &.blue {
+//     background-color: $blue;
+//   }
+//   &.orange {
+//     background-color: $orange;
+//   }
+// }
 
 @mixin btn-icon($cname, $color) {
   &.#{$cname} {

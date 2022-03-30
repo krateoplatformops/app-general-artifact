@@ -1,0 +1,63 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.Notification {
+  @media screen and (min-width: 320px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 480px) {
+    width: 400px;
+  }
+  @extend .display-flex;
+  @extend .flex-center-start;
+  background: $blue;
+  color: $white;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  line-height: 1.5em;
+  @extend .bsbb;
+  padding: 20px;
+  word-wrap: break-word;
+  @include border-radius($border-radius);
+  cursor: pointer;
+  @extend .trstn;
+  font-weight: 400;
+  position: relative;
+  overflow: hidden;
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+}
+
+.Bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  content: '';
+  height: 5px;
+  background: rgba($white, 0.3);
+  animation: move 7s linear;
+}
+
+@keyframes move {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.Info {
+  background: $blue;
+}
+.Success {
+  background: $green;
+}
+.Warning {
+  background: $orange;
+}
+.Error {
+  background: $red;
+}

@@ -1,0 +1,13 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.NotificationQueue {
+  position: fixed;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  z-index: $zi-notification-queue;
+  top: 0;
+  right: 0;
+  @extend .bsbb;
+  padding: 10px;
+}

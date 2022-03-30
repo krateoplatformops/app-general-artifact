@@ -3,10 +3,10 @@ import axios from '../../axios-conf'
 import uris from '../../uris'
 import {
   userLoadProfileSuccess,
-  userLoadProfileFailure,
-  addNotification
+  userLoadProfileFailure
+  // addNotification
 } from '../actions'
-import { uiConstants } from '../../constants'
+// import { uiConstants } from '../../constants'
 
 export function* userLoadProfileSaga() {
   try {
@@ -14,11 +14,11 @@ export function* userLoadProfileSaga() {
     yield put(userLoadProfileSuccess(result.data))
   } catch (error) {
     yield put(userLoadProfileFailure(error))
-    yield put(
-      addNotification(
-        error.response.data.message,
-        uiConstants.notification.error
-      )
-    )
+    // yield put(
+    //   addNotification(
+    //     error.response.data.message,
+    //     uiConstants.notification.error
+    //   )
+    // )
   }
 }

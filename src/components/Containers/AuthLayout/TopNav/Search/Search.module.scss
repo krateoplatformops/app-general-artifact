@@ -22,9 +22,11 @@
   @include border-radius($border-radius * 2);
   padding-left: 40px;
   @extend .trstn;
+  border: 0;
   &:focus {
     @extend .trstn;
     background: var(--background);
+    border: 0;
     & + i {
       @extend .trstn;
       color: var(--text-color);

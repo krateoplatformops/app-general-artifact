@@ -1,5 +1,24 @@
 @import '../../../../../../styles/colors';
 @import '../../../../../../styles/mixin';
+@import '../../../../../../styles/common';
 
-.Menu {
+.Title {
+  text-transform: uppercase;
+  color: var(--border);
+  padding-bottom: 20px;
+  &:not(:first-of-type) {
+    margin-top: 50px;
+  }
+}
+
+.UlInfo {
+  li {
+    &:not(:first-of-type) {
+      margin-top: 10px;
+    }
+    b {
+      font-weight: 400;
+      margin-right: 5px;
+    }
+  }
 }

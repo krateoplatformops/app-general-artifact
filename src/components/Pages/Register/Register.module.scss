@@ -1,0 +1,12 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+@import '../../../styles/common';
+
+.Container {
+  height: 500px;
+  width: 100%;
+}
+
+.Card {
+  background: $white;
+}

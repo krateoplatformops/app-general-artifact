@@ -1,0 +1,18 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.Card {
+  @include border-radius($border-radius);
+  padding: 20px;
+  @extend .bsbb;
+  background: var(--card);
+}
+
+.Title {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 1.2em;
+  text-transform: capitalize;
+}
