@@ -4,7 +4,8 @@ const initialState = {
   loading: false,
   error: null,
   profile: null,
-  action: null
+  action: null,
+  init: false
 }
 
 export default function user(state = initialState, action) {
@@ -12,6 +13,7 @@ export default function user(state = initialState, action) {
     case userConstants.USER_LOAD_PROFILE:
       return {
         ...state,
+        init: true,
         loading: true,
         profile: null
       }

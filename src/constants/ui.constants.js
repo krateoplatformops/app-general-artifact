@@ -65,7 +65,9 @@ export const uiConstants = {
     warning: 'Warning',
     success: 'Success'
   },
-  messages: {},
+  messages: {
+    template_import_success: 'Template imported successfully'
+  },
   themes: {
     light: 'light',
     dark: 'dark'

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import Card from '../../UI/Card/Card'
 import Label from '../../UI/Label/Label'
 import { registerImport } from '../../../redux/actions'
-// import css from './Import.module.scss'
+// import css from './Register.module.scss'
 
 const Register = () => {
   const dispatch = useDispatch()

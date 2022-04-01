@@ -5,7 +5,6 @@ import packageJson from '../../../../package.json'
 import css from './Login.module.scss'
 import { configLoad } from '../../../redux/actions'
 import Oauth from './Oauth/Oauth'
-import PageLoader from '../../UI/PageLoader/PageLoader'
 import KrateoLogo from '../../UI/KrateoLogo/KrateoLogo'
 import Social from './Social/Social'
 import Support from './Support/Support'
@@ -15,8 +14,10 @@ const Login = ({ config }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(configLoad())
-  }, [dispatch])
+    if (!config.init) {
+      dispatch(configLoad())
+    }
+  }, [dispatch, config.init])
 
   return (
     <React.Fragment>
@@ -25,7 +26,7 @@ const Login = ({ config }) => {
         <KrateoLogo css={css.BigLogo} file={uiConstants.logo.horizontal} />
 
         <ul className={css.UlProviders}>
-          {(config.settings.strategies || []).map((p) => (
+          {(config.settings?.providers || []).map((p) => (
             <li key={p._id}>
               <Oauth provider={p} />
             </li>
@@ -35,7 +36,6 @@ const Login = ({ config }) => {
         <span className={css.Version}>v. {packageJson.version}</span>
       </div>
       <Support />
-      {config.loading && <PageLoader />}
     </React.Fragment>
   )
 }

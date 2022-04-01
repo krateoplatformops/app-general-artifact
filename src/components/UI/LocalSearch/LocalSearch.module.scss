@@ -1,0 +1,32 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.Container {
+  @include border-radius($border-radius);
+  margin: 10px 0 20px 0;
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  > input {
+    background: var(--background);
+    border: 0;
+    @include border-radius($border-radius / 2);
+    &:focus {
+      background: var(--card);
+      border: 0;
+    }
+  }
+}
+
+.Button {
+  width: 40px;
+  height: 40px;
+  @extend .display-flex;
+  @extend .flex-center;
+  color: var(--border);
+  @include border-radius($border-radius / 2);
+  margin-left: 10px;
+  &:hover {
+    background: var(--card);
+    color: $blue;
+  }
+}

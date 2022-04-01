@@ -88,16 +88,12 @@ $border-radius: 10px;
 // $border-hover-dark: $grey-900;
 
 /* Z-Index */
-$zi-notification-queue: 9999;
+$zi-notification-queue: 8888;
 $zi-page-loader: 99999;
-$zi-brand: 7777;
-$zi-nav-button: 8888;
-$zi-nav: 7777;
-$zi-user-menu: 9999;
-$zi-user-menu-bkg: 8888;
-// $zi-tooltip: 9999;
-// $zi-modal-bkg: 8888;
-// $zi-modal-container: 7001;
+$zi-nav-button: 20;
+$zi-nav: 10;
+$zi-user-menu: 7777;
+$zi-user-menu-bkg: 7000;
 
 /* Vars */
 $menu-transition: 0.2s;

@@ -1,28 +1,29 @@
 import React, { Fragment, useContext } from 'react'
 import { connect } from 'react-redux'
+import { Outlet } from 'react-router'
 
 import Nav from './Nav/Nav'
 
 import css from './AuthLayout.module.scss'
-import Brand from './Brand/Brand'
+import Hamburger from './Hamburger/Hamburger'
 import TopNav from './TopNav/TopNav'
 import { UserContext } from '../../Context/UserContext'
-import { Outlet } from 'react-router'
-
-import PageLoader from '../../UI/PageLoader/PageLoader'
+import UserBar from './UserBar/UserBar'
+import NotificationBar from './NotificationBar/NotificationBar'
 
 const AuthLayout = (props) => {
-  const { isOpen } = useContext(UserContext)
+  const { menuOpen } = useContext(UserContext)
 
   return (
     <Fragment>
-      <Brand isOpen={isOpen} />
+      <Hamburger />
       <TopNav />
       <Nav />
-      <div className={`${css.MainContainer} ${isOpen && css.IsOpen}`}>
+      <UserBar />
+      <NotificationBar />
+      <div className={`${css.MainContainer} ${menuOpen && css.IsOpen}`}>
         <Outlet />
       </div>
-      {props.register.loading && <PageLoader />}
     </Fragment>
   )
 }

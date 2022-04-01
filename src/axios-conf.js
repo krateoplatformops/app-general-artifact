@@ -39,7 +39,7 @@ axiosInstance.interceptors.response.use(
       }
       return Promise.reject(err)
     }
-    if (error.response.status === 401) {
+    if (error.response.status === 401 && window.location.pathname !== '/') {
       store.dispatch(userReset())
       store.dispatch(redirect('/'))
     }

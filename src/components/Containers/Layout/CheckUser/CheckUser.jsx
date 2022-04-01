@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
-import PageLoader from '../../../UI/PageLoader/PageLoader'
 import { userLoadProfile, redirect } from '../../../../redux/actions'
 
 const CheckUser = (props) => {
@@ -10,10 +9,10 @@ const CheckUser = (props) => {
   let location = useLocation()
 
   useEffect(() => {
-    if (!props.user.profile) {
+    if (!props.user.init) {
       dispatch(userLoadProfile())
     }
-  }, [dispatch, props.user.profile])
+  }, [dispatch, props.user.init])
 
   useEffect(() => {
     if (props.user.profile && location.pathname === '/') {
@@ -21,7 +20,7 @@ const CheckUser = (props) => {
     }
   }, [dispatch, location.pathname, props.user.profile])
 
-  return props.user.loading ? <PageLoader /> : <React.Fragment />
+  return <React.Fragment />
 }
 
 function mapStateToProps(state) {

@@ -8,6 +8,7 @@ import {
   watchConfig,
   watchRegister,
   watchSocket,
+  watchTemplate,
   watchUser
 } from './sagas'
 
@@ -23,3 +24,4 @@ sagaMiddleware.run(watchUser)
 sagaMiddleware.run(watchAuth)
 sagaMiddleware.run(watchRegister)
 sagaMiddleware.run(watchSocket)
+sagaMiddleware.run(watchTemplate)

@@ -1,0 +1,18 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.Hamburger {
+  position: fixed;
+  top: 0;
+  background: var(--nav);
+  height: 60px;
+  width: 60px;
+  left: 0;
+  font-size: 20px;
+  padding: 10px;
+  color: var(--text-color-secondary);
+  z-index: $zi-nav-button;
+  &:hover {
+    color: var(--text-color);
+  }
+}

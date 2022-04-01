@@ -6,16 +6,16 @@ import css from './Nav.module.scss'
 import { UserContext } from '../../../Context/UserContext'
 
 const Nav = ({ logoutHandler, profile }) => {
-  const { isOpen, toggle } = useContext(UserContext)
+  const { menuOpen, toggleMenu } = useContext(UserContext)
 
   const beCollapsed = () => {
     if (window.innerWidth < 768) {
-      toggle()
+      toggleMenu()
     }
   }
 
   return (
-    <div className={`${css.NavContainer} ${isOpen && css.IsOpen}`}>
+    <div className={`${css.NavContainer} ${menuOpen && css.IsOpen}`}>
       <ul className={css.UlNav}>
         {uiConstants.nav
           .filter(

@@ -1,22 +1,23 @@
 import React, { useContext } from 'react'
 
-import { UserContext } from '../../../Context/UserContext'
 import Search from './Search/Search'
-import Notification from './Notification/Notification'
-import User from './User/User'
 import css from './TopNav.module.scss'
+import Brand from './Brand/Brand'
+import { UserContext } from '../../../Context/UserContext'
 
 const TopNav = () => {
-  const { isOpen, toggle } = useContext(UserContext)
+  const { toggleUser, toggleNotification } = useContext(UserContext)
 
   return (
-    <div className={`${css.TopNav} ${isOpen && css.IsOpen}`}>
-      <button onClick={toggle}>
-        <i className='fa-solid fa-bars'></i>
-      </button>
+    <div className={css.TopNav}>
+      <Brand />
       <Search />
-      <Notification />
-      <User />
+      <button className={css.BtnIcons} onClick={toggleNotification}>
+        <i className='fa-solid fa-bell'></i>
+      </button>
+      <button className={css.BtnIcons} onClick={toggleUser}>
+        <i className='fa-solid fa-circle-user'></i>
+      </button>
     </div>
   )
 }

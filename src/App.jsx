@@ -41,21 +41,6 @@ function App() {
                   <Route path='register' element={<RegisterLazy />} />
                   <Route path='catalog' element={<CatalogLazy />} />
                 </Route>
-                {/* <Route element={<AuthLayout />}>
-                  <Route path='dashboard' element={<DashboardLazy />} />
-                  <Route path='projects/' element={<ProjectsLazy />} />
-                  <Route
-                    path='projects/edit/:provider/:id'
-                    element={<EditProjectLazy />}
-                  />
-                  <Route path='projects/*' element={<NewProjectLazy />} />
-                  <Route path='insights' element={<InsightsLazy />} />
-                  <Route path='logs' element={<LogsLazy />} />
-                  <Route path='history' element={<HistoryLazy />} />
-                  <Route path='users' element={<UsersLazy />} />
-                  <Route path='users/edit/:id' element={<EditUserLazy />} />
-                  <Route path='settings' element={<SettingsLazy />} />
-                </Route> */}
                 <Route path='*' element={<NotFoundLazy history={history} />} />
               </Route>
             </Routes>

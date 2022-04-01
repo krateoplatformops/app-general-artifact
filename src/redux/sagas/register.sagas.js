@@ -4,15 +4,24 @@ import uris from '../../uris'
 import {
   registerImportSuccess,
   registerImportFailure,
-  addNotification
+  addNotification,
+  redirect,
+  templateUpdate
 } from '../actions'
 import { uiConstants } from '../../constants'
 
 export function* registerImportSaga(action) {
   try {
-    yield axios.post(uris.register, action.payload)
+    const doc = yield axios.post(uris.register, action.payload)
     yield put(registerImportSuccess())
-    // TODO: redirect
+    yield put(templateUpdate(doc.data))
+    yield put(
+      addNotification(
+        uiConstants.messages.template_import_success,
+        uiConstants.notification.success
+      )
+    )
+    yield put(redirect('/templates'))
   } catch (error) {
     yield put(registerImportFailure(error))
     yield put(

@@ -1,0 +1,17 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.Tag {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  color: var(--text-color);
+  background: rgba($blue, 0.1);
+  @extend .bsbb;
+  padding: 5px;
+  @include border-radius($border-radius / 4);
+  font-size: 0.6em;
+  &:not(:last-of-type) {
+    margin-right: 4px;
+  }
+  margin: 2px 0;
+}

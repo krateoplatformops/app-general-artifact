@@ -1,0 +1,73 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.Container {
+  min-width: 25%;
+  width: 25%;
+  @extend .bsbb;
+  &:nth-child(4n + 1) {
+    padding-right: 10px;
+  }
+  &:nth-child(4n + 2) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  &:nth-child(4n + 3) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  &:nth-child(4n + 4) {
+    padding-left: 10px;
+  }
+  &:not(:nth-last-child(-n + 4)) {
+    padding-bottom: 20px;
+  }
+}
+
+.Card {
+  background: var(--card);
+  @extend .bsbb;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  @include border-radius($border-radius / 2);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.Title {
+  font-weight: 600;
+  background: $blue;
+  color: $white;
+  padding: 10px;
+  @extend .bsbb;
+}
+
+.Description {
+  padding: 10px 10px 10px 10px;
+  min-height: 100px;
+  @extend .bsbb;
+}
+
+.Tags {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  padding: 0 10px;
+  @extend .bsbb;
+}
+
+.Footer {
+  border-top: 1px solid var(--border);
+  margin-top: 10px;
+  padding: 10px;
+  @extend .flex-direction-row;
+  @extend .display-flex;
+  // @extend .flex-center;
+  @extend .flex-justify-between;
+}
+
+.DeleteBtn {
+  color: var(--background);
+  &:hover {
+    color: $red;
+  }
+}

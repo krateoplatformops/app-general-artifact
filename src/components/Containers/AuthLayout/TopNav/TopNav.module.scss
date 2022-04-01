@@ -6,30 +6,22 @@
   top: 0;
   background: var(--nav);
   height: 60px;
-  left: 60px;
-  @include calc('width', '100% - 60px');
+  left: 0;
   @extend .bsbb;
-  padding: 0 10px;
-  z-index: $zi-nav-button;
+  width: 100%;
+  padding: 0 0 0 60px;
+  z-index: $zi-nav;
   @extend .display-flex;
   @extend .flex-center-start;
-  @include transition($menu-transition);
-  border-left: 1px solid var(--background);
-  > button {
-    font-size: 20px;
-    padding: 10px;
-    color: var(--text-color-secondary);
-    &:hover {
-      color: var(--text-color);
-    }
-  }
 }
 
-.IsOpen {
-  left: 60px;
-  @include calc('width', '100% - 60px');
-  @media screen and (min-width: 768px) {
-    left: 200px;
-    @include calc('width', '100% - 200px');
+.BtnIcons {
+  color: var(--text-color-secondary);
+  font-size: 20px;
+  padding: 10px;
+  min-width: 60px;
+  min-height: 60px;
+  &:hover {
+    color: var(--text-color);
   }
 }

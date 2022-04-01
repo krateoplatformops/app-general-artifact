@@ -5,7 +5,7 @@ import css from './Oauth.module.scss'
 
 const Oauth = ({ provider }) => {
   const faIcon = () => {
-    switch (provider.provider) {
+    switch (provider.strategy) {
       case 'github':
         return 'fa-brands fa-github'
       case 'microsoft':
@@ -19,7 +19,7 @@ const Oauth = ({ provider }) => {
 
   return (
     <a
-      href={`${uris.apiBase}${uris.auth}/${provider.provider}?id=${provider._id}`}
+      href={`${uris.apiBase}${uris.auth}/${provider.strategy}?id=${provider._id}`}
       className={css.Link}
     >
       <i className={faIcon()}></i>
