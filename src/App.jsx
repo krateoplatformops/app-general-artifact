@@ -25,6 +25,10 @@ const TemplatesLazy = lazy(() =>
 )
 const RegisterLazy = lazy(() => import('./components/Pages/Register/Register'))
 const CatalogLazy = lazy(() => import('./components/Pages/Catalog/Catalog'))
+const DeployLazy = lazy(() => import('./components/Pages/Deploy/Deploy'))
+const DeployLogsLazy = lazy(() =>
+  import('./components/Pages/DeployLogs/DeployLogs')
+)
 
 function App() {
   return (
@@ -40,6 +44,11 @@ function App() {
                   <Route path='templates' element={<TemplatesLazy />} />
                   <Route path='register' element={<RegisterLazy />} />
                   <Route path='catalog' element={<CatalogLazy />} />
+                  <Route path='deploy/:id' element={<DeployLazy />} />
+                  <Route
+                    path='deploy/:id/:channel'
+                    element={<DeployLogsLazy />}
+                  />
                 </Route>
                 <Route path='*' element={<NotFoundLazy history={history} />} />
               </Route>

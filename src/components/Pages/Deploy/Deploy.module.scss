@@ -1,0 +1,17 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.UlWidgets {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}
+
+.LiWidgets {
+  min-width: 300px;
+}
+
+.LiForm {
+  padding-left: 20px;
+  @extend .bsbb;
+  width: 100%;
+}

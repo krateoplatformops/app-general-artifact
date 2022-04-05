@@ -10,6 +10,7 @@ import TopNav from './TopNav/TopNav'
 import { UserContext } from '../../Context/UserContext'
 import UserBar from './UserBar/UserBar'
 import NotificationBar from './NotificationBar/NotificationBar'
+import LoadComponents from './LoadComponents/LoadComponents'
 
 const AuthLayout = (props) => {
   const { menuOpen } = useContext(UserContext)
@@ -24,6 +25,7 @@ const AuthLayout = (props) => {
       <div className={`${css.MainContainer} ${menuOpen && css.IsOpen}`}>
         <Outlet />
       </div>
+      <LoadComponents />
     </Fragment>
   )
 }

@@ -1,0 +1,71 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+@import '../../../styles/common';
+
+.ModalBkg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $zi-modal-bkg;
+  // background: rgba($navy, 0.9);
+  background: var(--background-transparent);
+  @extend .display-flex;
+  @extend .flex-center;
+  overflow: auto;
+}
+
+.ModalContainer {
+  background: var(--card);
+  @include border-radius($border-radius);
+  @extend .bsbb;
+  padding: 10px;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  border: 1px solid var(--border);
+
+  @media screen and (min-width: 320px) {
+    width: 90%;
+    max-width: 90%;
+  }
+  @media screen and (min-width: 768px) {
+    width: 50%;
+    max-width: 50%;
+  }
+}
+
+.Title {
+  padding-bottom: 20px;
+  font-weight: 400;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-transform: capitalize;
+  height: 40px;
+  @extend .bsbb;
+  position: relative;
+}
+
+.ModalBody {
+  overflow: auto;
+  max-height: 70vh;
+  @extend .bsbb;
+  padding: 10px;
+}
+
+.UlBtns {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-end;
+  @extend .bsbb;
+  padding: 10px;
+  @extend .flex-justify-between;
+}
+
+.BtnClose {
+  @extend .default-button;
+}
+
+.BtnConfirm {
+  @extend .primary-button;
+}

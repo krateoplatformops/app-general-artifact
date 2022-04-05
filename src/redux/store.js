@@ -6,6 +6,7 @@ import createSagaMiddleware from 'redux-saga'
 import {
   watchAuth,
   watchConfig,
+  watchDeploy,
   watchRegister,
   watchSocket,
   watchTemplate,
@@ -25,3 +26,4 @@ sagaMiddleware.run(watchAuth)
 sagaMiddleware.run(watchRegister)
 sagaMiddleware.run(watchSocket)
 sagaMiddleware.run(watchTemplate)
+sagaMiddleware.run(watchDeploy)

@@ -1,31 +1,17 @@
 @import '../../../styles/colors';
 @import '../../../styles/mixin';
+@import '../../../styles/common';
 
 .Card {
   @include border-radius($border-radius);
   padding: 20px;
   @extend .bsbb;
   background: var(--card);
+  &:not(:first-of-type) {
+    margin-top: 20px;
+  }
 }
 
 .Title {
-  padding-bottom: 20px;
-  font-weight: 400;
-  font-size: 1.2em;
-  font-weight: 600;
-  text-transform: capitalize;
-  height: 40px;
-  @extend .bsbb;
-  position: relative;
-  &:before {
-    content: '';
-    @include border-radius(50%);
-    display: block;
-    width: 5px;
-    height: 5px;
-    background: $yellow;
-    position: absolute;
-    top: 7px;
-    left: -10px;
-  }
+  @extend .TitleYellowBullet;
 }

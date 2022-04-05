@@ -7,6 +7,9 @@
   text-transform: capitalize;
   font-size: 0.8em;
   height: 40px;
+  @extend .bsbb;
+  @extend .display-flex;
+  @extend .flex-center;
   i {
     margin-right: 10px;
   }
@@ -45,4 +48,30 @@
   @extend .display-flex;
   @extend .flex-direction-row;
   @extend .flex-center-end;
+}
+
+.span-warning {
+  color: $red;
+}
+
+.TitleYellowBullet {
+  padding-bottom: 20px;
+  font-weight: 400;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-transform: capitalize;
+  height: 40px;
+  @extend .bsbb;
+  position: relative;
+  &:before {
+    content: '';
+    @include border-radius(50%);
+    display: block;
+    width: 5px;
+    height: 5px;
+    background: $yellow;
+    position: absolute;
+    top: 7px;
+    left: -10px;
+  }
 }

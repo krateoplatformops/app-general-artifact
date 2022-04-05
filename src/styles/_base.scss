@@ -56,6 +56,13 @@ button {
   background: transparent;
 }
 
+input[type='submit'] {
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
 :disabled {
   cursor: not-allowed;
   @include opacity(0.5);
@@ -105,21 +112,21 @@ select {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--text-color);
   opacity: 0.5; /* Firefox */
-  text-transform: capitalize;
+  // text-transform: capitalize;
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   color: var(--text-color);
   opacity: 0.5;
-  text-transform: capitalize;
+  // text-transform: capitalize;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
   color: var(--text-color);
   opacity: 0.5;
-  text-transform: capitalize;
+  // text-transform: capitalize;
 }
 
 textarea {
@@ -135,6 +142,9 @@ h1 {
   @extend .display-flex;
   @extend .flex-direction-row;
   @extend .flex-center-start;
+  &.mb {
+    margin-bottom: 20px;
+  }
 }
 
 h2 {

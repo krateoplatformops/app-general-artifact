@@ -1,21 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 
-import { templateLoad, redirect } from '../../../redux/actions'
+import {
+  templateLoad,
+  redirect,
+  uiChangeTemplateViewMode,
+  templateDelete
+} from '../../../redux/actions'
 import LocalSearch from '../../UI/LocalSearch/LocalSearch'
+import DeleteTemplate from './DeleteTemplate/DeleteTemplate'
 import TemplateCard from './TemplateCard/TemplateCard'
-import TemplateLine from './TemplateLine/TemplateLine'
 import css from './Templates.module.scss'
+import TemplateSkeleton from './TemplateSkeleton/TemplateSkeleton'
 
-const Templates = ({ template }) => {
+const Templates = ({ template, ui }) => {
   const dispatch = useDispatch()
   const [search, setSearch] = useState('')
-  const [cardMode, setCardMode] = useState(true)
+  const [showModal, setShowModal] = useState(false)
+  const [currentTemplate, setCurrentTemplate] = useState('')
 
   const changeViewMode = () => {
-    setCardMode(!cardMode)
+    dispatch(uiChangeTemplateViewMode())
   }
 
   const reloadTemplates = () => {
@@ -23,21 +28,34 @@ const Templates = ({ template }) => {
   }
 
   const useTemplate = (t) => {
-    dispatch(redirect(`/templates/${t._id}`))
+    dispatch(redirect(`/deploy/${t._id}`))
   }
 
-  useEffect(() => {
-    if (!template.result && !template.loading) {
-      dispatch(templateLoad())
-    }
-  }, [dispatch, template])
+  const openDeleteModal = (t) => {
+    setCurrentTemplate(t)
+    setShowModal(true)
+  }
+
+  const closeDeleteModal = () => {
+    setShowModal(false)
+  }
+
+  const deleteTemplateHandler = () => {
+    setShowModal(false)
+    dispatch(templateDelete(currentTemplate._id))
+  }
+
+  const cardMode = ui.templateViewMode === 'grid'
 
   return (
     <React.Fragment>
       <h1>Templates</h1>
       <LocalSearch
         buttons={[
-          { action: changeViewMode, icon: 'fa-solid fa-table-cells-large' },
+          {
+            action: changeViewMode,
+            icon: cardMode ? 'fa-solid fa-bars' : 'fa-solid fa-grip'
+          },
           { action: reloadTemplates, icon: 'fa-solid fa-rotate' }
         ]}
       >
@@ -49,42 +67,34 @@ const Templates = ({ template }) => {
         />
       </LocalSearch>
 
-      {template.loading && (
-        <div className={css.Skeleton}>
-          {[...Array(4)].map((s, key) => (
-            <div key={key}>
-              <Skeleton height={200} />
-            </div>
-          ))}
-        </div>
-      )}
+      {template.loading && <TemplateSkeleton cardMode={cardMode} />}
+
       <div className={css.TemplateList}>
-        {
-          (template.list || [])
-            .filter((x) => {
-              return (
-                x.metadata.name.toLowerCase().indexOf(search) > -1 ||
-                x.metadata.annotations.title.toLowerCase().indexOf(search) >
-                  -1 ||
-                x.metadata.labels.tags.indexOf(search) > -1
-              )
-            })
-            .map((t) =>
-              cardMode ? (
-                <TemplateCard t={t} key={t._id} go={useTemplate} />
-              ) : (
-                <TemplateLine t={t} key={t._id} go={useTemplate} />
-              )
+        {(template.list || [])
+          .filter((x) => {
+            return (
+              x.metadata.name.toLowerCase().indexOf(search) > -1 ||
+              x.metadata.annotations.title.toLowerCase().indexOf(search) > -1 ||
+              x.metadata.labels.tags.indexOf(search) > -1
             )
-          // .map((t) => {
-          //   return cardMode ? (
-          //     <TemplateCard t={t} key={t._id} />
-          //   ) : (
-          //     <TemplateLine t={t} key={t._id} />
-          //   )
-          // })
-        }
+          })
+          .map((t) => (
+            <TemplateCard
+              t={t}
+              key={t._id}
+              go={useTemplate}
+              cardMode={cardMode}
+              openModal={openDeleteModal}
+            />
+          ))}
       </div>
+      {showModal && (
+        <DeleteTemplate
+          closeModal={closeDeleteModal}
+          template={currentTemplate}
+          deleteTemplateHandler={deleteTemplateHandler}
+        />
+      )}
     </React.Fragment>
   )
 }

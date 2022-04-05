@@ -23,7 +23,7 @@ const Register = () => {
         >
           <input
             type='text'
-            placeholder='full Url'
+            placeholder='Full Url'
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />

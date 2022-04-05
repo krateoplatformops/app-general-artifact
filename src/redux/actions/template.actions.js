@@ -33,3 +33,24 @@ export const templateReset = () => {
     type: templateConstants.TEMPLATE_RESET
   }
 }
+
+export const templateDelete = (payload) => {
+  return {
+    type: templateConstants.TEMPLATE_DELETE,
+    payload
+  }
+}
+
+export const templateDeleteSuccess = (payload) => {
+  return {
+    type: templateConstants.TEMPLATE_DELETE_SUCCESS,
+    payload
+  }
+}
+
+export const templateDeleteFailure = (payload) => {
+  return {
+    type: templateConstants.TEMPLATE_DELETE_FAILURE,
+    payload
+  }
+}

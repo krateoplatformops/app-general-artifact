@@ -1,0 +1,55 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.UlSteps {
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  cursor: pointer;
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+  li {
+    @extend .display-flex;
+    @extend .flex-direction-row;
+    @extend .flex-justify-between;
+    i {
+      @extend .display-flex;
+      @extend .flex-center;
+      min-width: 40px;
+      min-height: 40px;
+      @include border-radius(50%);
+    }
+  }
+}
+
+.ActiveStep {
+  font-weight: 600;
+  i {
+    background: $blue;
+    color: $white !important;
+    border: 1px solid $blue !important;
+  }
+}
+
+.fa-question {
+  i {
+    border: 1px solid var(--border);
+    color: var(--border);
+  }
+}
+
+.fa-check {
+  i {
+    background: $green;
+    color: $white;
+    border: 1px solid $green;
+  }
+}
+
+.fa-triangle-exclamation {
+  i {
+    background: $red;
+    color: $white;
+    border: 1px solid $red;
+  }
+}

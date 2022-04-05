@@ -1,0 +1,27 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+@import '../../../../styles/common';
+
+.UlSummary {
+  li {
+    span {
+      color: $blue;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8em;
+      margin-right: 10px;
+    }
+    &:not(:first-of-type) {
+      margin-top: 10px;
+    }
+  }
+}
+
+.UlBtns {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-end;
+  @extend .bsbb;
+  margin-top: 20px;
+  @extend .flex-justify-between;
+}

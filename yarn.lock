@@ -8016,6 +8016,11 @@
     "react-draggable" "^4.4.4"
     "zustand" "^3.7.1"
 
+"react-hook-form@^7.29.0":
+  "integrity" "sha512-NcJqWRF6el5HMW30fqZRt27s+lorvlCCDbTpAyHoodQeYWXgQCvZJJQLC1kRMKdrJknVH0NIg3At6TUzlZJFOQ=="
+  "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.29.0.tgz"
+  "version" "7.29.0"
+
 "react-is@^16.13.1", "react-is@^16.7.0":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -8128,7 +8133,7 @@
   "resolved" "https://registry.npmjs.org/react-uuid/-/react-uuid-1.0.2.tgz"
   "version" "1.0.2"
 
-"react@*", "react@^16.8.3 || ^17", "react@^18.0.0", "react@>= 16", "react@>= 16.3.0", "react@>=16.8", "react@>=16.8.0", "react@>=16.8.1", "react@16 || 17":
+"react@*", "react@^16.8.0 || ^17 || ^18", "react@^16.8.3 || ^17", "react@^18.0.0", "react@>= 16", "react@>= 16.3.0", "react@>=16.8", "react@>=16.8.0", "react@>=16.8.1", "react@16 || 17":
   "integrity" "sha512-x+VL6wbT4JRVPm7EGxXhZ8w8LTROaxPXOqhlGyVSrv0sB1jkyFGgXxJ8LVoPRLvPR6/CIZGFmfzqUa2NYeMr2A=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.0.0.tgz"
   "version" "18.0.0"

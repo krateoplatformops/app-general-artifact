@@ -6,6 +6,7 @@ const uris = {
   logout: 'auth/logout',
   register: 'register',
   template: 'template',
+  deploy: 'deploy',
   socket: window.runConfig.socketUrl
 }
 

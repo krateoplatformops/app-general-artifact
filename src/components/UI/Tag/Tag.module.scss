@@ -4,6 +4,7 @@
 .Tag {
   @extend .display-flex;
   @extend .flex-direction-row;
+  // display: inline-block;
   color: var(--text-color);
   background: rgba($blue, 0.1);
   @extend .bsbb;

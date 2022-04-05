@@ -3,34 +3,44 @@ import React from 'react'
 import Tag from '../../../UI/Tag/Tag'
 import css from './TemplateCard.module.scss'
 
-const TemplateCard = ({ t, go }) => (
-  <div className={css.Container}>
-    <div className={css.Card} onClick={() => go(t)}>
-      <div className={css.Title}>{t.metadata.annotations.title}</div>
-      <div className={css.Description}>
-        {t.metadata.annotations.description}
-      </div>
-      <div className={css.Tags}>
-        {t.metadata.labels.tags.map((tag) => (
-          <Tag key={tag} tag={tag} />
-        ))}
-        <Tag tag={`${t.spec.widgets.length} steps`} />
-      </div>
-      <div className={css.Footer}>
-        <a
-          target='_blank'
-          href={t.url}
-          rel='noreferrer'
-          onClick={(e) => e.stopPropagation()}
-        >
-          <i className='fa-brands fa-git'></i>
-        </a>
-        <button className={css.DeleteBtn} onClick={(e) => e.stopPropagation()}>
-          <i className='fa-solid fa-trash-can'></i>
-        </button>
+const TemplateGrid = ({ t, go, cardMode, openModal }) => {
+  const deleteHandler = (e) => {
+    e.stopPropagation()
+    openModal(t)
+  }
+
+  return (
+    <div className={cardMode ? css.ContainerGrid : css.ContainerList}>
+      <div className={css.Grid} onClick={() => go(t)}>
+        <div className={css.Title}>{t.metadata.annotations.title}</div>
+        <div className={cardMode ? css.DescriptionGrid : css.DescriptionList}>
+          {t.metadata.annotations.description}
+        </div>
+        <div className={cardMode ? css.FooterGrid : css.FooterList}>
+          <div className={cardMode ? css.TagsGrid : css.TagsList}>
+            {t.metadata.labels.tags.map((tag) => (
+              <Tag key={tag} tag={tag} />
+            ))}
+            <Tag tag={`${t.spec.widgets.length} widgets`} />
+          </div>
+          <div className={cardMode ? css.LinksGrid : css.LinksList}>
+            <a
+              target='_blank'
+              href={t.url}
+              rel='noreferrer'
+              onClick={(e) => e.stopPropagation()}
+              className={css.Link}
+            >
+              <i className='fa-brands fa-git'></i>
+            </a>
+            <button className={css.DeleteBtn} onClick={(e) => deleteHandler(e)}>
+              <i className='fa-solid fa-trash-can'></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
 
-export default TemplateCard
+export default TemplateGrid

@@ -5,7 +5,8 @@ import {
   authConstants,
   registerConstants,
   socketConstants,
-  templateConstants
+  templateConstants,
+  deployConstants
 } from '../constants'
 
 import { configLoadSaga } from './config.sagas'
@@ -13,7 +14,8 @@ import { userLoadProfileSaga } from './user.sagas'
 import { logoutSaga } from './auth.sagas'
 import { registerImportSaga } from './register.sagas'
 import { socketSubscribeSaga } from './socket.sagas'
-import { templateLoadSaga } from './template.sagas'
+import { templateLoadSaga, templateDeleteSaga } from './template.sagas'
+import { deployCreateSaga } from './deploy.sagas'
 
 export function* watchConfig() {
   yield takeEvery(configConstants.CONFIG_LOAD, configLoadSaga)
@@ -37,4 +39,9 @@ export function* watchSocket() {
 
 export function* watchTemplate() {
   yield takeEvery(templateConstants.TEMPLATE_LOAD, templateLoadSaga)
+  yield takeEvery(templateConstants.TEMPLATE_DELETE, templateDeleteSaga)
+}
+
+export function* watchDeploy() {
+  yield takeEvery(deployConstants.DEPLOY_CREATE, deployCreateSaga)
 }

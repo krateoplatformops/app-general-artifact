@@ -6,7 +6,8 @@ import PageLoader from '../../../UI/PageLoader/PageLoader'
 const ReduxLoader = (props) => {
   return props.user.loading ||
     props.register.loading ||
-    props.config.loading ? (
+    props.config.loading ||
+    props.template.ajaxLoading ? (
     <PageLoader />
   ) : (
     <React.Fragment />

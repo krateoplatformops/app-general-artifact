@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
 import { UserContext } from '../../../Context/UserContext'
-import css from './NotificationBar.module.scss'
+// import css from './NotificationBar.module.scss'
 import SideBar from '../../../UI/SideBar/SideBar'
 import { socketSubscribe } from '../../../../redux/actions'
 

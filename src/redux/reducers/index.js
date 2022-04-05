@@ -8,6 +8,8 @@ import auth from './auth.reducer'
 import register from './register.reducer'
 import socket from './socket.reducer'
 import template from './template.reducer'
+import ui from './ui.reducer'
+import deploy from './deploy.reducer'
 
 const rootReducer = combineReducers({
   notify,
@@ -17,7 +19,9 @@ const rootReducer = combineReducers({
   auth,
   register,
   socket,
-  template
+  template,
+  ui,
+  deploy
 })
 
 export default rootReducer

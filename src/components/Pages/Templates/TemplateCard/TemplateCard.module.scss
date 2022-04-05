@@ -1,7 +1,7 @@
 @import '../../../../styles/colors';
 @import '../../../../styles/mixin';
 
-.Container {
+.ContainerGrid {
   min-width: 25%;
   width: 25%;
   @extend .bsbb;
@@ -24,7 +24,15 @@
   }
 }
 
-.Card {
+.ContainerList {
+  width: 100%;
+  @extend .bsbb;
+  &:not(:last-of-type) {
+    padding-bottom: 20px;
+  }
+}
+
+.Grid {
   background: var(--card);
   @extend .bsbb;
   @extend .display-flex;
@@ -42,31 +50,62 @@
   @extend .bsbb;
 }
 
-.Description {
+.DescriptionList {
   padding: 10px 10px 10px 10px;
+  @extend .bsbb;
+}
+
+.DescriptionGrid {
+  @extend .DescriptionList;
   min-height: 100px;
-  @extend .bsbb;
 }
 
-.Tags {
+.FooterGrid {
   @extend .display-flex;
-  @extend .flex-direction-row;
-  padding: 0 10px;
-  @extend .bsbb;
+  @extend .flex-direction-column;
 }
 
-.Footer {
+.FooterList {
   border-top: 1px solid var(--border);
-  margin-top: 10px;
-  padding: 10px;
   @extend .flex-direction-row;
   @extend .display-flex;
-  // @extend .flex-center;
+  width: 100%;
   @extend .flex-justify-between;
+}
+
+.TagsGrid {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  padding: 0 10px 10px 10px;
+  @extend .bsbb;
+}
+
+.TagsList {
+  @extend .TagsGrid;
+  padding: 10px;
+}
+
+.LinksGrid {
+  @extend .LinksList;
+  border-top: 1px solid var(--border);
+  @extend .flex-justify-between;
+}
+
+.LinksList {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}
+
+.Link {
+  @extend .display-flex;
+  @extend .flex-center;
+  height: 40px;
+  width: 40px;
 }
 
 .DeleteBtn {
   color: var(--background);
+  @extend .Link;
   &:hover {
     color: $red;
   }
