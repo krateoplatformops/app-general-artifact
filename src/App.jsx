@@ -46,7 +46,7 @@ function App() {
                   <Route path='catalog' element={<CatalogLazy />} />
                   <Route path='deploy/:id' element={<DeployLazy />} />
                   <Route
-                    path='deploy/:id/:channel'
+                    path='deploy/:id/:transactionId'
                     element={<DeployLogsLazy />}
                   />
                 </Route>

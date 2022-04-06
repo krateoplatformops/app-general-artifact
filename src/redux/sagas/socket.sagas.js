@@ -20,7 +20,7 @@ export function* socketSubscribeSaga(action) {
       yield put(socketReceived(event))
     }
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     // yield put(registerImportFailure(error))
     yield put(
       addNotification(
