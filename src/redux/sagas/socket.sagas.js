@@ -30,3 +30,42 @@ export function* socketSubscribeSaga(action) {
     )
   }
 }
+
+export function* socketUnsubscribeSaga(action) {
+  try {
+    socket.off(action.payload)
+  } catch (error) {
+    yield put(
+      addNotification(
+        error.response.data.message,
+        uiConstants.notification.error
+      )
+    )
+  }
+}
+
+export function* socketPullSaga(action) {
+  try {
+    // const listener =
+    socket.emit('pull', action.payload)
+    // eventChannel((emit) => {
+    //   socket.emit('pull', (data) => {
+    //     emit(action.payload)
+    //   })
+    //   return () => socket.close()
+    // })
+    // while (true) {
+    //   const event = yield take(listener)
+    //   yield put(socketReceived(event))
+    // }
+  } catch (error) {
+    // console.log(error)
+    // yield put(registerImportFailure(error))
+    yield put(
+      addNotification(
+        error.response.data.message,
+        uiConstants.notification.error
+      )
+    )
+  }
+}

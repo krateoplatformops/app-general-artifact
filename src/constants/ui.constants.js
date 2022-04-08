@@ -43,10 +43,15 @@ export const uiConstants = {
       label: 'dashboard',
       icon: 'fa-solid fa-gauge-high'
     },
+    // {
+    //   to: 'catalog',
+    //   label: 'catalog',
+    //   icon: 'fa-solid fa-receipt'
+    // },
     {
-      to: 'catalog',
-      label: 'catalog',
-      icon: 'fa-solid fa-receipt'
+      to: 'deployments',
+      label: 'deployments',
+      icon: 'fa-solid fa-rocket'
     },
     {
       to: 'templates',
@@ -57,6 +62,28 @@ export const uiConstants = {
       to: 'register',
       label: 'register',
       icon: 'fa-solid fa-plus'
+    },
+    {
+      to: 'settings',
+      label: 'settings',
+      icon: 'fa-solid fa-gears'
+    }
+  ],
+  deployNav: [
+    {
+      to: '',
+      label: 'overview',
+      icon: 'fa-solid fa-file-lines'
+    },
+    {
+      to: 'resources',
+      label: 'resources',
+      icon: 'fa-solid fa-network-wired'
+    },
+    {
+      to: 'events',
+      label: 'events',
+      icon: 'fa-solid fa-calendar-days'
     }
   ],
   notification: {
@@ -68,7 +95,7 @@ export const uiConstants = {
   messages: {
     template_import_success: 'Template imported successfully',
     template_delete_success: 'Template deleted successfully',
-    deploy_create_success: 'Deployment created successfully'
+    deployment_create_success: 'Deployment created successfully'
   },
   themes: {
     light: 'light',

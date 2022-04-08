@@ -10,23 +10,24 @@
     background: var(--background);
     border: 0;
     @include border-radius($border-radius / 2);
+    border: 1px solid var(--border);
     &:focus {
-      background: var(--card);
-      border: 0;
+      background: var(--border);
+      // border: 0;
     }
   }
 }
 
 .Button {
-  width: 42px;
-  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
   @extend .display-flex;
   @extend .flex-center;
-  color: var(--border);
+  color: rgba(var(--text-color), 0.5);
   @include border-radius($border-radius / 2);
   margin-left: 10px;
+  border: 1px solid var(--border);
   &:hover {
-    background: var(--card);
-    color: $blue;
+    background: var(--border);
   }
 }

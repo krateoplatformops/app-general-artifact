@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import { templateLoad } from '../../../../redux/actions'
+import { templateLoad, deploymentLoad } from '../../../../redux/actions'
 
 const LoadComponents = (props) => {
   const dispatch = useDispatch()
@@ -11,6 +11,12 @@ const LoadComponents = (props) => {
       dispatch(templateLoad())
     }
   }, [dispatch, props.template])
+
+  useEffect(() => {
+    if (!props.deployment.result && !props.deployment.loading) {
+      dispatch(deploymentLoad())
+    }
+  }, [dispatch, props.deployment])
 
   return <React.Fragment />
 }

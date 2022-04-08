@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { uiConstants } from '../../../../constants'
 import css from './Nav.module.scss'
 import { UserContext } from '../../../Context/UserContext'
+import DarkLight from './DarkLight/DarkLight'
 
 const Nav = ({ logoutHandler, profile }) => {
   const { menuOpen, toggleMenu } = useContext(UserContext)
@@ -35,6 +36,7 @@ const Nav = ({ logoutHandler, profile }) => {
             </li>
           ))}
       </ul>
+      <DarkLight />
     </div>
   )
 }

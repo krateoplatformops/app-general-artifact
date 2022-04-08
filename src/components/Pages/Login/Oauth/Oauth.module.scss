@@ -14,6 +14,7 @@
   @include border-radius($border-radius);
   text-transform: capitalize;
   @include font-size(1.2em);
+  border: 1px solid var(--border);
   i {
     margin-right: 10px;
   }

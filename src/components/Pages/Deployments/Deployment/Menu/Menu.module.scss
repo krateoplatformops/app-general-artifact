@@ -1,0 +1,36 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.UlMenu {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  margin: 0 0 20px 0;
+  li {
+    &:not(:first-of-type) {
+      margin-left: 10px;
+    }
+  }
+}
+
+.Link {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  padding: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--text-color-secondary);
+  font-size: 0.8em;
+  @include border-radius($border-radius * 2);
+  i {
+    margin-right: 10px;
+  }
+  &:hover {
+    background: var(--input-bkg);
+  }
+}
+
+.LinkActive {
+  @extend .Link;
+  color: $blue;
+  background: var(--input-bkg);
+}

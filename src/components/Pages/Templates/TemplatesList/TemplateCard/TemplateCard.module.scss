@@ -1,0 +1,119 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.ContainerGrid {
+  min-width: 25%;
+  width: 25%;
+  @extend .bsbb;
+  &:nth-child(4n + 1) {
+    padding-right: 10px;
+  }
+  &:nth-child(4n + 2) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  &:nth-child(4n + 3) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  &:nth-child(4n + 4) {
+    padding-left: 10px;
+  }
+  &:not(:nth-last-child(-n + 4)) {
+    padding-bottom: 20px;
+  }
+}
+
+.ContainerList {
+  width: 100%;
+  @extend .bsbb;
+  &:not(:last-of-type) {
+    padding-bottom: 20px;
+  }
+}
+
+.Grid {
+  background: var(--card);
+  border: 1px solid var(--border);
+  @extend .bsbb;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  @include border-radius($border-radius / 2);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.TitleList {
+  font-weight: 600;
+  background: $blue;
+  color: $white;
+  padding: 10px;
+  font-size: 1.2em;
+  @extend .bsbb;
+}
+
+.TitleGrid {
+  @extend .TitleList;
+  padding: 20px;
+}
+
+.DescriptionList {
+  padding: 10px 10px 10px 10px;
+  @extend .bsbb;
+}
+
+.DescriptionGrid {
+  @extend .DescriptionList;
+  min-height: 100px;
+}
+
+.FooterGrid {
+  @extend .display-flex;
+  @extend .flex-direction-column;
+}
+
+.FooterList {
+  border-top: 1px solid var(--border);
+  @extend .flex-direction-row;
+  @extend .display-flex;
+  width: 100%;
+  @extend .flex-justify-between;
+}
+
+.TagsGrid {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  padding: 0 10px 10px 10px;
+  @extend .bsbb;
+}
+
+.TagsList {
+  @extend .TagsGrid;
+  padding: 10px;
+}
+
+.LinksGrid {
+  @extend .LinksList;
+  border-top: 1px solid var(--border);
+  @extend .flex-justify-between;
+}
+
+.LinksList {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}
+
+.Link {
+  @extend .display-flex;
+  @extend .flex-center;
+  height: 40px;
+  width: 40px;
+}
+
+.DeleteBtn {
+  color: var(--border);
+  @extend .Link;
+  &:hover {
+    color: $red;
+  }
+}

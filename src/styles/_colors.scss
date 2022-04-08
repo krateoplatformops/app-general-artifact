@@ -2,24 +2,31 @@ $white: #ffffff;
 $black: #000000;
 
 /* LIGHT */
-$background-light: #f3f3f9;
+$background-light: #fcfcfc;
 $card-light: #ffffff;
-$text-color-light: #263242;
-$text-color-secondary: #a0a8b0;
+$text-color-light: #11142d;
+$text-color-secondary: #808191;
+$border-light: #e4e4e4;
+// $input-bkg-light: rgba(#e4e4e4, 0.3);
+$input-bkg-light: #f8f7f7;
 
 /* DARK */
-$background-dark: #201d2c;
-$card-dark: #242837;
+$background-dark: #1f2128;
+$card-dark: #252731;
 $text-color-dark: #ffffff;
+$border-dark: rgba(#e4e4e4, 0.1);
+$input-bkg-dark: #191b20;
 
 /* COMMON */
 // Palette: https://coolors.co/palette/ef476f-f78c6b-ffd166-83d483-06d6a0-0cb0a9-118ab2-0c637f-073b4c
-$green: #83d483;
-$orange: #f78c6b;
-$red: #ef476f;
-$yellow: #ffd166;
-$blue: #118ab2;
-$blue-darker: #0c637f;
+$green: #4fbf68;
+$orange: #ff9f38;
+$red: #ff6628;
+// $yellow: #ffd166;
+$blue: #355dff;
+$blue-darker: #1140ff;
+$sun-moon: #f0f8ff;
+$violet: #6b5dd2;
 // $violet: #af5cff;
 // $cyan: #b9e6ff;
 
@@ -33,59 +40,9 @@ $blue-darker: #0c637f;
 // $cyan: #00b3c8;
 
 $secondary: #54509d;
-$selection: #1596d4;
+$selection: #355dff;
 $text-selection: #ffffff;
 $border-radius: 10px;
-
-/* Greys */
-// $grey-100: #f8f9fa;
-// $grey-200: #e9ecef;
-// $grey-300: #dee2e6;
-// $grey-400: #ced4da;
-// $grey-500: #adb5bd;
-// $grey-600: #6c757d;
-// $grey-700: #495057;
-// $grey-800: #343a40;
-// $grey-900: #212529;
-
-/* COMMON */
-// $cerulean-blue: #0052cc;
-// $space-cadet: #172b4d;
-// $portland-orange: #ff5630;
-// $chrome-yellow: #ffab00;
-// $green-crayola: #36b37e;
-// $pacific-blue: #00b8d9;
-// $slate-blue: #6554c0;
-// $cultured: #ebecf0;
-
-// $notification-info: #0052cc;
-// $notification-success: #36b37e;
-// $notification-warning: #ffab00;
-// $notification-error: #ff5630;
-// $selection: #0052cc;
-// $text-selection: #ffffff;
-// $primary: #0052cc;
-// $primary-text: #ffffff;
-// $secondary: #00b8d9;
-// $border-radius: 5px;
-
-/* LIGHT THEME */
-// $background-light: $white;
-// $nav-light: $white;
-// $text-color-light: $space-cadet;
-// $text-color-rest-light: rgba($grey-100, 0.9);
-// $card-light: $white;
-// $border-light: $grey-200;
-// $border-hover-light: rgba($cerulean-blue, 0.5);
-
-/* DARK THEME */
-// $background-dark: $grey-900;
-// $nav-dark: $grey-800;
-// $text-color-dark: $white;
-// $text-color-rest-dark: $grey-500;
-// $card-dark: $grey-800;
-// $border-dark: $grey-700;
-// $border-hover-dark: $grey-900;
 
 /* Z-Index */
 $zi-notification-queue: 8888;

@@ -1,0 +1,53 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.Container {
+  position: relative;
+  height: 40px;
+  width: 100%;
+  @extend .display-flex;
+  @extend .flex-center-start;
+  @extend .bsbb;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.Sun,
+.Moon {
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.2em;
+}
+
+.Sun {
+  color: $red;
+}
+
+.Moon {
+  position: absolute;
+  color: $sun-moon;
+}
+
+.MoonLogo {
+  opacity: 0;
+  transform: translateY(20%) rotateZ(50deg);
+  transition: all 1s ease-out;
+}
+
+.SunLogo {
+  opacity: 1;
+  transform: translateY(0) rotateZ(0deg);
+  transition: all 1s ease-out;
+}
+
+.AnimateSun {
+  opacity: 0;
+  transform: translateY(20%) rotateZ(100deg);
+  // color: $sun-moon;
+}
+
+.AnimateMoon {
+  opacity: 1;
+  transform: translateY(0%) rotateZ(0deg);
+  // color: $sun-moon;
+}

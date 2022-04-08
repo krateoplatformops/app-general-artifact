@@ -1,0 +1,18 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.Container {
+  @extend .display-flex;
+  @extend .flex-center;
+  @extend .flex-direction-column;
+  height: 80vh;
+  width: 100%;
+  overflow: hidden;
+  font-size: 2em;
+
+  img {
+    max-width: 500px;
+    width: 50%;
+    margin-bottom: 50px;
+  }
+}

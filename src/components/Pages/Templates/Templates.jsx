@@ -1,106 +1,17 @@
-import React, { useState } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import TemplatesList from './TemplatesList/TemplatesList'
+import Template from './Template/Template'
 
-import {
-  templateLoad,
-  redirect,
-  uiChangeTemplateViewMode,
-  templateDelete
-} from '../../../redux/actions'
-import LocalSearch from '../../UI/LocalSearch/LocalSearch'
-import DeleteTemplate from './DeleteTemplate/DeleteTemplate'
-import TemplateCard from './TemplateCard/TemplateCard'
-import css from './Templates.module.scss'
-import TemplateSkeleton from './TemplateSkeleton/TemplateSkeleton'
-
-const Templates = ({ template, ui }) => {
-  const dispatch = useDispatch()
-  const [search, setSearch] = useState('')
-  const [showModal, setShowModal] = useState(false)
-  const [currentTemplate, setCurrentTemplate] = useState('')
-
-  const changeViewMode = () => {
-    dispatch(uiChangeTemplateViewMode())
-  }
-
-  const reloadTemplates = () => {
-    dispatch(templateLoad())
-  }
-
-  const useTemplate = (t) => {
-    dispatch(redirect(`/deploy/${t._id}`))
-  }
-
-  const openDeleteModal = (t) => {
-    setCurrentTemplate(t)
-    setShowModal(true)
-  }
-
-  const closeDeleteModal = () => {
-    setShowModal(false)
-  }
-
-  const deleteTemplateHandler = () => {
-    setShowModal(false)
-    dispatch(templateDelete(currentTemplate._id))
-  }
-
-  const cardMode = ui.templateViewMode === 'grid'
-
+const Templates = () => {
   return (
-    <React.Fragment>
-      <h1>Templates</h1>
-      <LocalSearch
-        buttons={[
-          {
-            action: changeViewMode,
-            icon: cardMode ? 'fa-solid fa-bars' : 'fa-solid fa-grip'
-          },
-          { action: reloadTemplates, icon: 'fa-solid fa-rotate' }
-        ]}
-      >
-        <input
-          type='text'
-          placeholder='Search'
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </LocalSearch>
-
-      {template.loading && <TemplateSkeleton cardMode={cardMode} />}
-
-      <div className={css.TemplateList}>
-        {(template.list || [])
-          .filter((x) => {
-            return (
-              x.metadata.name.toLowerCase().indexOf(search) > -1 ||
-              x.metadata.annotations.title.toLowerCase().indexOf(search) > -1 ||
-              x.metadata.labels.tags.indexOf(search) > -1
-            )
-          })
-          .map((t) => (
-            <TemplateCard
-              t={t}
-              key={t._id}
-              go={useTemplate}
-              cardMode={cardMode}
-              openModal={openDeleteModal}
-            />
-          ))}
-      </div>
-      {showModal && (
-        <DeleteTemplate
-          closeModal={closeDeleteModal}
-          template={currentTemplate}
-          deleteTemplateHandler={deleteTemplateHandler}
-        />
-      )}
-    </React.Fragment>
+    <Routes>
+      <Route path='/'>
+        <Route index element={<TemplatesList />} />
+        <Route path=':id' element={<Template />} />
+      </Route>
+    </Routes>
   )
 }
 
-function mapStateToProps(state) {
-  return state
-}
-
-export default connect(mapStateToProps, {})(Templates)
+export default Templates

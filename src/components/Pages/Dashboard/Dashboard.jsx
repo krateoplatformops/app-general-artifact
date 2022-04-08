@@ -1,7 +1,17 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const Dashboard = () => {
-  return <h1>Dashboard</h1>
+const Dashboard = (props) => {
+  return (
+    <React.Fragment>
+      <h1>Dashboard</h1>
+      <pre>{JSON.stringify(props.socket.subscriptions, null, 2)}</pre>
+    </React.Fragment>
+  )
 }
 
-export default Dashboard
+function mapStateToProps(state) {
+  return state
+}
+
+export default connect(mapStateToProps, {})(Dashboard)

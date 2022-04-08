@@ -7,15 +7,23 @@ export const socketSubscribe = (payload) => {
   }
 }
 
-export const socketUnsubscribe = () => {
+export const socketUnsubscribe = (payload) => {
   return {
-    type: socketConstants.SOCKET_UNSUBSCRIBE
+    type: socketConstants.SOCKET_UNSUBSCRIBE,
+    payload
   }
 }
 
 export const socketReceived = (payload) => {
   return {
     type: socketConstants.SOCKET_RECEIVED,
+    payload
+  }
+}
+
+export const socketPull = (payload) => {
+  return {
+    type: socketConstants.SOCKET_PULL,
     payload
   }
 }

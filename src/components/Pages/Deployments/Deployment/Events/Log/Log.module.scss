@@ -1,0 +1,64 @@
+@import '../../../../../../styles/colors';
+@import '../../../../../../styles/mixin';
+
+.Log {
+  border: 1px solid var(--border);
+  padding: 10px;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  background: var(--card);
+  @include border-radius($border-radius / 2);
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+}
+
+.UlInfo {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-justify-between;
+  width: 100%;
+  margin-bottom: 5px;
+  li {
+    font-size: 0.8em;
+    color: var(--text-color-secondary);
+  }
+}
+
+.UlLog {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  li {
+    @extend .display-flex;
+    @extend .flex-center-start;
+    &:first-of-type {
+      margin-right: 10px;
+    }
+  }
+}
+
+.LevelBase {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  padding: 5px;
+  font-weight: 600;
+  @include border-radius($border-radius / 2);
+}
+
+.info {
+  @extend .LevelBase;
+  background: rgba($green, 0.1);
+  color: $green;
+}
+
+.warning {
+  @extend .LevelBase;
+  background: rgba($orange, 0.1);
+  color: $orange;
+}
+
+.error {
+  @extend .LevelBase;
+  background: rgba($red, 0.1);
+  color: $red;
+}

@@ -1,0 +1,11 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.UlBtns {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-end;
+  @extend .bsbb;
+  margin-top: 40px;
+  @extend .flex-justify-between;
+}

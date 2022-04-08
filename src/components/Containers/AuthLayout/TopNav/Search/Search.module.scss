@@ -25,7 +25,7 @@
   border: 0;
   &:focus {
     @extend .trstn;
-    background: var(--background);
+    background: var(--input-bkg);
     border: 0;
     & + i {
       @extend .trstn;

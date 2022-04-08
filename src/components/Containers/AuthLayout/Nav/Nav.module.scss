@@ -11,6 +11,7 @@
   }
   z-index: $zi-nav;
   background: var(--nav);
+  border-right: 1px solid var(--border);
   @include calc('height', '100% - 61px');
   @extend .bsbb;
   overflow: hidden;
@@ -24,6 +25,8 @@
   width: 100%;
   li {
     margin-top: 10px;
+    @extend .bsbb;
+    padding: 0 10px;
     &:first-of-type {
       margin-top: 20px;
     }
@@ -32,22 +35,23 @@
 
 .NavLnk {
   height: 40px;
+  min-width: 40px;
   @extend .display-flex;
   @extend .flex-center-start;
   @extend .flex-direction-row;
   text-decoration: none;
-  text-transform: uppercase;
-  border-left: 5px solid var(--nav);
+  text-transform: capitalize;
   font-size: 0.8em;
   &:hover {
-    border-left: 5px solid $blue;
+    color: $blue;
   }
   i {
     @extend .display-flex;
     @extend .flex-center;
     font-size: 16px;
-    min-width: 50px;
+    min-width: 40px;
     padding-right: 10px;
+    // padding-left: 5px;
   }
 }
 
@@ -59,10 +63,14 @@
 
 .NavLnkActive {
   @extend .NavLnk;
-  border-left: 5px solid $blue;
+  // border-left: 5px solid $blue;
+  color: $blue;
+  @include border-radius($border-radius);
   &:hover {
-    border-left: 5px solid $blue;
+    color: $blue;
+    // border-left: 5px solid $blue;
   }
+  background: var(--input-bkg);
 }
 
 .IsOpen {

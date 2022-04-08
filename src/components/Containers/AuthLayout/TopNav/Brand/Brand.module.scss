@@ -4,8 +4,9 @@
 .Brand {
   background: var(--nav);
   height: 60px;
-  border-left: 1px solid var(--background);
-  border-right: 1px solid var(--background);
+  // border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   @extend .display-flex;
   @extend .flex-center-start;
   min-width: 60px;

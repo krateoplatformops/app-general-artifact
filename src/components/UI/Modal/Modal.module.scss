@@ -10,7 +10,7 @@
   height: 100%;
   z-index: $zi-modal-bkg;
   // background: rgba($navy, 0.9);
-  background: var(--background-transparent);
+  background: rgba($black, 0.7);
   @extend .display-flex;
   @extend .flex-center;
   overflow: auto;
@@ -20,7 +20,7 @@
   background: var(--card);
   @include border-radius($border-radius);
   @extend .bsbb;
-  padding: 10px;
+  padding: 20px;
   @extend .display-flex;
   @extend .flex-direction-column;
   border: 1px solid var(--border);
@@ -38,11 +38,11 @@
 .Title {
   padding-bottom: 20px;
   font-weight: 400;
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-weight: 600;
   text-transform: capitalize;
   height: 40px;
-  @extend .bsbb;
+  // @extend .bsbb;
   position: relative;
 }
 

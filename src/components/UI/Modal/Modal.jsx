@@ -8,7 +8,6 @@ const Modal = (props) => {
       <div className={css.ModalContainer}>
         <div className={css.ModalBody}>
           <div className={css.Title}>{props.title}</div>
-
           {props.children}
         </div>
         <ul className={css.UlBtns}>

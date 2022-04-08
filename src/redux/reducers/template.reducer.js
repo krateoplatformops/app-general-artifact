@@ -2,7 +2,7 @@ import { templateConstants } from '../constants'
 
 const initialState = {
   loading: false,
-  ajaxLoading: false,
+  skeletonLoading: false,
   error: null,
   list: null,
   result: false
@@ -13,7 +13,7 @@ export default function template(state = initialState, action) {
     case templateConstants.TEMPLATE_LOAD:
       return {
         ...state,
-        loading: true,
+        skeletonLoading: true,
         result: false,
         list: null
       }
@@ -22,14 +22,14 @@ export default function template(state = initialState, action) {
         ...state,
         result: true,
         list: action.payload,
-        loading: false
+        skeletonLoading: false
       }
     case templateConstants.TEMPLATE_LOAD_FAILURE:
     case templateConstants.TEMPLATE_DELETE_FAILURE:
       return {
         ...state,
         loading: false,
-        ajaxLoading: false,
+        skeletonLoading: false,
         result: true,
         error: action.payload
       }
@@ -52,12 +52,12 @@ export default function template(state = initialState, action) {
     case templateConstants.TEMPLATE_DELETE:
       return {
         ...state,
-        ajaxLoading: true
+        loading: true
       }
     case templateConstants.TEMPLATE_DELETE_SUCCESS:
       return {
         ...state,
-        ajaxLoading: false,
+        loading: false,
         list: state.list.filter((x) => x._id !== action.payload)
       }
     default:

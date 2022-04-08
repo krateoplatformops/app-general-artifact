@@ -13,6 +13,7 @@
   z-index: $zi-nav;
   @extend .display-flex;
   @extend .flex-center-start;
+  border-bottom: 1px solid var(--border);
 }
 
 .BtnIcons {

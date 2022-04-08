@@ -8,7 +8,8 @@
   --text-color: #{$text-color-light};
   --text-color-secondary: #{$text-color-secondary};
   --card: #{$card-light};
-  --border: #{$text-color-secondary};
+  --border: #{$border-light};
+  --input-bkg: #{$input-bkg-light};
 }
 
 [data-theme='dark'] {
@@ -18,5 +19,6 @@
   --text-color: #{$text-color-dark};
   --text-color-secondary: #{$text-color-secondary};
   --card: #{$card-dark};
-  --border: #{$text-color-secondary};
+  --border: #{$border-dark};
+  --input-bkg: #{$input-bkg-dark};
 }

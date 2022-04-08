@@ -24,9 +24,9 @@ const Notification = (props) => {
     >
       <h1>{props.socket.events.length}</h1>
 
-      {props.socket.events.map((item) => (
+      {/* {props.socket.events.map((item) => (
         <div key={item.id}>{item.message}</div>
-      ))}
+      ))} */}
     </SideBar>
   )
 }

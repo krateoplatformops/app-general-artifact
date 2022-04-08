@@ -12,6 +12,8 @@
   padding: 10px;
   color: var(--text-color-secondary);
   z-index: $zi-nav-button;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
   &:hover {
     color: var(--text-color);
   }

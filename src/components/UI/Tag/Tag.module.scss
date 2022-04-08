@@ -5,7 +5,8 @@
   @extend .display-flex;
   @extend .flex-direction-row;
   // display: inline-block;
-  color: var(--text-color);
+  // color: var(--text-color);
+  color: $blue;
   background: rgba($blue, 0.1);
   @extend .bsbb;
   padding: 5px;
