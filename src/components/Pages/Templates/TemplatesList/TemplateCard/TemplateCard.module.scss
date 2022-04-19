@@ -1,106 +1,77 @@
 @import '../../../../../styles/colors';
 @import '../../../../../styles/mixin';
 
-.ContainerGrid {
-  min-width: 25%;
-  width: 25%;
+.TemplateContainer {
+  min-width: 33.333%;
+  width: 33.333%;
   @extend .bsbb;
-  &:nth-child(4n + 1) {
+  &:nth-child(3n + 1) {
     padding-right: 10px;
   }
-  &:nth-child(4n + 2) {
+  &:nth-child(3n + 2) {
     padding-left: 10px;
     padding-right: 10px;
   }
-  &:nth-child(4n + 3) {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  &:nth-child(4n + 4) {
+  &:nth-child(3n + 3) {
     padding-left: 10px;
   }
-  &:not(:nth-last-child(-n + 4)) {
+  &:not(:nth-last-child(-n + 3)) {
     padding-bottom: 20px;
   }
 }
 
-.ContainerList {
-  width: 100%;
-  @extend .bsbb;
-  &:not(:last-of-type) {
-    padding-bottom: 20px;
-  }
-}
-
-.Grid {
-  background: var(--card);
+.TemplateCard {
   border: 1px solid var(--border);
-  @extend .bsbb;
-  @extend .display-flex;
-  @extend .flex-direction-column;
-  @include border-radius($border-radius / 2);
-  overflow: hidden;
-  cursor: pointer;
+  background: var(--card);
+  @include border-radius($border-radius);
 }
 
-.TitleList {
-  font-weight: 600;
+.UlHeader {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.LiIcon {
+  @extend .display-flex;
+  @extend .flex-center;
+  min-width: 60px;
+  min-height: 60px;
   background: $blue;
   color: $white;
+  @include border-radius(50%);
+  margin-right: 10px;
+  i {
+    font-size: 2em;
+  }
+}
+
+.LiTitle {
+  font-size: 1.5em;
+  @extend .display-flex;
+  @extend .flex-center-start;
+}
+
+.Description {
   padding: 10px;
-  font-size: 1.2em;
   @extend .bsbb;
-}
-
-.TitleGrid {
-  @extend .TitleList;
-  padding: 20px;
-}
-
-.DescriptionList {
-  padding: 10px 10px 10px 10px;
-  @extend .bsbb;
-}
-
-.DescriptionGrid {
-  @extend .DescriptionList;
   min-height: 100px;
+  border-bottom: 1px solid var(--border);
 }
 
-.FooterGrid {
-  @extend .display-flex;
-  @extend .flex-direction-column;
-}
-
-.FooterList {
-  border-top: 1px solid var(--border);
-  @extend .flex-direction-row;
-  @extend .display-flex;
-  width: 100%;
-  @extend .flex-justify-between;
-}
-
-.TagsGrid {
+.Tags {
+  padding: 10px;
   @extend .display-flex;
   @extend .flex-direction-row;
-  padding: 0 10px 10px 10px;
   @extend .bsbb;
 }
 
-.TagsList {
-  @extend .TagsGrid;
-  padding: 10px;
-}
-
-.LinksGrid {
-  @extend .LinksList;
-  border-top: 1px solid var(--border);
-  @extend .flex-justify-between;
-}
-
-.LinksList {
+.Links {
   @extend .display-flex;
   @extend .flex-direction-row;
+  border-top: 1px solid var(--border);
+  @extend .flex-justify-between;
 }
 
 .Link {

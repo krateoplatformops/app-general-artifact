@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { connect, useDispatch } from 'react-redux'
 
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
 import DeploymentSkeleton from './DeploymentSkeleton/DeploymentSkeleton'
 
 import { deploymentLoad } from '../../../../redux/actions'
+import DeploymentCard from './DeploymentCard/DeploymentCard'
 
 const DeploymentList = ({ deployment }) => {
   const dispatch = useDispatch()
@@ -19,13 +19,7 @@ const DeploymentList = ({ deployment }) => {
     <React.Fragment>
       <h1>Deployments</h1>
       <LocalSearch
-        buttons={[
-          // {
-          //   action: changeViewMode,
-          //   icon: cardMode ? 'fa-solid fa-grip' : 'fa-solid fa-bars'
-          // },
-          { action: reloadDeployments, icon: 'fa-solid fa-rotate' }
-        ]}
+        buttons={[{ action: reloadDeployments, icon: 'fa-solid fa-rotate' }]}
       >
         <input
           type='text'
@@ -37,11 +31,21 @@ const DeploymentList = ({ deployment }) => {
 
       {deployment.skeletonLoading && <DeploymentSkeleton />}
 
-      {(deployment.list || []).map((x) => (
-        <Link to={`${x._id}`} key={x._id}>
-          {x.payload.name}
-        </Link>
-      ))}
+      {(deployment.list || [])
+        .filter((x) => {
+          return (
+            x.claim.spec.name.toLowerCase().indexOf(search) > -1 ||
+            x.claim.dashboard.metadata.description
+              .toLowerCase()
+              .indexOf(search) > -1 ||
+            x.claim.spec.dashboard.tags.some(
+              (tag) => tag.toLowerCase().indexOf(search) > -1
+            )
+          )
+        })
+        .map((d) => (
+          <DeploymentCard key={d._id} d={d} />
+        ))}
     </React.Fragment>
   )
 }

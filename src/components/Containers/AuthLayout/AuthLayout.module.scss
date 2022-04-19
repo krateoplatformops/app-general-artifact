@@ -2,6 +2,7 @@
 @import '../../../styles/mixin';
 
 .MainContainer {
+  // @include calc('min-height', '100vh - 100px');
   @include transition($menu-transition);
   padding: 80px 10px 10px 10px;
   @media screen and (min-width: 768px) {

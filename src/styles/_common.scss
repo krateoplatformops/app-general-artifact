@@ -6,10 +6,12 @@
   padding: 10px 20px;
   text-transform: capitalize;
   font-size: 0.8em;
+  line-height: normal;
   height: 40px;
   @extend .bsbb;
   @extend .display-flex;
   @extend .flex-center;
+  cursor: pointer;
   i {
     margin-right: 10px;
   }

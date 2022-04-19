@@ -47,3 +47,24 @@ export const deployReset = () => {
     type: deploymentConstants.DEPLOYMENT_RESET
   }
 }
+
+export const deploymentDelete = (payload) => {
+  return {
+    type: deploymentConstants.DEPLOYMENT_DELETE,
+    payload
+  }
+}
+
+export const deploymentDeleteSuccess = (payload) => {
+  return {
+    type: deploymentConstants.DEPLOYMENT_DELETE_SUCCESS,
+    payload
+  }
+}
+
+export const deploymentDeleteFailure = (payload) => {
+  return {
+    type: deploymentConstants.DEPLOYMENT_DELETE_FAILURE,
+    payload
+  }
+}

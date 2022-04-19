@@ -7,7 +7,9 @@ const uris = {
   register: 'register',
   template: 'template',
   deployment: 'deployment',
-  socket: window.runConfig.socketUrl
+  socket: window.runConfig.socketUrl,
+  proxy: 'proxy',
+  host: 'host'
 }
 
 export default uris

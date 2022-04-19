@@ -30,7 +30,7 @@ const Fields = ({ widget, inputs, register, currentStep }) => {
               </select>
             ) : (
               <input
-                type='text'
+                type={i.type ? i.type : 'text'}
                 placeholder={i.title}
                 defaultValue={i.default}
                 {...register(i.id, {

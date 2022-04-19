@@ -1,0 +1,53 @@
+@import '../../../../../../styles/colors';
+@import '../../../../../../styles/mixin';
+
+.CustomNode {
+  width: 200px;
+  height: 70px;
+  background: var(--input-bkg);
+  @include border-radius($border-radius / 2);
+  @extend .bsbb;
+  padding: 10px;
+  @extend .flex-direction-column;
+  @extend .display-flex;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.LiIcon {
+  margin-bottom: 5px;
+  font-size: 0.8em;
+  i {
+    margin-right: 10px;
+  }
+}
+
+.LiName {
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
+.Unknown {
+  i {
+    color: var(--border);
+  }
+}
+
+.Progressing {
+  i {
+    color: $orange;
+  }
+}
+
+.Healthy {
+  i {
+    color: $green;
+  }
+}
+
+.Unhealthy {
+  i {
+    color: $red;
+  }
+}

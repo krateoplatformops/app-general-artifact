@@ -1,10 +1,5 @@
 import uuid from 'react-uuid'
 
-export const securityHelper = {
-  guid,
-  onlyAlphanumeric
-}
-
 function guid() {
   return uuid()
 }
@@ -15,4 +10,9 @@ function onlyAlphanumeric(input, lowercase = true) {
     input = input.toLowerCase()
   }
   return input.replace(regex, '')
+}
+
+export const securityHelper = {
+  guid,
+  onlyAlphanumeric
 }

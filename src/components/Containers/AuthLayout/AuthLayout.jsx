@@ -8,7 +8,6 @@ import css from './AuthLayout.module.scss'
 import Hamburger from './Hamburger/Hamburger'
 import TopNav from './TopNav/TopNav'
 import { UserContext } from '../../Context/UserContext'
-import UserBar from './UserBar/UserBar'
 import NotificationBar from './NotificationBar/NotificationBar'
 import LoadComponents from './LoadComponents/LoadComponents'
 
@@ -20,7 +19,6 @@ const AuthLayout = (props) => {
       <Hamburger />
       <TopNav />
       <Nav />
-      <UserBar />
       <NotificationBar />
       <div className={`${css.MainContainer} ${menuOpen && css.IsOpen}`}>
         <Outlet />

@@ -9,7 +9,7 @@ const Menu = () => {
 
   return (
     <ul className={css.UlMenu}>
-      {uiConstants.deployNav.map((l) => {
+      {uiConstants.deploymentNav.map((l) => {
         return (
           <li key={l.label}>
             <NavLink

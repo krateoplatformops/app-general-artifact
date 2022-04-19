@@ -5,7 +5,8 @@ const initialState = {
   skeletonLoading: false,
   error: null,
   list: null,
-  result: false
+  result: false,
+  resources: null
 }
 
 export default function deployment(state = initialState, action) {
@@ -25,6 +26,8 @@ export default function deployment(state = initialState, action) {
         skeletonLoading: false
       }
     case deploymentConstants.DEPLOYMENT_LOAD_FAILURE:
+    case deploymentConstants.DEPLOYMENT_CREATE_FAILURE:
+    case deploymentConstants.DEPLOYMENT_DELETE_FAILURE:
       return {
         ...state,
         loading: false,
@@ -32,13 +35,25 @@ export default function deployment(state = initialState, action) {
         result: true,
         error: action.payload
       }
-
     case deploymentConstants.DEPLOYMENT_CREATE:
+    case deploymentConstants.DEPLOYMENT_DELETE:
       return { ...state, loading: true, error: null }
     case deploymentConstants.DEPLOYMENT_CREATE_SUCCESS:
-      return { ...state, loading: false, error: null }
-    case deploymentConstants.DEPLOYMENT_CREATE_FAILURE:
-      return { ...state, error: action.payload, loading: false }
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        list:
+          state.list === null
+            ? [action.payload]
+            : state.list.concat(action.payload)
+      }
+    case deploymentConstants.DEPLOYMENT_DELETE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        list: state.list.filter((x) => x._id !== action.payload)
+      }
     case deploymentConstants.DEPLOYMENT_RESET:
       return {
         ...initialState

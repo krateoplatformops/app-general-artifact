@@ -27,6 +27,7 @@ const RegisterLazy = lazy(() => import('./components/Pages/Register/Register'))
 const DeploymentsLazy = lazy(() =>
   import('./components/Pages/Deployments/Deployments')
 )
+const SettingsLazy = lazy(() => import('./components/Pages/Settings/Settings'))
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
                   <Route path='deployments/*' element={<DeploymentsLazy />} />
                   <Route path='templates/*' element={<TemplatesLazy />} />
                   <Route path='register' element={<RegisterLazy />} />
-                  <Route path='settings' element={<div>settings</div>} />
+                  <Route path='settings/*' element={<SettingsLazy />} />
                 </Route>
                 <Route path='*' element={<NotFoundLazy history={history} />} />
               </Route>

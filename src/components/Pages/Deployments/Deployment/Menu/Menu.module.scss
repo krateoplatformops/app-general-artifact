@@ -4,10 +4,11 @@
 .UlMenu {
   @extend .display-flex;
   @extend .flex-direction-row;
-  margin: 0 0 20px 0;
+  @extend .flex-wrap;
   li {
-    &:not(:first-of-type) {
-      margin-left: 10px;
+    margin-bottom: 20px;
+    &:not(:last-of-type) {
+      margin-right: 10px;
     }
   }
 }

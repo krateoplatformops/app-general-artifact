@@ -18,6 +18,9 @@ import Events from './Events/Events'
 import css from './Deployment.module.scss'
 import SocketSpinner from '../../../UI/SocketSpinner/SocketSpinner'
 import Resources from './Resources/Resources'
+import Values from './Values/Values'
+import Settings from './Settings/Settings'
+import Prometheus from './Prometheus/Prometheus'
 
 const Deployment = ({ deployment, socket }) => {
   const dispatch = useDispatch()
@@ -40,31 +43,33 @@ const Deployment = ({ deployment, socket }) => {
     } else if (deployment.result) {
       return <Error message={'Deployment not found'} />
     }
+  } else {
+    return (
+      <React.Fragment>
+        <h1>{deploy.claim.spec.name}</h1>
+        <Menu />
+
+        {socket.subscriptions.indexOf(params.id) > -1 && (
+          <div className={css.SocketActive}>
+            <SocketSpinner />
+          </div>
+        )}
+
+        <Routes>
+          <Route path='/*'>
+            <Route index element={<Overview deploy={deploy} />} />
+            <Route path='resources' element={<Resources deploy={deploy} />} />
+            <Route path='security' element={<div>security</div>} />
+            <Route path='costs' element={<div>costs</div>} />
+            <Route path='events' element={<Events deploy={deploy} />} />
+            <Route path='values' element={<Values deploy={deploy} />} />
+            <Route path='settings' element={<Settings deploy={deploy} />} />
+            <Route path='prometheus' element={<Prometheus deploy={deploy} />} />
+          </Route>
+        </Routes>
+      </React.Fragment>
+    )
   }
-
-  return (
-    <React.Fragment>
-      <h1>{deploy?.payload?.name}</h1>
-      <Menu />
-
-      {socket.subscriptions.indexOf(params.id) > -1 && (
-        <div className={css.SocketActive}>
-          <SocketSpinner />
-        </div>
-      )}
-
-      <Routes>
-        <Route path='/*'>
-          <Route index element={<Overview deploy={deploy} />} />
-          <Route path='resources' element={<Resources deploy={deploy} />} />
-          <Route
-            path='events'
-            element={<Events deploy={deploy} transactionId={params.id} />}
-          />
-        </Route>
-      </Routes>
-    </React.Fragment>
-  )
 }
 
 function mapStateToProps(state) {

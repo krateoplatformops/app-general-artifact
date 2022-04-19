@@ -10,6 +10,9 @@ body {
   background: var(--background);
   color: var(--text-color);
 }
+// #app {
+//   min-height: 100vh;
+// }
 
 body,
 div,
@@ -131,3 +134,19 @@ h2 {
     margin-top: 20px;
   }
 }
+
+// pre {
+//   line-height: 1.2em;
+//   background: linear-gradient(
+//     180deg,
+//     var(--input-bkg) 0,
+//     var(--input-bkg) 1.2em,
+//     var(--card) 0
+//   );
+//   background-size: 2.4em 2.4em;
+//   background-origin: content-box;
+
+//   padding: 0 20px;
+//   text-align: justify;
+//   font-family: 'Source Code Pro', monospace;
+// }

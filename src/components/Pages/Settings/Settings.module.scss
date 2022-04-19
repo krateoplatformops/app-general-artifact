@@ -1,0 +1,18 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.UlSettings {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}
+
+.LiMenu {
+  min-width: 25%;
+  max-width: 25%;
+}
+
+.LiContent {
+  padding-left: 20px;
+  @extend .bsbb;
+  width: 100%;
+}

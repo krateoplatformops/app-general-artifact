@@ -1,8 +1,14 @@
 @import '../../../../../styles/colors';
 @import '../../../../../styles/mixin';
 
-.Container {
-  min-height: 80vh;
-  height: 80vh;
+.FlowContainer {
+  @include calc('height', '100vh - 190px');
   width: 100%;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  @include border-radius($border-radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 10px;
+  @extend .bsbb;
 }

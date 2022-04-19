@@ -24,14 +24,36 @@
   @extend .display-flex;
   @extend .flex-direction-column;
   border: 1px solid var(--border);
-
   @media screen and (min-width: 320px) {
     width: 90%;
     max-width: 90%;
   }
   @media screen and (min-width: 768px) {
-    width: 50%;
-    max-width: 50%;
+    width: 60%;
+    max-width: 60%;
+  }
+}
+
+.ModalBody {
+  max-height: 70vh;
+  @extend .bsbb;
+  padding: 10px;
+  overflow: hidden;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+}
+
+.CloseCross {
+  border: 1px solid var(--border);
+  @extend .display-flex;
+  @extend .flex-center;
+  @include border-radius(50%);
+  font-size: 0.8em;
+  min-width: 40px;
+  min-height: 40px;
+  margin-left: 10px;
+  &:hover {
+    border: 1px solid var(--text-color);
   }
 }
 
@@ -41,16 +63,14 @@
   font-size: 1.5em;
   font-weight: 600;
   text-transform: capitalize;
-  height: 40px;
-  // @extend .bsbb;
-  position: relative;
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-justify-between;
 }
 
-.ModalBody {
+.Content {
   overflow: auto;
-  max-height: 70vh;
-  @extend .bsbb;
-  padding: 10px;
+  height: 100%;
 }
 
 .UlBtns {

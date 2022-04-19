@@ -6,21 +6,10 @@
   @extend .flex-wrap;
   @extend .flex-direction-row;
   > div {
-    width: 25%;
+    width: 100%;
     @extend .bsbb;
-    &:nth-child(4n + 1) {
-      padding-right: 10px;
-    }
-    &:nth-child(4n + 2) {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    &:nth-child(4n + 3) {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    &:nth-child(4n + 4) {
-      padding-left: 10px;
+    &:not(:last-of-type) {
+      padding-bottom: 10px;
     }
     > div {
       @include border-radius($border-radius);

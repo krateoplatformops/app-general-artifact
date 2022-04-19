@@ -1,191 +1,195 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { connect, useDispatch } from 'react-redux'
 import ReactFlow, {
-  ReactFlowProvider,
-  addEdge,
-  removeElements,
-  isNode,
+  useNodesState,
+  useEdgesState,
   Controls
 } from 'react-flow-renderer'
-import dagre from 'dagre'
+import yaml from 'js-yaml'
+import YamlView from '../../../../UI/YamlView/YamlView'
 
-import Card from '../../../../UI/Card/Card'
 import css from './Resources.module.scss'
+import { proxyLoad, proxyDeleteKey } from '../../../../../redux/actions'
+import { flowHelper } from '../../../../../helpers'
+import Modal from '../../../../UI/Modal/Modal'
+import uris from '../../../../../uris'
+import CustomNode from './CustomNode/CustomNode'
+import { uiConstants } from '../../../../../constants'
 
-const dagreGraph = new dagre.graphlib.Graph()
-dagreGraph.setDefaultEdgeLabel(() => ({}))
-
-const nodeWidth = 172
-const nodeHeight = 36
-
-const position = { x: 0, y: 0 }
-const edgeType = 'smoothstep'
-const initialElements = [
-  {
-    id: '1',
-    data: { label: 'fat-squirrel domain' },
-    position,
-    type: 'input'
-  },
-  {
-    id: '2',
-    data: { label: 'fat-squirrel namespace' },
-    position
-  },
-  {
-    id: '3',
-    data: { label: 'backend' },
-    position
-  },
-  {
-    id: '4',
-    data: { label: 'frontend' },
-    position
-  },
-  {
-    id: '5',
-    data: { label: 'fat-squirrel api' },
-    position
-  },
-  {
-    id: '6',
-    data: { label: 'fat-squirrel db' },
-    position
-  },
-  {
-    id: 'e13',
-    source: '2',
-    target: '3',
-    //  type: edgeType,
-    animated: true
-  },
-  {
-    id: 'e12',
-    source: '1',
-    target: '2',
-    // type: edgeType,
-    animated: true
-  },
-  {
-    id: 'e22a',
-    source: '2',
-    target: '4',
-    // type: edgeType,
-    animated: true
-  },
-  {
-    id: 'e22b',
-    source: '4',
-    target: '5',
-    label: 'consumes',
-    // type: edgeType,
-    animated: true,
-    labelBgPadding: [8, 4],
-    labelBgBorderRadius: 4,
-    labelBgStyle: { fill: '#FFCC00', color: '#fff', fillOpacity: 0.7 },
-    arrowHeadType: 'arrow'
-  },
-  {
-    id: 'e22c',
-    source: '3',
-    target: '6',
-    // type: edgeType,
-    animated: true,
-    label: 'depends on',
-    labelBgPadding: [8, 4],
-    labelBgBorderRadius: 4,
-    labelBgStyle: { fill: '#FFCC00', color: '#fff', fillOpacity: 0.7 },
-    arrowHeadType: 'arrow'
-  },
-  {
-    id: 'e22c5',
-    source: '3',
-    target: '5',
-    // type: edgeType,
-    animated: true,
-    label: 'exposes',
-    labelBgPadding: [8, 4],
-    labelBgBorderRadius: 4,
-    labelBgStyle: { fill: '#FFCC00', color: '#fff', fillOpacity: 0.7 },
-    arrowHeadType: 'arrow'
-  },
-  {
-    id: 'e2222',
-    source: '4',
-    target: '5',
-    // type: edgeType,
-    animated: true,
-    label: 'consumes',
-    labelBgPadding: [8, 4],
-    labelBgBorderRadius: 4,
-    labelBgStyle: { fill: '#FFCC00', color: '#fff', fillOpacity: 0.7 },
-    arrowHeadType: 'arrow'
-  }
-]
-
-const getLayoutedElements = (elements, direction = 'TB') => {
-  const isHorizontal = direction === 'LR'
-  dagreGraph.setGraph({ rankdir: direction })
-
-  elements.forEach((el) => {
-    if (isNode(el)) {
-      dagreGraph.setNode(el.id, { width: nodeWidth, height: nodeHeight })
-    } else {
-      dagreGraph.setEdge(el.source, el.target)
-    }
-  })
-
-  dagre.layout(dagreGraph)
-
-  return elements.map((el) => {
-    if (isNode(el)) {
-      const nodeWithPosition = dagreGraph.node(el.id)
-      el.targetPosition = isHorizontal ? 'left' : 'top'
-      el.sourcePosition = isHorizontal ? 'right' : 'bottom'
-      el.position = {
-        x: nodeWithPosition.x - nodeWidth / 2 + Math.random() / 1000,
-        y: nodeWithPosition.y - nodeHeight / 2
-      }
-    }
-
-    return el
-  })
+const nodeTypes = {
+  customNode: CustomNode
 }
 
-const layoutedElements = getLayoutedElements(initialElements)
+const Resources = ({ deploy, deployment, proxy }) => {
+  const dispatch = useDispatch()
+  const [currentResource, setCurrentResource] = useState(null)
 
-const Resources = ({ deploy }) => {
-  const [elements, setElements] = useState(layoutedElements)
-  const onConnect = (params) =>
-    setElements((els) =>
-      addEdge({ ...params, type: 'smoothstep', animated: true }, els)
-    )
-
-  const onLayout = useCallback(
-    (direction) => {
-      const layoutedElements = getLayoutedElements(elements, direction)
-      setElements(layoutedElements)
-    },
-    [elements]
+  const [nodes, setNodes] = useNodesState([])
+  const [edges, setEdges] = useEdgesState([])
+  const p = deploy.claim.spec.dashboard.plugins.find(
+    (x) => x.name === 'resources'
   )
+
+  const closeModalHandler = () => {
+    setCurrentResource(null)
+    dispatch(
+      proxyDeleteKey({
+        key: uiConstants.proxy.resourceYaml
+      })
+    )
+  }
+
+  const resourceDetailsHandler = useCallback(
+    (data) => {
+      let url = new URL(
+        `${uris.apiBase}${uris.proxy}/resources/${p.value}/resource`
+      )
+      if (data.name) {
+        url.searchParams.append('name', data.name)
+        url.searchParams.append('resourceName', data.name)
+      }
+      if (data.namespace) {
+        url.searchParams.append('namespace', data.namespace)
+      }
+      if (data.version) {
+        url.searchParams.append('version', data.version)
+      }
+      if (data.kind) {
+        url.searchParams.append('kind', data.kind)
+      }
+      if (data.group) {
+        url.searchParams.append('group', data.group)
+      }
+
+      dispatch(
+        proxyLoad({
+          url: url.toString(),
+          key: uiConstants.proxy.resourceYaml
+        })
+      )
+      setCurrentResource(data)
+    },
+    [dispatch, p.value]
+  )
+
+  useEffect(() => {
+    if (p) {
+      let url = `${uris.apiBase}${uris.proxy}/resources/${p.value}/resource-tree`
+      dispatch(
+        proxyLoad({
+          url,
+          key: uiConstants.proxy.resourceTree
+        })
+      )
+    }
+  }, [dispatch, p])
+
+  useEffect(() => {
+    if (proxy.data[uiConstants.proxy.resourceTree] && nodes.length === 0) {
+      const res = proxy.data[uiConstants.proxy.resourceTree].nodes
+
+      const initialNodes = res.map((node) => {
+        return {
+          id: node.uid,
+          position: { x: 0, y: 0 },
+          data: {
+            name: node.name,
+            kind: node.kind,
+            health: node.health ? node.health.status : 'Unknown',
+            namespace: node.namespace,
+            version: node.version,
+            group: node.group,
+            resourceDetailsHandler: resourceDetailsHandler
+          },
+          type: 'customNode'
+        }
+      })
+      initialNodes.push({
+        id: '1',
+        position: { x: 0, y: 0 },
+        data: {
+          name: deploy.claim.spec.name
+        },
+        type: 'customNode'
+      })
+      const initialEdges = []
+      res.forEach((node, index) => {
+        if (node.parentRefs) {
+          node.parentRefs.forEach((r) => {
+            initialEdges.push({
+              id: `${node.uid}-${r.uid}`,
+              target: node.uid,
+              source: r.uid,
+              animated: true,
+              type: 'smoothstep'
+            })
+          })
+        } else {
+          initialEdges.push({
+            id: index,
+            target: node.uid,
+            source: '1',
+            animated: true,
+            type: 'smoothstep'
+          })
+        }
+      })
+
+      // graph design
+      flowHelper.getLayoutedElements(initialNodes, initialEdges)
+
+      setNodes(initialNodes)
+      setEdges(initialEdges)
+    }
+  }, [
+    deploy.claim.spec.name,
+    nodes.length,
+    proxy.data,
+    resourceDetailsHandler,
+    setEdges,
+    setNodes
+  ])
+
+  useEffect(() => {
+    return () =>
+      dispatch(
+        proxyDeleteKey({
+          key: uiConstants.proxy.resourceTree
+        })
+      )
+  }, [dispatch])
 
   return (
-    <Card>
-      <div className={css.Container}>
-        <ReactFlowProvider className={css.Container}>
-          <ReactFlow
-            elements={elements}
-            onConnect={onConnect}
-            connectionLineType='smoothstep'
-            className={css.Container}
-          />
-          <div className='controls'>
-            <button onClick={() => onLayout('TB')}>vertical layout</button>
-            <button onClick={() => onLayout('LR')}>horizontal layout</button>
-          </div>
-        </ReactFlowProvider>
+    <React.Fragment>
+      <div className={css.FlowContainer}>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          nodesDraggable={false}
+          nodesConnectable={false}
+          nodeTypes={nodeTypes}
+        >
+          <Controls showInteractive={false} />
+        </ReactFlow>
       </div>
-    </Card>
+      {currentResource && proxy.data[uiConstants.proxy.resourceYaml] && (
+        <Modal
+          title={`${currentResource.kind} - ${currentResource.name}`}
+          closeButtonHandler={closeModalHandler}
+        >
+          <YamlView
+            yaml={yaml.dump(
+              JSON.parse(proxy.data[uiConstants.proxy.resourceYaml].manifest)
+            )}
+          />
+        </Modal>
+      )}
+    </React.Fragment>
   )
 }
 
-export default Resources
+function mapStateToProps(state) {
+  return state
+}
+
+export default connect(mapStateToProps, {})(Resources)

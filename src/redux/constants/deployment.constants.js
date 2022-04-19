@@ -5,5 +5,8 @@ export const deploymentConstants = {
   DEPLOYMENT_CREATE: '[Deployment] Create',
   DEPLOYMENT_CREATE_SUCCESS: '[Deployment] Create success',
   DEPLOYMENT_CREATE_FAILURE: '[Deployment] Create failure',
-  DEPLOYMENT_RESET: '[Deployment] Reset'
+  DEPLOYMENT_RESET: '[Deployment] Reset',
+  DEPLOYMENT_DELETE: '[Deployment] Delete',
+  DEPLOYMENT_DELETE_SUCCESS: '[Deployment] Delete success',
+  DEPLOYMENT_DELETE_FAILURE: '[Deployment] Delete failure'
 }

@@ -4,11 +4,11 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 import css from './TemplateSkeleton.module.scss'
 
-const TemplateSkeleton = ({ cardMode }) => (
-  <div className={cardMode ? css.SkeletonGrid : css.SkeletonList}>
-    {[...Array(4)].map((s, key) => (
+const TemplateSkeleton = () => (
+  <div className={css.SkeletonGrid}>
+    {[...Array(6)].map((s, key) => (
       <div key={key}>
-        <Skeleton height={cardMode ? 240 : 120} />
+        <Skeleton height={240} />
       </div>
     ))}
   </div>

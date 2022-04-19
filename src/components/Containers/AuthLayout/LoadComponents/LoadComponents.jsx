@@ -7,13 +7,13 @@ const LoadComponents = (props) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!props.template.result && !props.template.loading) {
+    if (!props.template.result && !props.template.skeletonLoading) {
       dispatch(templateLoad())
     }
   }, [dispatch, props.template])
 
   useEffect(() => {
-    if (!props.deployment.result && !props.deployment.loading) {
+    if (!props.deployment.result && !props.deployment.skeletonLoading) {
       dispatch(deploymentLoad())
     }
   }, [dispatch, props.deployment])

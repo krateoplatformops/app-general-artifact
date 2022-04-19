@@ -1,17 +1,12 @@
 import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import {
-  templateLoad,
-  redirect,
-  uiChangeTemplateViewMode,
-  templateDelete
-} from '../../../../redux/actions'
+import { templateLoad, templateDelete } from '../../../../redux/actions'
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
-import DeleteTemplate from './DeleteTemplate/DeleteTemplate'
 import TemplateCard from './TemplateCard/TemplateCard'
 import css from './TemplatesList.module.scss'
 import TemplateSkeleton from './TemplateSkeleton/TemplateSkeleton'
+import DangerZone from '../../../UI/DangerZone/DangerZone'
 
 const TemplatesList = ({ template, ui }) => {
   const dispatch = useDispatch()
@@ -19,16 +14,8 @@ const TemplatesList = ({ template, ui }) => {
   const [showModal, setShowModal] = useState(false)
   const [currentTemplate, setCurrentTemplate] = useState('')
 
-  const changeViewMode = () => {
-    dispatch(uiChangeTemplateViewMode())
-  }
-
   const reloadTemplates = () => {
     dispatch(templateLoad())
-  }
-
-  const useTemplate = (t) => {
-    dispatch(redirect(`/templates/${t._id}`))
   }
 
   const openDeleteModal = (t) => {
@@ -45,19 +32,11 @@ const TemplatesList = ({ template, ui }) => {
     dispatch(templateDelete(currentTemplate._id))
   }
 
-  const cardMode = ui.templateViewMode === 'grid'
-
   return (
     <React.Fragment>
       <h1>Templates</h1>
       <LocalSearch
-        buttons={[
-          {
-            action: changeViewMode,
-            icon: cardMode ? 'fa-solid fa-grip' : 'fa-solid fa-bars'
-          },
-          { action: reloadTemplates, icon: 'fa-solid fa-rotate' }
-        ]}
+        buttons={[{ action: reloadTemplates, icon: 'fa-solid fa-rotate' }]}
       >
         <input
           type='text'
@@ -67,7 +46,7 @@ const TemplatesList = ({ template, ui }) => {
         />
       </LocalSearch>
 
-      {template.skeletonLoading && <TemplateSkeleton cardMode={cardMode} />}
+      {template.skeletonLoading && <TemplateSkeleton />}
 
       <div className={css.TemplateList}>
         {(template.list || [])
@@ -75,24 +54,21 @@ const TemplatesList = ({ template, ui }) => {
             return (
               x.metadata.name.toLowerCase().indexOf(search) > -1 ||
               x.metadata.annotations.title.toLowerCase().indexOf(search) > -1 ||
-              x.metadata.labels.tags.indexOf(search) > -1
+              x.metadata.labels.tags.some(
+                (tag) => tag.toLowerCase().indexOf(search) > -1
+              )
             )
           })
           .map((t) => (
-            <TemplateCard
-              t={t}
-              key={t._id}
-              go={useTemplate}
-              cardMode={cardMode}
-              openModal={openDeleteModal}
-            />
+            <TemplateCard t={t} key={t._id} openModal={openDeleteModal} />
           ))}
       </div>
       {showModal && (
-        <DeleteTemplate
+        <DangerZone
+          title={'Delete template'}
+          name={currentTemplate.metadata.name}
           closeModal={closeDeleteModal}
-          template={currentTemplate}
-          deleteTemplateHandler={deleteTemplateHandler}
+          deleteButtonHandler={deleteTemplateHandler}
         />
       )}
     </React.Fragment>

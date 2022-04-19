@@ -1,0 +1,36 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+@import '../../../../styles/common';
+
+.UlMenu {
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  @extend .flex-wrap;
+  li {
+    &:not(:last-of-type) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.Link {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  padding: 5px;
+  text-transform: capitalize;
+  color: var(--text-color-secondary);
+  font-size: 0.8em;
+  i {
+    margin: 0 5px;
+  }
+  border-left: 2px solid var(--card);
+  &:hover {
+    color: $blue;
+  }
+}
+
+.LinkActive {
+  @extend .Link;
+  color: $blue;
+  border-left: 2px solid $blue;
+}

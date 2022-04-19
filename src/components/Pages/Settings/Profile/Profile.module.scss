@@ -1,0 +1,12 @@
+.UlInfo {
+  margin-top: 40px;
+  li {
+    &:not(:first-of-type) {
+      margin-top: 10px;
+    }
+    b {
+      font-weight: 400;
+      margin-right: 5px;
+    }
+  }
+}

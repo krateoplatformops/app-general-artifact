@@ -64,12 +64,16 @@ const Template = (props) => {
     return () => subscription.unsubscribe()
   }, [template, updateStepStatus, watch])
 
-  if (!template || !stepsStatus) {
-    if (props.template.loading) {
-      return <Loader />
-    } else if (props.template.result) {
-      return <Error message={'Deployment not found'} />
-    }
+  if (
+    (props.template.loading && !props.template.result) ||
+    (!props.template.loading &&
+      !stepsStatus &&
+      ((props.template.result && template) ||
+        (!props.template.result && !template)))
+  ) {
+    return <Loader />
+  } else if (!template || !stepsStatus) {
+    return <Error message={'Template not found'} />
   } else {
     const fieldsList = template.spec.widgets
       .map((x) =>
@@ -89,8 +93,8 @@ const Template = (props) => {
         }
       })
 
-    const onSubmit = (data) => {
-      dispatch(deploymentCreate({ payload: data, templateId: template._id }))
+    const onSubmit = (metadata) => {
+      dispatch(deploymentCreate({ metadata, templateId: template._id }))
     }
 
     const changeStepHandler = (step) => {

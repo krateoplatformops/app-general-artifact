@@ -1,0 +1,45 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.UlOverview {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  li {
+    width: 100%;
+    &:last-of-type {
+      width: 40%;
+      min-width: 40%;
+      @extend .bsbb;
+      padding-left: 20px;
+    }
+  }
+}
+
+.ExtLink {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-center-start;
+  i {
+    margin-right: 10px;
+    @extend .display-flex;
+    @extend .flex-center;
+    width: 30px;
+    height: 30px;
+    @include border-radius(50%);
+    background: $blue;
+    color: $white;
+  }
+  span {
+    font-size: 0.8em;
+    @extend .trstn;
+  }
+  &:hover {
+    span {
+      @extend .trstn;
+      color: $blue;
+    }
+  }
+  &:not(:last-of-type) {
+    margin-bottom: 10px;
+  }
+}
