@@ -9,7 +9,7 @@ import yaml from 'js-yaml'
 import YamlView from '../../../../UI/YamlView/YamlView'
 
 import css from './Resources.module.scss'
-import { proxyLoad, proxyDeleteKey } from '../../../../../redux/actions'
+import { proxyFetch, proxyDeleteKey } from '../../../../../redux/actions'
 import { flowHelper } from '../../../../../helpers'
 import Modal from '../../../../UI/Modal/Modal'
 import uris from '../../../../../uris'
@@ -62,7 +62,7 @@ const Resources = ({ deploy, deployment, proxy }) => {
       }
 
       dispatch(
-        proxyLoad({
+        proxyFetch({
           url: url.toString(),
           key: uiConstants.proxy.resourceYaml
         })
@@ -76,7 +76,7 @@ const Resources = ({ deploy, deployment, proxy }) => {
     if (p) {
       let url = `${uris.apiBase}${uris.proxy}/resources/${p.value}/resource-tree`
       dispatch(
-        proxyLoad({
+        proxyFetch({
           url,
           key: uiConstants.proxy.resourceTree
         })

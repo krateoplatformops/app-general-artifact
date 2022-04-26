@@ -2,22 +2,22 @@ import { put } from 'redux-saga/effects'
 import axios from '../../axios-conf'
 import uris from '../../uris'
 import {
-  hostLoadSuccess,
-  hostLoadFailure,
+  endpointLoadSuccess,
+  endpointLoadFailure,
   addNotification,
-  hostCreateSuccess,
-  hostCreateFailure,
-  hostDeleteSuccess,
-  hostDeleteFailure
+  endpointCreateSuccess,
+  endpointCreateFailure,
+  endpointDeleteSuccess,
+  endpointDeleteFailure
 } from '../actions'
 import { uiConstants } from '../../constants'
 
-export function* hostLoadSaga() {
+export function* endpointLoadSaga() {
   try {
-    const result = yield axios.get(uris.host)
-    yield put(hostLoadSuccess(result.data))
+    const result = yield axios.get(uris.endpoint)
+    yield put(endpointLoadSuccess(result.data))
   } catch (error) {
-    yield put(hostLoadFailure(error))
+    yield put(endpointLoadFailure(error))
     yield put(
       addNotification(
         error.response.data.message,
@@ -27,18 +27,18 @@ export function* hostLoadSaga() {
   }
 }
 
-export function* hostCreateSaga(action) {
+export function* endpointCreateSaga(action) {
   try {
-    const doc = yield axios.post(uris.host, action.payload)
-    yield put(hostCreateSuccess(doc.data))
+    const doc = yield axios.post(uris.endpoint, action.payload)
+    yield put(endpointCreateSuccess(doc.data))
     yield put(
       addNotification(
-        uiConstants.messages.host_create_success,
+        uiConstants.messages.endpoint_create_success,
         uiConstants.notification.success
       )
     )
   } catch (error) {
-    yield put(hostCreateFailure(error))
+    yield put(endpointCreateFailure(error))
     yield put(
       addNotification(
         error.response.data.message,
@@ -48,18 +48,18 @@ export function* hostCreateSaga(action) {
   }
 }
 
-export function* hostDeleteSaga(action) {
+export function* endpointDeleteSaga(action) {
   try {
-    yield axios.delete(`${uris.host}/${action.payload}`)
-    yield put(hostDeleteSuccess(action.payload))
+    yield axios.delete(`${uris.endpoint}/${action.payload}`)
+    yield put(endpointDeleteSuccess(action.payload))
     yield put(
       addNotification(
-        uiConstants.messages.host_delete_success,
+        uiConstants.messages.endpoint_delete_success,
         uiConstants.notification.success
       )
     )
   } catch (error) {
-    yield put(hostDeleteFailure(error))
+    yield put(endpointDeleteFailure(error))
     yield put(
       addNotification(
         error.response.data.message,

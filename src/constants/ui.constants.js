@@ -43,11 +43,6 @@ export const uiConstants = {
       label: 'dashboard',
       icon: 'fa-solid fa-gauge-high'
     },
-    // {
-    //   to: 'catalog',
-    //   label: 'catalog',
-    //   icon: 'fa-solid fa-receipt'
-    // },
     {
       to: 'deployments',
       label: 'deployments',
@@ -118,14 +113,9 @@ export const uiConstants = {
       icon: 'fa-solid fa-id-card-clip'
     },
     {
-      to: 'hosts',
-      label: 'hosts',
+      to: 'endpoints',
+      label: 'endpoints',
       icon: 'fa-solid fa-landmark'
-    },
-    {
-      to: 'proxy',
-      label: 'proxy',
-      icon: 'fa-solid fa-satellite-dish'
     }
   ],
   notification: {
@@ -140,7 +130,9 @@ export const uiConstants = {
     deployment_create_success: 'Deployment created successfully',
     deployment_delete_success: 'Deployment deleted successfully',
     host_create_success: 'Host created successfully',
-    host_delete_success: 'Host deleted successfully'
+    host_delete_success: 'Host deleted successfully',
+    proxy_create_success: 'Proxy created successfully',
+    proxy_delete_success: 'Proxy deleted successfully'
   },
   themes: {
     light: 'light',
@@ -161,26 +153,48 @@ export const uiConstants = {
   },
   availableHostProviders: [
     {
-      provider: 'github',
-      fields: [
-        {
-          name: 'domain',
-          title: 'domain',
-          required: true,
-          description: 'Domain without schema'
-        },
-        { name: 'token', title: 'token', required: true },
-        {
-          name: 'apiUrl',
-          title: 'Api Url',
-          required: true,
-          description: 'Must include schema (http or https)',
-          pattern: new RegExp(
-            '^((ftp|http|https):\\/\\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\\.[a-zA-Z]+)+((\\/)[\\w#]+)*(\\/\\w+\\?[a-zA-Z0-9_]+=\\w+(&[a-zA-Z0-9_]+=\\w+)*)?\\/?$',
-            'img'
-          )
-        }
-      ]
+      name: 'endpoint name',
+      title: 'endpoint name',
+      required: true,
+      description: 'Endpoint name'
+    },
+    // { name: 'token', title: 'token', required: true },
+    {
+      name: 'target',
+      title: 'Target',
+      required: true,
+      description: 'Must include schema (http or https)',
+      pattern: new RegExp(
+        '^((ftp|http|https):\\/\\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\\.[a-zA-Z]+)+((\\/)[\\w#]+)*(\\/\\w+\\?[a-zA-Z0-9_]+=\\w+(&[a-zA-Z0-9_]+=\\w+)*)?\\/?$',
+        'img'
+      )
     }
   ]
+  // addProxyFields: [
+  //   {
+  //     type: 'input',
+  //     name: 'base',
+  //     title: 'Base Path',
+  //     required: true,
+  //     description: 'The proxy base path'
+  //   },
+  //   {
+  //     type: 'input',
+  //     name: 'target',
+  //     title: 'Target full url',
+  //     required: true,
+  //     description: 'The url of the target with schema',
+  //     pattern: new RegExp(
+  //       '^((ftp|http|https):\\/\\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\\.[a-zA-Z]+)+((\\/)[\\w#]+)*(\\/\\w+\\?[a-zA-Z0-9_]+=\\w+(&[a-zA-Z0-9_]+=\\w+)*)?\\/?$',
+  //       'img'
+  //     )
+  //   },
+  //   {
+  //     type: 'area',
+  //     name: 'headers',
+  //     title: 'Headers',
+  //     required: true,
+  //     description: 'The json of the headers'
+  //   }
+  // ]
 }

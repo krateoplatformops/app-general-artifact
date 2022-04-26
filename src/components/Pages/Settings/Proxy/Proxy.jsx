@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import { hostLoad, hostCreate, hostDelete } from '../../../../redux/actions'
+import { proxyLoad, proxyCreate, proxyDelete } from '../../../../redux/actions'
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
-import HostCard from './HostCard/HostCard'
+import ProxyCard from './ProxyCard/ProxyCard'
 import DangerZone from '../../../UI/DangerZone/DangerZone'
-import AddHost from './AddHost/AddHost'
+import AddProxy from './AddProxy/AddProxy'
 
-const Hosts = ({ host }) => {
+const Proxy = ({ proxy }) => {
   const dispatch = useDispatch()
   const [search, setSearch] = useState('')
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [showAddModal, setShowAddModal] = useState(false)
-  const [currentHost, setCurrentHost] = useState('')
+  const [currentProxy, setCurrentProxy] = useState('')
 
-  const reloadHostHandler = () => {
-    dispatch(hostLoad())
+  const reloadProxyHandler = () => {
+    dispatch(proxyLoad())
   }
 
   const openAddModalHandler = () => {
@@ -27,7 +27,7 @@ const Hosts = ({ host }) => {
   }
 
   const openDeleteModalHandler = (h) => {
-    setCurrentHost(h)
+    setCurrentProxy(h)
     setShowDeleteModal(true)
   }
 
@@ -35,28 +35,28 @@ const Hosts = ({ host }) => {
     setShowDeleteModal(false)
   }
 
-  const deleteHostHandler = () => {
+  const deleteProxyHandler = () => {
     setShowDeleteModal(false)
-    dispatch(hostDelete(currentHost._id))
+    dispatch(proxyDelete(currentProxy._id))
   }
 
-  const addHostHandler = (data) => {
+  const addProxyHandler = (data) => {
     setShowAddModal(false)
-    dispatch(hostCreate(data))
+    dispatch(proxyCreate(data))
   }
 
   useEffect(() => {
-    if (!host.result && !host.skeletonLoading) {
-      dispatch(hostLoad())
+    if (!proxy.result && !proxy.skeletonLoading) {
+      dispatch(proxyLoad())
     }
-  }, [dispatch, host])
+  }, [dispatch, proxy])
 
   return (
     <React.Fragment>
       <LocalSearch
         buttons={[
           { action: openAddModalHandler, icon: 'fa-solid fa-add' },
-          { action: reloadHostHandler, icon: 'fa-solid fa-rotate' }
+          { action: reloadProxyHandler, icon: 'fa-solid fa-rotate' }
         ]}
       >
         <input
@@ -67,28 +67,31 @@ const Hosts = ({ host }) => {
         />
       </LocalSearch>
 
-      {(host.list || [])
+      {(proxy.list || [])
         .filter((x) => {
           return (
-            x.provider.toLowerCase().indexOf(search) > -1 ||
-            x.domain.toLowerCase().indexOf(search) > -1 ||
+            x.base.toLowerCase().indexOf(search) > -1 ||
+            x.target.toLowerCase().indexOf(search) > -1 ||
             x.secretName.toLowerCase().indexOf(search) > -1
           )
         })
-        .map((h) => (
-          <HostCard h={h} key={h._id} openModal={openDeleteModalHandler} />
+        .map((p) => (
+          <ProxyCard p={p} key={p._id} openModal={openDeleteModalHandler} />
         ))}
 
       {showAddModal && (
-        <AddHost closeModal={closeAddModalHandler} addHost={addHostHandler} />
+        <AddProxy
+          closeModal={closeAddModalHandler}
+          addProxy={addProxyHandler}
+        />
       )}
 
       {showDeleteModal && (
         <DangerZone
-          title={'Delete host'}
-          name={currentHost.secretName}
+          title={'Delete proxy'}
+          name={currentProxy.secretName}
           closeModal={closeDeleteModalHandler}
-          deleteButtonHandler={deleteHostHandler}
+          deleteButtonHandler={deleteProxyHandler}
         />
       )}
     </React.Fragment>
@@ -99,4 +102,4 @@ function mapStateToProps(state) {
   return state
 }
 
-export default connect(mapStateToProps, {})(Hosts)
+export default connect(mapStateToProps, {})(Proxy)

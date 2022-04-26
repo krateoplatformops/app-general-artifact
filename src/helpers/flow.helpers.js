@@ -19,7 +19,7 @@ const getLayoutedElements = (nodes, edges, direction = 'LR') => {
 
   dagre.layout(dagreGraph)
 
-  nodes.forEach((node) => {
+  nodes.map((node) => {
     const nodeWithPosition = dagreGraph.node(node.id)
     node.targetPosition = isHorizontal ? 'left' : 'top'
     node.sourcePosition = isHorizontal ? 'right' : 'bottom'

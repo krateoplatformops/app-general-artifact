@@ -26,18 +26,30 @@ const DeploymentCard = ({ d }) => (
           ))}
         </li>
         <li className={css.LiStats}>
-          <span className={css.SpanSecurity}>
-            0 <i className='fa-solid fa-shield'></i>
+          <span
+            className={css.SpanSecurityIssues}
+            {...(d.securityIssues > 0 && { active: 'true' })}
+          >
+            {d.securityIssues} <i className='fa-solid fa-shield'></i>
           </span>
-          <span className={css.SpanBugs}>
-            1 <i className='fa-solid fa-bug'></i>
+          <span
+            className={css.SpanCodeIssues}
+            {...(d.codeIssues > 0 && { active: 'true' })}
+          >
+            {d.codeIssues} <i className='fa-solid fa-triangle-exclamation'></i>
           </span>
-          <span className={css.SpanTests}>
-            0 <i className='fa-solid fa-flask-vial'></i>
+          <span
+            className={css.SpanCodeRequests}
+            {...(d.codeRequests > 0 && { active: 'true' })}
+          >
+            {d.codeRequests} <i className='fa-solid fa-code-pull-request'></i>
           </span>
-          <span className={css.SpanCosts}>
-            0 <i className='fa-solid fa-coins'></i>
-          </span>
+          {/* <span
+            className={css.SpanBudget}
+            {...(d.budget > 0 && { active: 'true' })}
+          >
+            {d.budget} <i className='fa-solid fa-sack-dollar'></i>
+          </span> */}
         </li>
       </ul>
     </div>

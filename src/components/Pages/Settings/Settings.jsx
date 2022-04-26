@@ -4,7 +4,8 @@ import { Routes, Route } from 'react-router-dom'
 import css from './Settings.module.scss'
 import Menu from './Menu/Menu'
 import Profile from './Profile/Profile'
-import Hosts from './Hosts/Hosts'
+import Endpoints from './Endpoints/Endpoints'
+// import Proxy from './Proxy/Proxy'
 
 const Settings = () => (
   <ul className={css.UlSettings}>
@@ -15,7 +16,8 @@ const Settings = () => (
       <Routes>
         <Route path='/*'>
           <Route index element={<Profile />} />
-          <Route path='hosts' element={<Hosts />} />
+          <Route path='endpoints' element={<Endpoints />} />
+          {/* <Route path='proxy' element={<Proxy />} /> */}
         </Route>
       </Routes>
     </li>

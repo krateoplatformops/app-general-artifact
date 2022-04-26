@@ -8,7 +8,7 @@ import {
   templateConstants,
   deploymentConstants,
   proxyConstants,
-  hostConstants
+  endpointConstants
 } from '../constants'
 
 import { configLoadSaga } from './config.sagas'
@@ -26,8 +26,17 @@ import {
   deploymentCreateSaga,
   deploymentDeleteSaga
 } from './deployment.sagas'
-import { proxyLoadSaga } from './proxy.sagas'
-import { hostCreateSaga, hostDeleteSaga, hostLoadSaga } from './host.sagas'
+import {
+  proxyFetchSaga,
+  proxyLoadSaga,
+  proxyCreateSaga,
+  proxyDeleteSaga
+} from './proxy.sagas'
+import {
+  endpointCreateSaga,
+  endpointDeleteSaga,
+  endpointLoadSaga
+} from './endpoint.sagas'
 
 export function* watchConfig() {
   yield takeEvery(configConstants.CONFIG_LOAD, configLoadSaga)
@@ -63,11 +72,14 @@ export function* watchDeployment() {
 }
 
 export function* watchProxy() {
+  yield takeEvery(proxyConstants.PROXY_FETCH, proxyFetchSaga)
   yield takeEvery(proxyConstants.PROXY_LOAD, proxyLoadSaga)
+  yield takeEvery(proxyConstants.PROXY_CREATE, proxyCreateSaga)
+  yield takeEvery(proxyConstants.PROXY_DELETE, proxyDeleteSaga)
 }
 
-export function* watchHost() {
-  yield takeEvery(hostConstants.HOST_LOAD, hostLoadSaga)
-  yield takeEvery(hostConstants.HOST_CREATE, hostCreateSaga)
-  yield takeEvery(hostConstants.HOST_DELETE, hostDeleteSaga)
+export function* watchEndpoint() {
+  yield takeEvery(endpointConstants.ENDPOINT_LOAD, endpointLoadSaga)
+  yield takeEvery(endpointConstants.ENDPOINT_CREATE, endpointCreateSaga)
+  yield takeEvery(endpointConstants.ENDPOINT_DELETE, endpointDeleteSaga)
 }

@@ -6,7 +6,7 @@ const YamlView = ({ yaml }) => {
   const parseLine = (line) => {
     const s = line.split(/(\s+)/)
     return s.map((x, key) => {
-      if (!x.trim()) {
+      if (x.trim() === '') {
         return [...Array(x.length)].map((s, key2) => {
           return (
             <span key={`${key}-${key2}`} className={css.Space}>
