@@ -15,23 +15,14 @@ import { configLoadSaga } from './config.sagas'
 import { userLoadProfileSaga } from './user.sagas'
 import { logoutSaga } from './auth.sagas'
 import { registerImportSaga } from './register.sagas'
-import {
-  socketSubscribeSaga,
-  socketPullSaga,
-  socketUnsubscribeSaga
-} from './socket.sagas'
+import { socketSubscribeSaga, socketUnsubscribeSaga } from './socket.sagas'
 import { templateLoadSaga, templateDeleteSaga } from './template.sagas'
 import {
   deploymentLoadSaga,
   deploymentCreateSaga,
   deploymentDeleteSaga
 } from './deployment.sagas'
-import {
-  proxyFetchSaga,
-  proxyLoadSaga,
-  proxyCreateSaga,
-  proxyDeleteSaga
-} from './proxy.sagas'
+import { proxyFetchSaga } from './proxy.sagas'
 import {
   endpointCreateSaga,
   endpointDeleteSaga,
@@ -57,7 +48,6 @@ export function* watchRegister() {
 export function* watchSocket() {
   yield takeEvery(socketConstants.SOCKET_SUBSCRIBE, socketSubscribeSaga)
   yield takeEvery(socketConstants.SOCKET_UNSUBSCRIBE, socketUnsubscribeSaga)
-  yield takeEvery(socketConstants.SOCKET_PULL, socketPullSaga)
 }
 
 export function* watchTemplate() {
@@ -73,9 +63,6 @@ export function* watchDeployment() {
 
 export function* watchProxy() {
   yield takeEvery(proxyConstants.PROXY_FETCH, proxyFetchSaga)
-  yield takeEvery(proxyConstants.PROXY_LOAD, proxyLoadSaga)
-  yield takeEvery(proxyConstants.PROXY_CREATE, proxyCreateSaga)
-  yield takeEvery(proxyConstants.PROXY_DELETE, proxyDeleteSaga)
 }
 
 export function* watchEndpoint() {

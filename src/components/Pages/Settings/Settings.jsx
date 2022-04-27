@@ -5,7 +5,6 @@ import css from './Settings.module.scss'
 import Menu from './Menu/Menu'
 import Profile from './Profile/Profile'
 import Endpoints from './Endpoints/Endpoints'
-// import Proxy from './Proxy/Proxy'
 
 const Settings = () => (
   <ul className={css.UlSettings}>
@@ -17,7 +16,6 @@ const Settings = () => (
         <Route path='/*'>
           <Route index element={<Profile />} />
           <Route path='endpoints' element={<Endpoints />} />
-          {/* <Route path='proxy' element={<Proxy />} /> */}
         </Route>
       </Routes>
     </li>

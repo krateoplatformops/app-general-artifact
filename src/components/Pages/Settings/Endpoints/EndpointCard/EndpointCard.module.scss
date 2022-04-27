@@ -1,7 +1,7 @@
 @import '../../../../../styles/colors';
 @import '../../../../../styles/mixin';
 
-.UlHost {
+.UlEndpoint {
   @extend .display-flex;
   @extend .flex-direction-row;
   background: var(--card);
@@ -21,7 +21,7 @@
   i {
     width: 40px;
     height: 40px;
-    font-size: 1.5em;
+    // font-size: 1.5em;
     @extend .display-flex;
     @extend .flex-center;
     @include border-radius(50%);
@@ -37,21 +37,22 @@
   width: 100%;
 }
 
-.Domain {
+.Name {
   font-weight: 600;
   margin-bottom: 20px;
   text-transform: uppercase;
 }
 
 .DeleteBtn {
-  color: var(--border);
   @extend .display-flex;
   @extend .flex-center;
-  height: 40px;
-  width: 40px;
+  height: 42px;
+  width: 42px;
   border: 1px solid var(--border);
-  @include border-radius(50%);
+  @include border-radius($border-radius);
+  color: var(--border);
   &:hover {
     color: $red;
+    border: 1px solid var(--text-color);
   }
 }

@@ -20,10 +20,3 @@ export const socketReceived = (payload) => {
     payload
   }
 }
-
-export const socketPull = (payload) => {
-  return {
-    type: socketConstants.SOCKET_PULL,
-    payload
-  }
-}

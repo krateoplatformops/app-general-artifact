@@ -82,6 +82,12 @@ const Resources = ({ deploy, deployment, proxy }) => {
         })
       )
     }
+    return () =>
+      dispatch(
+        proxyDeleteKey({
+          key: uiConstants.proxy.resourceTree
+        })
+      )
   }, [dispatch, p])
 
   useEffect(() => {
@@ -149,15 +155,6 @@ const Resources = ({ deploy, deployment, proxy }) => {
     setEdges,
     setNodes
   ])
-
-  useEffect(() => {
-    return () =>
-      dispatch(
-        proxyDeleteKey({
-          key: uiConstants.proxy.resourceTree
-        })
-      )
-  }, [dispatch])
 
   return (
     <React.Fragment>

@@ -11,12 +11,12 @@ const EndpointCard = ({ h, openModal }) => {
   return (
     <ul className={css.UlEndpoint}>
       <li className={css.LiIcon}>
-        <i className={`fa-brands fa-${h.provider}`}></i>
+        <i className={h.icon}></i>
       </li>
       <li className={css.LiInfo}>
-        <div className={css.Domain}>{h.domain}</div>
+        <div className={css.Name}>{h.name}</div>
         <Label title={'Secret Name'}>{h.secretName}</Label>
-        <Label title={'Api Url'}>{h.apiUrl}</Label>
+        <Label title={'Target'}>{h.target}</Label>
       </li>
       <li>
         <button className={css.DeleteBtn} onClick={() => deleteHandler()}>

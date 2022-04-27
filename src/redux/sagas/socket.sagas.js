@@ -7,6 +7,10 @@ import { uiConstants } from '../../constants'
 
 const socket = socketIOClient(uris.socket)
 
+// socket.io.on('error', () => {
+//   console.log('socket error')
+// })
+
 export function* socketSubscribeSaga(action) {
   try {
     const listener = eventChannel((emit) => {
@@ -15,13 +19,12 @@ export function* socketSubscribeSaga(action) {
       })
       return () => socket.close()
     })
+
     while (true) {
       const event = yield take(listener)
       yield put(socketReceived(event))
     }
   } catch (error) {
-    // console.log(error)
-    // yield put(registerImportFailure(error))
     yield put(
       addNotification(
         error.response.data.message,
@@ -35,32 +38,6 @@ export function* socketUnsubscribeSaga(action) {
   try {
     socket.off(action.payload)
   } catch (error) {
-    yield put(
-      addNotification(
-        error.response.data.message,
-        uiConstants.notification.error
-      )
-    )
-  }
-}
-
-export function* socketPullSaga(action) {
-  try {
-    // const listener =
-    socket.emit('pull', action.payload)
-    // eventChannel((emit) => {
-    //   socket.emit('pull', (data) => {
-    //     emit(action.payload)
-    //   })
-    //   return () => socket.close()
-    // })
-    // while (true) {
-    //   const event = yield take(listener)
-    //   yield put(socketReceived(event))
-    // }
-  } catch (error) {
-    // console.log(error)
-    // yield put(registerImportFailure(error))
     yield put(
       addNotification(
         error.response.data.message,

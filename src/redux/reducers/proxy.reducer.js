@@ -3,10 +3,7 @@ import { proxyConstants } from '../constants'
 const initialState = {
   loading: false,
   error: null,
-  data: {},
-  result: false,
-  list: null,
-  skeletonLoading: false
+  data: {}
 }
 
 export default function proxy(state = initialState, action) {
@@ -39,49 +36,6 @@ export default function proxy(state = initialState, action) {
       return {
         ...state,
         data: dataDelete
-      }
-    case proxyConstants.PROXY_LOAD:
-      return {
-        ...state,
-        skeletonLoading: true,
-        result: false,
-        list: null
-      }
-    case proxyConstants.PROXY_LOAD_SUCCESS:
-      return {
-        ...state,
-        result: true,
-        list: action.payload,
-        skeletonLoading: false
-      }
-    case proxyConstants.PROXY_LOAD_FAILURE:
-    case proxyConstants.PROXY_CREATE_FAILURE:
-    case proxyConstants.PROXY_DELETE_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        skeletonLoading: false,
-        result: true,
-        error: action.payload
-      }
-    case proxyConstants.PROXY_CREATE:
-    case proxyConstants.PROXY_DELETE:
-      return { ...state, loading: true, error: null }
-    case proxyConstants.PROXY_CREATE_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        error: null,
-        list:
-          state.list === null
-            ? [action.payload]
-            : state.list.concat(action.payload)
-      }
-    case proxyConstants.PROXY_DELETE_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        list: state.list.filter((x) => x._id !== action.payload)
       }
     case proxyConstants.PROXY_RESET:
       return {

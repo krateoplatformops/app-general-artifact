@@ -14,6 +14,7 @@ const Notification = (props) => {
     if (props.socket.subscriptions.indexOf('notifications') === -1) {
       dispatch(socketSubscribe('notifications'))
     }
+    // return () => dispatch(socketUnsubscribe('notifications', true))
   })
 
   return (

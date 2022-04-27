@@ -4,18 +4,38 @@ import { NavLink, useParams } from 'react-router-dom'
 import { uiConstants } from '../../../../../constants/ui.constants'
 import css from './Menu.module.scss'
 
-const Menu = () => {
+const Menu = ({ deploy }) => {
   const params = useParams()
+
+  const mergedMenu = () => {
+    const menu = [...uiConstants.deploymentNav]
+
+    deploy.claim.spec.dashboard.plugins.forEach((x) => {
+      if (!menu.find((m) => m.to === x.name)) {
+        menu.push({
+          to: x.name,
+          label: x.name,
+          icon: x.icon,
+          weight: 2
+        })
+      }
+    })
+
+    return menu.sort((a, b) => {
+      return a.weight - b.weight
+    })
+  }
 
   return (
     <ul className={css.UlMenu}>
-      {uiConstants.deploymentNav.map((l) => {
+      {mergedMenu().map((l) => {
+        const to = l.to.replace(/\s/g, '-')
         return (
           <li key={l.label}>
             <NavLink
-              to={l.to}
+              to={to}
               className={({ isActive }) =>
-                isActive && params['*'] === l.to ? css.LinkActive : css.Link
+                isActive && params['*'] === to ? css.LinkActive : css.Link
               }
             >
               <i className={l.icon}></i>

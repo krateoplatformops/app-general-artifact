@@ -1,0 +1,46 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.UlIcon {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}
+
+.LiIcon {
+  margin-right: 10px;
+  min-width: 40px;
+  max-width: 40px;
+  i {
+    width: 40px;
+    height: 40px;
+    // font-size: 1.2em;
+    @extend .display-flex;
+    @extend .flex-center;
+    @include border-radius(50%);
+    background: $blue;
+    color: $white;
+  }
+}
+
+.LiSelectIcon {
+  width: 100%;
+}
+
+.LiShuffle {
+  @extend .display-flex;
+  @extend .flex-center;
+  min-width: 40px;
+  margin-left: 10px;
+  button {
+    @extend .display-flex;
+    @extend .flex-center;
+    height: 42px;
+    width: 42px;
+    border: 1px solid var(--border);
+    @include border-radius($border-radius / 2);
+    &:hover {
+      border: 1px solid var(--text-color);
+      color: var(--text-color);
+    }
+  }
+}

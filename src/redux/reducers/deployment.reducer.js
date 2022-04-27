@@ -46,7 +46,11 @@ export default function deployment(state = initialState, action) {
         list:
           state.list === null
             ? [action.payload]
-            : state.list.concat(action.payload)
+            : state.list.findIndex((x) => x._id === action.payload._id) === -1
+            ? state.list.concat(action.payload)
+            : state.list.map((item) => {
+                return item._id === action.payload._id ? action.payload : item
+              })
       }
     case deploymentConstants.DEPLOYMENT_DELETE_SUCCESS:
       return {

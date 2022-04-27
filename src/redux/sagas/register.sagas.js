@@ -6,7 +6,8 @@ import {
   registerImportFailure,
   addNotification,
   redirect,
-  templateUpdate
+  templateUpdate,
+  deploymentCreateSuccess
 } from '../actions'
 import { uiConstants } from '../../constants'
 
@@ -14,14 +15,28 @@ export function* registerImportSaga(action) {
   try {
     const doc = yield axios.post(uris.register, action.payload)
     yield put(registerImportSuccess())
-    yield put(templateUpdate(doc.data))
-    yield put(
-      addNotification(
-        uiConstants.messages.template_import_success,
-        uiConstants.notification.success
-      )
-    )
-    yield put(redirect('/templates'))
+
+    switch (doc.data.kind) {
+      case 'deployment':
+        yield put(deploymentCreateSuccess(doc.data))
+        yield put(
+          addNotification(
+            uiConstants.messages.deployment_import_success,
+            uiConstants.notification.success
+          )
+        )
+        yield put(redirect(`/deployments/${doc.data._id}`))
+        break
+      default:
+        yield put(templateUpdate(doc.data))
+        yield put(
+          addNotification(
+            uiConstants.messages.template_import_success,
+            uiConstants.notification.success
+          )
+        )
+        yield put(redirect('/templates'))
+    }
   } catch (error) {
     yield put(registerImportFailure(error))
     yield put(

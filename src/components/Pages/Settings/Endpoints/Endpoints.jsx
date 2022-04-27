@@ -74,9 +74,8 @@ const Endpoints = ({ endpoint }) => {
       {(endpoint.list || [])
         .filter((x) => {
           return (
-            x.provider.toLowerCase().indexOf(search) > -1 ||
-            x.domain.toLowerCase().indexOf(search) > -1 ||
-            x.secretName.toLowerCase().indexOf(search) > -1
+            x.name.toLowerCase().indexOf(search) > -1 ||
+            x.target.toLowerCase().indexOf(search) > -1
           )
         })
         .map((h) => (
