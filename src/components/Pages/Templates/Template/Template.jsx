@@ -10,6 +10,7 @@ import Summary from './Summary/Summary'
 import Loader from '../../../UI/Loader/Loader'
 import Error from '../../../UI/Error/Error'
 import { deploymentCreate } from '../../../../redux/actions'
+import Follower from '../../../UI/Follower/Follower'
 
 const Template = (props) => {
   const params = useParams()
@@ -107,12 +108,14 @@ const Template = (props) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <ul className={css.UlWidgets}>
             <li className={css.LiWidgets}>
-              <Steps
-                widgets={template.spec.widgets}
-                changeStepHandler={changeStepHandler}
-                currentStep={currentStep}
-                stepsStatus={stepsStatus}
-              />
+              <Follower>
+                <Steps
+                  widgets={template.spec.widgets}
+                  changeStepHandler={changeStepHandler}
+                  currentStep={currentStep}
+                  stepsStatus={stepsStatus}
+                />
+              </Follower>
             </li>
             <li className={css.LiForm}>
               {template.spec.widgets.map((w) => (

@@ -5,6 +5,7 @@ import css from './YamlView.module.scss'
 const YamlView = ({ yaml }) => {
   const parseLine = (line) => {
     const s = line.split(/(\s+)/)
+    let inString = false
     return s.map((x, key) => {
       if (x.trim() === '') {
         return [...Array(x.length)].map((s, key2) => {
@@ -23,15 +24,34 @@ const YamlView = ({ yaml }) => {
         )
       }
       if (
-        (x[0] === "'" || x[0] === '"') &&
-        (x[x.length - 1] === "'" || x[x.length - 1] === '"')
+        x[0] === "'" ||
+        x[0] === '"' ||
+        x[x.length - 1] === "'" ||
+        x[x.length - 1] === '"' ||
+        inString
       ) {
+        if (
+          x[0] === "'" ||
+          x[0] === '"' ||
+          x[x.length - 1] === "'" ||
+          x[x.length - 1] === '"'
+        ) {
+          inString = !inString
+        }
         return (
           <span key={key} className={css.String}>
             {x}
           </span>
         )
       }
+      // if (x[x.length - 1] === "'" || x[x.length - 1] === '"') {
+      //   inString = false
+      //   return (
+      //     <span key={key} className={css.String}>
+      //       {x}
+      //     </span>
+      //   )
+      // }
       if (parseInt(x, 10).toString() === x) {
         return (
           <span key={key} className={css.Number}>

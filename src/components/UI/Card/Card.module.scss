@@ -13,6 +13,11 @@
   }
 }
 
+.Anchor {
+  position: absolute;
+  margin-top: -120px;
+}
+
 .Title {
   padding-bottom: 20px;
   // font-weight: 400;
@@ -33,4 +38,7 @@
   //   top: 7px;
   //   left: -10px;
   // }
+  i {
+    margin-right: 10px;
+  }
 }

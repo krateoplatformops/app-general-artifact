@@ -6,9 +6,10 @@ import Modal from '../../../../UI/Modal/Modal'
 import css from './AddEndpoint.module.scss'
 import { securityHelper } from '../../../../../helpers'
 import IconSelector from '../../../../UI/IconSelector/IconSelector'
+import { uiConstants } from '../../../../../constants'
 
 const AddEndpoint = ({ closeModal, addEndpoint }) => {
-  const [headers, setHeaders] = useState([securityHelper.guid()])
+  const [headers, setHeaders] = useState([])
   const {
     register,
     unregister,
@@ -23,6 +24,7 @@ const AddEndpoint = ({ closeModal, addEndpoint }) => {
       icon: data.icon,
       name: data.name,
       target: data.target,
+      type: data.type,
       headers: {}
     }
     Object.keys(data)
@@ -56,6 +58,20 @@ const AddEndpoint = ({ closeModal, addEndpoint }) => {
         title={'Add endpoint'}
       >
         <IconSelector watch={watch} setValue={setValue} register={register} />
+
+        <Label title={'Endpoint Type'} description={'Endpoint Type'}>
+          <select
+            {...register('type', {
+              required: true
+            })}
+          >
+            {uiConstants.endpointTypes.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
+        </Label>
 
         <Label title={'Endpoint Name'} description={'Endpoint Name'}>
           <input

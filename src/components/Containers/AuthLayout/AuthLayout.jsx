@@ -1,5 +1,4 @@
 import React, { Fragment, useContext } from 'react'
-import { connect } from 'react-redux'
 import { Outlet } from 'react-router'
 
 import Nav from './Nav/Nav'
@@ -11,7 +10,7 @@ import { UserContext } from '../../Context/UserContext'
 import NotificationBar from './NotificationBar/NotificationBar'
 import LoadComponents from './LoadComponents/LoadComponents'
 
-const AuthLayout = (props) => {
+const AuthLayout = () => {
   const { menuOpen } = useContext(UserContext)
 
   return (
@@ -28,8 +27,4 @@ const AuthLayout = (props) => {
   )
 }
 
-function mapStateToProps(state) {
-  return state
-}
-
-export default connect(mapStateToProps, {})(AuthLayout)
+export default AuthLayout

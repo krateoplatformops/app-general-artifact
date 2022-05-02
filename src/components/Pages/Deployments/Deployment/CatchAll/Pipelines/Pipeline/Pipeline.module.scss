@@ -1,0 +1,78 @@
+@import '../../../../../../../styles/colors';
+@import '../../../../../../../styles/mixin';
+
+.UlPipeline {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}
+
+.LiCharts {
+  min-width: 20%;
+  @extend .bsbb;
+  padding-right: 20px;
+  margin-right: 20px;
+  border-right: 1px solid var(--border);
+}
+
+.LiRuns {
+  width: 100%;
+}
+
+.UlRun {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  &:not(:last-of-type) {
+    border-bottom: 1px solid var(--border);
+  }
+  > li {
+    @extend .display-flex;
+    @extend .flex-center;
+    &:not(:last-of-type) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.LiRunInfo {
+  @extend .flex-direction-column;
+  width: 100%;
+}
+
+.InfoBody {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  width: 100%;
+  li {
+    &:not(:last-of-type) {
+      width: 100%;
+    }
+    &:last-of-type {
+      text-align: right;
+      white-space: nowrap;
+      margin-left: 10px;
+    }
+  }
+}
+
+.InfoHeader {
+  @extend .InfoBody;
+  font-size: 0.8em;
+  color: var(--text-color-secondary);
+  margin-bottom: 5px;
+}
+
+.PipeLink {
+  @extend .display-flex;
+  @extend .flex-center;
+  height: 42px;
+  width: 42px;
+  border: 1px solid var(--border);
+  @include border-radius($border-radius);
+  color: var(--border);
+  &:hover {
+    color: $blue;
+    border: 1px solid var(--text-color);
+  }
+}

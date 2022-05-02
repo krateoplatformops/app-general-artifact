@@ -8,7 +8,8 @@ import {
   templateConstants,
   deploymentConstants,
   proxyConstants,
-  endpointConstants
+  endpointConstants,
+  pluginConstants
 } from '../constants'
 
 import { configLoadSaga } from './config.sagas'
@@ -28,6 +29,7 @@ import {
   endpointDeleteSaga,
   endpointLoadSaga
 } from './endpoint.sagas'
+import { pluginFetchSaga } from './plugin.sagas'
 
 export function* watchConfig() {
   yield takeEvery(configConstants.CONFIG_LOAD, configLoadSaga)
@@ -69,4 +71,8 @@ export function* watchEndpoint() {
   yield takeEvery(endpointConstants.ENDPOINT_LOAD, endpointLoadSaga)
   yield takeEvery(endpointConstants.ENDPOINT_CREATE, endpointCreateSaga)
   yield takeEvery(endpointConstants.ENDPOINT_DELETE, endpointDeleteSaga)
+}
+
+export function* watchPlugin() {
+  yield takeEvery(pluginConstants.PLUGIN_FETCH, pluginFetchSaga)
 }

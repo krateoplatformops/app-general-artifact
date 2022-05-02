@@ -1,53 +1,39 @@
-import React, { useEffect } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
 
-import { proxyFetch, proxyDeleteKey } from '../../../../../../redux/actions'
-import uris from '../../../../../../uris'
 import Card from '../../../../../UI/Card/Card'
-import Loader from '../../../../../UI/Loader/Loader'
+import Follower from '../../../../../UI/Follower/Follower'
 
-const Documentation = ({ plugin, deploy, proxy }) => {
-  const dispatch = useDispatch()
-
-  const pKey = `${plugin.type}-${plugin.name}`
-
-  useEffect(() => {
-    let url = `${uris.apiBase}${uris.deployment}/${deploy._id}/plugins/${plugin.type}/${plugin.name}`
-    dispatch(
-      proxyFetch({
-        url,
-        key: pKey
-      })
-    )
-    return () =>
-      dispatch(
-        proxyDeleteKey({
-          key: pKey
-        })
-      )
-  }, [deploy._id, dispatch, pKey, plugin])
-
-  if (!proxy.data[pKey]) {
-    return <Loader />
-  }
-
+const Documentation = ({ plugin, content }) => {
   return (
-    <React.Fragment>
-      <Card title={plugin.value}>
-        <div className='markdown-body'>
-          <ReactMarkdown remarkPlugins={[gfm]}>
-            {proxy.data[pKey].content}
-          </ReactMarkdown>
-        </div>
-      </Card>
-    </React.Fragment>
+    <ul className='ul-double-view'>
+      <li className='li-menu'>
+        <Follower>
+          <Card title={plugin.name}>
+            {plugin.values.map((x) => (
+              <a
+                href={`#${x.replace(/\s/g, '-')}`}
+                key={x}
+                className='common-lnk'
+              >
+                {x}
+              </a>
+            ))}
+          </Card>
+        </Follower>
+      </li>
+      <li className='li-content'>
+        {content.map((x) => (
+          <Card title={x.key} key={x.key} anchor={x.key.replace(/\s/g, '-')}>
+            <div className='markdown-body'>
+              <ReactMarkdown remarkPlugins={[gfm]}>{x.value}</ReactMarkdown>
+            </div>
+          </Card>
+        ))}
+      </li>
+    </ul>
   )
 }
 
-function mapStateToProps(state) {
-  return state
-}
-
-export default connect(mapStateToProps, {})(Documentation)
+export default Documentation

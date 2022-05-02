@@ -1,7 +1,7 @@
 import React from 'react'
 import { Handle } from 'react-flow-renderer'
 
-import { flowHelper } from '../../../../../../helpers'
+import { flowHelper } from '../../../../../../../helpers'
 import css from './CustomNode.module.scss'
 
 const CustomNode = ({ id, data, isConnectable }) => {

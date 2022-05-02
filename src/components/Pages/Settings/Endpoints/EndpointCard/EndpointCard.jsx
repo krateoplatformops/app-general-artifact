@@ -15,6 +15,7 @@ const EndpointCard = ({ h, openModal }) => {
       </li>
       <li className={css.LiInfo}>
         <div className={css.Name}>{h.name}</div>
+        <Label title={'Type'}>{h.type}</Label>
         <Label title={'Secret Name'}>{h.secretName}</Label>
         <Label title={'Target'}>{h.target}</Label>
       </li>

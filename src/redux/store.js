@@ -12,7 +12,8 @@ import {
   watchSocket,
   watchTemplate,
   watchUser,
-  watchEndpoint
+  watchEndpoint,
+  watchPlugin
 } from './sagas'
 
 const sagaMiddleware = createSagaMiddleware()
@@ -31,3 +32,4 @@ sagaMiddleware.run(watchTemplate)
 sagaMiddleware.run(watchDeployment)
 sagaMiddleware.run(watchProxy)
 sagaMiddleware.run(watchEndpoint)
+sagaMiddleware.run(watchPlugin)

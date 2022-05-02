@@ -11,7 +11,6 @@ import Menu from './Menu/Menu'
 
 import css from './Deployment.module.scss'
 import SocketSpinner from '../../../UI/SocketSpinner/SocketSpinner'
-import Resources from './Resources/Resources'
 import PageLoader from '../../../UI/PageLoader/PageLoader'
 
 const ValuesLazy = lazy(() => import('./Values/Values'))
@@ -49,24 +48,25 @@ const Deployment = ({ deployment, socket }) => {
           </div>
         )}
 
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path='/*'>
-              <Route index element={<OverviewLazy deploy={deploy} />} />
-              <Route path='events' element={<EventsLazy deploy={deploy} />} />
-              <Route path='values' element={<ValuesLazy deploy={deploy} />} />
-              <Route
-                path='settings'
-                element={<SettingsLazy deploy={deploy} />}
-              />
-              <Route path='resources' element={<Resources deploy={deploy} />} />
-              <Route
-                path='*'
-                element={<CatchAllLazy deploy={deploy} params={params} />}
-              />
-            </Route>
-          </Routes>
-        </Suspense>
+        <div>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path='/*'>
+                <Route index element={<OverviewLazy deploy={deploy} />} />
+                <Route path='events' element={<EventsLazy deploy={deploy} />} />
+                <Route path='values' element={<ValuesLazy deploy={deploy} />} />
+                <Route
+                  path='settings'
+                  element={<SettingsLazy deploy={deploy} />}
+                />
+                <Route
+                  path='*'
+                  element={<CatchAllLazy deploy={deploy} params={params} />}
+                />
+              </Route>
+            </Routes>
+          </Suspense>
+        </div>
       </React.Fragment>
     )
   }

@@ -1,5 +1,5 @@
-@import '../../../../../styles/colors';
-@import '../../../../../styles/mixin';
+@import '../../../../../../styles/colors';
+@import '../../../../../../styles/mixin';
 
 .FlowContainer {
   @include calc('height', '100vh - 190px');

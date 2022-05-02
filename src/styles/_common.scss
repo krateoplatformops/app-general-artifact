@@ -56,3 +56,32 @@
 .span-warning {
   color: $red;
 }
+
+.ul-double-view {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  .li-menu {
+    min-width: 25%;
+    max-width: 25%;
+  }
+  .li-content {
+    padding-left: 20px;
+    @extend .bsbb;
+    width: 100%;
+  }
+}
+
+.common-lnk {
+  @extend .display-flex;
+  padding: 5px;
+  color: var(--text-color-secondary);
+  i {
+    margin-right: 10px;
+  }
+  &:not(:first-of-type) {
+    margin-top: 5px;
+  }
+  &:hover {
+    color: $blue;
+  }
+}

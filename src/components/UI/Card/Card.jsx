@@ -2,10 +2,15 @@ import React from 'react'
 
 import css from './Card.module.scss'
 
-const Card = ({ children, title }) => {
+const Card = ({ children, title, anchor, icon }) => {
   return (
     <div className={css.Card}>
-      {title && <div className={css.Title}>{title}</div>}
+      {anchor && <div id={anchor} className={css.Anchor}></div>}
+      {title && (
+        <div className={css.Title}>
+          {icon && <i className={icon}></i>} {title}
+        </div>
+      )}
       {children}
     </div>
   )

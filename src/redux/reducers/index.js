@@ -12,6 +12,7 @@ import ui from './ui.reducer'
 import deployment from './deployment.reducer'
 import proxy from './proxy.reducer'
 import endpoint from './endpoint.reducer'
+import plugin from './plugin.reducer'
 
 const rootReducer = combineReducers({
   notify,
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   ui,
   deployment,
   proxy,
-  endpoint
+  endpoint,
+  plugin
 })
 
 export default rootReducer

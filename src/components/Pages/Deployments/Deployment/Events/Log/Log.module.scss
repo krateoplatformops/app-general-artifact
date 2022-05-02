@@ -45,6 +45,14 @@
   @include border-radius($border-radius / 2);
 }
 
+.Message {
+  width: 100%;
+}
+
+.TimeFrom {
+  white-space: nowrap;
+}
+
 .info {
   @extend .LevelBase;
   background: rgba($green, 0.1);
@@ -61,4 +69,10 @@
   @extend .LevelBase;
   background: rgba($red, 0.1);
   color: $red;
+}
+
+.debug {
+  @extend .LevelBase;
+  background: rgba($blue, 0.1);
+  color: $blue;
 }

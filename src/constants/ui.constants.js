@@ -157,6 +157,16 @@ export const uiConstants = {
     resourceYaml: 'resourceYaml',
     prometheus: 'prometheus'
   },
+  endpointTypes: ['github', 'argocd'],
+  CHART_COLORS: {
+    red: 'rgb(255, 99, 132)',
+    yellow: 'rgb(255, 205, 86)',
+    green: 'rgb(75, 192, 192)',
+    blue: 'rgb(54, 162, 235)',
+    orange: 'rgb(255, 159, 64)',
+    purple: 'rgb(153, 102, 255)',
+    grey: 'rgb(201, 203, 207)'
+  },
   icons: [
     'fa-solid fa-0',
     'fa-solid fa-1',
