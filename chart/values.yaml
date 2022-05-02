@@ -1,0 +1,15 @@
+registry:
+  images:
+    app: ghcr.io/krateoplatformops/app:latest
+
+log:
+  level: "info"
+
+app:
+  baseUrl: https://krateo.site/
+
+api:
+  baseUrl: https://api.krateo.site/
+
+socket:
+  socketUrl: https://socket.krateo.site/

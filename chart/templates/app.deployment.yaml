@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    app: krateo.io
+    component: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: app
+  template:
+    metadata:
+      labels:
+        component: app
+    spec:
+      containers:
+        - name: app
+          image: {{ .Values.registry.images.app }}
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: config-volume
+              mountPath: /usr/share/nginx/html/runtime-config.js
+              subPath: runtime-config.js
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: 8080
+            timeoutSeconds: 5
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: 8080
+            timeoutSeconds: 5
+            periodSeconds: 30
+      volumes:
+        - name: config-volume
+          configMap:
+            name: app-config
+      imagePullSecrets:
+        - name: registry-credentials
