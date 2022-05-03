@@ -9,7 +9,8 @@ import {
   deploymentConstants,
   proxyConstants,
   endpointConstants,
-  pluginConstants
+  pluginConstants,
+  logConstants
 } from '../constants'
 
 import { configLoadSaga } from './config.sagas'
@@ -21,7 +22,8 @@ import { templateLoadSaga, templateDeleteSaga } from './template.sagas'
 import {
   deploymentLoadSaga,
   deploymentCreateSaga,
-  deploymentDeleteSaga
+  deploymentDeleteSaga,
+  deploymentSingleLoadSaga
 } from './deployment.sagas'
 import { proxyFetchSaga } from './proxy.sagas'
 import {
@@ -30,6 +32,7 @@ import {
   endpointLoadSaga
 } from './endpoint.sagas'
 import { pluginFetchSaga } from './plugin.sagas'
+import { logFetchSaga } from './log.sagas'
 
 export function* watchConfig() {
   yield takeEvery(configConstants.CONFIG_LOAD, configLoadSaga)
@@ -61,6 +64,10 @@ export function* watchDeployment() {
   yield takeEvery(deploymentConstants.DEPLOYMENT_LOAD, deploymentLoadSaga)
   yield takeEvery(deploymentConstants.DEPLOYMENT_CREATE, deploymentCreateSaga)
   yield takeEvery(deploymentConstants.DEPLOYMENT_DELETE, deploymentDeleteSaga)
+  yield takeEvery(
+    deploymentConstants.DEPLOYMENT_SINGLE_LOAD,
+    deploymentSingleLoadSaga
+  )
 }
 
 export function* watchProxy() {
@@ -75,4 +82,8 @@ export function* watchEndpoint() {
 
 export function* watchPlugin() {
   yield takeEvery(pluginConstants.PLUGIN_FETCH, pluginFetchSaga)
+}
+
+export function* watchLog() {
+  yield takeEvery(logConstants.LOG_FETCH, logFetchSaga)
 }

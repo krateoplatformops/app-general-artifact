@@ -8,5 +8,8 @@ export const deploymentConstants = {
   DEPLOYMENT_RESET: '[Deployment] Reset',
   DEPLOYMENT_DELETE: '[Deployment] Delete',
   DEPLOYMENT_DELETE_SUCCESS: '[Deployment] Delete success',
-  DEPLOYMENT_DELETE_FAILURE: '[Deployment] Delete failure'
+  DEPLOYMENT_DELETE_FAILURE: '[Deployment] Delete failure',
+  DEPLOYMENT_SINGLE_LOAD: '[Deployment] Single load',
+  DEPLOYMENT_SINGLE_LOAD_SUCCESS: '[Deployment] Single load success',
+  DEPLOYMENT_SINGLE_LOAD_FAILURE: '[Deployment] Single load failure'
 }

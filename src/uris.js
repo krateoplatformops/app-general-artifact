@@ -9,7 +9,8 @@ const uris = {
   deployment: 'deployment',
   socket: window.runConfig.socketUrl,
   proxy: 'proxy',
-  endpoint: 'endpoint'
+  endpoint: 'endpoint',
+  log: 'log'
 }
 
 export default uris

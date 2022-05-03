@@ -8,11 +8,11 @@ import auth from './auth.reducer'
 import register from './register.reducer'
 import socket from './socket.reducer'
 import template from './template.reducer'
-import ui from './ui.reducer'
 import deployment from './deployment.reducer'
 import proxy from './proxy.reducer'
 import endpoint from './endpoint.reducer'
 import plugin from './plugin.reducer'
+import log from './log.reducer'
 
 const rootReducer = combineReducers({
   notify,
@@ -23,11 +23,11 @@ const rootReducer = combineReducers({
   register,
   socket,
   template,
-  ui,
   deployment,
   proxy,
   endpoint,
-  plugin
+  plugin,
+  log
 })
 
 export default rootReducer

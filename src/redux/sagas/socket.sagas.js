@@ -2,7 +2,12 @@ import { eventChannel } from 'redux-saga'
 import { put, take } from 'redux-saga/effects'
 import socketIOClient from 'socket.io-client'
 import uris from '../../uris'
-import { addNotification, socketReceived } from '../actions'
+import {
+  addNotification,
+  socketReceived,
+  logFetch,
+  deploymentSingleLoad
+} from '../actions'
 import { uiConstants } from '../../constants'
 
 const socket = socketIOClient(uris.socket)
@@ -22,6 +27,14 @@ export function* socketSubscribeSaga(action) {
 
     while (true) {
       const event = yield take(listener)
+
+      if (event.transactionId) {
+        // refresh logs
+        yield put(logFetch({ key: event.transactionId, params: event }))
+        // refresh deployment
+        yield put(deploymentSingleLoad({ _id: event.transactionId }))
+      }
+
       yield put(socketReceived(event))
     }
   } catch (error) {

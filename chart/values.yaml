@@ -6,10 +6,11 @@ log:
   level: "info"
 
 app:
-  baseUrl: https://krateo.site/
+  baseUrl: "https://app.krateo.site/"
+  host: "app.krateo.site"
 
 api:
-  baseUrl: https://api.krateo.site/
+  baseUrl: "https://api.krateo.site/"
 
 socket:
-  socketUrl: https://socket.krateo.site/
+  baseUrl: "https://socket.krateo.site/"

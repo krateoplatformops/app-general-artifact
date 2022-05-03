@@ -9,7 +9,9 @@ import {
   deploymentLoadFailure,
   redirect,
   deploymentDeleteSuccess,
-  deploymentDeleteFailure
+  deploymentDeleteFailure,
+  deploymentSingleLoadSuccess,
+  deploymentSingleLoadFailure
 } from '../actions'
 import { uiConstants } from '../../constants'
 
@@ -19,6 +21,21 @@ export function* deploymentLoadSaga() {
     yield put(deploymentLoadSuccess(result.data))
   } catch (error) {
     yield put(deploymentLoadFailure(error))
+    yield put(
+      addNotification(
+        error.response.data.message,
+        uiConstants.notification.error
+      )
+    )
+  }
+}
+
+export function* deploymentSingleLoadSaga(action) {
+  try {
+    const result = yield axios.get(`${uris.deployment}/${action.payload._id}`)
+    yield put(deploymentSingleLoadSuccess(result.data))
+  } catch (error) {
+    yield put(deploymentSingleLoadFailure(error))
     yield put(
       addNotification(
         error.response.data.message,

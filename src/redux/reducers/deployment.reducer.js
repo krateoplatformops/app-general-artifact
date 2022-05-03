@@ -18,6 +18,10 @@ export default function deployment(state = initialState, action) {
         result: false,
         list: null
       }
+    case deploymentConstants.DEPLOYMENT_SINGLE_LOAD:
+      return {
+        ...state
+      }
     case deploymentConstants.DEPLOYMENT_LOAD_SUCCESS:
       return {
         ...state,
@@ -28,6 +32,7 @@ export default function deployment(state = initialState, action) {
     case deploymentConstants.DEPLOYMENT_LOAD_FAILURE:
     case deploymentConstants.DEPLOYMENT_CREATE_FAILURE:
     case deploymentConstants.DEPLOYMENT_DELETE_FAILURE:
+    case deploymentConstants.DEPLOYMENT_SINGLE_LOAD_FAILURE:
       return {
         ...state,
         loading: false,
@@ -39,6 +44,7 @@ export default function deployment(state = initialState, action) {
     case deploymentConstants.DEPLOYMENT_DELETE:
       return { ...state, loading: true, error: null }
     case deploymentConstants.DEPLOYMENT_CREATE_SUCCESS:
+    case deploymentConstants.DEPLOYMENT_SINGLE_LOAD_SUCCESS:
       return {
         ...state,
         loading: false,

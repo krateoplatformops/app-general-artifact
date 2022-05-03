@@ -68,3 +68,24 @@ export const deploymentDeleteFailure = (payload) => {
     payload
   }
 }
+
+export const deploymentSingleLoad = (payload) => {
+  return {
+    type: deploymentConstants.DEPLOYMENT_SINGLE_LOAD,
+    payload
+  }
+}
+
+export const deploymentSingleLoadSuccess = (payload) => {
+  return {
+    type: deploymentConstants.DEPLOYMENT_SINGLE_LOAD_SUCCESS,
+    payload
+  }
+}
+
+export const deploymentSingleLoadFailure = (payload) => {
+  return {
+    type: deploymentConstants.DEPLOYMENT_SINGLE_LOAD_FAILURE,
+    payload
+  }
+}
