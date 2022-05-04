@@ -21,11 +21,6 @@
 .UlRun {
   @extend .display-flex;
   @extend .flex-direction-row;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  &:not(:last-of-type) {
-    border-bottom: 1px solid var(--border);
-  }
   > li {
     @extend .display-flex;
     @extend .flex-center;
@@ -63,16 +58,35 @@
   margin-bottom: 5px;
 }
 
+.RunsList {
+  > li {
+    &:not(:last-of-type) {
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      border-bottom: 1px solid var(--border);
+    }
+  }
+}
+
 .PipeLink {
-  @extend .display-flex;
-  @extend .flex-center;
-  height: 42px;
-  width: 42px;
-  border: 1px solid var(--border);
-  @include border-radius($border-radius);
-  color: var(--border);
+  width: 100%;
+  display: block;
+  padding: 10px;
+  @include border-radius($border-radius / 2);
+  @extend .bsbb;
+  &:hover {
+    background: var(--background);
+  }
+}
+
+.FooterLnk {
+  font-size: 0.8em;
+  text-align: right;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  color: var(--text-color-secondary);
   &:hover {
     color: $blue;
-    border: 1px solid var(--text-color);
   }
 }

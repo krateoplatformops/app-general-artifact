@@ -12,35 +12,45 @@ const Pipeline = ({ pipeline, runs }) => (
         <Stats runs={runs} />
       </li>
       <li className={css.LiRuns}>
-        {runs.map((r) => (
-          <ul key={r.id} className={css.UlRun}>
-            <li style={{ color: uiHelper.colorByStatus(r.status) }}>
-              <i className='fa-solid fa-circle'></i>
-            </li>
-            <li className={css.LiRunInfo}>
-              <ul className={css.InfoHeader}>
-                <li>id: {r.id}</li>
-                <li>{timeHelper.dateToFormat(r.time)}</li>
-              </ul>
-              <ul className={css.InfoBody}>
-                <li> {r.message}</li>
-                <li>{timeHelper.fromNow(r.time)}</li>
-              </ul>
-            </li>
-            <li>
+        <ul className={css.RunsList}>
+          {runs.map((r) => (
+            <li key={r.id}>
               <a
                 href={r.url}
                 target='_blank'
                 rel='noreferrer'
                 className={css.PipeLink}
               >
-                <i className='fa-solid fa-arrow-up-right-from-square'></i>
+                <ul className={css.UlRun}>
+                  <li style={{ color: uiHelper.colorByStatus(r.status) }}>
+                    <i className='fa-solid fa-circle'></i>
+                  </li>
+                  <li className={css.LiRunInfo}>
+                    <ul className={css.InfoHeader}>
+                      <li>id: {r.id}</li>
+                      <li>{timeHelper.dateToFormat(r.time)}</li>
+                    </ul>
+                    <ul className={css.InfoBody}>
+                      <li> {r.message}</li>
+                      <li>{timeHelper.fromNow(r.time)}</li>
+                    </ul>
+                  </li>
+                </ul>
               </a>
             </li>
-          </ul>
-        ))}
+          ))}
+        </ul>
       </li>
     </ul>
+
+    <a
+      href={pipeline.repository}
+      target='_blank'
+      rel='noreferrer'
+      className={css.FooterLnk}
+    >
+      {pipeline.repository}
+    </a>
   </Card>
 )
 
