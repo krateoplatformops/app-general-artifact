@@ -27,7 +27,12 @@ const Events = ({ deploy, log }) => {
   return (
     <React.Fragment>
       <LocalSearch
-        buttons={[{ action: reloadLogs, icon: 'fa-solid fa-rotate' }]}
+        buttons={[
+          {
+            action: reloadLogs,
+            icon: `fa-solid fa-rotate ${log.loading && 'fa-spin'}`
+          }
+        ]}
       >
         <input
           type='text'
