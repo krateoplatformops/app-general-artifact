@@ -58,7 +58,7 @@ const CatchAll = ({ deploy, params, plugin }) => {
       )
   }, [dispatch, pKey])
 
-  if (!plugin.data[pKey]) {
+  if (!plugin.data[pKey] && plugin.loader) {
     return <Loader />
   }
 
@@ -83,7 +83,7 @@ const CatchAll = ({ deploy, params, plugin }) => {
         <Kubernetes plugin={pp} deploy={deploy} content={plugin.data[pKey]} />
       )
     default:
-      return <Error message={`Unsupported pp type: ${pp.type}`} />
+      return <Error message={`Unsupported plugin type: ${pp.type}`} />
   }
 }
 
