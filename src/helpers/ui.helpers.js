@@ -16,6 +16,12 @@ const colorByStatus = (status) => {
   return uiConstants.CHART_COLORS.purple
 }
 
+const colorByWord = (word) => {
+  const index = word.length % Object.keys(uiConstants.CHART_COLORS).length
+  return uiConstants.CHART_COLORS[Object.keys(uiConstants.CHART_COLORS)[index]]
+}
+
 export const uiHelper = {
-  colorByStatus
+  colorByStatus,
+  colorByWord
 }

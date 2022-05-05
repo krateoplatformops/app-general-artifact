@@ -16,7 +16,7 @@ export default function socket(state = initialState, action) {
       return {
         ...state,
         subscriptions: state.subscriptions.filter((n) => n !== action.payload),
-        events: state.events.filter((n) => n.transactionId !== action.payload)
+        events: state.events.filter((n) => n.deploymentId !== action.payload)
       }
     case socketConstants.SOCKET_RECEIVED:
       return {

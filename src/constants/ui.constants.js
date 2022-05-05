@@ -167,6 +167,84 @@ export const uiConstants = {
     purple: 'rgb(153, 102, 255)',
     grey: 'rgb(201, 203, 207)'
   },
+  kubernetesResources: [
+    {
+      kind: 'pod',
+      icon: 'pod'
+    },
+    {
+      kind: 'service',
+      icon: 'svc'
+    },
+    {
+      kind: 'ingress',
+      icon: 'ing'
+    },
+    {
+      kind: 'secret',
+      icon: 'secret'
+    },
+    {
+      kind: 'configmap',
+      icon: 'cm'
+    },
+    {
+      kind: 'deployment',
+      icon: 'deploy'
+    },
+    {
+      kind: 'statefulset',
+      icon: 'sts'
+    },
+    {
+      kind: 'daemonset',
+      icon: 'ds'
+    },
+    {
+      kind: 'job',
+      icon: 'job'
+    },
+    {
+      kind: 'cronjob',
+      icon: 'cronjob'
+    },
+    {
+      kind: 'networkpolicy',
+      icon: 'netpol'
+    },
+    {
+      kind: 'persistentvolumeclaim',
+      icon: 'pvc'
+    },
+    {
+      kind: 'persistentvolume',
+      icon: 'pv'
+    },
+    {
+      kind: 'storageclass',
+      icon: 'sc'
+    },
+    {
+      kind: 'clusterrole',
+      icon: 'c-role'
+    },
+    {
+      kind: 'clusterrolebinding',
+      icon: 'crb'
+    },
+    {
+      kind: 'role',
+      icon: 'role'
+    },
+    {
+      kind: 'rolebinding',
+      icon: 'rb'
+    },
+    {
+      kind: 'customresourcedefinition',
+      icon: 'crd'
+    }
+  ],
   icons: [
     'fa-solid fa-0',
     'fa-solid fa-1',

@@ -8,6 +8,7 @@ import ArgoCD from './ArgoCD/ArgoCD'
 import Documentation from './Documentation/Documentation'
 import Loader from '../../../../UI/Loader/Loader'
 import Pipelines from './Pipelines/Pipelines'
+import Kubernetes from './Kubernetes/Kubernetes'
 
 const CatchAll = ({ deploy, params, plugin }) => {
   const dispatch = useDispatch()
@@ -39,19 +40,23 @@ const CatchAll = ({ deploy, params, plugin }) => {
 
   useEffect(() => {
     let url = `${uris.apiBase}${uris.deployment}/${deploy._id}/plugins/${pp.type}/${pp.name}`
+
     dispatch(
       pluginFetch({
         url,
         key: pKey
       })
     )
+  }, [deploy._id, dispatch, pKey, pp])
+
+  useEffect(() => {
     return () =>
       dispatch(
         pluginDeleteKey({
           key: pKey
         })
       )
-  }, [deploy._id, dispatch, pKey, pp])
+  }, [dispatch, pKey])
 
   if (!plugin.data[pKey]) {
     return <Loader />
@@ -72,6 +77,10 @@ const CatchAll = ({ deploy, params, plugin }) => {
           detailsContent={plugin.data[detailsKey]}
           detailsClearHandler={detailsClearHandler}
         />
+      )
+    case 'kubernetes':
+      return (
+        <Kubernetes plugin={pp} deploy={deploy} content={plugin.data[pKey]} />
       )
     default:
       return <Error message={`Unsupported pp type: ${pp.type}`} />

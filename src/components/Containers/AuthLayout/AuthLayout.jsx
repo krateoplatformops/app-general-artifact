@@ -9,6 +9,7 @@ import TopNav from './TopNav/TopNav'
 import { UserContext } from '../../Context/UserContext'
 import NotificationBar from './NotificationBar/NotificationBar'
 import LoadComponents from './LoadComponents/LoadComponents'
+import ScrollTop from './ScrollTop/ScrollTop'
 
 const AuthLayout = () => {
   const { menuOpen } = useContext(UserContext)
@@ -23,6 +24,7 @@ const AuthLayout = () => {
         <Outlet />
       </div>
       <LoadComponents />
+      <ScrollTop />
     </Fragment>
   )
 }

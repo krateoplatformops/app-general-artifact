@@ -1,0 +1,32 @@
+@import '../../../../../../styles/colors';
+@import '../../../../../../styles/colors';
+@import '../../../../../../styles/common';
+
+.LeftInfos {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  > li {
+    width: 50%;
+    &:first-of-type {
+      margin-right: 20px;
+    }
+  }
+}
+
+.AnchorLink {
+  @extend .common-lnk;
+  text-transform: capitalize;
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-center-start;
+  img {
+    height: 20px;
+    margin-right: 10px;
+  }
+}
+
+.Container {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}

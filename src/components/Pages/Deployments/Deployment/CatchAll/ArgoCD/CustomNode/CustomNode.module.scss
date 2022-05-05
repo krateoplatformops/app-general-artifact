@@ -3,7 +3,7 @@
 
 .CustomNode {
   width: 200px;
-  height: 70px;
+  height: 80px;
   background: var(--input-bkg);
   @include border-radius($border-radius / 2);
   @extend .bsbb;
@@ -18,7 +18,11 @@
 .LiIcon {
   margin-bottom: 5px;
   font-size: 0.8em;
-  i {
+  @extend .flex-direction-row;
+  @extend .display-flex;
+  @extend .flex-center-start;
+  img {
+    width: 20px;
     margin-right: 10px;
   }
 }
@@ -28,26 +32,18 @@
   font-size: 0.8em;
 }
 
-.Unknown {
-  i {
-    color: var(--border);
-  }
-}
+// .Unknown {
+//   // color: var(--border);
+// }
 
 .Progressing {
-  i {
-    color: $orange;
-  }
+  background: rgba($orange, 0.5);
 }
 
-.Healthy {
-  i {
-    color: $green;
-  }
-}
+// .Healthy {
+//   // background: rgba($green, 0.5);
+// }
 
 .Unhealthy {
-  i {
-    color: $red;
-  }
+  background: rgba($red, 0.5);
 }

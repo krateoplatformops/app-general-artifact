@@ -11,6 +11,10 @@ const CustomNode = ({ id, data, isConnectable }) => {
     }
   }
 
+  const icon = require(`../../../../../../../assets/kubernetes/${flowHelper.resourceIcon(
+    data.kind
+  )}.svg`)
+
   return (
     <React.Fragment>
       <Handle
@@ -20,11 +24,14 @@ const CustomNode = ({ id, data, isConnectable }) => {
         style={{ background: 'var(--border)' }}
         isConnectable={isConnectable}
       />
-      <ul className={css.CustomNode} onClick={nodeClickHandler}>
-        <li
-          className={`${css.LiIcon} ${css[flowHelper.iconColor(data.health)]}`}
-        >
-          <i className={`fa-solid ${flowHelper.resourceIcon(data.kind)}`}></i>
+      <ul
+        className={`${css.CustomNode} ${
+          css[flowHelper.iconColor(data.health)]
+        }`}
+        onClick={nodeClickHandler}
+      >
+        <li className={css.LiIcon}>
+          <img src={icon} alt={data.kind} />
           <b>{data.kind}</b>
         </li>
         <li className={css.LiName}>{data.name}</li>

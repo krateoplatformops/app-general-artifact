@@ -9,6 +9,11 @@ const initialState = {
 export default function plugin(state = initialState, action) {
   switch (action.type) {
     case pluginConstants.PLUGIN_FETCH:
+      if (state.data[action.payload.key]) {
+        return {
+          ...state
+        }
+      }
       const dataLoad = { ...state.data }
       delete dataLoad[action.payload.key]
       return {

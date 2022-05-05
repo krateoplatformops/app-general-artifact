@@ -1,0 +1,98 @@
+@import '../../../../../../../styles/colors';
+@import '../../../../../../../styles/mixin';
+
+.ResourcesList {
+  > li {
+    &:not(:last-of-type) {
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      border-bottom: 1px solid var(--border);
+    }
+  }
+}
+
+.BtnDetails {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  @include border-radius($border-radius / 2);
+  @extend .bsbb;
+  &:hover {
+    background: var(--background);
+  }
+  &:not(:last-of-type) {
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+.UlResource {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  > li {
+    img {
+      width: 40px;
+    }
+    &:not(:last-of-type) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.LiResInfo {
+  @extend .flex-direction-column;
+  width: 100%;
+}
+
+.InfoBody {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  width: 100%;
+  li {
+    &:first-of-type {
+      width: 100%;
+      text-align: left;
+    }
+    &:last-of-type {
+      text-align: right;
+      white-space: nowrap;
+      margin-left: 10px;
+    }
+  }
+}
+
+.InfoHeader {
+  @extend .InfoBody;
+  font-size: 0.8em;
+  color: var(--text-color-secondary);
+  margin-bottom: 10px;
+  li {
+    text-align: left;
+  }
+}
+
+.StatusArray {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8em;
+  width: 100%;
+  text-align: right;
+  margin-top: 10px;
+  span {
+    &:not(:last-of-type) {
+      margin-right: 10px;
+    }
+    &[running],
+    &[succeeded] {
+      color: $green;
+    }
+    &[waiting],
+    &[pending] {
+      color: $orange;
+    }
+    &[terminated],
+    &[failed] {
+      color: $red;
+    }
+  }
+}

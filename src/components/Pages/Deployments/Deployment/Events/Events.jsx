@@ -11,13 +11,13 @@ const Events = ({ deploy, log }) => {
 
   const reloadLogs = () => {
     dispatch(
-      logFetch({ key: deploy._id, params: { transactionId: deploy._id } })
+      logFetch({ key: deploy._id, params: { deploymentId: deploy._id } })
     )
   }
 
   useEffect(() => {
     dispatch(
-      logFetch({ key: deploy._id, params: { transactionId: deploy._id } })
+      logFetch({ key: deploy._id, params: { deploymentId: deploy._id } })
     )
     return () => {
       logDeleteKey({ key: deploy._id })

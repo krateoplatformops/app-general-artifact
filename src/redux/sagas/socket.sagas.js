@@ -28,11 +28,11 @@ export function* socketSubscribeSaga(action) {
     while (true) {
       const event = yield take(listener)
 
-      if (event.transactionId) {
+      if (event.deploymentId) {
         // refresh logs
-        yield put(logFetch({ key: event.transactionId, params: event }))
+        yield put(logFetch({ key: event.deploymentId, params: event }))
         // refresh deployment
-        yield put(deploymentSingleLoad({ _id: event.transactionId }))
+        yield put(deploymentSingleLoad({ _id: event.deploymentId }))
       }
 
       yield put(socketReceived(event))

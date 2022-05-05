@@ -5,6 +5,10 @@ const currentTime = () => {
   return moment().utc().unix()
 }
 
+const dateGenToFormat = (date) => {
+  return moment(date).format(uiConstants.dateTimeSecFormat)
+}
+
 const dateToFormat = (date) => {
   return moment.unix(date).format(uiConstants.dateTimeSecFormat)
 }
@@ -75,6 +79,11 @@ const fromNow = (input) => {
   return moment.unix(input).fromNow()
 }
 
+const fromNowGen = (input) => {
+  if (input === '' || !input) return null
+  return moment(input).fromNow()
+}
+
 export const timeHelper = {
   currentTime,
   dateToFormat,
@@ -85,5 +94,7 @@ export const timeHelper = {
   setInputDate,
   dateToEpochStartDay,
   dateToEpochEndDay,
-  fromNow
+  fromNow,
+  dateGenToFormat,
+  fromNowGen
 }

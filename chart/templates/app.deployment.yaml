@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         component: app
+        app: krateo.io
     spec:
       containers:
         - name: app

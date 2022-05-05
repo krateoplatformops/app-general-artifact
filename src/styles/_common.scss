@@ -71,6 +71,20 @@
   }
 }
 
+.ul-fourty-sixty-view {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  .li-menu {
+    min-width: 40%;
+    max-width: 40%;
+  }
+  .li-content {
+    padding-left: 20px;
+    @extend .bsbb;
+    width: 100%;
+  }
+}
+
 .common-lnk {
   @extend .display-flex;
   padding: 5px;
