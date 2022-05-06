@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
 import {
@@ -48,12 +48,6 @@ const Endpoints = ({ endpoint }) => {
     setShowAddModal(false)
     dispatch(endpointCreate(data))
   }
-
-  useEffect(() => {
-    if (!endpoint.result && !endpoint.skeletonLoading) {
-      dispatch(endpointLoad())
-    }
-  }, [dispatch, endpoint])
 
   return (
     <React.Fragment>

@@ -13,6 +13,10 @@ const dateToFormat = (date) => {
   return moment.unix(date).format(uiConstants.dateTimeSecFormat)
 }
 
+const dateToDayFormat = (date) => {
+  return moment.unix(date).format(uiConstants.timeToDateInput)
+}
+
 const duration = (duration) => {
   var hh = Math.floor(duration / 3600)
   var mm = Math.floor(duration / 60)
@@ -96,5 +100,6 @@ export const timeHelper = {
   dateToEpochEndDay,
   fromNow,
   dateGenToFormat,
-  fromNowGen
+  fromNowGen,
+  dateToDayFormat
 }

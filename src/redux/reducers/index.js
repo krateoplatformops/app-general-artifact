@@ -13,6 +13,7 @@ import proxy from './proxy.reducer'
 import endpoint from './endpoint.reducer'
 import plugin from './plugin.reducer'
 import log from './log.reducer'
+import dashboard from './dashboard.reducer'
 
 const rootReducer = combineReducers({
   notify,
@@ -27,7 +28,8 @@ const rootReducer = combineReducers({
   proxy,
   endpoint,
   plugin,
-  log
+  log,
+  dashboard
 })
 
 export default rootReducer

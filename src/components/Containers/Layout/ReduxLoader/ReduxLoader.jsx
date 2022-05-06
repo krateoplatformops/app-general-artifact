@@ -10,7 +10,8 @@ const ReduxLoader = (props) => {
     props.deployment.loading ||
     props.template.loading ||
     props.proxy.loading ||
-    props.plugin.loading ? (
+    props.plugin.loading ||
+    props.dashboard.loading ? (
     <PageLoader />
   ) : (
     <React.Fragment />

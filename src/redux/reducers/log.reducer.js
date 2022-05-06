@@ -11,7 +11,8 @@ export default function log(state = initialState, action) {
     case logConstants.LOG_FETCH:
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: null
       }
     case logConstants.LOG_FETCH_SUCCESS:
       const dataLoadSuccess = { ...state.data }

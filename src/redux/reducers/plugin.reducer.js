@@ -11,7 +11,8 @@ export default function plugin(state = initialState, action) {
     case pluginConstants.PLUGIN_FETCH:
       if (state.data[action.payload.key]) {
         return {
-          ...state
+          ...state,
+          error: null
         }
       }
       const dataLoad = { ...state.data }
@@ -19,7 +20,8 @@ export default function plugin(state = initialState, action) {
       return {
         ...state,
         data: dataLoad,
-        loading: true
+        loading: true,
+        error: null
       }
     case pluginConstants.PLUGIN_FETCH_SUCCESS:
       const dataLoadSuccess = { ...state.data }

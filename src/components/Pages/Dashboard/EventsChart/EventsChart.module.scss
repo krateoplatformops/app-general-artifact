@@ -1,0 +1,15 @@
+@import '../../../../styles/_colors';
+@import '../../../../styles/_mixin';
+
+.Container {
+  margin-top: 20px;
+  @include border-radius($border-radius);
+  background: var(--card);
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+
+.Title {
+  margin-bottom: 20px;
+  font-weight: 600;
+}

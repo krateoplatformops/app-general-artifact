@@ -10,7 +10,8 @@ import {
   proxyConstants,
   endpointConstants,
   pluginConstants,
-  logConstants
+  logConstants,
+  dashboardConstants
 } from '../constants'
 
 import { configLoadSaga } from './config.sagas'
@@ -33,6 +34,7 @@ import {
 } from './endpoint.sagas'
 import { pluginFetchSaga } from './plugin.sagas'
 import { logFetchSaga } from './log.sagas'
+import { dashboardLoadSaga } from './dashboard.sagas'
 
 export function* watchConfig() {
   yield takeEvery(configConstants.CONFIG_LOAD, configLoadSaga)
@@ -86,4 +88,8 @@ export function* watchPlugin() {
 
 export function* watchLog() {
   yield takeEvery(logConstants.LOG_FETCH, logFetchSaga)
+}
+
+export function* watchDashboard() {
+  yield takeEvery(dashboardConstants.DASHBOARD_LOAD, dashboardLoadSaga)
 }

@@ -15,7 +15,8 @@ export default function endpoint(state = initialState, action) {
         ...state,
         skeletonLoading: true,
         result: false,
-        list: null
+        list: null,
+        error: null
       }
     case endpointConstants.ENDPOINT_LOAD_SUCCESS:
       return {

@@ -1,0 +1,59 @@
+@import '../../../../styles/_colors';
+@import '../../../../styles/_mixin';
+
+.Card {
+  background: var(--card);
+  width: 100%;
+  @include border-radius($border-radius);
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  overflow: hidden;
+}
+
+.UlHeader {
+  @extend .bsbb;
+  padding: 20px;
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  width: 100%;
+  li {
+    @extend .display-flex;
+    @extend .flex-center-start;
+    font-size: 4em;
+
+    &:first-of-type {
+      margin-right: 20px;
+      width: auto;
+    }
+    &:last-of-type {
+      width: 100%;
+    }
+  }
+}
+
+.Title {
+  @extend .bsbb;
+  padding: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+@mixin npt($name, $color) {
+  .#{$name} {
+    ul {
+      color: $color;
+      background: rgba($color, 0.1);
+    }
+    div {
+      background: rgba($color, 1);
+      color: $white;
+    }
+  }
+}
+
+@include npt('Green', $green);
+@include npt('Orange', $orange);
+@include npt('Red', $red);
+@include npt('Blue', $blue);
+@include npt('Violet', $violet);
+@include npt('Yellow', $yellow);

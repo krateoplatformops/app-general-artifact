@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import { templateLoad, deploymentLoad } from '../../../../redux/actions'
+import {
+  templateLoad,
+  deploymentLoad,
+  endpointLoad,
+  dashboardLoad
+} from '../../../../redux/actions'
 
 const LoadComponents = (props) => {
   const dispatch = useDispatch()
@@ -17,6 +22,18 @@ const LoadComponents = (props) => {
       dispatch(deploymentLoad())
     }
   }, [dispatch, props.deployment])
+
+  useEffect(() => {
+    if (!props.endpoint.result && !props.endpoint.skeletonLoading) {
+      dispatch(endpointLoad())
+    }
+  }, [dispatch, props.endpoint])
+
+  useEffect(() => {
+    if (!props.dashboard.result && !props.dashboard.loading) {
+      dispatch(dashboardLoad())
+    }
+  }, [dispatch, props.dashboard])
 
   return <React.Fragment />
 }

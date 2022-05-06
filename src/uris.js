@@ -10,7 +10,8 @@ const uris = {
   socket: window.runConfig.socketUrl,
   proxy: 'proxy',
   endpoint: 'endpoint',
-  log: 'log'
+  log: 'log',
+  dashboard: 'dashboard'
 }
 
 export default uris

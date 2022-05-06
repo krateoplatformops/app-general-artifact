@@ -14,7 +14,8 @@ export default function proxy(state = initialState, action) {
       return {
         ...state,
         data: dataLoad,
-        loading: true
+        loading: true,
+        error: null
       }
     case proxyConstants.PROXY_FETCH_SUCCESS:
       const dataLoadSuccess = { ...state.data }

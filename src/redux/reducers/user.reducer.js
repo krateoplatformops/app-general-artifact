@@ -15,7 +15,8 @@ export default function user(state = initialState, action) {
         ...state,
         init: true,
         loading: true,
-        profile: null
+        profile: null,
+        error: null
       }
     case userConstants.USER_LOAD_PROFILE_SUCCESS:
       return {

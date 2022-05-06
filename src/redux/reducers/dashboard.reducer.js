@@ -1,34 +1,36 @@
-import { registerConstants } from '../constants'
+import { dashboardConstants } from '../constants'
 
 const initialState = {
   loading: false,
   error: null,
+  list: null,
   result: false
 }
 
-export default function register(state = initialState, action) {
+export default function dashboard(state = initialState, action) {
   switch (action.type) {
-    case registerConstants.REGISTER_IMPORT:
+    case dashboardConstants.DASHBOARD_LOAD:
       return {
         ...state,
         loading: true,
         result: false,
-        error: null
+        list: null
       }
-    case registerConstants.REGISTER_IMPORT_SUCCESS:
+    case dashboardConstants.DASHBOARD_LOAD_SUCCESS:
       return {
         ...state,
         result: true,
+        list: action.payload,
         loading: false
       }
-    case registerConstants.REGISTER_IMPORT_FAILURE:
+    case dashboardConstants.DASHBOARD_LOAD_FAILURE:
       return {
         ...state,
         loading: false,
         result: true,
         error: action.payload
       }
-    case registerConstants.REGISTER_RESET:
+    case dashboardConstants.DASHBOARD_RESET:
       return {
         ...initialState
       }

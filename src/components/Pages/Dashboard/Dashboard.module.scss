@@ -1,0 +1,59 @@
+@import '../../../styles/_colors';
+@import '../../../styles/_mixin';
+
+.UlCards {
+  @extend .display-flex;
+  @include flex-direction-column;
+
+  @media screen and (min-width: 768px) {
+    @include flex-direction-row;
+  }
+
+  > li {
+    @extend .bsbb;
+    width: 100%;
+    padding: 10px 0;
+    &:first-of-type {
+      padding: 0 0 10px 0;
+    }
+    &:last-of-type {
+      padding: 10px 0 0 0;
+    }
+    @media screen and (min-width: 768px) {
+      padding: 0 10px;
+      &:first-of-type {
+        padding: 0 10px 0 0;
+      }
+      &:last-of-type {
+        padding: 0 0 0 10px;
+      }
+    }
+  }
+}
+
+.UlCharts {
+  @extend .display-flex;
+  @include flex-direction-column;
+
+  @media screen and (min-width: 768px) {
+    @include flex-direction-row;
+  }
+  > li {
+    @extend .bsbb;
+    width: 100%;
+    padding: 0 0 10px 0;
+    &:not(:last-of-type) {
+      padding: 0;
+    }
+
+    @media screen and (min-width: 768px) {
+      width: 50%;
+      &:nth-child(2n) {
+        padding: 0 0 0 10px;
+      }
+      &:nth-child(2n + 1) {
+        padding: 0 10px 0 0;
+      }
+    }
+  }
+}

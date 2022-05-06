@@ -16,7 +16,8 @@ export default function deployment(state = initialState, action) {
         ...state,
         skeletonLoading: true,
         result: false,
-        list: null
+        list: null,
+        error: null
       }
     case deploymentConstants.DEPLOYMENT_SINGLE_LOAD:
       return {

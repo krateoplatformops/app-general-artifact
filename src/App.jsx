@@ -13,6 +13,7 @@ import PageLoader from './components/UI/PageLoader/PageLoader'
 /* MOMENT */
 import moment from 'moment-timezone'
 import UserProvider from './components/Context/UserContext'
+import ErrorBoundary from './components/Containers/ErrorBoundary/ErrorBoundary'
 moment.tz.setDefault('UTC')
 
 const LoginLazy = lazy(() => import('./components/Pages/Login/Login'))
@@ -39,10 +40,24 @@ function App() {
               <Route element={<Layout />}>
                 <Route index element={<LoginLazy />} />
                 <Route element={<AuthLayout />}>
-                  <Route path='dashboard' element={<DashboardLazy />} />
+                  <Route
+                    path='dashboard'
+                    element={
+                      <ErrorBoundary>
+                        <DashboardLazy />
+                      </ErrorBoundary>
+                    }
+                  />
                   <Route path='deployments/*' element={<DeploymentsLazy />} />
                   <Route path='templates/*' element={<TemplatesLazy />} />
-                  <Route path='register' element={<RegisterLazy />} />
+                  <Route
+                    path='register'
+                    element={
+                      <ErrorBoundary>
+                        <RegisterLazy />
+                      </ErrorBoundary>
+                    }
+                  />
                   <Route path='settings/*' element={<SettingsLazy />} />
                 </Route>
                 <Route path='*' element={<NotFoundLazy history={history} />} />

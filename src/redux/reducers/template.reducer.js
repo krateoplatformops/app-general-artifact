@@ -15,7 +15,8 @@ export default function template(state = initialState, action) {
         ...state,
         skeletonLoading: true,
         result: false,
-        list: null
+        list: null,
+        error: null
       }
     case templateConstants.TEMPLATE_LOAD_SUCCESS:
       return {

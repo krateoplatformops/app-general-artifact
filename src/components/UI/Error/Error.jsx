@@ -2,10 +2,13 @@ import React from 'react'
 
 import css from './Error.module.scss'
 
-const Error = ({ message }) => (
+const Error = ({ message, stack }) => (
   <div className={css.ErrorContainer}>
-    <div className={css.Oops}>Oops!</div>
+    <div className={css.Glitch} data-content='Oops!'>
+      Oops!
+    </div>
     <span>{message ? message : 'Error'}</span>
+    {stack && <pre>{JSON.stringify(stack, null, 2)}</pre>}
   </div>
 )
 
