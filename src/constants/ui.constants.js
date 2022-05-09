@@ -54,6 +54,11 @@ export const uiConstants = {
       icon: 'fa-solid fa-puzzle-piece'
     },
     {
+      to: 'providers',
+      label: 'providers',
+      icon: 'fa-solid fa-screwdriver-wrench'
+    },
+    {
       to: 'register',
       label: 'register',
       icon: 'fa-solid fa-plus'

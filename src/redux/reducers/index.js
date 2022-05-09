@@ -14,6 +14,7 @@ import endpoint from './endpoint.reducer'
 import plugin from './plugin.reducer'
 import log from './log.reducer'
 import dashboard from './dashboard.reducer'
+import provider from './provider.reducer'
 
 const rootReducer = combineReducers({
   notify,
@@ -29,7 +30,8 @@ const rootReducer = combineReducers({
   endpoint,
   plugin,
   log,
-  dashboard
+  dashboard,
+  provider
 })
 
 export default rootReducer

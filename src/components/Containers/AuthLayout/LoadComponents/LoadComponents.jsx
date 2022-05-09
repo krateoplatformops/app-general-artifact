@@ -5,7 +5,8 @@ import {
   templateLoad,
   deploymentLoad,
   endpointLoad,
-  dashboardLoad
+  dashboardLoad,
+  providerLoad
 } from '../../../../redux/actions'
 
 const LoadComponents = (props) => {
@@ -34,6 +35,12 @@ const LoadComponents = (props) => {
       dispatch(dashboardLoad())
     }
   }, [dispatch, props.dashboard])
+
+  useEffect(() => {
+    if (!props.provider.result && !props.provider.skeletonLoading) {
+      dispatch(providerLoad())
+    }
+  }, [dispatch, props.provider])
 
   return <React.Fragment />
 }

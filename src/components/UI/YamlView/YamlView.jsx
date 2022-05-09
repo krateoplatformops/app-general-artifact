@@ -44,14 +44,6 @@ const YamlView = ({ yaml }) => {
           </span>
         )
       }
-      // if (x[x.length - 1] === "'" || x[x.length - 1] === '"') {
-      //   inString = false
-      //   return (
-      //     <span key={key} className={css.String}>
-      //       {x}
-      //     </span>
-      //   )
-      // }
       if (parseInt(x, 10).toString() === x) {
         return (
           <span key={key} className={css.Number}>
@@ -71,6 +63,7 @@ const YamlView = ({ yaml }) => {
         .map((line, i) => {
           return (
             <div key={i} className={css.Line}>
+              <span className={css.LineNumber}>{i + 1}</span>
               {parseLine(line)}
             </div>
           )

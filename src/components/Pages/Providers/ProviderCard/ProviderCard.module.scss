@@ -1,0 +1,76 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.Container {
+  &:not(:last-of-type) {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+.UlProvider {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  background: var(--card);
+  @include border-radius($border-radius);
+  // border: 1px solid var(--border);
+  @extend .bsbb;
+  padding: 20px;
+}
+
+.LiIcon {
+  img {
+    width: 80px;
+  }
+  border-right: 1px solid var(--border);
+  padding-right: 20px;
+  margin-right: 20px;
+}
+
+.LiInfo {
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  width: 100%;
+}
+
+.Kind {
+  font-size: 0.8em;
+  color: var(--text-color-secondary);
+}
+
+.Name {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.UlFooter {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-wrap;
+  width: 100%;
+  &:first-of-type {
+    margin-top: 10px;
+  }
+  &:not(:first-of-type) {
+    margin-top: 5px;
+  }
+  > li {
+    color: var(--text-color-secondary);
+    width: 50%;
+    font-size: 0.8em;
+    b {
+      margin-left: 10px;
+    }
+    &:nth-child(2n) {
+      text-align: right;
+    }
+  }
+}
+
+.Tags {
+  margin-top: 10px;
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}

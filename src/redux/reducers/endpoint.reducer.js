@@ -58,7 +58,6 @@ export default function endpoint(state = initialState, action) {
       return {
         ...initialState
       }
-
     default:
       return state
   }

@@ -11,7 +11,8 @@ const uris = {
   proxy: 'proxy',
   endpoint: 'endpoint',
   log: 'log',
-  dashboard: 'dashboard'
+  dashboard: 'dashboard',
+  provider: 'https://provider-registry.krateo.site'
 }
 
 export default uris

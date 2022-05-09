@@ -16,10 +16,15 @@
   padding: 2px 0;
 }
 
+.LineNumber {
+  margin-right: 10px;
+  color: var(--text-color-secondary);
+}
+
 .Space {
   @extend .display-flex;
   @extend .flex-center;
-  margin: 0 1px;
+  margin: 0 2px;
   font-size: 0.8em;
   color: rgba($blue, 0.1);
 }

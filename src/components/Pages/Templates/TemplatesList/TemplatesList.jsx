@@ -8,7 +8,7 @@ import css from './TemplatesList.module.scss'
 import TemplateSkeleton from './TemplateSkeleton/TemplateSkeleton'
 import DangerZone from '../../../UI/DangerZone/DangerZone'
 
-const TemplatesList = ({ template, ui }) => {
+const TemplatesList = ({ template }) => {
   const dispatch = useDispatch()
   const [search, setSearch] = useState('')
   const [showModal, setShowModal] = useState(false)
