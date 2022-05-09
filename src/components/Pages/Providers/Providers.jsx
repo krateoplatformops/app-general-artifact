@@ -31,15 +31,20 @@ const Providers = ({ provider }) => {
       {provider.skeletonLoading && <ProviderSkeleton />}
 
       {(provider.list || [])
-        // .filter((x) => {
-        //   return (
-        //     x.metadata.name.toLowerCase().indexOf(search) > -1 ||
-        //     x.metadata.annotations.title.toLowerCase().indexOf(search) > -1 ||
-        //     x.metadata.labels.tags.some(
-        //       (tag) => tag.toLowerCase().indexOf(search) > -1
-        //     )
-        //   )
-        // })
+        .filter((x) => {
+          return (
+            x.metadata.name.toLowerCase().indexOf(search) > -1 ||
+            x.metadata.annotations['meta.crossplane.io/keywords']
+              .toLowerCase()
+              .indexOf(search) > -1 ||
+            x.metadata.annotations['meta.crossplane.io/description']
+              .toLowerCase()
+              .indexOf(search) > -1 ||
+            x.metadata.annotations['meta.crossplane.io/maintainer']
+              .toLowerCase()
+              .indexOf(search) > -1
+          )
+        })
         .map((p, key) => (
           <ProviderCard p={p} key={key} />
         ))}
