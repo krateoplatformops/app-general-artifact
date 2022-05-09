@@ -18,7 +18,12 @@ const Providers = ({ provider }) => {
     <React.Fragment>
       <h1>Providers</h1>
       <LocalSearch
-        buttons={[{ action: reloadProviders, icon: 'fa-solid fa-rotate' }]}
+        buttons={[
+          {
+            action: reloadProviders,
+            icon: `fa-solid fa-rotate ${provider.skeletonLoading && 'fa-spin'}`
+          }
+        ]}
       >
         <input
           type='text'

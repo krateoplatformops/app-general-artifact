@@ -19,7 +19,14 @@ const DeploymentList = ({ deployment }) => {
     <React.Fragment>
       <h1>Deployments</h1>
       <LocalSearch
-        buttons={[{ action: reloadDeployments, icon: 'fa-solid fa-rotate' }]}
+        buttons={[
+          {
+            action: reloadDeployments,
+            icon: `fa-solid fa-rotate ${
+              deployment.skeletonLoading && 'fa-spin'
+            }`
+          }
+        ]}
       >
         <input
           type='text'

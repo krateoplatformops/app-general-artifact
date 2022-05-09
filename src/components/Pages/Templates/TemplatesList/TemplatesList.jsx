@@ -36,7 +36,12 @@ const TemplatesList = ({ template }) => {
     <React.Fragment>
       <h1>Templates</h1>
       <LocalSearch
-        buttons={[{ action: reloadTemplates, icon: 'fa-solid fa-rotate' }]}
+        buttons={[
+          {
+            action: reloadTemplates,
+            icon: `fa-solid fa-rotate ${template.skeletonLoading && 'fa-spin'}`
+          }
+        ]}
       >
         <input
           type='text'

@@ -10,6 +10,7 @@ import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
 import EndpointCard from './EndpointCard/EndpointCard'
 import DangerZone from '../../../UI/DangerZone/DangerZone'
 import AddEndpoint from './AddEndpoint/AddEndpoint'
+import EndpointSkeleton from './EndpointSkeleton/EndpointSkeleton'
 
 const Endpoints = ({ endpoint }) => {
   const dispatch = useDispatch()
@@ -54,7 +55,10 @@ const Endpoints = ({ endpoint }) => {
       <LocalSearch
         buttons={[
           { action: openAddModalHandler, icon: 'fa-solid fa-add' },
-          { action: reloadEndpointHandler, icon: 'fa-solid fa-rotate' }
+          {
+            action: reloadEndpointHandler,
+            icon: `fa-solid fa-rotate ${endpoint.skeletonLoading && 'fa-spin'}`
+          }
         ]}
       >
         <input
@@ -64,6 +68,8 @@ const Endpoints = ({ endpoint }) => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </LocalSearch>
+
+      {endpoint.skeletonLoading && <EndpointSkeleton />}
 
       {(endpoint.list || [])
         .filter((x) => {

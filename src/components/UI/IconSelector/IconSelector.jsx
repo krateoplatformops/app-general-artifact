@@ -36,7 +36,10 @@ const IconSelector = ({ watch, register, setValue }) => {
           </select>
         </li>
         <li className={css.LiShuffle}>
-          <button onClick={() => setValue('icon', shuffleIconHandler())}>
+          <button
+            type='button'
+            onClick={() => setValue('icon', shuffleIconHandler())}
+          >
             <i className='fa-solid fa-shuffle'></i>
           </button>
         </li>
