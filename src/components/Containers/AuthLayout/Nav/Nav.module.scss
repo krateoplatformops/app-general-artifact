@@ -12,7 +12,7 @@
   z-index: $zi-nav;
   background: var(--nav);
   border-right: 1px solid var(--border);
-  @include calc('height', '100% - 61px');
+  @include calc('height', '100% - 60px');
   @extend .bsbb;
   overflow: hidden;
   @include transition($menu-transition);
