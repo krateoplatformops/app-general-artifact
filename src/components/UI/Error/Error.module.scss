@@ -4,10 +4,6 @@
 .ErrorContainer {
   @extend .display-flex;
   @extend .flex-direction-column;
-  span {
-    font-size: 1.5em;
-    margin: 20px 0;
-  }
   pre {
     background: var(--card);
     padding: 10px;
@@ -19,7 +15,7 @@
 $background: var(--background);
 $foreground: var(--text-color);
 
-@mixin gitchText($offset, $text) {
+@mixin gitchText($offset, $text, $delay) {
   content: $text;
   position: absolute;
   left: $offset;
@@ -28,7 +24,7 @@ $foreground: var(--text-color);
   background-color: $background;
   color: $foreground;
   animation: glitch 2s infinite alternate-reverse;
-  animation-delay: 4s;
+  animation-delay: $delay;
 }
 
 .Glitch {
@@ -38,10 +34,22 @@ $foreground: var(--text-color);
   position: relative;
   font-size: 5em;
   &:after {
-    @include gitchText(2px, attr(data-content));
+    @include gitchText(2px, attr(data-content), 4s);
   }
   &:before {
-    @include gitchText(-2px, attr(data-content));
+    @include gitchText(-2px, attr(data-content), 4s);
+  }
+}
+
+.SmallGlitch {
+  @extend .Glitch;
+  font-size: 1.5em;
+  margin: 20px 0;
+  &:after {
+    @include gitchText(2px, attr(data-content), 5s);
+  }
+  &:before {
+    @include gitchText(-2px, attr(data-content), 5s);
   }
 }
 

@@ -7,7 +7,12 @@ const Error = ({ message, stack }) => (
     <div className={css.Glitch} data-content='Oops!'>
       Oops!
     </div>
-    <span>{message ? message : 'Error'}</span>
+    <span
+      className={css.SmallGlitch}
+      data-content={message ? message : 'Error'}
+    >
+      {message ? message : 'Error'}
+    </span>
     {stack && <pre>{JSON.stringify(stack, null, 2)}</pre>}
   </div>
 )
