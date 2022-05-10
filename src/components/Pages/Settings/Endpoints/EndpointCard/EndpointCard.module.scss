@@ -56,3 +56,12 @@
     border: 1px solid var(--text-color);
   }
 }
+
+.UlLabels {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-wrap;
+  li {
+    width: 50%;
+  }
+}

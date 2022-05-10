@@ -144,6 +144,7 @@ export const uiConstants = {
   endpointTypes: [
     {
       type: 'github',
+      category: 'git',
       fields: [
         {
           name: 'token',
@@ -154,6 +155,7 @@ export const uiConstants = {
     },
     {
       type: 'argocd',
+      category: 'argocd',
       fields: [
         {
           name: 'bearer',

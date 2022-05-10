@@ -20,7 +20,12 @@ const AddEndpoint = ({ closeModal, addEndpoint }) => {
   } = useForm({ mode: 'onChange' })
 
   const onSubmit = (data) => {
-    addEndpoint(data)
+    const payload = {
+      ...data,
+      category: uiConstants.endpointTypes.find((x) => x.type === data.type)
+        .category
+    }
+    addEndpoint(payload)
   }
 
   useEffect(() => {

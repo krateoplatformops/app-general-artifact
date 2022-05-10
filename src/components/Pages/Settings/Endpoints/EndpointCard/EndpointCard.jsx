@@ -15,9 +15,20 @@ const EndpointCard = ({ h, openModal }) => {
       </li>
       <li className={css.LiInfo}>
         <div className={css.Name}>{h.name}</div>
-        <Label title={'Type'}>{h.type}</Label>
-        <Label title={'Secret Name'}>{h.secretName}</Label>
-        <Label title={'Target'}>{h.target}</Label>
+        <ul className={css.UlLabels}>
+          <li>
+            <Label title={'Type'}>{h.type}</Label>
+          </li>
+          <li>
+            <Label title={'Target'}>{h.target}</Label>
+          </li>
+          <li>
+            <Label title={'Namespace'}>{h.namespace}</Label>
+          </li>
+          <li>
+            <Label title={'Secret Name'}>{h.secretName}</Label>
+          </li>
+        </ul>
       </li>
       <li>
         <button className={css.DeleteBtn} onClick={() => deleteHandler()}>
