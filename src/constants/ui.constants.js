@@ -76,27 +76,6 @@ export const uiConstants = {
       icon: 'fa-solid fa-file-lines',
       weight: 0
     },
-    // {
-    //   to: 'resources',
-    //   label: 'resources',
-    //   icon: 'fa-solid fa-network-wired',
-    //   weight: 1
-    // },
-    // {
-    //   to: 'prometheus',
-    //   label: 'prometheus',
-    //   icon: 'fa-solid fa-fire'
-    // },
-    // {
-    //   to: 'security',
-    //   label: 'security',
-    //   icon: 'fa-solid fa-shield'
-    // },
-    // {
-    //   to: 'costs',
-    //   label: 'costs',
-    //   icon: 'fa-solid fa-coins'
-    // },
     {
       to: 'events',
       label: 'events',
@@ -162,7 +141,28 @@ export const uiConstants = {
     resourceYaml: 'resourceYaml',
     prometheus: 'prometheus'
   },
-  endpointTypes: ['github', 'argocd'],
+  endpointTypes: [
+    {
+      type: 'github',
+      fields: [
+        {
+          name: 'token',
+          type: 'password',
+          description: 'Github token'
+        }
+      ]
+    },
+    {
+      type: 'argocd',
+      fields: [
+        {
+          name: 'bearer',
+          type: 'password',
+          description: 'ArgoCD bearer token'
+        }
+      ]
+    }
+  ],
   CHART_COLORS: {
     red: 'rgb(255, 99, 132)',
     yellow: 'rgb(255, 205, 86)',
