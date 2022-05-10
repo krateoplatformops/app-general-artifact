@@ -43,7 +43,8 @@ $foreground: var(--text-color);
 
 .SmallGlitch {
   @extend .Glitch;
-  font-size: 1.5em;
+  font-size: 2em;
+  line-height: 1em;
   margin: 20px 0;
   &:after {
     @include gitchText(2px, attr(data-content), 5s);

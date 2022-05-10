@@ -7,9 +7,11 @@ const Hamburger = () => {
   const { toggleMenu } = useContext(UserContext)
 
   return (
-    <button onClick={toggleMenu} className={css.Hamburger}>
-      <i className='fa-solid fa-bars'></i>
-    </button>
+    <div className={css.Container}>
+      <button onClick={toggleMenu} className={css.Hamburger}>
+        <i className='fa-solid fa-bars'></i>
+      </button>
+    </div>
   )
 }
 
