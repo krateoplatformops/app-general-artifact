@@ -1,6 +1,6 @@
 apiVersion: v2
-name: api-krateo
-description: Krateo PlatformOps Api
+name: app
+description: Krateo PlatformOps App
 type: application
 
 version: 0.1.0
