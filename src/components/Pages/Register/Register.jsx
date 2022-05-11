@@ -25,7 +25,7 @@ const Register = ({ endpoint }) => {
       <Card title='Register component'>
         <Label title='Endpoint name'>
           <select
-            {...register('endpoint', {
+            {...register('endpointName', {
               required: true
             })}
           >
