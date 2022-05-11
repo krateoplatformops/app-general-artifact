@@ -14,7 +14,9 @@ const EndpointCard = ({ h, openModal }) => {
         <i className={h.icon}></i>
       </li>
       <li className={css.LiInfo}>
-        <div className={css.Name}>{h.name}</div>
+        <Label title='Name'>
+          <div className={css.Name}>{h.name}</div>
+        </Label>
         <ul className={css.UlLabels}>
           <li>
             <Label title={'Type'}>{h.type}</Label>

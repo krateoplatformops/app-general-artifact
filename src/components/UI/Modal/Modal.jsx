@@ -41,6 +41,9 @@ const Modal = (props) => {
               close
             </button>
           </li>
+          {props.footerMessage && (
+            <li className={css.FooterMessage}>{props.footerMessage}</li>
+          )}
           {props.confirmButtonHandler && (
             <li>
               <input

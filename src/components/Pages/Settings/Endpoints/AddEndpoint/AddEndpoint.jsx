@@ -7,7 +7,7 @@ import IconSelector from '../../../../UI/IconSelector/IconSelector'
 import { uiConstants } from '../../../../../constants'
 import InputPassword from '../../../../UI/InputPassword/InputPassword'
 
-const AddEndpoint = ({ closeModal, addEndpoint }) => {
+const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
   const prevTypeRef = useRef()
   const {
     register,
@@ -44,6 +44,22 @@ const AddEndpoint = ({ closeModal, addEndpoint }) => {
     return () => subscription.unsubscribe()
   }, [unregister, watch])
 
+  const footerMessage = () => {
+    const name = getValues().name
+    const url = getValues().url
+    if (name !== '') {
+      if (list.filter((x) => x.name === name).length > 0) {
+        return 'An endpoint with this name already exists'
+      }
+    }
+    if (name !== '' && url !== '') {
+      if (list.filter((x) => x.name === name && x.url === url).length > 0) {
+        return 'An endpoint with this name and url already exists'
+      }
+    }
+    return null
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Modal
@@ -51,8 +67,9 @@ const AddEndpoint = ({ closeModal, addEndpoint }) => {
         confirmButtonHandler={onSubmit}
         isTypeSubmit={true}
         confirmButtonText={'Add endpoint'}
-        confirmDisabled={!isValid}
+        confirmDisabled={!isValid || footerMessage()}
         title={'Add endpoint'}
+        footerMessage={footerMessage()}
       >
         <IconSelector watch={watch} setValue={setValue} register={register} />
         <Label title={'Endpoint Name'} description={'Endpoint Name'}>

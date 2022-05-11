@@ -91,3 +91,12 @@
 .BtnConfirm {
   @extend .primary-button;
 }
+
+.FooterMessage {
+  width: 100%;
+  text-align: right;
+  @extend .bsbb;
+  padding: 0 10px;
+  color: $red;
+  font-size: 0.8em;
+}

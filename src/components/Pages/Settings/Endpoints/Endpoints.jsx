@@ -86,6 +86,7 @@ const Endpoints = ({ endpoint }) => {
         <AddEndpoint
           closeModal={closeAddModalHandler}
           addEndpoint={addEndpointHandler}
+          list={endpoint.list}
         />
       )}
 
