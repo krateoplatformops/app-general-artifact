@@ -16,13 +16,38 @@
   border-bottom: 1px solid var(--border);
 }
 
+.Icon {
+  min-width: 60px;
+  min-height: 60px;
+  @extend .display-flex;
+  @extend .flex-center;
+}
+
 .BtnIcons {
   color: var(--text-color-secondary);
   font-size: 20px;
-  padding: 10px;
-  min-width: 60px;
-  min-height: 60px;
+  min-width: 40px;
+  min-height: 40px;
+  @extend .display-flex;
+  @extend .flex-center;
+  border: 1px solid var(--border);
+  @include border-radius(50%);
   &:hover {
     color: var(--text-color);
+    i {
+      animation: shake 1s;
+    }
+  }
+}
+
+@keyframes shake {
+  30% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  90% {
+    transform: rotate(0deg);
   }
 }

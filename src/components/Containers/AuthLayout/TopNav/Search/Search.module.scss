@@ -1,6 +1,10 @@
 @import '../../../../../styles/colors';
 @import '../../../../../styles/mixin';
 
+.Form {
+  width: 100%;
+}
+
 .SearchContainer {
   width: 100%;
   @extend .bsbb;

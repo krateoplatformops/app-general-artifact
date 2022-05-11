@@ -42,9 +42,8 @@ const DeploymentList = ({ deployment }) => {
         .filter((x) => {
           return (
             x.claim.spec.name.toLowerCase().indexOf(search) > -1 ||
-            x.claim.dashboard.metadata.description
-              .toLowerCase()
-              .indexOf(search) > -1 ||
+            x.claim.spec.dashboard.description.toLowerCase().indexOf(search) >
+              -1 ||
             x.claim.spec.dashboard.tags.some(
               (tag) => tag.toLowerCase().indexOf(search) > -1
             )

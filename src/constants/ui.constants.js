@@ -5,6 +5,7 @@ export const uiConstants = {
   hourFormat: 'HH:mm',
   dayOfWeek: '0',
   timeToDateInput: 'YYYY-MM-DD',
+  routes: { search: 'search' },
   social: [
     {
       icon: 'fa-brands fa-github',

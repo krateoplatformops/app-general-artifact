@@ -34,7 +34,7 @@ export function* socketSubscribeSaga(action) {
         // refresh deployment
         yield put(deploymentSingleLoad({ _id: event.deploymentId }))
       }
-
+      // console.log(event)
       yield put(socketReceived(event))
     }
   } catch (error) {

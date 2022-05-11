@@ -32,6 +32,7 @@ const SettingsLazy = lazy(() => import('./components/Pages/Settings/Settings'))
 const ProvidersLazy = lazy(() =>
   import('./components/Pages/Providers/Providers')
 )
+const SearchLazy = lazy(() => import('./components/Pages/Search/Search'))
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
                     }
                   />
                   <Route path='settings/*' element={<SettingsLazy />} />
+                  <Route path='search/*' element={<SearchLazy />} />
                 </Route>
                 <Route path='*' element={<NotFoundLazy history={history} />} />
               </Route>

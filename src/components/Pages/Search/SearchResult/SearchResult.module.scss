@@ -1,0 +1,77 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.Link {
+  @extend .display-flex;
+  border: 1px solid var(--border);
+  @include border-radius($border-radius);
+  padding: 10px;
+  @extend .bsbb;
+  width: 100%;
+  background: var(--card);
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+  ul {
+    @extend .display-flex;
+    @extend .flex-direction-row;
+    width: 100%;
+    li {
+      &:not(:last-of-type) {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.LiIcon {
+  @extend .display-flex;
+  @extend .flex-center;
+  background: $blue;
+  color: $white;
+  @include border-radius(50%);
+  min-width: 60px;
+  min-height: 60px;
+  max-width: 60px;
+  max-height: 60px;
+  margin-right: 10px;
+  i {
+    font-size: 2em;
+  }
+}
+
+.LiInfo {
+  width: 100%;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+}
+
+.Name {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.Secondary {
+  color: var(--text-color-secondary);
+  margin-bottom: 10px;
+}
+
+.Tags {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}
+
+.LiKind {
+  span {
+    color: var(--text-color-secondary);
+    width: 100%;
+    @extend .display-flex;
+    @extend .flex-direction-row;
+    @extend .flex-center-end;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    i {
+      margin-left: 10px;
+    }
+  }
+}
