@@ -40,14 +40,7 @@ const DeploymentList = ({ deployment }) => {
 
       {(deployment.list || [])
         .filter((x) => {
-          return (
-            x.claim.spec.name.toLowerCase().indexOf(search) > -1 ||
-            x.claim.spec.dashboard.description.toLowerCase().indexOf(search) >
-              -1 ||
-            x.claim.spec.dashboard.tags.some(
-              (tag) => tag.toLowerCase().indexOf(search) > -1
-            )
-          )
+          return JSON.stringify(x).toLowerCase().indexOf(search) > -1
         })
         .map((d) => (
           <DeploymentCard key={d._id} d={d} />

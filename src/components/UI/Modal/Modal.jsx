@@ -29,6 +29,7 @@ const Modal = (props) => {
             <button
               className={css.CloseCross}
               onClick={props.closeButtonHandler}
+              type='button'
             >
               <i className='fa-solid fa-xmark'></i>
             </button>
@@ -37,7 +38,11 @@ const Modal = (props) => {
         </div>
         <ul className={css.UlBtns}>
           <li>
-            <button onClick={props.closeButtonHandler} className={css.BtnClose}>
+            <button
+              type='button'
+              onClick={props.closeButtonHandler}
+              className={css.BtnClose}
+            >
               close
             </button>
           </li>

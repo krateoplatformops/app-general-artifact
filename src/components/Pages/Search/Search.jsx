@@ -13,13 +13,7 @@ const Search = (props) => {
       <h1>Search: {q}</h1>
       {(props.deployment.list || [])
         .filter((x) => {
-          return (
-            x.claim.spec.name.toLowerCase().indexOf(q) > -1 ||
-            x.claim.spec.dashboard.description.toLowerCase().indexOf(q) > -1 ||
-            x.claim.spec.dashboard.tags.some(
-              (tag) => tag.toLowerCase().indexOf(q) > -1
-            )
-          )
+          return JSON.stringify(x).toLowerCase().indexOf(q) > -1
         })
         .map((x) => (
           <SearchResult
@@ -39,13 +33,7 @@ const Search = (props) => {
 
       {(props.template.list || [])
         .filter((x) => {
-          return (
-            x.metadata.name.toLowerCase().indexOf(q) > -1 ||
-            x.metadata.annotations.title.toLowerCase().indexOf(q) > -1 ||
-            x.metadata.labels.tags.some(
-              (tag) => tag.toLowerCase().indexOf(q) > -1
-            )
-          )
+          return JSON.stringify(x).toLowerCase().indexOf(q) > -1
         })
         .map((x) => (
           <SearchResult

@@ -24,6 +24,55 @@
 
 .LiSelectIcon {
   width: 100%;
+  position: relative;
+}
+
+.IconList {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  background: var(--card);
+  z-index: 1;
+  display: none;
+  input {
+    margin-bottom: 5px;
+  }
+}
+
+.Visible {
+  display: block;
+}
+
+.IconContainer {
+  // height: 200px;
+  max-height: 200px;
+  overflow: auto;
+  @include border-radius($border-radius);
+  @include box-shadow(0, 0, 10px, 0, rgba(black, 0.2));
+  padding: 10px;
+  @extend .bsbb;
+  @extend .display-flex;
+  // @extend .flex-direction-row;
+  // @extend .flex-center-start;
+  @extend .flex-wrap;
+  li {
+    max-height: 40px;
+    max-width: 40px;
+    button {
+      @extend .display-flex;
+      @extend .flex-center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--border);
+      // color: var(--border);
+      margin: 5px;
+      @include border-radius($border-radius / 2);
+      &:hover {
+        border: 1px solid var(--text-color-secondary);
+      }
+    }
+  }
 }
 
 .LiShuffle {

@@ -25,7 +25,8 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
       category: uiConstants.endpointTypes.find((x) => x.type === data.type)
         .category
     }
-    addEndpoint(payload)
+    console.log(payload)
+    // addEndpoint(payload)
   }
 
   useEffect(() => {
@@ -71,7 +72,12 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
         title={'Add endpoint'}
         footerMessage={footerMessage()}
       >
-        <IconSelector watch={watch} setValue={setValue} register={register} />
+        <IconSelector
+          watch={watch}
+          setValue={setValue}
+          getValues={getValues}
+          register={register}
+        />
         <Label title={'Endpoint Name'} description={'Endpoint Name'}>
           <input
             type={'text'}

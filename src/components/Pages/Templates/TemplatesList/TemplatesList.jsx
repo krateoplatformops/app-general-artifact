@@ -56,13 +56,7 @@ const TemplatesList = ({ template }) => {
       <div className={css.TemplateList}>
         {(template.list || [])
           .filter((x) => {
-            return (
-              x.metadata.name.toLowerCase().indexOf(search) > -1 ||
-              x.metadata.annotations.title.toLowerCase().indexOf(search) > -1 ||
-              x.metadata.labels.tags.some(
-                (tag) => tag.toLowerCase().indexOf(search) > -1
-              )
-            )
+            return JSON.stringify(x).toLowerCase().indexOf(search) > -1
           })
           .map((t) => (
             <TemplateCard t={t} key={t._id} openModal={openDeleteModal} />
