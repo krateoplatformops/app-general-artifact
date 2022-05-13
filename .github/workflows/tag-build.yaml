@@ -10,6 +10,9 @@ jobs:
     name: Create docker image
     runs-on: ubuntu-latest
     steps:
+      - name: Set tag
+        run: echo "::set-output name=VERSION_TAG::$(git describe --dirty --always --tags | sed 's/-/./2' | sed 's/-/./2' )"
+        id: tagger
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@master
