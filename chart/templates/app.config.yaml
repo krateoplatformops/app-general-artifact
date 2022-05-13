@@ -5,6 +5,6 @@ metadata:
 data:
   runtime-config.js: |
     window['runConfig'] = {
-      apiBaseUrl: '{{ .Values.api.baseUrl }}',
-      socketUrl: '{{ .Values.socket.baseUrl }}'
+      apiBaseUrl: '{{ .Values.app.uris.api }}',
+      socketUrl: '{{ .Values.app.uris.socket }}'
     }
