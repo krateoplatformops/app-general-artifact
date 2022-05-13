@@ -25,8 +25,7 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
       category: uiConstants.endpointTypes.find((x) => x.type === data.type)
         .category
     }
-    console.log(payload)
-    // addEndpoint(payload)
+    addEndpoint(payload)
   }
 
   useEffect(() => {
