@@ -1,9 +1,12 @@
 FROM node:14-alpine as react-build
 LABEL maintainer "Krateo <contact@krateoplatformops.io>"
 
+ARG VERSION
+
 WORKDIR /app
 COPY . ./
 RUN yarn
+RUN npm version $VERSION
 RUN yarn build
 
 # server environment
