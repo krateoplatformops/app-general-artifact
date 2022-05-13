@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 
 import Search from './Search/Search'
 import css from './TopNav.module.scss'
@@ -9,14 +9,15 @@ import { UserContext } from '../../../Context/UserContext'
 const TopNav = ({ socket }) => {
   const { toggleNotification } = useContext(UserContext)
 
-  // console.log(socket)
-
   return (
     <div className={css.TopNav}>
       <Brand />
       <Search />
       <div className={css.Icon}>
         <button className={css.BtnIcons} onClick={toggleNotification}>
+          {socket.events.filter((x) => !x.read).length > 0 && (
+            <span className={css.Unread}></span>
+          )}
           <i className='fa-solid fa-bell'></i>
         </button>
       </div>

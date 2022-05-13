@@ -4,17 +4,37 @@ import socketIOClient from 'socket.io-client'
 import uris from '../../uris'
 import {
   addNotification,
-  socketReceived,
+  socketInitError,
   logFetch,
-  deploymentSingleLoad
+  deploymentSingleLoad,
+  socketEvent
 } from '../actions'
 import { uiConstants } from '../../constants'
+import { securityHelper, timeHelper } from '../../helpers'
 
 const socket = socketIOClient(uris.socket)
 
-// socket.io.on('error', () => {
-//   console.log('socket error')
-// })
+export function* socketInitSaga() {
+  try {
+    const listener = eventChannel((emit) => {
+      socket.io.on('error', () => {
+        emit({ type: 'error' })
+      })
+      return () => socket.close()
+    })
+    while (true) {
+      const event = yield take(listener)
+      if (event.type === 'error') {
+        socket.disconnect()
+        yield put(socketInitError())
+      }
+    }
+  } catch (error) {
+    yield put(
+      addNotification(JSON.stringify(error), uiConstants.notification.error)
+    )
+  }
+}
 
 export function* socketSubscribeSaga(action) {
   try {
@@ -33,16 +53,21 @@ export function* socketSubscribeSaga(action) {
         yield put(logFetch({ key: event.deploymentId, params: event }))
         // refresh deployment
         yield put(deploymentSingleLoad({ _id: event.deploymentId }))
+      } else {
+        // this is a general event
+        yield put(
+          socketEvent({
+            ...event,
+            read: false,
+            id: securityHelper.guid(),
+            time: timeHelper.currentTime()
+          })
+        )
       }
-      // console.log(event)
-      yield put(socketReceived(event))
     }
   } catch (error) {
     yield put(
-      addNotification(
-        error.response.data.message,
-        uiConstants.notification.error
-      )
+      addNotification(JSON.stringify(error), uiConstants.notification.error)
     )
   }
 }
@@ -52,10 +77,7 @@ export function* socketUnsubscribeSaga(action) {
     socket.off(action.payload)
   } catch (error) {
     yield put(
-      addNotification(
-        error.response.data.message,
-        uiConstants.notification.error
-      )
+      addNotification(JSON.stringify(error), uiConstants.notification.error)
     )
   }
 }

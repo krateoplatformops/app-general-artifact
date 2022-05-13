@@ -19,7 +19,11 @@ import { configLoadSaga } from './config.sagas'
 import { userLoadProfileSaga } from './user.sagas'
 import { logoutSaga } from './auth.sagas'
 import { registerImportSaga } from './register.sagas'
-import { socketSubscribeSaga, socketUnsubscribeSaga } from './socket.sagas'
+import {
+  socketInitSaga,
+  socketSubscribeSaga,
+  socketUnsubscribeSaga
+} from './socket.sagas'
 import { templateLoadSaga, templateDeleteSaga } from './template.sagas'
 import {
   deploymentLoadSaga,
@@ -55,6 +59,7 @@ export function* watchRegister() {
 }
 
 export function* watchSocket() {
+  yield takeEvery(socketConstants.SOCKET_INIT, socketInitSaga)
   yield takeEvery(socketConstants.SOCKET_SUBSCRIBE, socketSubscribeSaga)
   yield takeEvery(socketConstants.SOCKET_UNSUBSCRIBE, socketUnsubscribeSaga)
 }

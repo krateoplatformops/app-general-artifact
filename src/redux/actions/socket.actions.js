@@ -1,5 +1,17 @@
 import { socketConstants } from '../constants'
 
+export const socketInit = () => {
+  return {
+    type: socketConstants.SOCKET_INIT
+  }
+}
+
+export const socketInitError = () => {
+  return {
+    type: socketConstants.SOCKET_INIT_ERROR
+  }
+}
+
 export const socketSubscribe = (payload) => {
   return {
     type: socketConstants.SOCKET_SUBSCRIBE,
@@ -14,9 +26,15 @@ export const socketUnsubscribe = (payload) => {
   }
 }
 
-export const socketReceived = (payload) => {
+export const socketEvent = (payload) => {
   return {
-    type: socketConstants.SOCKET_RECEIVED,
+    type: socketConstants.SOCKET_EVENT,
     payload
+  }
+}
+
+export const socketEventSetAllRead = () => {
+  return {
+    type: socketConstants.SOCKET_EVENT_SET_ALL_READ
   }
 }

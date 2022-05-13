@@ -6,11 +6,18 @@ import {
   deploymentLoad,
   endpointLoad,
   dashboardLoad,
-  providerLoad
+  providerLoad,
+  socketInit
 } from '../../../../redux/actions'
 
 const LoadComponents = (props) => {
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (!props.socket.init) {
+      dispatch(socketInit())
+    }
+  }, [dispatch, props.socket.init])
 
   useEffect(() => {
     if (!props.template.result && !props.template.skeletonLoading) {
