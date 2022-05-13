@@ -1,10 +1,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-app:
-  uris:
-    api: https://api.krateo.site
-    socket: https://socket.krateo.site
+uris:
+  api: https://api.krateo.site
+  socket: https://socket.krateo.site
 
 replicaCount: 1
 
