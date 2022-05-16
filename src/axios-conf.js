@@ -2,12 +2,12 @@ import axios from 'axios'
 import uris from './uris'
 import { store } from './redux/store'
 import { userReset, redirect } from './redux/actions'
-import { uiConstants } from './constants'
 
 const axiosInstance = axios.create()
 
 axiosInstance.defaults.baseURL = uris.apiBase
 axiosInstance.defaults.withCredentials = true
+// axiosInstance.defaults.timeout = 2000
 
 axiosInstance.interceptors.request.use(
   (config) => {
@@ -28,11 +28,11 @@ axiosInstance.interceptors.response.use(
     return response
   },
   (error) => {
-    if (!error.response) {
+    if (error.name === 'AxiosError') {
       const err = {
         response: {
           data: {
-            message: uiConstants.messages.network_error,
+            message: error.message,
             statusCode: 500
           }
         }

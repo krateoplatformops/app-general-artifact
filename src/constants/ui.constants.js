@@ -55,9 +55,9 @@ export const uiConstants = {
       icon: 'fa-solid fa-puzzle-piece'
     },
     {
-      to: 'providers',
-      label: 'providers',
-      icon: 'fa-solid fa-screwdriver-wrench'
+      to: 'packages',
+      label: 'packages',
+      icon: 'fa-solid fa-cube'
     },
     {
       to: 'register',
@@ -151,6 +151,17 @@ export const uiConstants = {
           name: 'token',
           type: 'password',
           description: 'Github token'
+        }
+      ]
+    },
+    {
+      type: 'bitbucket',
+      category: 'git',
+      fields: [
+        {
+          name: 'bearer',
+          type: 'password',
+          description: 'Bitbucket bearer token'
         }
       ]
     },

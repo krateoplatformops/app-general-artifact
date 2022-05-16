@@ -20,7 +20,7 @@ const uris = {
   endpoint: 'endpoint',
   log: 'log',
   dashboard: 'dashboard',
-  provider: 'https://provider-registry.krateo.site'
+  package: 'package'
 }
 
 export default uris

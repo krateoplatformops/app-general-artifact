@@ -1,4 +1,4 @@
-import { providerConstants } from '../constants'
+import { pkgConstants } from '../constants'
 
 const initialState = {
   loading: false,
@@ -8,9 +8,9 @@ const initialState = {
   result: false
 }
 
-export default function provider(state = initialState, action) {
+export default function pkg(state = initialState, action) {
   switch (action.type) {
-    case providerConstants.PROVIDER_LOAD:
+    case pkgConstants.PKG_LOAD:
       return {
         ...state,
         skeletonLoading: true,
@@ -18,14 +18,14 @@ export default function provider(state = initialState, action) {
         list: null,
         error: null
       }
-    case providerConstants.PROVIDER_LOAD_SUCCESS:
+    case pkgConstants.PKG_LOAD_SUCCESS:
       return {
         ...state,
         result: true,
-        list: action.payload.providers,
+        list: action.payload.items,
         skeletonLoading: false
       }
-    case providerConstants.PROVIDER_LOAD_FAILURE:
+    case pkgConstants.PKG_LOAD_FAILURE:
       return {
         ...state,
         loading: false,
@@ -33,7 +33,7 @@ export default function provider(state = initialState, action) {
         result: true,
         error: action.payload
       }
-    case providerConstants.PROVIDER_RESET:
+    case pkgConstants.PKG_RESET:
       return {
         ...initialState
       }
