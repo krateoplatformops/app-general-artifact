@@ -18,23 +18,19 @@ const Nav = ({ logoutHandler, profile }) => {
   return (
     <div className={`${css.NavContainer} ${menuOpen && css.IsOpen}`}>
       <ul className={css.UlNav}>
-        {uiConstants.nav
-          .filter(
-            (x) => (profile?.role === 'admin' && x.onlyAdmin) || !x.onlyAdmin
-          )
-          .map((l) => (
-            <li key={l.to}>
-              <NavLink
-                to={l.to}
-                className={({ isActive }) =>
-                  isActive ? css.NavLnkActive : css.NavLnk
-                }
-                onClick={beCollapsed}
-              >
-                <i className={l.icon}></i> {l.label}
-              </NavLink>
-            </li>
-          ))}
+        {uiConstants.nav.map((l) => (
+          <li key={l.to}>
+            <NavLink
+              to={l.to}
+              className={({ isActive }) =>
+                isActive ? css.NavLnkActive : css.NavLnk
+              }
+              onClick={beCollapsed}
+            >
+              <i className={l.icon}></i> {l.label}
+            </NavLink>
+          </li>
+        ))}
       </ul>
       <DarkLight />
     </div>

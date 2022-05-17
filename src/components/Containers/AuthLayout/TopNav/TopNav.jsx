@@ -13,14 +13,16 @@ const TopNav = ({ socket }) => {
     <div className={css.TopNav}>
       <Brand />
       <Search />
-      <div className={css.Icon}>
-        <button className={css.BtnIcons} onClick={toggleNotification}>
-          {socket.events.filter((x) => !x.read).length > 0 && (
-            <span className={css.Unread}></span>
-          )}
-          <i className='fa-solid fa-bell'></i>
-        </button>
-      </div>
+      {!socket.error && (
+        <div className={css.Icon}>
+          <button className={css.BtnIcons} onClick={toggleNotification}>
+            {socket.events.filter((x) => !x.read).length > 0 && (
+              <span className={css.Unread}></span>
+            )}
+            <i className='fa-solid fa-bell'></i>
+          </button>
+        </div>
+      )}
     </div>
   )
 }

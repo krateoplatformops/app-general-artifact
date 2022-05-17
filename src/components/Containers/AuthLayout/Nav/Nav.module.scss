@@ -4,7 +4,8 @@
 .NavContainer {
   position: fixed;
   top: 60px;
-  width: 0;
+  // width: 0;
+  left: -200px;
   @media screen and (min-width: 768px) {
     left: 0;
     width: 60px;
@@ -76,5 +77,6 @@
 
 .IsOpen {
   width: 200px;
+  left: 0;
   @include transition($menu-transition);
 }

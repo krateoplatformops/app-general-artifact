@@ -17,10 +17,11 @@
 }
 
 .Icon {
-  min-width: 60px;
+  min-width: 40px;
   min-height: 60px;
   @extend .display-flex;
   @extend .flex-center;
+  padding-right: 20px;
 }
 
 .BtnIcons {
