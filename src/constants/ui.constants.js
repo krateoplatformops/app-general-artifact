@@ -167,12 +167,23 @@ export const uiConstants = {
     },
     {
       type: 'argocd',
-      category: 'argocd',
+      category: 'delivery',
       fields: [
         {
           name: 'bearer',
           type: 'password',
           description: 'ArgoCD bearer token'
+        }
+      ]
+    },
+    {
+      type: 'keptn',
+      category: 'delivery',
+      fields: [
+        {
+          name: 'token',
+          type: 'password',
+          description: 'Keptn Api token'
         }
       ]
     }

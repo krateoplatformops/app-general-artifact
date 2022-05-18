@@ -96,8 +96,8 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
             {...register('target', {
               required: true,
               pattern: new RegExp(
-                '^((ftp|http|https):\\/\\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\\.[a-zA-Z]+)+((\\/)[\\w#]+)*(\\/\\w+\\?[a-zA-Z0-9_]+=\\w+(&[a-zA-Z0-9_]+=\\w+)*)?\\/?$',
-                'img'
+                '(http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?',
+                'gmi'
               )
             })}
           />

@@ -28,11 +28,12 @@ axiosInstance.interceptors.response.use(
     return response
   },
   (error) => {
+    console.log(error)
     if (error.name === 'AxiosError') {
       const err = {
         response: {
           data: {
-            message: error.message,
+            message: error.response.data.message || error.message,
             statusCode: 500
           }
         }

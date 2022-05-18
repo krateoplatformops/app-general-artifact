@@ -9,6 +9,7 @@ import Documentation from './Documentation/Documentation'
 import Loader from '../../../../UI/Loader/Loader'
 import Pipelines from './Pipelines/Pipelines'
 import Kubernetes from './Kubernetes/Kubernetes'
+import Keptn from './Keptn/Keptn'
 import ErrorBoundary from '../../../../Containers/ErrorBoundary/ErrorBoundary'
 
 const CatchAll = ({ deploy, params, plugin }) => {
@@ -22,12 +23,17 @@ const CatchAll = ({ deploy, params, plugin }) => {
   const pKey = pp ? `${pp.type}-${pp.name}` : null
 
   const detailsCallHandler = useCallback(
-    ({ url, key }) => {
-      setDetailsKey(key)
+    ({ url, key, method, data, message }) => {
+      if (key) {
+        setDetailsKey(key)
+      }
       dispatch(
         pluginFetch({
+          method: method || 'get',
           url,
-          key
+          data,
+          key,
+          message
         })
       )
     },
@@ -94,6 +100,15 @@ const CatchAll = ({ deploy, params, plugin }) => {
       case 'kubernetes':
         return (
           <Kubernetes plugin={pp} deploy={deploy} content={plugin.data[pKey]} />
+        )
+      case 'keptn':
+        return (
+          <Keptn
+            plugin={pp}
+            deploy={deploy}
+            content={plugin.data[pKey]}
+            detailsCallHandler={detailsCallHandler}
+          />
         )
       default:
         return <Error message={`Unsupported plugin type: ${pp.type}`} />

@@ -129,10 +129,15 @@ h2 {
   @include font-size(1.2em);
   margin-bottom: 20px;
   text-transform: capitalize;
-
+  color: $blue;
   &.mt {
     margin-top: 20px;
   }
+}
+
+hr {
+  border: 2px solid var(--border);
+  border-radius: 5px;
 }
 
 // pre {

@@ -1,0 +1,55 @@
+@import '../../../../../../../styles/colors';
+@import '../../../../../../../styles/mixin';
+
+.UlEventList {
+  &:not(:empty) {
+    margin-top: 40px;
+  }
+  > li {
+    &:not(:last-of-type) {
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      border-bottom: 1px solid var(--border);
+    }
+  }
+}
+
+.UlRun {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  > li {
+    @extend .display-flex;
+    @extend .flex-center;
+    &:not(:last-of-type) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.LiRunInfo {
+  @extend .flex-direction-column;
+  width: 100%;
+}
+
+.InfoBody {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  width: 100%;
+  li {
+    &:not(:last-of-type) {
+      width: 100%;
+    }
+    &:last-of-type {
+      text-align: right;
+      white-space: nowrap;
+      margin-left: 10px;
+    }
+  }
+}
+
+.InfoHeader {
+  @extend .InfoBody;
+  font-size: 0.8em;
+  color: var(--text-color-secondary);
+  margin-bottom: 5px;
+}

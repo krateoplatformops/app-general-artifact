@@ -17,6 +17,14 @@ export function* pluginFetchSaga(action) {
     yield put(
       pluginFetchSuccess({ value: result.data, key: action.payload.key })
     )
+    if (action.payload.message) {
+      yield put(
+        addNotification(
+          action.payload.message,
+          uiConstants.notification.success
+        )
+      )
+    }
   } catch (error) {
     yield put(pluginFetchFailure(error))
     yield put(

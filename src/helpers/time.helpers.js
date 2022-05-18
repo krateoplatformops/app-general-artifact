@@ -5,6 +5,18 @@ const currentTime = () => {
   return moment().utc().unix()
 }
 
+const nanoToFormat = (input) => {
+  if (input === '' || !input) return null
+  const seconds = parseInt(input / 1_000_000_000.0)
+  return moment.unix(seconds).format(uiConstants.dateTimeSecFormat)
+}
+
+const nanoFromNow = (input) => {
+  if (input === '' || !input) return null
+  const seconds = parseInt(input / 1_000_000_000.0)
+  return moment.unix(seconds).fromNow()
+}
+
 const dateGenToFormat = (date) => {
   return moment(date).format(uiConstants.dateTimeSecFormat)
 }
@@ -101,5 +113,7 @@ export const timeHelper = {
   fromNow,
   dateGenToFormat,
   fromNowGen,
-  dateToDayFormat
+  dateToDayFormat,
+  nanoToFormat,
+  nanoFromNow
 }
