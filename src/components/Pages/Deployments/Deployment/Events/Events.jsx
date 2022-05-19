@@ -9,12 +9,6 @@ const Events = ({ deploy, log }) => {
   const dispatch = useDispatch()
   const [search, setSearch] = useState('')
 
-  const reloadLogs = () => {
-    dispatch(
-      logFetch({ key: deploy._id, params: { deploymentId: deploy._id } })
-    )
-  }
-
   useEffect(() => {
     dispatch(
       logFetch({ key: deploy._id, params: { deploymentId: deploy._id } })

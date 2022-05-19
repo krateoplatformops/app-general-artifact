@@ -9,7 +9,7 @@ import {
   logFetch,
   pluginFetch
 } from '../../../../../redux/actions'
-import uris from '../../../../../uris'
+import { pluginHelper } from '../../../../../helpers'
 
 const SubMenu = ({ deploy }) => {
   let dispatch = useDispatch()
@@ -37,7 +37,7 @@ const SubMenu = ({ deploy }) => {
       if (pKey) {
         dispatch(
           pluginFetch({
-            url: `${uris.apiBase}${uris.deployment}/plugins/${deploy._id}/${pp.type}/${pp.name}`,
+            url: pluginHelper.createCallUrl(deploy, plugin),
             key: pKey
           })
         )

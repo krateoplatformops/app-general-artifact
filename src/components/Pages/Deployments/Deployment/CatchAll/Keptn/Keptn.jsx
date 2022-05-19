@@ -5,9 +5,9 @@ import Card from '../../../../../UI/Card/Card'
 import Follower from '../../../../../UI/Follower/Follower'
 import YamlView from '../../../../../UI/YamlView/YamlView'
 import Label from '../../../../../UI/Label/Label'
-import uris from '../../../../../../uris'
 
 import StageCard from './StageCard/StageCard'
+import { pluginHelper } from '../../../../../../helpers'
 
 const Keptn = ({
   deploy,
@@ -39,7 +39,7 @@ const Keptn = ({
       }
     }
     detailsCallHandler({
-      url: `${uris.apiBase}${uris.deployment}/plugins/${deploy._id}/${plugin.type}/${plugin.name}`,
+      url: pluginHelper.createCallUrl(deploy, plugin),
       method: 'post',
       data,
       message: 'Sequence triggered successfully'

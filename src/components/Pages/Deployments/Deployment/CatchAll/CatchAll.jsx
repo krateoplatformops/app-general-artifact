@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
 import { pluginFetch, pluginDeleteKey } from '../../../../../redux/actions'
-import uris from '../../../../../uris'
 import Error from '../../../../UI/Error/Error'
 import ArgoCD from './ArgoCD/ArgoCD'
 import Documentation from './Documentation/Documentation'
@@ -11,6 +10,7 @@ import Pipelines from './Pipelines/Pipelines'
 import Kubernetes from './Kubernetes/Kubernetes'
 import Keptn from './Keptn/Keptn'
 import ErrorBoundary from '../../../../Containers/ErrorBoundary/ErrorBoundary'
+import { pluginHelper } from '../../../../../helpers'
 
 const CatchAll = ({ deploy, params, plugin }) => {
   const dispatch = useDispatch()
@@ -49,11 +49,11 @@ const CatchAll = ({ deploy, params, plugin }) => {
     pKey &&
       dispatch(
         pluginFetch({
-          url: `${uris.apiBase}${uris.deployment}/plugins/${deploy._id}/${pp.type}/${pp.name}`,
+          url: pluginHelper.createCallUrl(deploy, plugin),
           key: pKey
         })
       )
-  }, [deploy._id, dispatch, pKey, pp])
+  }, [deploy, dispatch, pKey, plugin])
 
   useEffect(() => {
     return () =>

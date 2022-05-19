@@ -5,9 +5,9 @@ import yaml from 'js-yaml'
 import YamlView from '../../../../../UI/YamlView/YamlView'
 import css from './ArgoCD.module.scss'
 import Modal from '../../../../../UI/Modal/Modal'
-import uris from '../../../../../../uris'
 import CustomNode from './CustomNode/CustomNode'
 import { uiConstants } from '../../../../../../constants'
+import { pluginHelper } from '../../../../../../helpers'
 
 const nodeTypes = {
   customNode: CustomNode
@@ -29,9 +29,7 @@ const ArgoCD = ({
   }
 
   const resourceDetailsHandler = (data) => {
-    let url = new URL(
-      `${uris.apiBase}${uris.deployment}/plugins/${deploy._id}/${plugin.type}/${plugin.name}`
-    )
+    let url = new URL(pluginHelper.createCallUrl(deploy, plugin))
     if (data.name) {
       url.searchParams.append('name', data.name)
       url.searchParams.append('resourceName', data.name)
