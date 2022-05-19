@@ -50,9 +50,13 @@ export function* socketSubscribeSaga(action) {
 
       if (event.deploymentId) {
         // refresh logs
-        yield put(logFetch({ key: event.deploymentId, params: event }))
+        yield put(
+          logFetch({ key: event.deploymentId, params: event, silent: true })
+        )
         // refresh deployment
-        yield put(deploymentSingleLoad({ _id: event.deploymentId }))
+        yield put(
+          deploymentSingleLoad({ _id: event.deploymentId, silent: true })
+        )
       } else {
         // this is a general event
         yield put(

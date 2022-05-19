@@ -3,8 +3,17 @@
 
 .SocketActive {
   position: absolute;
-  top: 80px;
-  right: 20px;
+  width: 42px;
+  height: 42px;
+  @extend .display-flex;
+  @extend .flex-center;
+
+  top: 70px;
+  right: 52px;
+  @media screen and (min-width: 768px) {
+    right: 62px;
+    top: 80px;
+  }
 }
 
 .Title {
@@ -17,5 +26,9 @@
   width: 100%;
   margin-bottom: 20px;
   @extend .bsbb;
-  padding-right: 50px;
+
+  padding-right: 80px;
+  @media screen and (min-width: 768px) {
+    padding-right: 90px;
+  }
 }

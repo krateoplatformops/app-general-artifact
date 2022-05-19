@@ -21,7 +21,8 @@ export default function deployment(state = initialState, action) {
       }
     case deploymentConstants.DEPLOYMENT_SINGLE_LOAD:
       return {
-        ...state
+        ...state,
+        loading: !(action.payload.silent || false)
       }
     case deploymentConstants.DEPLOYMENT_LOAD_SUCCESS:
       return {

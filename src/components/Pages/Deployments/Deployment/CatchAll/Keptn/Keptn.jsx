@@ -39,7 +39,7 @@ const Keptn = ({
       }
     }
     detailsCallHandler({
-      url: `${uris.apiBase}${uris.deployment}/${deploy._id}/plugins/${plugin.type}/${plugin.name}`,
+      url: `${uris.apiBase}${uris.deployment}/plugins/${deploy._id}/${plugin.type}/${plugin.name}`,
       method: 'post',
       data,
       message: 'Sequence triggered successfully'

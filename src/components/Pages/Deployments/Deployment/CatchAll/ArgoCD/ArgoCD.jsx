@@ -30,7 +30,7 @@ const ArgoCD = ({
 
   const resourceDetailsHandler = (data) => {
     let url = new URL(
-      `${uris.apiBase}${uris.deployment}/${deploy._id}/plugins/${plugin.type}/${plugin.name}`
+      `${uris.apiBase}${uris.deployment}/plugins/${deploy._id}/${plugin.type}/${plugin.name}`
     )
     if (data.name) {
       url.searchParams.append('name', data.name)

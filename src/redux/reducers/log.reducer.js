@@ -11,7 +11,7 @@ export default function log(state = initialState, action) {
     case logConstants.LOG_FETCH:
       return {
         ...state,
-        loading: true,
+        loading: !(action.payload.silent || false),
         error: null
       }
     case logConstants.LOG_FETCH_SUCCESS:

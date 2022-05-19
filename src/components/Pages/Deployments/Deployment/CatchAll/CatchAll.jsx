@@ -45,23 +45,11 @@ const CatchAll = ({ deploy, params, plugin }) => {
     setDetailsKey('')
   }
 
-  const syncHandler = () => {
-    console.log(pKey)
-    if (pKey) {
-      dispatch(
-        pluginFetch({
-          url: `${uris.apiBase}${uris.deployment}/${deploy._id}/plugins/${pp.type}/${pp.name}`,
-          key: pKey
-        })
-      )
-    }
-  }
-
   useEffect(() => {
     pKey &&
       dispatch(
         pluginFetch({
-          url: `${uris.apiBase}${uris.deployment}/${deploy._id}/plugins/${pp.type}/${pp.name}`,
+          url: `${uris.apiBase}${uris.deployment}/plugins/${deploy._id}/${pp.type}/${pp.name}`,
           key: pKey
         })
       )
@@ -82,8 +70,8 @@ const CatchAll = ({ deploy, params, plugin }) => {
   }
 
   if (
-    (!plugin.data[pKey] && plugin.loader) ||
-    (!plugin.data[pKey] && !plugin.loader && !plugin.error)
+    (!plugin.data[pKey] && plugin.loading) ||
+    (!plugin.data[pKey] && !plugin.loading && !plugin.error)
   ) {
     return <Loader />
   }
@@ -120,7 +108,6 @@ const CatchAll = ({ deploy, params, plugin }) => {
             deploy={deploy}
             content={plugin.data[pKey]}
             detailsCallHandler={detailsCallHandler}
-            syncHandler={syncHandler}
           />
         )
       default:

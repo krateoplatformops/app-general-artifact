@@ -28,7 +28,6 @@ axiosInstance.interceptors.response.use(
     return response
   },
   (error) => {
-    console.log(error)
     if (error.name === 'AxiosError') {
       const err = {
         response: {

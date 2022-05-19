@@ -12,8 +12,10 @@
     @include border-radius($border-radius / 2);
     border: 1px solid var(--border);
     &:focus {
-      background: var(--border);
+      // background: var(--border);
       // border: 0;
+      // border: 1px solid var(--text-color);
+      background: var(--input-bkg);
     }
   }
 }
@@ -28,6 +30,7 @@
   margin-left: 10px;
   border: 1px solid var(--border);
   &:hover {
-    background: var(--border);
+    background: var(--input-bkg);
+    // border: 1px solid var(--input-bkg);
   }
 }

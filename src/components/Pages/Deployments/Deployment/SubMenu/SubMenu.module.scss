@@ -3,32 +3,54 @@
 
 .Button {
   position: absolute;
-  // border: 1px solid var(--border);
-  // @extend .base-btn;
   @extend .display-flex;
-  // background: red;
   @extend .flex-center;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   padding: 10px;
-  color: var(--text-color-secondary);
   @include border-radius($border-radius / 2);
   border: 1px solid var(--border);
-  // font-size: 0.8em;
-  top: 70px;
 
+  top: 70px;
   right: 10px;
   @media screen and (min-width: 768px) {
     right: 20px;
+    top: 80px;
   }
 
   &:hover {
-    // background-color: var(--background-transparent);
-    border: 1px solid var(--text-color);
-    color: var(--text-color);
-    // background: var(--card);
+    background: var(--input-bkg);
   }
 }
 
 .SubMenu {
+  position: absolute;
+  z-index: 1;
+  @include box-shadow(0, 0, 5px, 0, var(--border));
+  background: var(--card);
+  border: 1px solid var(--border);
+  @include border-radius($border-radius / 2);
+  right: 10px;
+  top: 120px;
+  @media screen and (min-width: 768px) {
+    right: 20px;
+    top: 130px;
+  }
+  overflow: hidden;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  button,
+  a {
+    width: 100%;
+    @extend .display-flex;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    i {
+      margin-right: 10px;
+    }
+    &:hover {
+      background: var(--input-bkg);
+    }
+  }
 }

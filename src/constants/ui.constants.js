@@ -106,6 +106,11 @@ export const uiConstants = {
       to: 'endpoints',
       label: 'endpoints',
       icon: 'fa-solid fa-landmark'
+    },
+    {
+      to: 'components',
+      label: 'components',
+      icon: 'fa-solid fa-microchip'
     }
   ],
   notification: {
