@@ -37,7 +37,7 @@ const SubMenu = ({ deploy }) => {
       if (pKey) {
         dispatch(
           pluginFetch({
-            url: pluginHelper.createCallUrl(deploy, plugin),
+            url: pluginHelper.createCallUrl(deploy, pp),
             key: pKey
           })
         )
