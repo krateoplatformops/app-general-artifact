@@ -4,7 +4,6 @@
 
 .Card {
   @include border-radius($border-radius);
-
   @extend .bsbb;
   background: var(--card);
   border: 1px solid var(--border);

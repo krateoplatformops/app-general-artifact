@@ -45,6 +45,18 @@ const CatchAll = ({ deploy, params, plugin }) => {
     setDetailsKey('')
   }
 
+  const syncHandler = () => {
+    console.log(pKey)
+    if (pKey) {
+      dispatch(
+        pluginFetch({
+          url: `${uris.apiBase}${uris.deployment}/${deploy._id}/plugins/${pp.type}/${pp.name}`,
+          key: pKey
+        })
+      )
+    }
+  }
+
   useEffect(() => {
     pKey &&
       dispatch(
@@ -108,6 +120,7 @@ const CatchAll = ({ deploy, params, plugin }) => {
             deploy={deploy}
             content={plugin.data[pKey]}
             detailsCallHandler={detailsCallHandler}
+            syncHandler={syncHandler}
           />
         )
       default:

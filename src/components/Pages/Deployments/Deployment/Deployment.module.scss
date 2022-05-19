@@ -6,3 +6,16 @@
   top: 80px;
   right: 20px;
 }
+
+.Title {
+  font-size: 1.5em;
+  font-weight: 400;
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  // @extend .flex-center-start;
+  @extend .flex-justify-between;
+  width: 100%;
+  margin-bottom: 20px;
+  @extend .bsbb;
+  padding-right: 50px;
+}

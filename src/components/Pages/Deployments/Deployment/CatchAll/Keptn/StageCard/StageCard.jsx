@@ -14,26 +14,33 @@ const StageCard = ({ s }) => (
         </Label>
         <ul className={css.UlEventList}>
           {svc.lastEventTypes &&
-            Object.keys(svc.lastEventTypes).map((key) => (
-              <li key={key}>
-                <ul className={css.UlRun}>
-                  <li className={css.LiRunInfo}>
-                    <ul className={css.InfoHeader}>
-                      <li>context: {svc.lastEventTypes[key].keptnContext}</li>
-                      <li>
-                        {timeHelper.nanoToFormat(svc.lastEventTypes[key].time)}
-                      </li>
-                    </ul>
-                    <ul className={css.InfoBody}>
-                      <li> {key}</li>
-                      <li>
-                        {timeHelper.nanoFromNow(svc.lastEventTypes[key].time)}
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            ))}
+            Object.keys(svc.lastEventTypes)
+              .sort(
+                (a, b) =>
+                  svc.lastEventTypes[b].time - svc.lastEventTypes[a].time
+              )
+              .map((key) => (
+                <li key={key}>
+                  <ul className={css.UlRun}>
+                    <li className={css.LiRunInfo}>
+                      <ul className={css.InfoHeader}>
+                        <li>context: {svc.lastEventTypes[key].keptnContext}</li>
+                        <li>
+                          {timeHelper.nanoToFormat(
+                            svc.lastEventTypes[key].time
+                          )}
+                        </li>
+                      </ul>
+                      <ul className={css.InfoBody}>
+                        <li> {key}</li>
+                        <li>
+                          {timeHelper.nanoFromNow(svc.lastEventTypes[key].time)}
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              ))}
         </ul>
       </React.Fragment>
     ))}

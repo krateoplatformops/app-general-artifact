@@ -9,7 +9,13 @@ import uris from '../../../../../../uris'
 
 import StageCard from './StageCard/StageCard'
 
-const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
+const Keptn = ({
+  deploy,
+  plugin,
+  content,
+  detailsCallHandler,
+  syncHandler
+}) => {
   const [stage, setStage] = useState('')
   const [sequence, setSequence] = useState('')
 
@@ -25,6 +31,11 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
         project: v[1],
         stage,
         service: plugin.value.replace(regex, '')
+      }
+    }
+    if (sequence === 'evaluation') {
+      data.data.evaluation = {
+        timeframe: '5m'
       }
     }
     detailsCallHandler({
@@ -48,6 +59,7 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
       .load(content.shipyard)
       .spec.stages.find((x) => x.name === stage)
       .sequences.map((x) => x.name)
+      .concat('evaluation')
   }
 
   return (

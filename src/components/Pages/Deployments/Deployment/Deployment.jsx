@@ -12,6 +12,7 @@ import Menu from './Menu/Menu'
 import css from './Deployment.module.scss'
 import SocketSpinner from '../../../UI/SocketSpinner/SocketSpinner'
 import PageLoader from '../../../UI/PageLoader/PageLoader'
+// import SubMenu from './SubMenu/SubMenu'
 
 const ValuesLazy = lazy(() => import('./Values/Values'))
 const EventsLazy = lazy(() => import('./Events/Events'))
@@ -45,15 +46,14 @@ const Deployment = ({ deployment, socket }) => {
   } else {
     return (
       <React.Fragment>
-        <h1>{deploy.claim.spec.name}</h1>
+        <div className={css.Title}>{deploy.claim.spec.name}</div>
+        {/* <SubMenu deploy={deploy} /> */}
         <Menu deploy={deploy} />
-
         {socket.subscriptions.indexOf(params.id) > -1 && (
           <div className={css.SocketActive}>
             <SocketSpinner />
           </div>
         )}
-
         <div>
           <Suspense fallback={<PageLoader />}>
             <Routes>
