@@ -1,0 +1,23 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.UlCards {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-wrap;
+  > li {
+    width: 25%;
+    @extend .bsbb;
+    &:nth-child(4n + 1) {
+      padding-right: 10px;
+    }
+    &:nth-child(4n + 2),
+    &:nth-child(4n + 3) {
+      padding: 0 10px;
+    }
+    &:nth-child(4n + 4) {
+      padding-left: 10px;
+    }
+    margin-bottom: 20px;
+  }
+}

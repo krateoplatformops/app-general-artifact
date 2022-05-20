@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
 import { componentLoad } from '../../../../redux/actions'
-import ComponentSkeleton from './ComponentSkeleton/ComponentSkeleton'
 import ComponentCard from './ComponentCard/ComponentCard'
 import packageJson from '../../../../../package.json'
+
+import css from './Components.module.scss'
 
 const Components = ({ component }) => {
   const dispatch = useDispatch()
@@ -20,7 +23,12 @@ const Components = ({ component }) => {
 
     return [
       ...component.list,
-      { name: packageJson.name, version: packageJson.version, status: 200 }
+      {
+        name: packageJson.name,
+        version: packageJson.version,
+        status: 200,
+        statusText: 'OK'
+      }
     ]
   }
 
@@ -48,16 +56,28 @@ const Components = ({ component }) => {
         />
       </LocalSearch>
 
-      {component.skeletonLoading && <ComponentSkeleton />}
+      {component.skeletonLoading && (
+        <ul className={css.UlCards}>
+          {[...Array(8)].map((s, key) => (
+            <li key={key}>
+              <Skeleton height={180} />
+            </li>
+          ))}
+        </ul>
+      )}
 
-      {componentsList()
-        .sort((a, b) => a.name.localeCompare(b.name))
-        .filter((x) => {
-          return JSON.stringify(x).toLowerCase().indexOf(search) > -1
-        })
-        .map((c) => (
-          <ComponentCard c={c} key={c.name} />
-        ))}
+      <ul className={css.UlCards}>
+        {componentsList()
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .filter((x) => {
+            return JSON.stringify(x).toLowerCase().indexOf(search) > -1
+          })
+          .map((c) => (
+            <li key={c.name}>
+              <ComponentCard c={c} />
+            </li>
+          ))}
+      </ul>
     </React.Fragment>
   )
 }

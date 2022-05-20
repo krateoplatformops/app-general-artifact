@@ -10,7 +10,7 @@ const ComponentCard = ({ c }) => (
     </li>
     <li className={css.Status}>
       <span className={c.status === 200 ? css.Ok : css.Warning}>
-        {c.status}
+        {c.statusText} {c.status}
         <i
           className={
             c.status === 200
