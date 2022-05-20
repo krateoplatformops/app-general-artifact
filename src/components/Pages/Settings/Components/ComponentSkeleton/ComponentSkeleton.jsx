@@ -6,9 +6,9 @@ import css from './ComponentSkeleton.module.scss'
 
 const ComponentSkeleton = () => (
   <div className={css.SkeletonGrid}>
-    {[...Array(4)].map((s, key) => (
+    {[...Array(6)].map((s, key) => (
       <div key={key}>
-        <Skeleton height={220} />
+        <Skeleton height={80} />
       </div>
     ))}
   </div>

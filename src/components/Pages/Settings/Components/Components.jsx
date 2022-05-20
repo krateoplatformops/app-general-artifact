@@ -15,6 +15,15 @@ const Components = ({ component }) => {
     dispatch(componentLoad())
   }
 
+  const componentsList = () => {
+    if (component.skeletonLoading || !component.list) return []
+
+    return [
+      ...component.list,
+      { name: packageJson.name, version: packageJson.version, status: 200 }
+    ]
+  }
+
   useEffect(() => {
     if (!component.result && !component.skeletonLoading) {
       dispatch(componentLoad())
@@ -41,10 +50,7 @@ const Components = ({ component }) => {
 
       {component.skeletonLoading && <ComponentSkeleton />}
 
-      {[
-        ...(component.list || []),
-        { name: packageJson.name, version: packageJson.version, status: 200 }
-      ]
+      {componentsList()
         .sort((a, b) => a.name.localeCompare(b.name))
         .filter((x) => {
           return JSON.stringify(x).toLowerCase().indexOf(search) > -1
