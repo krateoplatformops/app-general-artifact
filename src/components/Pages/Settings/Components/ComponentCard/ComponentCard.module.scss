@@ -1,0 +1,51 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.Card {
+  background: var(--card);
+  @include border-radius($border-radius);
+  padding: 20px;
+  border: 1px solid var(--border);
+  &:not(:last-of-type) {
+    margin-bottom: 10px;
+  }
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}
+
+.Name {
+  width: 100%;
+  margin-right: 10px;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  span {
+    font-size: 0.8em;
+    color: var(--text-color-secondary);
+    text-transform: uppercase;
+    &:not(:empty) {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.Status {
+  span {
+    @include border-radius($border-radius / 2);
+    padding: 10px;
+    @extend .display-flex;
+    font-weight: 400;
+    i {
+      margin-left: 10px;
+    }
+  }
+}
+
+.Ok {
+  background: rgba($green, 0.1);
+  color: $green;
+}
+
+.Warning {
+  background: rgba($orange, 0.1);
+  color: $orange;
+}

@@ -12,7 +12,8 @@ import {
   pluginConstants,
   logConstants,
   dashboardConstants,
-  pkgConstants
+  pkgConstants,
+  componentConstants
 } from '../constants'
 
 import { configLoadSaga } from './config.sagas'
@@ -41,6 +42,7 @@ import { pluginFetchSaga } from './plugin.sagas'
 import { logFetchSaga } from './log.sagas'
 import { dashboardLoadSaga } from './dashboard.sagas'
 import { pkgLoadSaga } from './pkg.sagas'
+import { componentLoadSaga } from './component.sagas'
 
 export function* watchConfig() {
   yield takeEvery(configConstants.CONFIG_LOAD, configLoadSaga)
@@ -103,4 +105,8 @@ export function* watchDashboard() {
 
 export function* watchPkg() {
   yield takeEvery(pkgConstants.PKG_LOAD, pkgLoadSaga)
+}
+
+export function* watchComponent() {
+  yield takeEvery(componentConstants.COMPONENT_LOAD, componentLoadSaga)
 }

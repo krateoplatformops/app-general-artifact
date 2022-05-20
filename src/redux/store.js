@@ -1,5 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
+import { configureStore } from '@reduxjs/toolkit'
 import rootReducer from './reducers'
 import thunk from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
@@ -16,15 +15,17 @@ import {
   watchPlugin,
   watchLog,
   watchDashboard,
-  watchPkg
+  watchPkg,
+  watchComponent
 } from './sagas'
 
 const sagaMiddleware = createSagaMiddleware()
 
-export const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk, sagaMiddleware))
-)
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: [thunk, sagaMiddleware],
+  devTools: process.env.NODE_ENV !== 'production'
+})
 
 sagaMiddleware.run(watchConfig)
 sagaMiddleware.run(watchUser)
@@ -39,3 +40,4 @@ sagaMiddleware.run(watchPlugin)
 sagaMiddleware.run(watchLog)
 sagaMiddleware.run(watchDashboard)
 sagaMiddleware.run(watchPkg)
+sagaMiddleware.run(watchComponent)

@@ -20,7 +20,8 @@ const uris = {
   endpoint: 'endpoint',
   log: 'log',
   dashboard: 'dashboard',
-  package: 'package'
+  package: 'package',
+  component: 'component'
 }
 
 export default uris

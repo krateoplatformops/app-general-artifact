@@ -12,7 +12,7 @@ import {
 import { pluginHelper } from '../../../../../helpers'
 
 const SubMenu = ({ deploy }) => {
-  let dispatch = useDispatch()
+  const dispatch = useDispatch()
   const params = useParams()
   const [show, setShow] = useState(false)
 
