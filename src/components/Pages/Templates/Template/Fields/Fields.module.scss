@@ -1,3 +1,54 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
 .Hidden {
   display: none;
+}
+
+.UlContainer {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}
+
+.LiFields {
+  width: 100%;
+}
+
+.LiDescription {
+  margin-left: 20px;
+  min-width: 40%;
+  max-width: 40%;
+  div {
+    @include border-radius($border-radius / 2);
+    padding: 20px;
+    p {
+      &:not(:first-of-type) {
+        padding-top: 20px;
+      }
+    }
+  }
+}
+
+.Info {
+  background: rgba($blue, 0.1);
+  color: $blue;
+}
+
+.Warning {
+  background: rgba($orange, 0.1);
+  color: $orange;
+}
+
+.Success {
+  background: rgba($green, 0.1);
+  color: $green;
+}
+
+.Error {
+  background: rgba($red, 0.1);
+  color: $red;
+}
+
+.Default {
+  background-color: var(--input-bkg);
 }
