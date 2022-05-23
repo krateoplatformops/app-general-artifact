@@ -5,6 +5,10 @@
   display: none;
 }
 
+.Description {
+  margin-bottom: 20px;
+}
+
 .UlContainer {
   @extend .display-flex;
   @extend .flex-direction-row;
@@ -14,7 +18,7 @@
   width: 100%;
 }
 
-.LiDescription {
+.LiBox {
   margin-left: 20px;
   min-width: 40%;
   max-width: 40%;

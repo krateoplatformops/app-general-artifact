@@ -21,6 +21,7 @@ const Template = (props) => {
   const {
     register,
     handleSubmit,
+    setValue,
     getValues,
     watch,
     formState: { isValid }
@@ -36,7 +37,9 @@ const Template = (props) => {
     const valid = Object.keys(p)
       .map((x) => {
         const v = getValues()[x]
-        return p[x].required && v === '' ? false : true
+        return (!v && p[x].required) || (p[x].required && v === '')
+          ? false
+          : true
       })
       .reduce((a, b) => a && b)
 
@@ -50,7 +53,14 @@ const Template = (props) => {
       setCurrentStep(template.spec.widgets[0]._id)
       setStepsStatus(
         template.spec.widgets.map((x) => {
-          return { id: x._id, valid: 'unknown' }
+          const p = Object.keys(x.properties).filter((key) => {
+            const f = x.properties[key]
+            if ((f.required && f.default) || !f.required) {
+              return false
+            }
+            return true
+          })
+          return { id: x._id, valid: p.length === 0 ? true : 'unknown' }
         })
       )
     }
@@ -127,9 +137,14 @@ const Template = (props) => {
                   inputs={Object.keys(w.properties).map((x) => {
                     return { id: x, ...w.properties[x] }
                   })}
+                  setValue={setValue}
                 />
               ))}
-              <Summary fieldValues={fieldValues} isValid={isValid} />
+              <Summary
+                fieldValues={fieldValues}
+                isValid={isValid}
+                fieldsList={fieldsList}
+              />
             </li>
           </ul>
         </form>

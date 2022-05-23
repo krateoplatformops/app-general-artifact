@@ -191,6 +191,17 @@ export const uiConstants = {
           description: 'Keptn Api token'
         }
       ]
+    },
+    {
+      type: 'sonarcloud',
+      category: 'delivery',
+      fields: [
+        {
+          name: 'token',
+          type: 'password',
+          description: 'SonarCloud Api token'
+        }
+      ]
     }
   ],
   CHART_COLORS: {

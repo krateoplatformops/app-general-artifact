@@ -9,3 +9,14 @@
   margin-top: 40px;
   @extend .flex-justify-between;
 }
+
+.Cost {
+  margin-top: 40px;
+  span {
+    color: $green;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-right: 5px;
+  }
+}
