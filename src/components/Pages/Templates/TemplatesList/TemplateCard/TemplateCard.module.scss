@@ -94,3 +94,16 @@
     color: $red;
   }
 }
+
+.SyncBtn {
+  color: var(--border);
+  @extend .Link;
+  &:hover {
+    color: $blue;
+  }
+}
+
+.SpanButtons {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}

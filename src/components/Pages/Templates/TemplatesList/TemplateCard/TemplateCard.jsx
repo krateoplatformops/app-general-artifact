@@ -4,10 +4,15 @@ import { Link } from 'react-router-dom'
 import Tag from '../../../../UI/Tag/Tag'
 import css from './TemplateCard.module.scss'
 
-const TemplateGrid = ({ t, openModal }) => {
+const TemplateGrid = ({ t, openModal, refreshButtonHandler }) => {
   const deleteHandler = (e) => {
     e.stopPropagation()
     openModal(t)
+  }
+
+  const refreshHandler = (e) => {
+    e.stopPropagation()
+    refreshButtonHandler(t)
   }
 
   return (
@@ -40,9 +45,14 @@ const TemplateGrid = ({ t, openModal }) => {
           >
             <i className='fa-brands fa-git'></i>
           </a>
-          <button className={css.DeleteBtn} onClick={(e) => deleteHandler(e)}>
-            <i className='fa-solid fa-trash-can'></i>
-          </button>
+          <span className={css.SpanButtons} onClick={(e) => refreshHandler(e)}>
+            <button className={css.SyncBtn} title='Refresh template'>
+              <i className='fa-solid fa-rotate'></i>
+            </button>
+            <button className={css.DeleteBtn} onClick={(e) => deleteHandler(e)}>
+              <i className='fa-solid fa-trash-can'></i>
+            </button>
+          </span>
         </div>
       </div>
     </div>

@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import { templateLoad, templateDelete } from '../../../../redux/actions'
+import {
+  templateLoad,
+  templateDelete,
+  registerImport
+} from '../../../../redux/actions'
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
 import TemplateCard from './TemplateCard/TemplateCard'
 import css from './TemplatesList.module.scss'
@@ -32,6 +36,10 @@ const TemplatesList = ({ template }) => {
     dispatch(templateDelete(currentTemplate._id))
   }
 
+  const refreshTemplateHandler = (t) => {
+    dispatch(registerImport({ url: t.url, endpointName: t.endpointName }))
+  }
+
   return (
     <React.Fragment>
       <h1>Templates</h1>
@@ -59,7 +67,12 @@ const TemplatesList = ({ template }) => {
             return JSON.stringify(x).toLowerCase().indexOf(search) > -1
           })
           .map((t) => (
-            <TemplateCard t={t} key={t._id} openModal={openDeleteModal} />
+            <TemplateCard
+              t={t}
+              key={t._id}
+              openModal={openDeleteModal}
+              refreshButtonHandler={refreshTemplateHandler}
+            />
           ))}
       </div>
       {showModal && (

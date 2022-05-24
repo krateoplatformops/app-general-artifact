@@ -39,6 +39,7 @@ a,
 button {
   @extend .trstn;
   text-decoration: none;
+  cursor: pointer;
   &:hover {
     @extend .trstn;
   }
