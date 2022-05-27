@@ -56,27 +56,23 @@ const Components = ({ component }) => {
         />
       </LocalSearch>
 
-      {component.skeletonLoading && (
-        <ul className={css.UlCards}>
-          {[...Array(8)].map((s, key) => (
-            <li key={key}>
-              <Skeleton height={125} />
-            </li>
-          ))}
-        </ul>
-      )}
-
       <ul className={css.UlCards}>
-        {componentsList()
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .filter((x) => {
-            return JSON.stringify(x).toLowerCase().indexOf(search) > -1
-          })
-          .map((c) => (
-            <li key={c.name}>
-              <ComponentCard c={c} />
-            </li>
-          ))}
+        {component.skeletonLoading
+          ? [...Array(8)].map((s, key) => (
+              <li key={key}>
+                <Skeleton height={135} />
+              </li>
+            ))
+          : componentsList()
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .filter((x) => {
+                return JSON.stringify(x).toLowerCase().indexOf(search) > -1
+              })
+              .map((c) => (
+                <li key={c.name}>
+                  <ComponentCard c={c} />
+                </li>
+              ))}
       </ul>
     </React.Fragment>
   )

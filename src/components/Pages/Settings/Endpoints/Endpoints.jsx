@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import {
   endpointLoad,
@@ -10,7 +12,7 @@ import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
 import EndpointCard from './EndpointCard/EndpointCard'
 import DangerZone from '../../../UI/DangerZone/DangerZone'
 import AddEndpoint from './AddEndpoint/AddEndpoint'
-import EndpointSkeleton from './EndpointSkeleton/EndpointSkeleton'
+import css from './Endpoints.module.scss'
 
 const Endpoints = ({ endpoint }) => {
   const dispatch = useDispatch()
@@ -69,18 +71,23 @@ const Endpoints = ({ endpoint }) => {
         />
       </LocalSearch>
 
-      {endpoint.skeletonLoading && <EndpointSkeleton />}
-
-      {(endpoint.list || [])
-        .filter((x) => {
-          return (
-            x.name.toLowerCase().indexOf(search) > -1 ||
-            x.target.toLowerCase().indexOf(search) > -1
-          )
-        })
-        .map((h) => (
-          <EndpointCard h={h} key={h._id} openModal={openDeleteModalHandler} />
-        ))}
+      <ul className={css.UlCards}>
+        {endpoint.skeletonLoading
+          ? [...Array(8)].map((s, key) => (
+              <li key={key}>
+                <Skeleton height={135} />
+              </li>
+            ))
+          : (endpoint.list || [])
+              .filter((x) => {
+                return JSON.stringify(x).toLowerCase().indexOf(search) > -1
+              })
+              .map((h) => (
+                <li key={h._id}>
+                  <EndpointCard h={h} openModal={openDeleteModalHandler} />
+                </li>
+              ))}
+      </ul>
 
       {showAddModal && (
         <AddEndpoint

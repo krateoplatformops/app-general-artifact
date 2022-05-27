@@ -17,7 +17,8 @@ import {
   watchDashboard,
   watchPkg,
   watchComponent,
-  watchSecret
+  watchSecret,
+  watchCatalog
 } from './sagas'
 
 const sagaMiddleware = createSagaMiddleware()
@@ -43,3 +44,4 @@ sagaMiddleware.run(watchDashboard)
 sagaMiddleware.run(watchPkg)
 sagaMiddleware.run(watchComponent)
 sagaMiddleware.run(watchSecret)
+sagaMiddleware.run(watchCatalog)

@@ -14,7 +14,8 @@ import {
   dashboardConstants,
   pkgConstants,
   componentConstants,
-  secretConstants
+  secretConstants,
+  catalogConstants
 } from '../constants'
 
 import { configLoadSaga } from './config.sagas'
@@ -49,6 +50,7 @@ import {
   secretDeleteSaga,
   secretLoadSaga
 } from './secret.sagas'
+import { catalogLoadSaga } from './catalog.sagas'
 
 export function* watchConfig() {
   yield takeEvery(configConstants.CONFIG_LOAD, configLoadSaga)
@@ -121,4 +123,8 @@ export function* watchSecret() {
   yield takeEvery(secretConstants.SECRET_LOAD, secretLoadSaga)
   yield takeEvery(secretConstants.SECRET_CREATE, secretCreateSaga)
   yield takeEvery(secretConstants.SECRET_DELETE, secretDeleteSaga)
+}
+
+export function* watchCatalog() {
+  yield takeEvery(catalogConstants.CATALOG_LOAD, catalogLoadSaga)
 }

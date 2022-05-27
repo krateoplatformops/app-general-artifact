@@ -12,6 +12,8 @@ const ReduxLoader = (props) => {
     props.proxy.loading ||
     props.plugin.loading ||
     props.endpoint.loading ||
+    props.secret.loading ||
+    props.catalog.loading ||
     props.log.loading ||
     props.dashboard.loading ? (
     <PageLoader />

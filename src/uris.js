@@ -22,7 +22,9 @@ const uris = {
   dashboard: 'dashboard',
   package: 'package',
   component: 'component',
-  secret: 'secret'
+  secret: 'secret',
+  catalog:
+    'https://raw.githubusercontent.com/krateoplatformops/catalog/main/index.json'
 }
 
 export default uris

@@ -1,13 +1,16 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import Label from '../../../../UI/Label/Label'
 import Modal from '../../../../UI/Modal/Modal'
 import IconSelector from '../../../../UI/IconSelector/IconSelector'
-import { uiConstants } from '../../../../../constants'
+import { securityHelper } from '../../../../../helpers'
 import InputPassword from '../../../../UI/InputPassword/InputPassword'
+import css from './AddSecret.module.scss'
 
-const AddSecret = ({ closeModal, addSecret, list }) => {
+const AddSecret = ({ closeModal, addSecret, list, catalog }) => {
+  const [headers, setHeaders] = useState([])
+
   const prevTypeRef = useRef()
   const {
     register,
@@ -19,42 +22,67 @@ const AddSecret = ({ closeModal, addSecret, list }) => {
     formState: { isValid }
   } = useForm({ mode: 'onChange' })
 
+  const typeValue = getValues().type
+
   const onSubmit = (data) => {
     const payload = {
-      ...data,
-      category: uiConstants.secretTypes.find((x) => x.type === data.type)
-        .category
+      icon: data.icon,
+      name: data.name,
+      type: data.type,
+      secret: {}
+    }
+    if (typeValue === 'custom') {
+      Object.keys(data)
+        .filter((key) => key.startsWith('hk_'))
+        .forEach((key) => {
+          const guid = key.replace('hk_', '')
+          payload.secret[data[key]] = data['hv_' + guid]
+        })
+    } else {
+      Object.keys(data)
+        .filter((key) => key !== 'icon' && key !== 'name' && key !== 'type')
+        .forEach((key) => {
+          payload.secret[key] = data[key]
+        })
     }
     addSecret(payload)
+  }
+
+  const addHeaderHandler = () => {
+    setHeaders([...headers, securityHelper.guid()])
+  }
+
+  const removeHeaderHandler = (id) => {
+    const tmp = [...headers]
+    unregister(`hv_${id}`)
+    unregister(`hk_${id}`)
+    setHeaders(tmp.filter((h) => h !== id))
   }
 
   useEffect(() => {
     const subscription = watch((value, { name }) => {
       if (name === 'type') {
-        if (prevTypeRef.current) {
-          uiConstants.secretTypes
-            .find((t) => t.type === prevTypeRef.current)
-            .fields.forEach((f) => {
+        if (prevTypeRef.current && prevTypeRef.current !== 'custom') {
+          catalog
+            .find((t) => t.name === prevTypeRef.current)
+            .secret.forEach((f) => {
               unregister(f.name)
             })
+        }
+        if (headers.length > 0) {
+          setHeaders([])
         }
         prevTypeRef.current = value.type
       }
     })
     return () => subscription.unsubscribe()
-  }, [unregister, watch])
+  }, [catalog, headers.length, unregister, watch])
 
   const footerMessage = () => {
     const name = getValues().name
-    const url = getValues().url
     if (name !== '') {
       if (list.filter((x) => x.name === name).length > 0) {
         return 'An secret with this name already exists'
-      }
-    }
-    if (name !== '' && url !== '') {
-      if (list.filter((x) => x.name === name && x.url === url).length > 0) {
-        return 'An secret with this name and url already exists'
       }
     }
     return null
@@ -67,7 +95,11 @@ const AddSecret = ({ closeModal, addSecret, list }) => {
         confirmButtonHandler={onSubmit}
         isTypeSubmit={true}
         confirmButtonText={'Add secret'}
-        confirmDisabled={!isValid || footerMessage()}
+        confirmDisabled={
+          !isValid ||
+          footerMessage() ||
+          (typeValue === 'custom' && headers.length === 0)
+        }
         title={'Add secret'}
         footerMessage={footerMessage()}
       >
@@ -86,54 +118,74 @@ const AddSecret = ({ closeModal, addSecret, list }) => {
             })}
           />
         </Label>
-        {/* <Label
-          title={'Target Url'}
-          description={'Must include schema (http or https)'}
-        >
-          <input
-            type={'text'}
-            placeholder={'Target Url'}
-            {...register('target', {
-              required: true,
-              pattern: new RegExp(
-                '(http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?',
-                'gmi'
-              )
-            })}
-          />
-        </Label> */}
-        {/* <Label title={'Secret Type'} description={'Secret Type'}>
+        <Label title={'Secret Type'} description={'Secret Type'}>
           <select
             {...register('type', {
               required: true
             })}
           >
             <option value=''></option>
-            {uiConstants.secretTypes.map((e) => (
-              <option key={e.type} value={e.type}>
-                {e.type}
-              </option>
-            ))}
+            {(catalog || [])
+              .filter((x) => x.package && x.secret)
+              .map((e) => (
+                <option key={e.name} value={e.name}>
+                  {e.name}
+                </option>
+              ))}
+            <option value='custom'>[custom]</option>
           </select>
-        </Label> */}
+        </Label>
 
-        {/* {getValues().type &&
-          uiConstants.secretTypes
-            .find((x) => x.type === getValues().type)
-            .fields.map((f) => (
-              <Label key={f.name} title={f.name} description={f.description}>
-                {f.type === 'password' ? (
-                  <InputPassword register={register} name={f.name} />
-                ) : (
+        {typeValue && typeValue !== 'custom'
+          ? catalog
+              .find((x) => x.name === getValues().type)
+              .secret.map((f) => (
+                <Label key={f.name} title={f.name} description={f.description}>
+                  {f.type === 'password' ? (
+                    <InputPassword register={register} name={f.name} />
+                  ) : (
+                    <input
+                      type={f.type}
+                      {...register(f.name, {
+                        required: true
+                      })}
+                    />
+                  )}
+                </Label>
+              ))
+          : headers.map((h) => (
+              <ul key={h} className={css.UlKeyVal}>
+                <li className={css.LiInput}>
                   <input
-                    type={f.type}
-                    {...register(f.name, {
+                    type={'text'}
+                    placeholder={'Key'}
+                    {...register(`hk_${h}`, {
                       required: true
                     })}
                   />
-                )}
-              </Label>
-            ))} */}
+                </li>
+                <li className={css.LiInput}>
+                  <input
+                    type={'text'}
+                    placeholder={'Value'}
+                    {...register(`hv_${h}`, {
+                      required: true
+                    })}
+                  />
+                </li>
+                <li className={css.LiBtn}>
+                  <button onClick={() => removeHeaderHandler(h)}>
+                    <i className='fa-solid fa-trash-can'></i>
+                  </button>
+                </li>
+              </ul>
+            ))}
+
+        {typeValue === 'custom' && (
+          <button className={css.AddKeyBtn} onClick={() => addHeaderHandler()}>
+            <i className='fa-solid fa-plus'></i> Add key/value
+          </button>
+        )}
       </Modal>
     </form>
   )

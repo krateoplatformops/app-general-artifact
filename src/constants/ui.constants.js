@@ -133,7 +133,9 @@ export const uiConstants = {
     endpoint_delete_success: 'Endpoint deleted successfully',
     proxy_create_success: 'Proxy created successfully',
     proxy_delete_success: 'Proxy deleted successfully',
-    deployment_import_success: 'Deployment imported successfully'
+    deployment_import_success: 'Deployment imported successfully',
+    secret_create_success: 'Secret created successfully',
+    secret_delete_success: 'Secret deleted successfully'
   },
   themes: {
     light: 'light',

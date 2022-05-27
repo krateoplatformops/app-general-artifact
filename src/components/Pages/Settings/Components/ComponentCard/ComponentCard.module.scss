@@ -33,7 +33,7 @@
   width: 100%;
   @extend .display-flex;
   @extend .flex-center-end;
-  margin-top: 10px;
+  margin-top: 20px;
   span {
     display: inline-block;
     @include border-radius($border-radius / 2);

@@ -21,10 +21,22 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
 
   const onSubmit = (data) => {
     const payload = {
-      ...data,
+      icon: data.icon,
+      name: data.name,
+      type: data.type,
+      target: data.target,
       category: uiConstants.endpointTypes.find((x) => x.type === data.type)
-        .category
+        .category,
+      secret: {}
     }
+    Object.keys(data)
+      .filter(
+        (key) =>
+          key !== 'icon' && key !== 'name' && key !== 'type' && key !== 'target'
+      )
+      .forEach((key) => {
+        payload.secret[key] = data[key]
+      })
     addEndpoint(payload)
   }
 

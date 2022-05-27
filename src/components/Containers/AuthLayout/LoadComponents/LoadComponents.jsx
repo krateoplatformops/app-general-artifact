@@ -8,7 +8,8 @@ import {
   dashboardLoad,
   pkgLoad,
   socketInit,
-  secretLoad
+  secretLoad,
+  catalogLoad
 } from '../../../../redux/actions'
 
 const LoadComponents = (props) => {
@@ -55,6 +56,12 @@ const LoadComponents = (props) => {
       dispatch(secretLoad())
     }
   }, [dispatch, props.secret])
+
+  useEffect(() => {
+    if (!props.catalog.result && !props.catalog.loading) {
+      dispatch(catalogLoad())
+    }
+  }, [dispatch, props.catalog])
 
   return <React.Fragment />
 }

@@ -17,6 +17,7 @@ import dashboard from './dashboard.reducer'
 import pkg from './pkg.reducer'
 import component from './component.reducer'
 import secret from './secret.reducer'
+import catalog from './catalog.reducer'
 
 const rootReducer = combineReducers({
   notify,
@@ -35,7 +36,8 @@ const rootReducer = combineReducers({
   dashboard,
   pkg,
   component,
-  secret
+  secret,
+  catalog
 })
 
 export default rootReducer

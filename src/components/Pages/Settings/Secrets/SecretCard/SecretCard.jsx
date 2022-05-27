@@ -1,16 +1,16 @@
 import React from 'react'
 
-import css from './EndpointCard.module.scss'
+import css from './SecretCard.module.scss'
 import Label from '../../../../UI/Label/Label'
 
-const EndpointCard = ({ h, openModal }) => {
+const SecretCard = ({ h, openModal }) => {
   const deleteHandler = () => {
     openModal(h)
   }
 
   return (
     <div className={css.Container}>
-      <ul className={css.UlEndpoint}>
+      <ul className={css.UlSecret}>
         <li className={css.LiIcon}>
           <i className={h.icon}></i>
         </li>
@@ -23,13 +23,7 @@ const EndpointCard = ({ h, openModal }) => {
               <Label title={'Type'}>{h.type}</Label>
             </li>
             <li>
-              <Label title={'Target'}>{h.target}</Label>
-            </li>
-            <li>
               <Label title={'Namespace'}>{h.namespace}</Label>
-            </li>
-            <li>
-              <Label title={'Secret Name'}>{h.secretName}</Label>
             </li>
           </ul>
         </li>
@@ -43,4 +37,4 @@ const EndpointCard = ({ h, openModal }) => {
   )
 }
 
-export default EndpointCard
+export default SecretCard
