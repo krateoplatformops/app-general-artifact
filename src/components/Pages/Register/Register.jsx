@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
@@ -13,12 +13,19 @@ const Register = ({ endpoint }) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { isValid }
   } = useForm({ mode: 'onChange' })
 
   const onSubmit = (data) => {
     dispatch(registerImport(data))
   }
+
+  useEffect(() => {
+    if (endpoint.list && endpoint.list.length > 0) {
+      setValue('endpointName', endpoint.list[0].name)
+    }
+  }, [endpoint.list, setValue])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -29,7 +36,6 @@ const Register = ({ endpoint }) => {
               required: true
             })}
           >
-            <option value=''></option>
             {(endpoint.list || [])
               .filter((x) => x.category === 'git')
               .map((e) => (

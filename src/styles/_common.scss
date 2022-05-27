@@ -99,3 +99,26 @@
     color: $blue;
   }
 }
+
+.common-ext-link {
+  @extend .display-flex;
+  @extend .flex-center;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  @include border-radius($border-radius / 2);
+  border: 1px solid var(--border);
+  background: var(--card);
+
+  color: var(--border);
+  height: 24px;
+  @extend .bsbb;
+  text-transform: lowercase;
+  i {
+    color: var(--text-color);
+    margin-right: 10px;
+  }
+  &:hover {
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+  }
+}

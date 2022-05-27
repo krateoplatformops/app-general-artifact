@@ -9,6 +9,7 @@ import Loader from '../../../../UI/Loader/Loader'
 import Pipelines from './Pipelines/Pipelines'
 import Kubernetes from './Kubernetes/Kubernetes'
 import Keptn from './Keptn/Keptn'
+import Codequality from './Codequality/Codequality'
 import ErrorBoundary from '../../../../Containers/ErrorBoundary/ErrorBoundary'
 import { pluginHelper } from '../../../../../helpers'
 
@@ -108,6 +109,14 @@ const CatchAll = ({ deploy, params, plugin }) => {
             deploy={deploy}
             content={plugin.data[pKey]}
             detailsCallHandler={detailsCallHandler}
+          />
+        )
+      case 'codequality':
+        return (
+          <Codequality
+            plugin={pp}
+            deploy={deploy}
+            content={plugin.data[pKey]}
           />
         )
       default:

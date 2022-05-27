@@ -17,7 +17,7 @@ export const uiConstants = {
     },
     {
       icon: 'fa-brands fa-discord',
-      target: 'https://github.com/krateoplatformops'
+      target: 'https://discord.gg/RzuJWjTg'
     },
     {
       icon: 'fa-solid fa-book',
@@ -106,6 +106,11 @@ export const uiConstants = {
       to: 'endpoints',
       label: 'endpoints',
       icon: 'fa-solid fa-landmark'
+    },
+    {
+      to: 'secrets',
+      label: 'secrets',
+      icon: 'fa-solid fa-key'
     },
     {
       to: 'components',

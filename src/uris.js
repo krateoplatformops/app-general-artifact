@@ -21,7 +21,8 @@ const uris = {
   log: 'log',
   dashboard: 'dashboard',
   package: 'package',
-  component: 'component'
+  component: 'component',
+  secret: 'secret'
 }
 
 export default uris

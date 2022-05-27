@@ -16,6 +16,7 @@ import log from './log.reducer'
 import dashboard from './dashboard.reducer'
 import pkg from './pkg.reducer'
 import component from './component.reducer'
+import secret from './secret.reducer'
 
 const rootReducer = combineReducers({
   notify,
@@ -33,7 +34,8 @@ const rootReducer = combineReducers({
   log,
   dashboard,
   pkg,
-  component
+  component,
+  secret
 })
 
 export default rootReducer

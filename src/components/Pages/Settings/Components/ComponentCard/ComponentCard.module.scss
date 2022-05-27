@@ -7,14 +7,15 @@
   padding: 20px;
   border: 1px solid var(--border);
   width: 100%;
+  height: 100%;
   @extend .bsbb;
   @extend .display-flex;
   @extend .flex-direction-column;
+  @extend .flex-justify-between;
 }
 
 .Name {
   width: 100%;
-  min-height: 100px;
   @extend .display-flex;
   @extend .flex-direction-column;
   span {
@@ -32,6 +33,7 @@
   width: 100%;
   @extend .display-flex;
   @extend .flex-center-end;
+  margin-top: 10px;
   span {
     display: inline-block;
     @include border-radius($border-radius / 2);

@@ -7,7 +7,8 @@ import {
   endpointLoad,
   dashboardLoad,
   pkgLoad,
-  socketInit
+  socketInit,
+  secretLoad
 } from '../../../../redux/actions'
 
 const LoadComponents = (props) => {
@@ -48,6 +49,12 @@ const LoadComponents = (props) => {
       dispatch(pkgLoad())
     }
   }, [dispatch, props.pkg])
+
+  useEffect(() => {
+    if (!props.secret.result && !props.secret.skeletonLoading) {
+      dispatch(secretLoad())
+    }
+  }, [dispatch, props.secret])
 
   return <React.Fragment />
 }

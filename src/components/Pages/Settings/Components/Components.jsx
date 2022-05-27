@@ -60,7 +60,7 @@ const Components = ({ component }) => {
         <ul className={css.UlCards}>
           {[...Array(8)].map((s, key) => (
             <li key={key}>
-              <Skeleton height={180} />
+              <Skeleton height={125} />
             </li>
           ))}
         </ul>

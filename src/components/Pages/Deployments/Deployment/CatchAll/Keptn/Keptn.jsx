@@ -9,13 +9,7 @@ import Label from '../../../../../UI/Label/Label'
 import StageCard from './StageCard/StageCard'
 import { pluginHelper } from '../../../../../../helpers'
 
-const Keptn = ({
-  deploy,
-  plugin,
-  content,
-  detailsCallHandler,
-  syncHandler
-}) => {
+const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
   const [stage, setStage] = useState('')
   const [sequence, setSequence] = useState('')
 

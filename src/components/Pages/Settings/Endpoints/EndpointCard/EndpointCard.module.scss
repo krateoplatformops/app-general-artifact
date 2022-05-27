@@ -49,7 +49,7 @@
   height: 42px;
   width: 42px;
   border: 1px solid var(--border);
-  @include border-radius($border-radius);
+  @include border-radius($border-radius / 2);
   color: var(--border);
   &:hover {
     color: $red;
