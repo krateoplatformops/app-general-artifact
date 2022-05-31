@@ -34,11 +34,13 @@ const EndpointCard = ({ h, openModal }) => {
           </ul>
         </li>
       </ul>
-      <div className={css.Footer}>
-        <button className={css.DeleteBtn} onClick={(e) => deleteHandler(e)}>
-          <i className='fa-solid fa-trash-can'></i>
-        </button>
-      </div>
+      {h.canBeDeleted && (
+        <div className={css.Footer}>
+          <button className={css.DeleteBtn} onClick={(e) => deleteHandler(e)}>
+            <i className='fa-solid fa-trash-can'></i>
+          </button>
+        </div>
+      )}
     </div>
   )
 }

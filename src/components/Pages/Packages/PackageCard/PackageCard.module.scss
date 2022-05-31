@@ -1,20 +1,11 @@
 @import '../../../../styles/colors';
 @import '../../../../styles/mixin';
 
-.Container {
-  &:not(:last-of-type) {
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
 .UlPkg {
   @extend .display-flex;
   @extend .flex-direction-row;
   background: var(--card);
   @include border-radius($border-radius);
-  // border: 1px solid var(--border);
   @extend .bsbb;
   padding: 20px;
 }
@@ -60,11 +51,17 @@
     color: var(--text-color-secondary);
     width: 50%;
     font-size: 0.8em;
+    @extend .display-flex;
+    @extend .flex-direction-column;
     b {
-      margin-left: 10px;
+      text-transform: uppercase;
     }
-    &:nth-child(2n) {
-      text-align: right;
+    a {
+      color: var(--text-color-secondary);
+      text-decoration: none;
+      &:hover {
+        color: $blue;
+      }
     }
   }
 }

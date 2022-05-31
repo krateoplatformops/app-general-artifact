@@ -12,15 +12,12 @@
     @include border-radius($border-radius / 2);
     border: 1px solid var(--border);
     &:focus {
-      // background: var(--border);
-      // border: 0;
-      // border: 1px solid var(--text-color);
       background: var(--input-bkg);
     }
   }
 }
 
-.Button {
+.Action {
   min-width: 42px;
   min-height: 42px;
   @extend .display-flex;
@@ -31,6 +28,5 @@
   border: 1px solid var(--border);
   &:hover {
     background: var(--input-bkg);
-    // border: 1px solid var(--input-bkg);
   }
 }

@@ -23,7 +23,10 @@ const Register = ({ endpoint }) => {
 
   useEffect(() => {
     if (endpoint.list && endpoint.list.length > 0) {
-      setValue('endpointName', endpoint.list[0].name)
+      const e = endpoint.list.filter((x) => x.category === 'git')
+      if (e.length > 0) {
+        setValue('endpointName', e[0].name)
+      }
     }
   }, [endpoint.list, setValue])
 
@@ -50,7 +53,7 @@ const Register = ({ endpoint }) => {
           description={'Enter the full path of the file you want to register.'}
         >
           <input
-            type='text'
+            type='url'
             placeholder='Full Url'
             {...register('url', {
               required: true,
