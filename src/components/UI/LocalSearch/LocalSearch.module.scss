@@ -20,6 +20,11 @@
 .Action {
   min-width: 42px;
   min-height: 42px;
+  max-width: 42px;
+  max-height: 42px;
+  height: 42px;
+  width: 42px;
+  @extend .bsbb;
   @extend .display-flex;
   @extend .flex-center;
   color: rgba(var(--text-color), 0.5);

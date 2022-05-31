@@ -3,26 +3,16 @@
 
 .Link {
   display: block;
-  overflow: hidden;
-  &:not(:last-of-type) {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 5px;
-    margin-bottom: 5px;
-  }
-  &:nth-last-of-type(odd) {
-    > div {
-      background: var(--card);
-    }
-  }
-}
-
-.Container {
   @include border-radius($border-radius);
-  border: 2px solid var(--background);
+  border: 1px solid var(--border);
+  background: var(--card);
   @extend .trstn;
   &:hover {
     @extend .trstn;
-    border: 2px solid $blue;
+    border: 1px solid $blue;
+  }
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
   }
 }
 
@@ -30,16 +20,17 @@
   @extend .display-flex;
   @extend .flex-direction-row;
   @extend .bsbb;
-  padding: 20px;
+  padding: 10px;
 }
 
 .LiIcon {
   @extend .display-flex;
   @extend .flex-center;
-  min-width: 40px;
-  min-height: 40px;
-  width: 40px;
-  height: 40px;
+  min-width: 60px;
+  min-height: 60px;
+  font-size: 1.5em;
+  width: 60px;
+  height: 60px;
   background: $blue;
   color: $white;
   @include border-radius(50%);
@@ -54,7 +45,7 @@
   b {
     width: 100%;
     text-transform: uppercase;
-    font-size: 1.2em;
+    font-size: 1.5em;
   }
   span {
     font-style: italic;
@@ -76,7 +67,7 @@
   @extend .display-flex;
   @extend .flex-direction-row;
   @extend .flex-justify-between;
-  padding: 0 20px 20px 20px;
+  padding: 0 10px 10px 10px;
 }
 
 .LiTags {

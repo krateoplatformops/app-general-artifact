@@ -1,35 +1,15 @@
 @import '../../../../../styles/colors';
 @import '../../../../../styles/mixin';
 
-.TemplateContainer {
-  min-width: 100%;
-  width: 100%;
-
-  @media screen and (min-width: 768px) {
-    min-width: 33.333%;
-    width: 33.333%;
-    &:nth-child(3n + 1) {
-      padding-right: 10px;
-    }
-    &:nth-child(3n + 2) {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    &:nth-child(3n + 3) {
-      padding-left: 10px;
-    }
-  }
-  &:not(:nth-last-child(-n + 3)) {
-    padding-bottom: 20px;
-  }
-
-  @extend .bsbb;
-}
-
 .TemplateCard {
   border: 1px solid var(--border);
   background: var(--card);
   @include border-radius($border-radius);
+  @extend .trstn;
+  &:hover {
+    @extend .trstn;
+    border: 1px solid $blue;
+  }
 }
 
 .UlHeader {
@@ -49,7 +29,7 @@
   @include border-radius(50%);
   margin-right: 10px;
   i {
-    font-size: 2em;
+    font-size: 1.5em;
   }
 }
 

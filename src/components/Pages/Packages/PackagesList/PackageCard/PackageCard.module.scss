@@ -1,0 +1,130 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.Card {
+  background: var(--card);
+  @include border-radius($border-radius);
+  @extend .bsbb;
+  border: 1px solid var(--border);
+  height: 100%;
+}
+
+.UlPkg {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  padding: 10px;
+}
+
+.LiIcon {
+  max-width: 100px;
+  @extend .bsbb;
+  margin-right: 10px;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.LiInfo {
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  width: 100%;
+}
+
+.Kind {
+  font-size: 0.8em;
+  color: var(--text-color-secondary);
+}
+
+.Name {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.UlFooter {
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  @extend .flex-wrap;
+  width: 100%;
+  > li {
+    margin-top: 10px;
+    color: var(--text-color-secondary);
+    width: 100%;
+    font-size: 0.8em;
+    @extend .display-flex;
+    @extend .flex-direction-column;
+    b {
+      text-transform: uppercase;
+    }
+    a {
+      color: var(--text-color-secondary);
+      text-decoration: none;
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+}
+
+.Tags {
+  margin-top: 10px;
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}
+
+.UlVersion {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  border-top: 1px solid var(--border);
+  height: 40px;
+  li {
+    width: 100%;
+  }
+}
+
+.CurVersion {
+  font-size: 0.8em;
+  padding: 5px;
+  background: rgba($blue, 0.1);
+  @include border-radius($border-radius / 2);
+  color: $blue;
+  padding: 5px;
+  text-align: right;
+}
+
+.LiCurrent {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-center-start;
+  padding: 10px;
+}
+
+.LiUpdate {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-center-end;
+  padding-right: 10px;
+}
+
+.BtnUpdate {
+  @extend .display-flex;
+  @extend .flex-center;
+  height: 40px;
+  color: var(--border);
+  text-transform: uppercase;
+  font-size: 0.8em;
+  padding: 5px;
+  @include border-radius($border-radius / 2);
+  padding: 5px;
+  font-weight: 600;
+  i {
+    color: $green;
+    margin-left: 10px;
+  }
+  &:hover {
+    color: $green;
+  }
+}

@@ -1,9 +1,33 @@
 @import '../../../../styles/colors';
 @import '../../../../styles/mixin';
 
-.TemplateList {
+.UlCards {
   @extend .display-flex;
   @extend .flex-wrap;
   @extend .flex-direction-row;
   width: 100%;
+  > li {
+    @extend .bsbb;
+    width: 100%;
+    &:not(:last-of-type) {
+      padding-bottom: 20px;
+    }
+    @media screen and (min-width: 768px) {
+      min-width: 33.333%;
+      width: 33.333%;
+      &:nth-child(3n + 1) {
+        padding-right: 10px;
+      }
+      &:nth-child(3n + 2) {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      &:nth-child(3n + 3) {
+        padding-left: 10px;
+      }
+      &:not(:nth-last-child(-n + 3)) {
+        padding-bottom: 20px;
+      }
+    }
+  }
 }

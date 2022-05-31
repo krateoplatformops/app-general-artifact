@@ -44,7 +44,9 @@ const Dashboard = (props) => {
         </li>
       </ul>
       {!props.dashboard.list ? (
-        <Loader />
+        <div className={css.LoaderContainer}>
+          <Loader />
+        </div>
       ) : (
         <ul className={css.UlCharts}>
           <li>

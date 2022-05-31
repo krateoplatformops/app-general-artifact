@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import {
   templateLoad,
@@ -9,7 +11,6 @@ import {
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
 import TemplateCard from './TemplateCard/TemplateCard'
 import css from './TemplatesList.module.scss'
-import TemplateSkeleton from './TemplateSkeleton/TemplateSkeleton'
 import DangerZone from '../../../UI/DangerZone/DangerZone'
 
 const TemplatesList = ({ template }) => {
@@ -59,22 +60,28 @@ const TemplatesList = ({ template }) => {
         />
       </LocalSearch>
 
-      {template.skeletonLoading && <TemplateSkeleton />}
+      <ul className={css.UlCards}>
+        {template.skeletonLoading
+          ? [...Array(4)].map((s, key) => (
+              <li key={key}>
+                <Skeleton height={150} />
+              </li>
+            ))
+          : (template.list || [])
+              .filter((x) => {
+                return JSON.stringify(x).toLowerCase().indexOf(search) > -1
+              })
+              .map((t) => (
+                <li key={t._id}>
+                  <TemplateCard
+                    t={t}
+                    openModal={openDeleteModal}
+                    refreshButtonHandler={refreshTemplateHandler}
+                  />
+                </li>
+              ))}
+      </ul>
 
-      <div className={css.TemplateList}>
-        {(template.list || [])
-          .filter((x) => {
-            return JSON.stringify(x).toLowerCase().indexOf(search) > -1
-          })
-          .map((t) => (
-            <TemplateCard
-              t={t}
-              key={t._id}
-              openModal={openDeleteModal}
-              refreshButtonHandler={refreshTemplateHandler}
-            />
-          ))}
-      </div>
       {showModal && (
         <DangerZone
           title={'Delete template'}

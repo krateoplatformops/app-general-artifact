@@ -5,7 +5,10 @@ import { uiConstants } from '../../constants/ui.constants'
 export const UserContext = createContext(null)
 
 const UserProvider = ({ children }) => {
-  const [menuOpen, setMenuOpen] = useState(window.innerWidth > 768)
+  const [menuOpen, setMenuOpen] = useLocalStorage(
+    'sidebar',
+    window.innerWidth > 768
+  )
   const [theme, setTheme] = useLocalStorage('theme', uiConstants.themes.light)
   const [userOpen, setUserOpen] = useState(false)
   const [notificationOpen, setNotificationOpen] = useState(false)
