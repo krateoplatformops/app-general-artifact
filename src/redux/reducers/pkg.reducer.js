@@ -23,15 +23,27 @@ export default function pkg(state = initialState, action) {
         ...state,
         result: true,
         list: action.payload.items,
-        skeletonLoading: false
+        skeletonLoading: false,
+        loading: false
       }
     case pkgConstants.PKG_LOAD_FAILURE:
+    case pkgConstants.PKG_UPDATE_FAILURE:
       return {
         ...state,
         loading: false,
         skeletonLoading: false,
         result: true,
         error: action.payload
+      }
+    case pkgConstants.PKG_UPDATE:
+      return {
+        ...state,
+        loading: true
+      }
+    case pkgConstants.PKG_UPDATE_SUCCESS:
+      return {
+        ...state,
+        loading: false
       }
     case pkgConstants.PKG_RESET:
       return {

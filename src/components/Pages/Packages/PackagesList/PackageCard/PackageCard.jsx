@@ -3,16 +3,16 @@ import React from 'react'
 import css from './PackageCard.module.scss'
 
 const PackageCard = ({ p, catalog, openModal }) => {
-  const updateHandler = () => {
-    openModal(p)
-  }
-
   const info = (catalog.list || []).find(
     (x) => x.name.replace(/ +/g, '-') === p.name
   )
 
   const source = info?.source || p.source
   const maintainer = info?.maintainer || p.maintainer
+
+  const updateHandler = () => {
+    openModal({ current: p, future: info })
+  }
 
   return (
     <div className={css.Card}>
@@ -47,11 +47,14 @@ const PackageCard = ({ p, catalog, openModal }) => {
           <span className={css.CurVersion}>{p.version}</span>
         </li>
         <li className={css.LiUpdate}>
-          {info && p.version !== info.version && (
-            <button className={css.BtnUpdate} onClick={updateHandler}>
-              {info.version} <i className='fa-solid fa-download'></i>
-            </button>
-          )}
+          {info &&
+            p.version !== info.version &&
+            p.version !== 'latest' &&
+            info.package && (
+              <button className={css.BtnUpdate} onClick={updateHandler}>
+                {info.version} <i className='fa-solid fa-download'></i>
+              </button>
+            )}
         </li>
       </ul>
     </div>

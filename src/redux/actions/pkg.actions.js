@@ -1,9 +1,14 @@
 import { pkgConstants } from '../constants'
 
-export const pkgLoad = (payload) => {
+export const pkgLoadSilent = () => {
   return {
-    type: pkgConstants.PKG_LOAD,
-    payload
+    type: pkgConstants.PKG_LOAD_SILENT
+  }
+}
+
+export const pkgLoad = () => {
+  return {
+    type: pkgConstants.PKG_LOAD
   }
 }
 
@@ -24,5 +29,25 @@ export const pkgLoadFailure = (payload) => {
 export const pkgReset = () => {
   return {
     type: pkgConstants.PKG_RESET
+  }
+}
+
+export const pkgUpdate = (payload) => {
+  return {
+    type: pkgConstants.PKG_UPDATE,
+    payload
+  }
+}
+
+export const pkgUpdateSuccess = () => {
+  return {
+    type: pkgConstants.PKG_UPDATE_SUCCESS
+  }
+}
+
+export const pkgUpdateFailure = (payload) => {
+  return {
+    type: pkgConstants.PKG_UPDATE_FAILURE,
+    payload
   }
 }

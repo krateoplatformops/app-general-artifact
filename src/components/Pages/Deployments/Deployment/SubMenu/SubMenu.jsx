@@ -7,7 +7,8 @@ import { uiConstants } from '../../../../../constants'
 import {
   deploymentSingleLoad,
   logFetch,
-  pluginFetch
+  pluginFetch,
+  registerImport
 } from '../../../../../redux/actions'
 import { pluginHelper } from '../../../../../helpers'
 
@@ -15,6 +16,16 @@ const SubMenu = ({ deploy }) => {
   const dispatch = useDispatch()
   const params = useParams()
   const [show, setShow] = useState(false)
+
+  const repoSyncHandler = () => {
+    dispatch(
+      registerImport({
+        url: `${deploy.repository}/claim.yaml`,
+        endpointName: deploy.endpointName
+      })
+    )
+    setShow(false)
+  }
 
   const syncHandler = () => {
     const std = uiConstants.deploymentNav.find((x) => x.to === params['*'])
@@ -74,6 +85,10 @@ const SubMenu = ({ deploy }) => {
         <div className={css.SubMenu}>
           <button data-viewer={true} onClick={syncHandler}>
             <i className='fa-solid fa-sync-alt' data-viewer={true}></i> refresh
+          </button>
+          <button data-viewer={true} onClick={repoSyncHandler}>
+            <i className='fa-solid fa-download' data-viewer={true}></i>
+            sync with repository
           </button>
           <Link to={`/settings/endpoints`} data-viewer={true}>
             <i

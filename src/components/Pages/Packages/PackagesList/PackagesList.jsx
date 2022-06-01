@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import { pkgLoad } from '../../../../redux/actions'
+import { pkgLoad, pkgUpdate } from '../../../../redux/actions'
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
 import PackageCard from './PackageCard/PackageCard'
 import css from './PackagesList.module.scss'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Modal from '../../../UI/Modal/Modal'
+import UpdatePackage from './UpdatePackage/UpdatePackage'
 
 const Packages = ({ pkg, catalog }) => {
   const dispatch = useDispatch()
@@ -25,6 +26,16 @@ const Packages = ({ pkg, catalog }) => {
   }
 
   const closeUpdateModal = () => {
+    setShowModal(false)
+  }
+
+  const updatePackageHandler = () => {
+    dispatch(
+      pkgUpdate({
+        package: currentPackage.future.package,
+        version: currentPackage.future.version
+      })
+    )
     setShowModal(false)
   }
 
@@ -77,7 +88,11 @@ const Packages = ({ pkg, catalog }) => {
           title={'Update package'}
           closeModal={closeUpdateModal}
           closeButtonHandler={closeUpdateModal}
-        />
+          confirmButtonHandler={updatePackageHandler}
+          confirmButtonText={'Update'}
+        >
+          <UpdatePackage pkg={currentPackage} />
+        </Modal>
       )}
     </React.Fragment>
   )

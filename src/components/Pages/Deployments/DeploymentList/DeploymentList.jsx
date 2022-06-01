@@ -42,7 +42,7 @@ const DeploymentList = ({ deployment }) => {
         {deployment.skeletonLoading
           ? [...Array(4)].map((s, key) => (
               <li key={key}>
-                <Skeleton height={130} />
+                <Skeleton height={115} />
               </li>
             ))
           : (deployment.list || [])

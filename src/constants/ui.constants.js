@@ -135,7 +135,8 @@ export const uiConstants = {
     proxy_delete_success: 'Proxy deleted successfully',
     deployment_import_success: 'Deployment imported successfully',
     secret_create_success: 'Secret created successfully',
-    secret_delete_success: 'Secret deleted successfully'
+    secret_delete_success: 'Secret deleted successfully',
+    update_package_error: 'Update package error'
   },
   themes: {
     light: 'light',
