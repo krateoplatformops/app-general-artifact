@@ -4,6 +4,7 @@ import Card from '../../../../UI/Card/Card'
 import Label from '../../../../UI/Label/Label'
 import Radio from '../../../../UI/Radio/Radio'
 import Toggle from '../../../../UI/Toggle/Toggle'
+import InputPassword from '../../../../UI/InputPassword/InputPassword'
 import css from './Fields.module.scss'
 
 const styles = ['info', 'warning', 'error', 'success']
@@ -33,11 +34,17 @@ const Fields = ({ widget, inputs, register, currentStep, setValue }) => {
               })}
               defaultValue={i.default}
             >
-              {i.values.map((x) => (
-                <option key={x} value={x}>
-                  {x}
-                </option>
-              ))}
+              {i.values.map((x) =>
+                typeof x === 'string' ? (
+                  <option key={x} value={x}>
+                    {x}
+                  </option>
+                ) : (
+                  <option key={x.value} value={x.value}>
+                    {x.title}
+                  </option>
+                )
+              )}
             </select>
           )
       }
@@ -45,6 +52,17 @@ const Fields = ({ widget, inputs, register, currentStep, setValue }) => {
 
     if (i.type === 'toggle') {
       return <Toggle key={i.id} i={i} register={register} setValue={setValue} />
+    }
+
+    if (i.type === 'password') {
+      return (
+        <InputPassword
+          key={i.id}
+          name={i.id}
+          required={i.required}
+          register={register}
+        />
+      )
     }
 
     if (i.type === 'textarea') {
@@ -83,7 +101,7 @@ const Fields = ({ widget, inputs, register, currentStep, setValue }) => {
         )}
         <ul className={css.UlContainer}>
           <li className={css.LiFields}>
-            {inputs.map((i) => (
+            {(inputs || []).map((i) => (
               <Label
                 title={i.title}
                 required={i.required}

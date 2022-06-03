@@ -26,9 +26,18 @@ const Summary = ({ fieldValues, isValid, fieldsList }) => {
 
   const totalCost = cost()
 
+  const payloadValues = fieldValues.map((x) => {
+    const f = fieldsList.find((y) => y.label === x.name)
+    return {
+      name: x.name,
+      value: f.type === 'password' ? x.value.replace(/./g, '*') : x.value,
+      title: x.title
+    }
+  })
+
   return (
     <Card title='Summary'>
-      <PayloadViewer payload={fieldValues} />
+      <PayloadViewer payload={payloadValues} />
 
       {totalCost > 0 && (
         <div className={css.Cost}>

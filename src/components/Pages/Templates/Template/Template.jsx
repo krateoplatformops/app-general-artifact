@@ -53,7 +53,7 @@ const Template = (props) => {
       setCurrentStep(template.spec.widgets[0]._id)
       setStepsStatus(
         template.spec.widgets.map((x) => {
-          const p = Object.keys(x.properties).filter((key) => {
+          const p = Object.keys(x.properties || []).filter((key) => {
             const f = x.properties[key]
             if ((f.required && f.default) || !f.required) {
               return false
@@ -88,7 +88,7 @@ const Template = (props) => {
   } else {
     const fieldsList = template.spec.widgets
       .map((x) =>
-        Object.keys(x.properties).map((y) => {
+        Object.keys(x.properties || []).map((y) => {
           return { ...x.properties[y], label: y }
         })
       )
@@ -134,7 +134,7 @@ const Template = (props) => {
                   widget={w}
                   register={register}
                   currentStep={currentStep}
-                  inputs={Object.keys(w.properties).map((x) => {
+                  inputs={Object.keys(w.properties || []).map((x) => {
                     return { id: x, ...w.properties[x] }
                   })}
                   setValue={setValue}
