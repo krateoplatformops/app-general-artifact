@@ -51,15 +51,16 @@ const Modal = (props) => {
           )}
           {props.confirmButtonHandler && (
             <li>
-              <input
+              <button
                 disabled={props.confirmDisabled}
                 type={props.isTypeSubmit ? 'submit' : 'button'}
                 {...(!props.isTypeSubmit && {
                   onClick: props.confirmButtonHandler
                 })}
                 className={css.BtnConfirm}
-                value={props.confirmButtonText}
-              />
+              >
+                {props.confirmButtonText}
+              </button>
             </li>
           )}
         </ul>
