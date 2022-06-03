@@ -22,46 +22,66 @@ const LoadComponents = (props) => {
   }, [dispatch, props.socket.init])
 
   useEffect(() => {
-    if (!props.template.result && !props.template.skeletonLoading) {
+    if (
+      !props.template.result &&
+      !props.template.skeletonLoading &&
+      props.user.profile
+    ) {
       dispatch(templateLoad())
     }
-  }, [dispatch, props.template])
+  }, [dispatch, props.template, props.user.profile])
 
   useEffect(() => {
-    if (!props.deployment.result && !props.deployment.skeletonLoading) {
+    if (
+      !props.deployment.result &&
+      !props.deployment.skeletonLoading &&
+      props.user.profile
+    ) {
       dispatch(deploymentLoad())
     }
-  }, [dispatch, props.deployment])
+  }, [dispatch, props.deployment, props.user.profile])
 
   useEffect(() => {
-    if (!props.endpoint.result && !props.endpoint.skeletonLoading) {
+    if (
+      !props.endpoint.result &&
+      !props.endpoint.skeletonLoading &&
+      props.user.profile
+    ) {
       dispatch(endpointLoad())
     }
-  }, [dispatch, props.endpoint])
+  }, [dispatch, props.endpoint, props.user.profile])
 
   useEffect(() => {
-    if (!props.dashboard.result && !props.dashboard.loading) {
+    if (
+      !props.dashboard.result &&
+      !props.dashboard.loading &&
+      props.user.profile
+    ) {
       dispatch(dashboardLoad())
     }
-  }, [dispatch, props.dashboard])
+  }, [dispatch, props.dashboard, props.user.profile])
 
   useEffect(() => {
-    if (!props.pkg.result && !props.pkg.skeletonLoading) {
+    if (!props.pkg.result && !props.pkg.skeletonLoading && props.user.profile) {
       dispatch(pkgLoad())
     }
-  }, [dispatch, props.pkg])
+  }, [dispatch, props.pkg, props.user.profile])
 
   useEffect(() => {
-    if (!props.secret.result && !props.secret.skeletonLoading) {
+    if (
+      !props.secret.result &&
+      !props.secret.skeletonLoading &&
+      props.user.profile
+    ) {
       dispatch(secretLoad())
     }
-  }, [dispatch, props.secret])
+  }, [dispatch, props.secret, props.user.profile])
 
   useEffect(() => {
-    if (!props.catalog.result && !props.catalog.loading) {
+    if (!props.catalog.result && !props.catalog.loading && props.user.profile) {
       dispatch(catalogLoad())
     }
-  }, [dispatch, props.catalog])
+  }, [dispatch, props.catalog, props.user.profile])
 
   return <React.Fragment />
 }

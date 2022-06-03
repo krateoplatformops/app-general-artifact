@@ -28,7 +28,7 @@ axiosInstance.interceptors.response.use(
     return response
   },
   (error) => {
-    if (error.name === 'AxiosError') {
+    if (error.name === 'AxiosError' && error.response.status !== 401) {
       const err = {
         response: {
           data: {
