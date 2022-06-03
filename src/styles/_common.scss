@@ -110,9 +110,9 @@
   background: var(--card);
 
   color: var(--border);
-  height: 24px;
+  // height: 24px;
   @extend .bsbb;
-  text-transform: lowercase;
+  text-transform: uppercase;
   i {
     color: var(--text-color);
     margin-right: 10px;
