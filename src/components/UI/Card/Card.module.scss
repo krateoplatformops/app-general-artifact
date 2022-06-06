@@ -27,12 +27,16 @@
 }
 
 .Title {
-  padding-bottom: 20px;
   // font-weight: 400;
   font-size: 1.5em;
   font-weight: 600;
   text-transform: capitalize;
-  height: 40px;
+  padding-bottom: 10px;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 20px;
+  }
+  // height: 40px;
+
   // @extend .bsbb;
   // position: relative;
   // &:before {

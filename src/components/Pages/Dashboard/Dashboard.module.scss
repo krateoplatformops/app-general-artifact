@@ -4,6 +4,7 @@
 .UlCards {
   @extend .display-flex;
   @include flex-direction-column;
+  @include flex-wrap;
 
   @media screen and (min-width: 768px) {
     @include flex-direction-row;
@@ -11,8 +12,8 @@
 
   > li {
     @extend .bsbb;
-    width: 100%;
     padding: 10px 0;
+    width: 100%;
     &:first-of-type {
       padding: 0 0 10px 0;
     }
@@ -20,6 +21,17 @@
       padding: 10px 0 0 0;
     }
     @media screen and (min-width: 768px) {
+      width: 50%;
+      padding: 10px 10px;
+      &:first-of-type {
+        padding: 10px 10px 10px 10px;
+      }
+      &:last-of-type {
+        padding: 10px 10px 10px 10px;
+      }
+    }
+    @media screen and (min-width: 1024px) {
+      width: 25%;
       padding: 0 10px;
       &:first-of-type {
         padding: 0 10px 0 0;

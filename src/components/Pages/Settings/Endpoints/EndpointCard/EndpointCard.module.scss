@@ -22,7 +22,6 @@
   i {
     width: 40px;
     height: 40px;
-    // font-size: 1.5em;
     @extend .display-flex;
     @extend .flex-center;
     @include border-radius(50%);
@@ -34,13 +33,12 @@
 .LiInfo {
   @extend .display-flex;
   @extend .flex-direction-column;
-  margin-left: 20px;
+  margin-left: 10px;
   width: 100%;
 }
 
 .Name {
   font-weight: 600;
-  // margin-bottom: 10px;
   text-transform: uppercase;
 }
 
@@ -68,6 +66,15 @@
   @extend .flex-direction-row;
   @extend .flex-wrap;
   li {
-    width: 50%;
+    width: 100%;
+    &:nth-last-child(-n + 1) {
+      margin-bottom: -10px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 50%;
+      &:nth-last-child(-n + 2) {
+        margin-bottom: -10px;
+      }
+    }
   }
 }

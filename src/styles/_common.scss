@@ -59,29 +59,44 @@
 
 .ul-double-view {
   @extend .display-flex;
-  @extend .flex-direction-row;
+  > li {
+    @extend .bsbb;
+  }
+
+  @include flex-direction-column;
   .li-menu {
-    min-width: 25%;
-    max-width: 25%;
+    width: 100%;
+    margin-bottom: 20px;
   }
   .li-content {
-    padding-left: 20px;
-    @extend .bsbb;
     width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    @include flex-direction-row;
+    .li-menu {
+      min-width: 25%;
+      max-width: 25%;
+      margin-bottom: 0;
+    }
+    .li-content {
+      padding-left: 20px;
+      width: 100%;
+    }
   }
 }
 
 .ul-fourty-sixty-view {
-  @extend .display-flex;
-  @extend .flex-direction-row;
-  .li-menu {
-    min-width: 40%;
-    max-width: 40%;
-  }
-  .li-content {
-    padding-left: 20px;
-    @extend .bsbb;
-    width: 100%;
+  @extend .ul-double-view;
+  @media screen and (min-width: 768px) {
+    .li-menu {
+      min-width: 40%;
+      max-width: 40%;
+    }
+    .li-content {
+      padding-left: 20px;
+      width: 100%;
+    }
   }
 }
 

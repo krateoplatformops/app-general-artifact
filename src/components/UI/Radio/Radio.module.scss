@@ -3,12 +3,20 @@
 
 .Wrapper {
   @extend .display-flex;
-  @extend .flex-direction-row;
+  @extend .flex-direction-column;
   @extend .flex-wrap;
   margin-bottom: -10px;
+
+  @media screen and (min-width: 768px) {
+    @include flex-direction-row;
+  }
+
   li {
     @extend .display-flex;
-    width: 33.33333%;
+    width: 100%;
+    @media screen and (min-width: 768px) {
+      width: 33.33333%;
+    }
     @extend .bsbb;
     &:nth-child(3n) {
       padding: 0 0 10px 5px;

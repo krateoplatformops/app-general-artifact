@@ -3,16 +3,26 @@
 
 .UlWidgets {
   @extend .display-flex;
-  @extend .flex-direction-row;
+  @extend .flex-direction-column;
+  @media screen and (min-width: 768px) {
+    @include flex-direction-row;
+  }
 }
 
 .LiWidgets {
-  min-width: 30%;
-  max-width: 30%;
+  width: 100%;
+  margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+    min-width: 30%;
+    max-width: 30%;
+  }
 }
 
 .LiForm {
-  padding-left: 20px;
   @extend .bsbb;
   width: 100%;
+  @media screen and (min-width: 768px) {
+    padding-left: 20px;
+  }
 }

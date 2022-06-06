@@ -4,13 +4,25 @@
 .UlOverview {
   @extend .display-flex;
   @extend .flex-direction-row;
+  @extend .flex-direction-column;
+
+  @media screen and (min-width: 768px) {
+    @include flex-direction-row;
+  }
+
   li {
     width: 100%;
+    @extend .bsbb;
     &:last-of-type {
-      width: 40%;
-      min-width: 40%;
-      @extend .bsbb;
-      padding-left: 20px;
+      margin-top: 20px;
+    }
+    @media screen and (min-width: 768px) {
+      &:last-of-type {
+        margin-top: 0;
+        width: 40%;
+        min-width: 40%;
+        padding-left: 20px;
+      }
     }
   }
 }

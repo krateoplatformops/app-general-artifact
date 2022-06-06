@@ -6,9 +6,15 @@
   @extend .flex-direction-row;
   @extend .flex-wrap;
   li {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     &:not(:last-of-type) {
-      margin-right: 10px;
+      margin-right: 5px;
+    }
+    @media screen and (min-width: 768px) {
+      margin-bottom: 20px;
+      &:not(:last-of-type) {
+        margin-right: 10px;
+      }
     }
   }
 }

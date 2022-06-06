@@ -11,7 +11,11 @@
 
 .UlContainer {
   @extend .display-flex;
-  @extend .flex-direction-row;
+  @extend .flex-direction-column-reverse;
+
+  @media screen and (min-width: 1024px) {
+    @include flex-direction-row;
+  }
 }
 
 .LiFields {
@@ -19,9 +23,16 @@
 }
 
 .LiBox {
-  margin-left: 20px;
-  min-width: 40%;
-  max-width: 40%;
+  width: 100%;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 1024px) {
+    margin-left: 20px;
+    margin-bottom: 0;
+    min-width: 40%;
+    max-width: 40%;
+  }
+
   div {
     @include border-radius($border-radius / 2);
     padding: 20px;

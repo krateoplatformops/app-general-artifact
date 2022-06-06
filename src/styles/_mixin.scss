@@ -334,6 +334,14 @@
   flex-direction: row;
 }
 
+@mixin flex-direction-column-reverse {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
 .flex-wrap {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;

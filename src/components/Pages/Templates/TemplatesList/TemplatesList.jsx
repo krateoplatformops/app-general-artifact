@@ -64,7 +64,7 @@ const TemplatesList = ({ template }) => {
         {template.skeletonLoading
           ? [...Array(4)].map((s, key) => (
               <li key={key}>
-                <Skeleton height={150} />
+                <Skeleton height={270} />
               </li>
             ))
           : (template.list || [])

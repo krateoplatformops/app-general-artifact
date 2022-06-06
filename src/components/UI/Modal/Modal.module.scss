@@ -20,7 +20,10 @@
   background: var(--card);
   @include border-radius($border-radius);
   @extend .bsbb;
-  padding: 20px;
+  padding: 10px;
+  @media screen and (min-width: 768px) {
+    padding: 20px;
+  }
   @extend .display-flex;
   @extend .flex-direction-column;
   border: 1px solid var(--border);
@@ -37,7 +40,9 @@
 .ModalBody {
   max-height: 70vh;
   @extend .bsbb;
-  padding: 10px;
+  @media screen and (min-width: 768px) {
+    padding: 10px;
+  }
   overflow: hidden;
   @extend .display-flex;
   @extend .flex-direction-column;
@@ -79,7 +84,10 @@
   @extend .flex-direction-row;
   @extend .flex-end;
   @extend .bsbb;
-  padding: 10px;
+  padding: 10px 0;
+  @media screen and (min-width: 768px) {
+    padding: 10px;
+  }
   @extend .flex-justify-between;
 }
 
