@@ -27,6 +27,33 @@
   }
 }
 
+.Status {
+  margin-left: 10px;
+  width: 40px;
+  height: 25px;
+  @extend .bsbb;
+  @extend .display-flex;
+  @extend .flex-center;
+  padding: 5px;
+  @include border-radius($border-radius / 2);
+  font-weight: 400;
+}
+
+.Unknown {
+  background: rgba($violet, 0.1);
+  color: $violet;
+}
+
+.Healthy {
+  background: rgba($green, 0.1);
+  color: $green;
+}
+
+.Unhealthy {
+  background: rgba($orange, 0.1);
+  color: $orange;
+}
+
 .LiInfo {
   @extend .display-flex;
   @extend .flex-direction-column;
@@ -56,6 +83,7 @@
     font-size: 0.8em;
     @extend .display-flex;
     @extend .flex-direction-column;
+    word-break: break-all;
     b {
       text-transform: uppercase;
     }

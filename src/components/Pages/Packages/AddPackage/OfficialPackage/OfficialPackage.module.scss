@@ -1,0 +1,38 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.UlPkg {
+  @extend .display-flex;
+  @extend .flex-center-start;
+  @extend .flex-direction-column;
+
+  @media screen and (min-width: 480px) {
+    @include flex-direction-row;
+  }
+
+  li {
+    @extend .display-flex;
+    @extend .flex-center;
+    @media screen and (max-width: 479px) {
+      margin-bottom: 10px;
+    }
+    @media screen and (min-width: 480px) {
+      margin-bottom: 0 !important;
+      &:not(:last-of-type) {
+        margin-right: 10px;
+      }
+    }
+    font-size: 1.5em;
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+.LiFuture {
+  padding: 10px;
+  background: rgba($green, 0.1);
+  @include border-radius($border-radius / 2);
+  color: $green;
+}

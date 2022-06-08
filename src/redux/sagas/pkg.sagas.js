@@ -8,7 +8,10 @@ import {
   addNotification,
   pkgUpdateSuccess,
   pkgUpdateFailure,
-  pkgLoadSilent
+  pkgLoadSilent,
+  pkgAddFailure,
+  pkgAddSuccess,
+  redirect
 } from '../actions'
 import { uiConstants } from '../../constants'
 import yaml from 'js-yaml'
@@ -60,6 +63,40 @@ export function* pkgUpdateSaga(action) {
     }
   } catch (error) {
     yield put(pkgUpdateFailure(error))
+    yield put(
+      addNotification(
+        error.response.data.message,
+        uiConstants.notification.error
+      )
+    )
+  }
+}
+
+export function* pkgAddSaga(action) {
+  try {
+    let y = null
+    if (action.payload.package) {
+      const file = yield axiosBase.get(action.payload.package)
+      // substitute version
+      const regex = /[:].*/g
+      y = yaml.load(file.data)
+      y.spec.package = y.spec.package.replace(
+        regex,
+        `:${action.payload.version}`
+      )
+    } else {
+      y = action.payload.yaml
+    }
+
+    const result = yield axios.post(uris.package, y)
+    yield put(pkgAddSuccess())
+    yield put(
+      addNotification(result.data.message, uiConstants.notification.success)
+    )
+    yield put(pkgLoadSilent())
+    yield put(redirect('/packages'))
+  } catch (error) {
+    yield put(pkgAddFailure(error))
     yield put(
       addNotification(
         error.response.data.message,

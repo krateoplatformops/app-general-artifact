@@ -6,5 +6,8 @@ export const pkgConstants = {
   PKG_RESET: '[Pkg] Reset',
   PKG_UPDATE: '[Pkg] Update',
   PKG_UPDATE_SUCCESS: '[Pkg] Update success',
-  PKG_UPDATE_FAILURE: '[Pkg] Update failure'
+  PKG_UPDATE_FAILURE: '[Pkg] Update failure',
+  PKG_ADD: '[Pkg] Add',
+  PKG_ADD_SUCCESS: '[Pkg] Add success',
+  PKG_ADD_FAILURE: '[Pkg] Add failure'
 }

@@ -14,6 +14,13 @@ const PackageCard = ({ p, catalog, openModal }) => {
     openModal({ current: p, future: info })
   }
 
+  const status =
+    p.healthy === 'Unknown'
+      ? { css: 'Unknown', icon: 'fa-solid fa-question' }
+      : p.healthy
+      ? { css: 'Healthy', icon: 'fa-solid fa-check' }
+      : { css: 'Unhealthy', icon: 'fa-solid fa-triangle-exclamation' }
+
   return (
     <div className={css.Card}>
       <ul className={css.UlPkg}>
@@ -52,9 +59,15 @@ const PackageCard = ({ p, catalog, openModal }) => {
             p.version !== 'latest' &&
             info.package && (
               <button className={css.BtnUpdate} onClick={updateHandler}>
-                {info.version} <i className='fa-solid fa-download'></i>
+                {info.version} <i className='fa-solid fa-upload'></i>
               </button>
             )}
+          <span
+            className={`${css.Status} ${css[status.css]}`}
+            title={p.healthy}
+          >
+            <i className={status.icon}></i>
+          </span>
         </li>
       </ul>
     </div>

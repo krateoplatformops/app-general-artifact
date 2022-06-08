@@ -51,3 +51,23 @@ export const pkgUpdateFailure = (payload) => {
     payload
   }
 }
+
+export const pkgAdd = (payload) => {
+  return {
+    type: pkgConstants.PKG_ADD,
+    payload
+  }
+}
+
+export const pkgAddSuccess = () => {
+  return {
+    type: pkgConstants.PKG_ADD_SUCCESS
+  }
+}
+
+export const pkgAddFailure = (payload) => {
+  return {
+    type: pkgConstants.PKG_ADD_FAILURE,
+    payload
+  }
+}

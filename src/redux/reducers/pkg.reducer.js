@@ -28,6 +28,7 @@ export default function pkg(state = initialState, action) {
       }
     case pkgConstants.PKG_LOAD_FAILURE:
     case pkgConstants.PKG_UPDATE_FAILURE:
+    case pkgConstants.PKG_ADD_FAILURE:
       return {
         ...state,
         loading: false,
@@ -36,11 +37,13 @@ export default function pkg(state = initialState, action) {
         error: action.payload
       }
     case pkgConstants.PKG_UPDATE:
+    case pkgConstants.PKG_ADD:
       return {
         ...state,
         loading: true
       }
     case pkgConstants.PKG_UPDATE_SUCCESS:
+    case pkgConstants.PKG_ADD_SUCCESS:
       return {
         ...state,
         loading: false

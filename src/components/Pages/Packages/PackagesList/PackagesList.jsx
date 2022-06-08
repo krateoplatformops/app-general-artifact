@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import { pkgLoad, pkgUpdate } from '../../../../redux/actions'
+import { pkgLoad, pkgUpdate, catalogLoad } from '../../../../redux/actions'
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
 import PackageCard from './PackageCard/PackageCard'
 import css from './PackagesList.module.scss'
@@ -18,6 +18,7 @@ const Packages = ({ pkg, catalog }) => {
 
   const reloadProviders = () => {
     dispatch(pkgLoad())
+    dispatch(catalogLoad())
   }
 
   const openUpdateModal = (p) => {
@@ -50,7 +51,9 @@ const Packages = ({ pkg, catalog }) => {
           },
           {
             action: reloadProviders,
-            icon: `fa-solid fa-rotate ${pkg.skeletonLoading && 'fa-spin'}`
+            icon: `fa-solid fa-rotate ${
+              (pkg.skeletonLoading || catalog.loading) && 'fa-spin'
+            }`
           }
         ]}
       >
@@ -66,7 +69,7 @@ const Packages = ({ pkg, catalog }) => {
         {pkg.skeletonLoading
           ? [...Array(4)].map((s, key) => (
               <li key={key}>
-                <Skeleton height={150} />
+                <Skeleton height={175} />
               </li>
             ))
           : (pkg.list || [])
