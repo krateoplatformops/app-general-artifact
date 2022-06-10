@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import PageLoader from '../../../UI/PageLoader/PageLoader'
 
 const ReduxLoader = (props) => {
-  return props.user.loading ||
+  return props.auth.loading ||
+    props.user.loading ||
     props.register.loading ||
     props.config.loading ||
     props.deployment.loading ||

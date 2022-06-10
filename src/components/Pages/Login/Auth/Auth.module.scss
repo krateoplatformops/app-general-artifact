@@ -1,0 +1,9 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.Btns {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  margin-top: 20px;
+  @extend .flex-justify-between;
+}

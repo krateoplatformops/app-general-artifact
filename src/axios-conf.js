@@ -39,7 +39,11 @@ axiosInstance.interceptors.response.use(
       }
       return Promise.reject(err)
     }
-    if (error.response.status === 401 && window.location.pathname !== '/') {
+    if (
+      error.response.status === 401 &&
+      window.location.pathname !== '/' &&
+      !window.location.pathname.startsWith('/auth')
+    ) {
       store.dispatch(userReset())
       store.dispatch(redirect('/'))
     }

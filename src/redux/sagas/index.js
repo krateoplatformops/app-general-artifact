@@ -20,7 +20,7 @@ import {
 
 import { configLoadSaga } from './config.sagas'
 import { userLoadProfileSaga } from './user.sagas'
-import { logoutSaga } from './auth.sagas'
+import { loginSaga, logoutSaga } from './auth.sagas'
 import { registerImportSaga } from './register.sagas'
 import {
   socketInitSaga,
@@ -61,6 +61,7 @@ export function* watchUser() {
 }
 
 export function* watchAuth() {
+  yield takeEvery(authConstants.AUTH_LOGIN, loginSaga)
   yield takeEvery(authConstants.AUTH_LOGOUT, logoutSaga)
 }
 

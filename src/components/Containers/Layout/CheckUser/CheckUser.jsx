@@ -15,7 +15,10 @@ const CheckUser = (props) => {
   }, [dispatch, props.user.init])
 
   useEffect(() => {
-    if (props.user.profile && location.pathname === '/') {
+    if (
+      props.user.profile &&
+      (location.pathname === '/' || location.pathname.startsWith('/auth'))
+    ) {
       dispatch(redirect('/dashboard'))
     }
   }, [dispatch, location.pathname, props.user.profile])

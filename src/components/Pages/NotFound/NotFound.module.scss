@@ -14,5 +14,10 @@
 
 .Title {
   margin-top: 40px;
-  @include font-size(4em);
+  font-size: 4em;
+}
+
+.SubTitle {
+  margin-top: 20px;
+  font-size: 2em;
 }

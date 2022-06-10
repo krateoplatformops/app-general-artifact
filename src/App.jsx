@@ -40,7 +40,8 @@ function App() {
           <UserProvider>
             <Routes>
               <Route element={<Layout />}>
-                <Route index element={<LoginLazy />} />
+                <Route path='/*' element={<LoginLazy />} />
+                <Route path='auth/*' element={<LoginLazy />} />
                 <Route element={<AuthLayout />}>
                   <Route
                     path='dashboard'
