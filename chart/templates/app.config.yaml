@@ -7,4 +7,5 @@ data:
     window['runConfig'] = {
       apiBaseUrl: '{{ .Values.uris.api }}',
       socketUrl: '{{ .Values.uris.socket }}'
+      title: '{{ .Values.title }}'
     }
