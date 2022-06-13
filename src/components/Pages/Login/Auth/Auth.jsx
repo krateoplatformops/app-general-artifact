@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 
 import ErrorBoundary from '../../../Containers/ErrorBoundary/ErrorBoundary'
 import Ldap from './Ldap/Ldap'
+import Basic from './Basic/Basic'
 
 import css from './Auth.module.scss'
 import { login } from '../../../../redux/actions'
@@ -33,6 +34,7 @@ const Auth = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <div className={css.AuthTitle}>{p[0]} authentication</div>
       <Routes>
         <Route
           path='ldap/:id'
@@ -42,13 +44,21 @@ const Auth = () => {
             </ErrorBoundary>
           }
         />
+        <Route
+          path='basic/:id'
+          element={
+            <ErrorBoundary>
+              <Basic register={register} />
+            </ErrorBoundary>
+          }
+        />
       </Routes>
       <div className={css.Btns}>
         <Link to='/' className='minimal-button'>
           back
         </Link>
         <button className='primary-button' disabled={!isValid} type='submit'>
-          {p[0]} login
+          login
         </button>
       </div>
     </form>

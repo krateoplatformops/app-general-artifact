@@ -7,11 +7,13 @@ import css from './Actions.module.scss'
 
 const Actions = ({ provider }) => {
   const s =
-    strategiesConstants.list.find((x) => x.type === provider.strategy) ||
+    strategiesConstants.list.find((x) => x.strategy === provider.strategy) ||
     strategiesConstants.guest
 
+  console.log(provider.type)
+
   const href = () => {
-    if (provider.strategy !== 'ldap') {
+    if (provider.type === 'oauth') {
       return `${uris.apiBase}${uris.auth}/${provider.strategy}?id=${provider._id}`
     }
     return `auth/${provider.strategy}/${provider._id}`
@@ -28,9 +30,9 @@ const Actions = ({ provider }) => {
     )
   }
 
-  return provider.strategy !== 'ldap' ? (
+  return provider.type === 'oauth' ? (
     <a href={href()} className={`${css.Link} ${css[s.style]}`}>
-      {content()}
+      {content()} oauth
     </a>
   ) : (
     <Link to={href()} className={`${css.Link} ${css[s.style]}`}>

@@ -1,24 +1,29 @@
 export const strategiesConstants = {
   guest: {
-    type: 'guest',
+    strategy: 'guest',
     icon: 'fa-solid fa-user-tie',
     style: 'Guest'
   },
   list: [
     {
-      type: 'github',
+      strategy: 'github',
       icon: 'fa-brands fa-github',
       style: 'Github'
     },
     {
-      type: 'microsoft',
+      strategy: 'microsoft',
       icon: 'fa-brands fa-microsoft',
       style: 'Microsoft'
     },
     {
-      type: 'ldap',
+      strategy: 'ldap',
       icon: 'fa-solid fa-building-user',
       style: 'Ldap'
+    },
+    {
+      strategy: 'basic',
+      icon: 'fa-solid fa-key',
+      style: 'Basic'
     }
   ]
 }

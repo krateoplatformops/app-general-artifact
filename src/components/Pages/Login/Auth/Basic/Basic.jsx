@@ -3,7 +3,7 @@ import React from 'react'
 import Label from '../../../../UI/Label/Label'
 import InputPassword from '../../../../UI/InputPassword/InputPassword'
 
-const Ldap = ({ register }) => (
+const Basic = ({ register }) => (
   <React.Fragment>
     <Label title='username'>
       <input
@@ -24,4 +24,4 @@ const Ldap = ({ register }) => (
   </React.Fragment>
 )
 
-export default Ldap
+export default Basic

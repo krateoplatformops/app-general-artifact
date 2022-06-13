@@ -61,6 +61,7 @@ const Fields = ({ widget, inputs, register, currentStep, setValue }) => {
           name={i.id}
           required={i.required}
           register={register}
+          placeholder={i.title}
         />
       )
     }

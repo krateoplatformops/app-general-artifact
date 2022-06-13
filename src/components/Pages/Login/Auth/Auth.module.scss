@@ -1,6 +1,12 @@
 @import '../../../../styles/colors';
 @import '../../../../styles/mixin';
 
+.AuthTitle {
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .Btns {
   @extend .display-flex;
   @extend .flex-direction-row;
