@@ -32,7 +32,7 @@ const Actions = ({ provider }) => {
 
   return provider.type === 'oauth' ? (
     <a href={href()} className={`${css.Link} ${css[s.style]}`}>
-      {content()} oauth
+      {content()}
     </a>
   ) : (
     <Link to={href()} className={`${css.Link} ${css[s.style]}`}>
