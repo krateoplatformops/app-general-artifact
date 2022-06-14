@@ -6,6 +6,7 @@ import Radio from '../../../../UI/Radio/Radio'
 import Toggle from '../../../../UI/Toggle/Toggle'
 import InputPassword from '../../../../UI/InputPassword/InputPassword'
 import css from './Fields.module.scss'
+import Checkbox from '../../../../UI/Checkbox/Checkbox'
 
 const styles = ['info', 'warning', 'error', 'success']
 
@@ -25,6 +26,15 @@ const Fields = ({ widget, inputs, register, currentStep, setValue }) => {
         case 'radio':
           return (
             <Radio key={i.id} i={i} register={register} setValue={setValue} />
+          )
+        case 'multiple':
+          return (
+            <Checkbox
+              key={i.id}
+              i={i}
+              register={register}
+              setValue={setValue}
+            />
           )
         default:
           return (

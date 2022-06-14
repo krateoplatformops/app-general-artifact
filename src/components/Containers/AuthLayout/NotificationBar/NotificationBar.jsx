@@ -16,7 +16,7 @@ const Notification = ({ socket }) => {
   const { toggleNotification, notificationOpen } = useContext(UserContext)
 
   useEffect(() => {
-    if (!socket.error) {
+    if (!socket.error && socket.init) {
       dispatch(socketSubscribe('notifications'))
     }
     return () => {
@@ -24,7 +24,7 @@ const Notification = ({ socket }) => {
         dispatch(socketUnsubscribe('notifications'))
       }
     }
-  }, [dispatch, socket.error])
+  }, [dispatch, socket.error, socket.init])
 
   useEffect(() => {
     if (socket.events.filter((x) => !x.read).length > 0 && notificationOpen) {

@@ -18,6 +18,7 @@
 
 .LineNumber {
   margin-right: 10px;
+  word-break: keep-all;
   color: var(--text-color-secondary);
 }
 

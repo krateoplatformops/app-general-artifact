@@ -10,13 +10,26 @@ const Summary = ({ fieldValues, isValid, fieldsList }) => {
     return fieldValues
       .map((x) => {
         const f = fieldsList.find((y) => y.label === x.name)
+
         if (x.value && f.cost) {
           return parseFloat(f.cost)
         }
         if (f.values) {
-          const c = f.values.find((z) => z.value === x.value)
-          if (c && c.cost) {
-            return parseFloat(c.cost)
+          if (Array.isArray(x.value)) {
+            return x.value
+              .map((z) => {
+                const r = f.values.find((y) => y.value === z)
+                if (r && r.cost) {
+                  return parseFloat(r.cost)
+                }
+                return 0
+              })
+              .reduce((a, b) => a + b, 0)
+          } else {
+            const c = f.values.find((z) => z.value === x.value)
+            if (c && c.cost) {
+              return parseFloat(c.cost)
+            }
           }
         }
         return 0

@@ -27,7 +27,7 @@ const Deployment = ({ deployment, socket }) => {
   const deploy = (deployment.list || []).find((x) => x._id === params.id)
 
   useEffect(() => {
-    if (!socket.error) {
+    if (!socket.error && socket.init) {
       dispatch(socketSubscribe(params.id))
     }
     return () => {
@@ -35,7 +35,7 @@ const Deployment = ({ deployment, socket }) => {
         dispatch(socketUnsubscribe(params.id))
       }
     }
-  }, [dispatch, params.id, socket.error])
+  }, [dispatch, params.id, socket.error, socket.init])
 
   if (!deploy) {
     if (deployment.loading) {

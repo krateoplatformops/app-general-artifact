@@ -12,10 +12,13 @@ import {
 import { uiConstants } from '../../constants'
 import { securityHelper, timeHelper } from '../../helpers'
 
-const socket = socketIOClient(uris.socket)
+let socket //= socketIOClient(uris.socket)
 
 export function* socketInitSaga() {
   try {
+    try {
+      socket = socketIOClient(uris.socket)
+    } catch {}
     const listener = eventChannel((emit) => {
       socket.io.on('error', () => {
         emit({ type: 'error' })

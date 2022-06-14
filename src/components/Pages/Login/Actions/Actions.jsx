@@ -10,8 +10,6 @@ const Actions = ({ provider }) => {
     strategiesConstants.list.find((x) => x.strategy === provider.strategy) ||
     strategiesConstants.guest
 
-  console.log(provider.type)
-
   const href = () => {
     if (provider.type === 'oauth') {
       return `${uris.apiBase}${uris.auth}/${provider.strategy}?id=${provider._id}`
