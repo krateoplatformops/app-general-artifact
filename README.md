@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Template
 
-## Available Scripts
+Required properties:
 
-In the project directory, you can run:
+| Property     | Type                  | Description                                          |
+| ------------ | --------------------- | ---------------------------------------------------- |
+| `apiVersion` | string                | The version of the schema.                           |
+| `kind`       | string                | The type of the object.                              |
+| `metadata`   | [metadata](#metadata) | Metadata associated with the object.                 |
+| `spec`       | [spec](#spec)         | Specification of the desired behavior of the object. |
 
-### `npm start`
+### Metadata
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Property      | Type                        | Description                             |
+| ------------- | --------------------------- | --------------------------------------- |
+| `name`        | string                      | The name of the object.                 |
+| `annotations` | [annotations](#annotations) | Annotations associated with the object. |
+| `labels`      | [labels](#labels)           | Labels associated with the object.      |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Annotations
 
-### `npm test`
+| Property      | Type   | Description                                                                             |
+| ------------- | ------ | --------------------------------------------------------------------------------------- |
+| `title`       | string | The title of the object.                                                                |
+| `description` | string | The description of the object.                                                          |
+| `owner`       | string | The owner of the object.                                                                |
+| `icon`        | string | The icon of the template. List of available icons is here https://fontawesome.com/icons |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Labels
 
-### `npm run build`
+| Property | Type            | Description             |
+| -------- | --------------- | ----------------------- |
+| `tags`   | array of string | The tags of the object. |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Spec
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Property  | Type                       | Description       |
+| --------- | -------------------------- | ----------------- |
+| `widgets` | array of [widget](#widget) | Array of widgets. |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Widget
 
-### `npm run eject`
+| Property      | Type                               | Optional | Description                                                                             |
+| ------------- | ---------------------------------- | -------- | --------------------------------------------------------------------------------------- |
+| `title`       | string                             |          | The title of the widget.                                                                |
+| `description` | string                             | true     | The description of the widget.                                                          |
+| `properties`  | array of [properties](#properties) |          | The properties of the widget.                                                           |
+| `box`         | string                             | true     | The box of the widget.                                                                  |
+| `boxStyle`    | string                             | true     | The box style of the widget. Available values (info, warning, error, success, default). |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+##### properties
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Property      | Type       | Description                                                                                                     |
+| ------------- | ---------- | --------------------------------------------------------------------------------------------------------------- |
+| key           | unique key | The key of the property.                                                                                        |
+| `title`       | string     | The title of the property.                                                                                      |
+| `description` | string     | The description of the property.                                                                                |
+| `type`        | string     | The type of the property. Available types: number, password, textarea, radio, multiple, toggle. Default: string |
+| `required`    | boolean    | Whether the property is required.                                                                               |

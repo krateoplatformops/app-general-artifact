@@ -11,8 +11,8 @@ const Actions = ({ provider }) => {
     strategiesConstants.guest
 
   const href = () => {
-    if (provider.type === 'oauth') {
-      return `${uris.apiBase}${uris.auth}/${provider.strategy}?id=${provider._id}`
+    if (provider.type === 'redirect') {
+      return `${uris.apiBase}${uris.auth}/${provider.strategy}?id=${provider._id}&redirect=${window.location.href}`
     }
     return `auth/${provider.strategy}/${provider._id}`
   }
@@ -28,7 +28,7 @@ const Actions = ({ provider }) => {
     )
   }
 
-  return provider.type === 'oauth' ? (
+  return provider.type === 'redirect' ? (
     <a href={href()} className={`${css.Link} ${css[s.style]}`}>
       {content()}
     </a>
