@@ -12,7 +12,7 @@ const Actions = ({ provider }) => {
 
   const href = () => {
     if (provider.type === 'redirect') {
-      return `${uris.apiBase}${uris.auth}/${provider.strategy}?id=${provider._id}&redirect=${window.location.href}`
+      return `${uris.apiBase}${uris.auth}/${provider.strategy}?id=${provider._id}&redirect=${window.location.href}dashboard`
     }
     return `auth/${provider.strategy}/${provider._id}`
   }
