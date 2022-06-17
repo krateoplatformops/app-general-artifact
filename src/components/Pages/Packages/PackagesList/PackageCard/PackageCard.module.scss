@@ -134,7 +134,6 @@
   @extend .display-flex;
   @extend .flex-direction-row;
   @extend .flex-center-end;
-  padding-right: 10px;
 }
 
 .BtnUpdate {
@@ -144,9 +143,8 @@
   color: var(--border);
   text-transform: uppercase;
   font-size: 0.8em;
-  padding: 5px;
+  padding: 0 10px;
   @include border-radius($border-radius / 2);
-  padding: 5px;
   font-weight: 600;
   i {
     color: $green;
@@ -154,5 +152,17 @@
   }
   &:hover {
     color: $green;
+  }
+}
+
+.DeleteBtn {
+  @extend .display-flex;
+  @extend .flex-center;
+  height: 40px;
+  width: 40px;
+
+  color: var(--border);
+  &:hover {
+    color: $red;
   }
 }

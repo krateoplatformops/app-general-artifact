@@ -11,6 +11,8 @@ import {
   pkgLoadSilent,
   pkgAddFailure,
   pkgAddSuccess,
+  pkgDeleteSuccess,
+  pkgDeleteFailure,
   redirect
 } from '../actions'
 import { uiConstants } from '../../constants'
@@ -97,6 +99,33 @@ export function* pkgAddSaga(action) {
     yield put(redirect('/packages'))
   } catch (error) {
     yield put(pkgAddFailure(error))
+    yield put(
+      addNotification(
+        error.response.data.message,
+        uiConstants.notification.error
+      )
+    )
+  }
+}
+
+export function* pkgDeleteSaga(action) {
+  try {
+    yield axios.delete(uris.package, {
+      data: {
+        name: action.payload.name,
+        kind: action.payload.kind
+      }
+    })
+    yield put(pkgDeleteSuccess())
+    yield put(
+      addNotification(
+        uiConstants.messages.package_delete_success,
+        uiConstants.notification.success
+      )
+    )
+    yield put(pkgLoadSilent())
+  } catch (error) {
+    yield put(pkgDeleteFailure(error))
     yield put(
       addNotification(
         error.response.data.message,

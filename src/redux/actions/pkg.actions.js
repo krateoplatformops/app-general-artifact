@@ -71,3 +71,23 @@ export const pkgAddFailure = (payload) => {
     payload
   }
 }
+
+export const pkgDelete = (payload) => {
+  return {
+    type: pkgConstants.PKG_DELETE,
+    payload
+  }
+}
+
+export const pkgDeleteSuccess = () => {
+  return {
+    type: pkgConstants.PKG_DELETE_SUCCESS
+  }
+}
+
+export const pkgDeleteFailure = (payload) => {
+  return {
+    type: pkgConstants.PKG_DELETE_FAILURE,
+    payload
+  }
+}

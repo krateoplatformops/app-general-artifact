@@ -43,7 +43,12 @@ import {
 import { pluginFetchSaga } from './plugin.sagas'
 import { logFetchSaga } from './log.sagas'
 import { dashboardLoadSaga } from './dashboard.sagas'
-import { pkgLoadSaga, pkgUpdateSaga, pkgAddSaga } from './pkg.sagas'
+import {
+  pkgLoadSaga,
+  pkgUpdateSaga,
+  pkgAddSaga,
+  pkgDeleteSaga
+} from './pkg.sagas'
 import { componentLoadSaga } from './component.sagas'
 import {
   secretCreateSaga,
@@ -117,6 +122,7 @@ export function* watchPkg() {
   yield takeEvery(pkgConstants.PKG_LOAD_SILENT, pkgLoadSaga)
   yield takeEvery(pkgConstants.PKG_UPDATE, pkgUpdateSaga)
   yield takeEvery(pkgConstants.PKG_ADD, pkgAddSaga)
+  yield takeEvery(pkgConstants.PKG_DELETE, pkgDeleteSaga)
 }
 
 export function* watchComponent() {

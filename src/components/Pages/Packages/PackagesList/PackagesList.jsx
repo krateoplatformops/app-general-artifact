@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import { pkgLoad, pkgUpdate, catalogLoad } from '../../../../redux/actions'
+import {
+  pkgLoad,
+  pkgUpdate,
+  catalogLoad,
+  pkgDelete
+} from '../../../../redux/actions'
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
 import PackageCard from './PackageCard/PackageCard'
 import css from './PackagesList.module.scss'
@@ -9,11 +14,13 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Modal from '../../../UI/Modal/Modal'
 import UpdatePackage from './UpdatePackage/UpdatePackage'
+import DeletePackage from './DeletePackage/DeletePackage'
 
 const Packages = ({ pkg, catalog }) => {
   const dispatch = useDispatch()
   const [search, setSearch] = useState('')
-  const [showModal, setShowModal] = useState(false)
+  const [showUpdateModal, setShowUpdateModal] = useState(false)
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [currentPackage, setCurrentPackage] = useState('')
 
   const reloadProviders = () => {
@@ -23,11 +30,12 @@ const Packages = ({ pkg, catalog }) => {
 
   const openUpdateModal = (p) => {
     setCurrentPackage(p)
-    setShowModal(true)
+    setShowUpdateModal(true)
   }
 
-  const closeUpdateModal = () => {
-    setShowModal(false)
+  const openDeleteModal = (p) => {
+    setCurrentPackage(p)
+    setShowDeleteModal(true)
   }
 
   const updatePackageHandler = () => {
@@ -37,7 +45,12 @@ const Packages = ({ pkg, catalog }) => {
         version: currentPackage.future.version
       })
     )
-    setShowModal(false)
+    setShowUpdateModal(false)
+  }
+
+  const deletePackageHandler = () => {
+    dispatch(pkgDelete(currentPackage))
+    setShowDeleteModal(false)
   }
 
   return (
@@ -81,20 +94,32 @@ const Packages = ({ pkg, catalog }) => {
                   <PackageCard
                     p={p}
                     catalog={catalog}
-                    openModal={openUpdateModal}
+                    openUpdateModal={openUpdateModal}
+                    openDeleteModal={openDeleteModal}
                   />
                 </li>
               ))}
       </ul>
-      {showModal && (
+      {showUpdateModal && (
         <Modal
           title={'Update package'}
-          closeModal={closeUpdateModal}
-          closeButtonHandler={closeUpdateModal}
+          closeModal={() => setShowUpdateModal(false)}
+          closeButtonHandler={() => setShowUpdateModal(false)}
           confirmButtonHandler={updatePackageHandler}
           confirmButtonText={'Update'}
         >
           <UpdatePackage pkg={currentPackage} />
+        </Modal>
+      )}
+      {showDeleteModal && (
+        <Modal
+          title={'Delete package'}
+          closeModal={() => setShowDeleteModal(false)}
+          closeButtonHandler={() => setShowDeleteModal(false)}
+          confirmButtonHandler={deletePackageHandler}
+          confirmButtonText={'Delete'}
+        >
+          <DeletePackage pkg={currentPackage} />
         </Modal>
       )}
     </React.Fragment>

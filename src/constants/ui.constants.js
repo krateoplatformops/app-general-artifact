@@ -137,7 +137,8 @@ export const uiConstants = {
     secret_create_success: 'Secret created successfully',
     secret_delete_success: 'Secret deleted successfully',
     update_package_error: 'Update package error',
-    login_failure: 'Login failed'
+    login_failure: 'Login failed',
+    package_delete_success: 'Package deleted successfully'
   },
   themes: {
     light: 'light',
