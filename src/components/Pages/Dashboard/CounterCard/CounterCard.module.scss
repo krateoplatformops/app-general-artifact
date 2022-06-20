@@ -12,14 +12,17 @@
 
 .UlHeader {
   @extend .bsbb;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   @extend .display-flex;
   @extend .flex-direction-row;
   width: 100%;
+  // color: $blue;
+  // color: $white;
+  // @include opacity(0.5);
   li {
     @extend .display-flex;
     @extend .flex-center-start;
-    font-size: 4em;
+    font-size: 2em;
 
     &:first-of-type {
       margin-right: 20px;
@@ -33,20 +36,28 @@
 
 .Title {
   @extend .bsbb;
-  padding: 20px;
+  padding: 20px 20px 10px 20px;
   text-transform: uppercase;
   font-weight: 600;
+  // color: $white;
+  font-size: 0.8em;
+  @include opacity(0.7);
 }
 
 @mixin npt($name, $color) {
   .#{$name} {
-    ul {
-      color: $color;
-      background: rgba($color, 0.1);
+    border: 1px solid var(--border);
+    &:hover {
+      border: 1px solid $blue;
     }
-    div {
-      background: rgba($color, 1);
-      color: $white;
+    // background: $blue;
+    // background: linear-gradient(
+    //   45deg,
+    //   rgba($blue, 0.1) 0%,
+    //   rgba($color, 0.1) 100%
+    // );
+    i {
+      color: $blue;
     }
   }
 }
@@ -57,3 +68,7 @@
 @include npt('Blue', $blue);
 @include npt('Violet', $violet);
 @include npt('Yellow', $yellow);
+
+.LinkNone {
+  pointer-events: none;
+}

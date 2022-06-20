@@ -36,6 +36,7 @@ const options = {
     }
   },
   responsive: true,
+  maintainAspectRatio: false,
   scales: {
     x: {
       stacked: true
@@ -63,7 +64,9 @@ const EventsChart = ({ data }) => {
   return (
     <div className={css.Container}>
       <div className={css.Title}>Latest events</div>
-      <Bar data={chartData} options={options} />
+      <div className={css.Chart}>
+        <Bar data={chartData} options={options} />
+      </div>
     </div>
   )
 }

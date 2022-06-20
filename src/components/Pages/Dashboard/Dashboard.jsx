@@ -5,6 +5,7 @@ import CounterCard from './CounterCard/CounterCard'
 import css from './Dashboard.module.scss'
 import EventsChart from './EventsChart/EventsChart'
 import Loader from '../../UI/Loader/Loader'
+import Actions from './Actions/Actions'
 
 const Dashboard = (props) => {
   return (
@@ -15,12 +16,14 @@ const Dashboard = (props) => {
             title='Templates'
             counter={props.template.list?.length || 0}
             icon='fa-solid fa-puzzle-piece'
-            color='Blue'
+            color='Red'
+            to='/templates'
           />
         </li>
         <li>
           <CounterCard
             title='Deployments'
+            to='/deployments'
             counter={props.deployment.list?.length || 0}
             icon='fa-solid fa-rocket'
             color='Violet'
@@ -40,9 +43,11 @@ const Dashboard = (props) => {
             counter={props.endpoint.list?.length || 0}
             icon='fa-solid fa-landmark'
             color='Orange'
+            to='/settings/endpoints'
           />
         </li>
       </ul>
+      <Actions />
       {!props.dashboard.list ? (
         <div className={css.LoaderContainer}>
           <Loader />

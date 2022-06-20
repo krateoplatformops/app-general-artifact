@@ -53,20 +53,6 @@
   > li {
     @extend .bsbb;
     width: 100%;
-    padding: 0 0 10px 0;
-    &:not(:last-of-type) {
-      padding: 0;
-    }
-
-    @media screen and (min-width: 768px) {
-      width: 50%;
-      &:nth-child(2n) {
-        padding: 0 0 0 10px;
-      }
-      &:nth-child(2n + 1) {
-        padding: 0 10px 0 0;
-      }
-    }
   }
 }
 

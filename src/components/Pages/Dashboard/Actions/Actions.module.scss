@@ -1,0 +1,101 @@
+@import '../../../../styles/_colors';
+@import '../../../../styles/_mixin';
+
+.Container {
+  margin-top: 20px;
+  border: 1px solid var(--border);
+  @include border-radius($border-radius);
+  @extend .bsbb;
+  padding: 20px;
+  background: var(--card);
+}
+
+.Title {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  @include opacity(0.3);
+}
+
+.UlList {
+  @extend .display-flex;
+  @include flex-direction-column;
+  @include flex-wrap;
+  @extend .flex-justify-around;
+
+  @media screen and (min-width: 1024px) {
+    @include flex-direction-row;
+  }
+
+  > li {
+    @extend .bsbb;
+    padding: 10px 0;
+    @extend .display-flex;
+    @extend .flex-center;
+    @extend .flex-direction-column;
+    img {
+      max-width: 150px;
+      margin: 20px 0;
+    }
+
+    width: 100%;
+    @media screen and (min-width: 768px) {
+      width: 33.33333%;
+      &:first-of-type {
+        padding: 0 10px 0 0;
+      }
+      &:last-of-type {
+        padding: 0 0 0 10px;
+      }
+    }
+
+    &[disabled] {
+      cursor: not-allowed;
+      a {
+        color: rgba($blue, 0.3);
+        pointer-events: none;
+      }
+    }
+    &[data-completed] {
+      a {
+        background: rgba($green, 0.1);
+        color: $green;
+        pointer-events: none;
+        position: relative;
+        &:after {
+          content: '\f00c';
+          font-family: 'Font Awesome 5 Free';
+          position: absolute;
+          top: -5px;
+          right: -5px;
+          color: red;
+          background: $green;
+          color: $white;
+          @extend .display-flex;
+          @extend .flex-center;
+          width: 20px;
+          height: 20px;
+          @include border-radius(50%);
+        }
+      }
+    }
+  }
+}
+
+.Link {
+  @include border-radius($border-radius / 2);
+  @extend .display-inline-flex;
+  @extend .flex-center;
+  text-align: center;
+  padding: 10px 20px;
+  background: rgba($blue, 0.1);
+  color: $blue;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 600;
+  &:hover {
+    background: $blue;
+    color: $white;
+  }
+}
