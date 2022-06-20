@@ -18,7 +18,7 @@ const Actions = ({ endpoint, template, deployment }) => (
         </Link>
       </li>
       <li
-        {...((endpoint.list || []).length === 1 && { disabled: true })}
+        {...((endpoint.list || []).length >= 1 && { disabled: true })}
         {...((template.list || []).length > 1 && { 'data-completed': true })}
       >
         <img src={Template} alt='Import Template' />
