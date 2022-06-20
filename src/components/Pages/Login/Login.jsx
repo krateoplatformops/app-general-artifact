@@ -44,7 +44,10 @@ const Login = ({ config }) => {
                   </ul>
                 }
               />
-              <Route path='/*' element={<Auth />} />
+              <Route
+                path='/*'
+                element={<Auth providers={config.settings?.providers} />}
+              />
             </Route>
           </Routes>
         </div>

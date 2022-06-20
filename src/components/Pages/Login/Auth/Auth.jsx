@@ -10,7 +10,7 @@ import Basic from './Basic/Basic'
 import css from './Auth.module.scss'
 import { login } from '../../../../redux/actions'
 
-const Auth = () => {
+const Auth = ({ providers }) => {
   const dispatch = useDispatch()
   const params = useParams()
 
@@ -32,9 +32,18 @@ const Auth = () => {
     )
   }
 
+  const s = (providers || []).find((x) => x._id === p[1])
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={css.AuthTitle}>{p[0]} authentication</div>
+      <div className={css.AuthTitle}>
+        Authentication type: <b>{p[0]}</b>
+      </div>
+      {s && (
+        <div className={css.AuthTitle}>
+          Authentication name: <b>{s.name}</b>
+        </div>
+      )}
       <Routes>
         <Route
           path='ldap/:id'
