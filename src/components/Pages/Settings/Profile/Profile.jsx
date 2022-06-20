@@ -22,6 +22,9 @@ const Profile = ({ user }) => {
       <Card title={'Profile'}>
         <ul className={css.UlInfo}>
           <li>
+            <b>ID:</b> {user.profile.id}
+          </li>
+          <li>
             <b>Display name:</b> {user.profile.displayName}
           </li>
           <li>
