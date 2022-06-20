@@ -20,8 +20,10 @@ const Profile = ({ user }) => {
   return (
     <React.Fragment>
       <Card title={'Profile'}>
-        You are logged as
         <ul className={css.UlInfo}>
+          <li>
+            <b>Display name:</b> {user.profile.displayName}
+          </li>
           <li>
             <b>Username:</b> {user.profile.username}
           </li>
