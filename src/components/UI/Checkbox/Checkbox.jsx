@@ -5,7 +5,7 @@ import css from './Checkbox.module.scss'
 const Checkbox = ({ i, register, setValue }) => {
   useEffect(() => {
     if (i.default) {
-      setValue(i.id, i.default)
+      setValue(i.id, i.default.split(','))
     }
   }, [i.default, i.id, setValue])
 
@@ -36,7 +36,7 @@ const Checkbox = ({ i, register, setValue }) => {
                 {...register(i.id, {
                   required: i.required
                 })}
-                value={key}
+                value={key.toString()}
               />
               <label htmlFor={key}>{renderLabel(x)}</label>
             </div>

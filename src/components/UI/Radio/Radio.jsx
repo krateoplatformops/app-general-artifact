@@ -5,7 +5,7 @@ import css from './Radio.module.scss'
 const Radio = ({ i, register, setValue }) => {
   useEffect(() => {
     if (i.default) {
-      setValue(i.id, i.default)
+      setValue(i.id, i.default.toString())
     }
   }, [i.default, i.id, setValue])
 
@@ -36,7 +36,7 @@ const Radio = ({ i, register, setValue }) => {
                 {...register(i.id, {
                   required: i.required
                 })}
-                value={key}
+                value={key.toString()}
               />
               <label htmlFor={key}>{renderLabel(x)}</label>
             </div>
