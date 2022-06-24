@@ -14,7 +14,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Modal from '../../../UI/Modal/Modal'
 import UpdatePackage from './UpdatePackage/UpdatePackage'
-import DeletePackage from './DeletePackage/DeletePackage'
+import DangerZone from '../../../UI/DangerZone/DangerZone'
 
 const Packages = ({ pkg, catalog }) => {
   const dispatch = useDispatch()
@@ -112,15 +112,12 @@ const Packages = ({ pkg, catalog }) => {
         </Modal>
       )}
       {showDeleteModal && (
-        <Modal
+        <DangerZone
           title={'Delete package'}
+          name={currentPackage.name}
           closeModal={() => setShowDeleteModal(false)}
-          closeButtonHandler={() => setShowDeleteModal(false)}
-          confirmButtonHandler={deletePackageHandler}
-          confirmButtonText={'Delete'}
-        >
-          <DeletePackage pkg={currentPackage} />
-        </Modal>
+          deleteButtonHandler={deletePackageHandler}
+        />
       )}
     </React.Fragment>
   )
