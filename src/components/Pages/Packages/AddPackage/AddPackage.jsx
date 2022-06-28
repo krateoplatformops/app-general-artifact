@@ -97,7 +97,7 @@ const AddPackage = ({ pkg, catalog }) => {
         {pkg.skeletonLoading || catalog.skeletonLoading
           ? [...Array(6)].map((s, key) => (
               <li key={key}>
-                <Skeleton height={143} />
+                <Skeleton height={210} />
               </li>
             ))
           : (catalog.list || [])

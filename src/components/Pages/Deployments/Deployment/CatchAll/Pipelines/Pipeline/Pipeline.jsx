@@ -4,12 +4,14 @@ import { timeHelper, uiHelper } from '../../../../../../../helpers'
 import Card from '../../../../../../UI/Card/Card'
 import css from './Pipeline.module.scss'
 import Stats from './Stats/Stats'
+import Duration from './Duration/Duration'
 
 const Pipeline = ({ pipeline, runs }) => (
   <Card title={pipeline.name} icon={pipeline.icon} anchor={pipeline.id}>
     <ul className={css.UlPipeline}>
       <li className={css.LiCharts}>
         <Stats runs={runs} />
+        <Duration runs={runs} />
       </li>
       <li className={css.LiRuns}>
         <ul className={css.RunsList}>
@@ -34,6 +36,9 @@ const Pipeline = ({ pipeline, runs }) => (
                       <li> {r.message}</li>
                       <li>{timeHelper.fromNow(r.time)}</li>
                     </ul>
+                    <ul className={css.InfoDuration}>
+                      <li>{timeHelper.duration(r.duration)}</li>
+                    </ul>
                   </li>
                 </ul>
               </a>
@@ -44,12 +49,12 @@ const Pipeline = ({ pipeline, runs }) => (
     </ul>
 
     <a
-      href={pipeline.repository}
+      href={pipeline.link}
       target='_blank'
       rel='noreferrer'
       className={css.FooterLnk}
     >
-      {pipeline.repository}
+      {pipeline.link}
     </a>
   </Card>
 )

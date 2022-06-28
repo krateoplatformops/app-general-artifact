@@ -176,7 +176,17 @@ export const uiConstants = {
         {
           name: 'bearer',
           type: 'password',
-          description: 'Bitbucket bearer token'
+          description: 'Bitbucket bearer token (pat)'
+        },
+        {
+          name: 'username',
+          type: 'text',
+          description: 'Bitbucket username'
+        },
+        {
+          name: 'password',
+          type: 'password',
+          description: 'Bitbucket password'
         }
       ]
     },
@@ -210,6 +220,22 @@ export const uiConstants = {
           name: 'token',
           type: 'password',
           description: 'SonarCloud Api token'
+        }
+      ]
+    },
+    {
+      type: 'jenkins',
+      category: 'delivery',
+      fields: [
+        {
+          name: 'token',
+          type: 'password',
+          description: 'Jenkins token'
+        },
+        {
+          name: 'username',
+          type: 'text',
+          description: 'Jenkins username'
         }
       ]
     }

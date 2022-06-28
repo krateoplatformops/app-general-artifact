@@ -39,7 +39,7 @@
   @extend .display-flex;
   @extend .flex-direction-row;
   width: 100%;
-  li {
+  > li {
     &:not(:last-of-type) {
       width: 100%;
     }
@@ -56,6 +56,16 @@
   font-size: 0.8em;
   color: var(--text-color-secondary);
   margin-bottom: 5px;
+}
+
+.InfoDuration {
+  font-size: 0.8em;
+  color: var(--text-color-secondary);
+  margin-top: 5px;
+  @extend .display-flex;
+  @extend .flex-center-end;
+  @extend .flex-direction-row;
+  width: 100%;
 }
 
 .RunsList {

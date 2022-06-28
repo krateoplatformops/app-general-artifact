@@ -1,6 +1,7 @@
 import { uiConstants } from '../constants'
 
 const colorByStatus = (status) => {
+  status = status.toLowerCase()
   if (status.indexOf('fail') > -1) {
     return uiConstants.CHART_COLORS.red
   }
