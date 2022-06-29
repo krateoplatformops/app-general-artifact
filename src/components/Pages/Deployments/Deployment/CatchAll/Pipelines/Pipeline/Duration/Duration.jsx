@@ -10,6 +10,7 @@ import {
 import { Line } from 'react-chartjs-2'
 
 import { uiHelper } from '../../../../../../../../helpers'
+import css from './Duration.module.scss'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip)
 
@@ -47,9 +48,9 @@ const Duration = ({ runs }) => {
   }
 
   return (
-    <React.Fragment>
+    <div className={css.Container}>
       <Line data={chartData()} options={options} />
-    </React.Fragment>
+    </div>
   )
 }
 
