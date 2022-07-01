@@ -29,10 +29,16 @@ axiosInstance.interceptors.response.use(
     return response
   },
   (error) => {
-    if (error.code && error.message) {
+    if (
+      error.code === 'ECONNABORTED' ||
+      error.code === 'ECONNREFUSED' ||
+      error.code === 'ECONNRESET' ||
+      error.code === 'ERR_NETWORK'
+    ) {
       store.dispatch(
         addNotification(error.message, uiConstants.notification.error)
       )
+      return Promise.reject(null)
     }
     if (error.name === 'AxiosError' && error.response.status !== 401) {
       const err = {
