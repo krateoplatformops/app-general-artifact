@@ -11,6 +11,7 @@ import {
   secretDeleteFailure
 } from '../actions'
 import { uiConstants } from '../../constants'
+import { uiHelper } from '../../helpers'
 
 export function* secretLoadSaga() {
   try {
@@ -20,7 +21,7 @@ export function* secretLoadSaga() {
     yield put(secretLoadFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
@@ -41,7 +42,7 @@ export function* secretCreateSaga(action) {
     yield put(secretCreateFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
@@ -62,7 +63,7 @@ export function* secretDeleteSaga(action) {
     yield put(secretDeleteFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )

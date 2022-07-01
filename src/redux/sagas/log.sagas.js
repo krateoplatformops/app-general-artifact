@@ -3,6 +3,7 @@ import axios from '../../axios-conf'
 import { logFetchSuccess, logFetchFailure, addNotification } from '../actions'
 import { uiConstants } from '../../constants'
 import uris from '../../uris'
+import { uiHelper } from '../../helpers'
 
 export function* logFetchSaga(action) {
   try {
@@ -20,7 +21,7 @@ export function* logFetchSaga(action) {
     yield put(logFetchFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )

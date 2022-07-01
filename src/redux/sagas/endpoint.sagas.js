@@ -11,6 +11,7 @@ import {
   endpointDeleteFailure
 } from '../actions'
 import { uiConstants } from '../../constants'
+import { uiHelper } from '../../helpers'
 
 export function* endpointLoadSaga() {
   try {
@@ -20,7 +21,7 @@ export function* endpointLoadSaga() {
     yield put(endpointLoadFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
@@ -41,7 +42,7 @@ export function* endpointCreateSaga(action) {
     yield put(endpointCreateFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
@@ -62,7 +63,7 @@ export function* endpointDeleteSaga(action) {
     yield put(endpointDeleteFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )

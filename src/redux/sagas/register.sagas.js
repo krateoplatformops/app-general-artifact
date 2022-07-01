@@ -10,6 +10,7 @@ import {
   deploymentCreateSuccess
 } from '../actions'
 import { uiConstants } from '../../constants'
+import { uiHelper } from '../../helpers'
 
 export function* registerImportSaga(action) {
   try {
@@ -41,7 +42,7 @@ export function* registerImportSaga(action) {
     yield put(registerImportFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )

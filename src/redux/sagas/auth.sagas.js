@@ -13,6 +13,7 @@ import {
   userLoadProfileSuccess
 } from '../actions'
 import { uiConstants } from '../../constants'
+import { uiHelper } from '../../helpers'
 
 export function* loginSaga(action) {
   try {
@@ -41,7 +42,7 @@ export function* logoutSaga() {
     yield put(logoutFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )

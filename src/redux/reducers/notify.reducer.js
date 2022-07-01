@@ -7,6 +7,9 @@ const initialState = {
 export default function notify(state = initialState, action) {
   switch (action.type) {
     case notifyConstants.PUSH_NOTIFICATION:
+      if (action.payload.message === '') {
+        return state
+      }
       return {
         ...state,
         notificationQueue: state.notificationQueue.concat(action.payload)

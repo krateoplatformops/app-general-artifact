@@ -6,6 +6,7 @@ import {
   addNotification
 } from '../actions'
 import { uiConstants } from '../../constants'
+import { uiHelper } from '../../helpers'
 
 export function* proxyFetchSaga(action) {
   try {
@@ -21,7 +22,7 @@ export function* proxyFetchSaga(action) {
     yield put(proxyFetchFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )

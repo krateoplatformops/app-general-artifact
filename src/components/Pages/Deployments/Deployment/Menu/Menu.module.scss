@@ -22,12 +22,13 @@
 .Link {
   @extend .display-flex;
   @extend .flex-direction-row;
+  @extend .flex-center;
   padding: 10px;
-  font-weight: 600;
+  // font-weight: 600;
   text-transform: capitalize;
   color: var(--text-color-secondary);
   font-size: 0.8em;
-  @include border-radius($border-radius * 2);
+  @include border-radius($border-radius);
   i {
     margin-right: 10px;
   }

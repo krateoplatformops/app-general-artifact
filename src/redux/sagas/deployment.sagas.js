@@ -14,6 +14,7 @@ import {
   deploymentSingleLoadFailure
 } from '../actions'
 import { uiConstants } from '../../constants'
+import { uiHelper } from '../../helpers'
 
 export function* deploymentLoadSaga() {
   try {
@@ -23,7 +24,7 @@ export function* deploymentLoadSaga() {
     yield put(deploymentLoadFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
@@ -38,7 +39,7 @@ export function* deploymentSingleLoadSaga(action) {
     yield put(deploymentSingleLoadFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
@@ -60,7 +61,7 @@ export function* deploymentCreateSaga(action) {
     yield put(deploymentCreateFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
@@ -82,7 +83,7 @@ export function* deploymentDeleteSaga(action) {
     yield put(deploymentDeleteFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )

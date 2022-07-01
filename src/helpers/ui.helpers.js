@@ -48,9 +48,18 @@ const backgroundColorByLevel = (level, opacity) => {
   }
 }
 
+const errorMessage = (error) => {
+  try {
+    return error.response.data.message || error.message
+  } catch {
+    return ''
+  }
+}
+
 export const uiHelper = {
   colorByStatus,
   colorByWord,
   borderColorByLevel,
-  backgroundColorByLevel
+  backgroundColorByLevel,
+  errorMessage
 }

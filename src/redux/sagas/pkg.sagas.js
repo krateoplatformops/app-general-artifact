@@ -17,6 +17,7 @@ import {
 } from '../actions'
 import { uiConstants } from '../../constants'
 import yaml from 'js-yaml'
+import { uiHelper } from '../../helpers'
 
 export function* pkgLoadSaga() {
   try {
@@ -26,7 +27,7 @@ export function* pkgLoadSaga() {
     yield put(pkgLoadFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
@@ -67,7 +68,7 @@ export function* pkgUpdateSaga(action) {
     yield put(pkgUpdateFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
@@ -101,7 +102,7 @@ export function* pkgAddSaga(action) {
     yield put(pkgAddFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
@@ -128,7 +129,7 @@ export function* pkgDeleteSaga(action) {
     yield put(pkgDeleteFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )

@@ -9,6 +9,7 @@ import {
   templateDeleteFailure
 } from '../actions'
 import { uiConstants } from '../../constants'
+import { uiHelper } from '../../helpers'
 
 export function* templateLoadSaga() {
   try {
@@ -18,7 +19,7 @@ export function* templateLoadSaga() {
     yield put(templateLoadFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
@@ -39,7 +40,7 @@ export function* templateDeleteSaga(action) {
     yield put(templateDeleteFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )

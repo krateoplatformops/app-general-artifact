@@ -1,13 +1,14 @@
 import axios from 'axios'
 import uris from './uris'
 import { store } from './redux/store'
-import { userReset, redirect } from './redux/actions'
+import { userReset, redirect, addNotification } from './redux/actions'
+import { uiConstants } from './constants'
 
 const axiosInstance = axios.create()
 
 axiosInstance.defaults.baseURL = uris.apiBase
 axiosInstance.defaults.withCredentials = true
-// axiosInstance.defaults.timeout = 2000
+axiosInstance.defaults.timeout = 30000
 
 axiosInstance.interceptors.request.use(
   (config) => {
@@ -28,6 +29,11 @@ axiosInstance.interceptors.response.use(
     return response
   },
   (error) => {
+    if (error.code && error.message) {
+      store.dispatch(
+        addNotification(error.message, uiConstants.notification.error)
+      )
+    }
     if (error.name === 'AxiosError' && error.response.status !== 401) {
       const err = {
         response: {

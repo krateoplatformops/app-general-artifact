@@ -16,7 +16,7 @@ export function* userLoadProfileSaga() {
     yield put(userLoadProfileFailure(error))
     // yield put(
     //   addNotification(
-    //     error.response.data.message,
+    //     uiHelper.errorMessage(error),
     //     uiConstants.notification.error
     //   )
     // )

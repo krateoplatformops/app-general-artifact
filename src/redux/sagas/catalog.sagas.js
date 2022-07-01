@@ -7,6 +7,7 @@ import {
   addNotification
 } from '../actions'
 import { uiConstants } from '../../constants'
+import { uiHelper } from '../../helpers'
 
 export function* catalogLoadSaga() {
   try {
@@ -16,7 +17,7 @@ export function* catalogLoadSaga() {
     yield put(catalogLoadFailure(error))
     yield put(
       addNotification(
-        error.response.data.message,
+        uiHelper.errorMessage(error),
         uiConstants.notification.error
       )
     )
