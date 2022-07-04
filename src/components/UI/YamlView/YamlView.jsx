@@ -1,4 +1,5 @@
 import React from 'react'
+import CopyClipboard from '../CopyClipboard/CopyClipboard'
 
 import css from './YamlView.module.scss'
 
@@ -57,6 +58,9 @@ const YamlView = ({ yaml }) => {
 
   return (
     <div className={css.Container}>
+      <div className={css.CopyContainer}>
+        <CopyClipboard text={yaml} />
+      </div>
       {yaml
         .split('\n')
         .filter((x) => x !== '' && x !== ' ')

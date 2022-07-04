@@ -6,6 +6,13 @@
   @extend .flex-direction-column;
   width: 100%;
   word-break: break-all;
+  position: relative;
+}
+
+.CopyContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .Line {
