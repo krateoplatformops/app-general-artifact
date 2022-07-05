@@ -13,7 +13,7 @@ const DeploymentCard = ({ d }) => (
         <i className={d.claim.spec.dashboard.icon}></i>
       </li>
       <li className={css.LiInfo}>
-        <b>{d.claim.spec.name}</b>
+        <b>{d.claim.metadata.name}</b>
         <span>{d.claim.spec.dashboard.description}</span>
       </li>
       <li className={css.LiDate}>{timeHelper.dateToFormat(d.createdAt)}</li>
