@@ -11,6 +11,7 @@ import Loader from '../../../UI/Loader/Loader'
 import Error from '../../../UI/Error/Error'
 import { deploymentCreate } from '../../../../redux/actions'
 import Follower from '../../../UI/Follower/Follower'
+import { uriHelper } from '../../../../helpers'
 
 const Template = (props) => {
   const params = useParams()
@@ -24,29 +25,33 @@ const Template = (props) => {
     setValue,
     getValues,
     watch,
-    formState: { isValid }
+    formState: { isValid, errors }
   } = useForm({ mode: 'onChange' })
 
   const template = (props.template.list || []).find((x) => x._id === params.id)
 
   const updateStepStatus = useCallback(() => {
-    const p = template.spec.widgets.find(
-      (x) => x._id === currentStep
-    ).properties
+    if (template) {
+      const p = template.spec.widgets.find(
+        (x) => x._id === currentStep
+      ).properties
 
-    const valid = Object.keys(p)
-      .map((x) => {
-        const v = getValues()[x]
-        return (!v && p[x].required) || (p[x].required && v === '')
-          ? false
-          : true
-      })
-      .reduce((a, b) => a && b)
+      const valid = Object.keys(p)
+        .map((x) => {
+          const v = getValues()[x]
+          return (!v && p[x].required) ||
+            (p[x].required && v === '') ||
+            (p[x].type === 'url' && !uriHelper.valid(v))
+            ? false
+            : true
+        })
+        .reduce((a, b) => a && b)
 
-    setStepsStatus(
-      stepsStatus.map((x) => (x.id === currentStep ? { ...x, valid } : x))
-    )
-  }, [currentStep, getValues, stepsStatus, template?.spec?.widgets])
+      setStepsStatus(
+        stepsStatus.map((x) => (x.id === currentStep ? { ...x, valid } : x))
+      )
+    }
+  }, [currentStep, getValues, stepsStatus, template])
 
   useEffect(() => {
     if (template) {
@@ -148,6 +153,7 @@ const Template = (props) => {
                     return { id: x, ...w.properties[x] }
                   })}
                   setValue={setValue}
+                  errors={errors}
                 />
               ))}
               <Summary

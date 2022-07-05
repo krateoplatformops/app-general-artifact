@@ -7,10 +7,18 @@ import Toggle from '../../../../UI/Toggle/Toggle'
 import InputPassword from '../../../../UI/InputPassword/InputPassword'
 import css from './Fields.module.scss'
 import Checkbox from '../../../../UI/Checkbox/Checkbox'
+import { uriHelper } from '../../../../../helpers'
 
 const styles = ['info', 'warning', 'error', 'success']
 
-const Fields = ({ widget, inputs, register, currentStep, setValue }) => {
+const Fields = ({
+  widget,
+  inputs,
+  register,
+  currentStep,
+  setValue,
+  errors
+}) => {
   const boxStyle = () => {
     if (!widget.boxStyle) return css.Default
 
@@ -88,6 +96,22 @@ const Fields = ({ widget, inputs, register, currentStep, setValue }) => {
       )
     }
 
+    if (i.type === 'url') {
+      return (
+        <input
+          type='url'
+          placeholder={i.title}
+          defaultValue={i.default}
+          {...register(i.id, {
+            required: i.required,
+            validate: (value) => {
+              return uriHelper.valid(value)
+            }
+          })}
+        />
+      )
+    }
+
     return (
       <input
         type={i.type ? i.type : 'text'}
@@ -118,6 +142,7 @@ const Fields = ({ widget, inputs, register, currentStep, setValue }) => {
                 required={i.required}
                 description={i.description}
                 key={i.id}
+                error={errors[i.id]}
               >
                 {renderInput(i)}
               </Label>
