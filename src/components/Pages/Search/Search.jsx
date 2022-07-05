@@ -19,7 +19,7 @@ const Search = (props) => {
           <SearchResult
             key={x._id}
             r={{
-              name: x.claim.spec.name,
+              name: x.claim.metadata.name,
               description: x.claim.spec.dashboard.description,
               kind: 'deployment',
               to: `/deployments/${x._id}`,

@@ -26,7 +26,7 @@ const Settings = ({ deploy }) => {
       {showDangerZone && (
         <DangerZone
           title={'Delete deployment'}
-          name={deploy.claim.spec.name}
+          name={deploy.claim.metadata.name}
           closeModal={() => setShowDangerZone(false)}
           deleteButtonHandler={deleteDeploymentHandler}
         />

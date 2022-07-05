@@ -46,7 +46,7 @@ const Deployment = ({ deployment, socket }) => {
   } else {
     return (
       <React.Fragment>
-        <div className={css.Title}>{deploy.claim.spec.name}</div>
+        <div className={css.Title}>{deploy.claim.metadata.name}</div>
         <SubMenu deploy={deploy} />
         <Menu deploy={deploy} />
         {socket.subscriptions.indexOf(params.id) > -1 && (
