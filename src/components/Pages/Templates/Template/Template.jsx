@@ -118,6 +118,7 @@ const Template = (props) => {
     }
 
     const changeStepHandler = (step) => {
+      window.scrollTo(0, 0)
       setCurrentStep(step)
     }
 
