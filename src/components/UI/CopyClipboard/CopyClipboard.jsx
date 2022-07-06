@@ -28,7 +28,7 @@ const CopyClipboard = ({ text, customClass, children }) => {
   return (
     <button className={`${!children ? css.Btn : ''}`} onClick={btnHandler}>
       {children}
-      {!children && <i className='fa-solid fa-clipboard'></i>}
+      {!children && <i className='fa-solid fa-copy'></i>}
     </button>
   )
 }

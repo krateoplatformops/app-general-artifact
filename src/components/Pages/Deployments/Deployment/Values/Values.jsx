@@ -10,9 +10,6 @@ const Values = ({ deploy }) => {
       <Card title={'claim.yaml'}>
         <YamlView yaml={yaml.dump(deploy.claim)} />
       </Card>
-      <Card title={'package.yaml'}>
-        <YamlView yaml={yaml.dump(deploy.package)} />
-      </Card>
     </React.Fragment>
   )
 }
