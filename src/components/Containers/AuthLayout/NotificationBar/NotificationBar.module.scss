@@ -4,11 +4,4 @@
 .UlEvent {
   @extend .display-flex;
   @extend .flex-direction-column;
-  // > li {
-  //   &:not(:last-of-type) {
-  //     margin-bottom: 10px;
-  //     padding-bottom: 10px;
-  //     border-bottom: 1px solid var(--border);
-  //   }
-  // }
 }
