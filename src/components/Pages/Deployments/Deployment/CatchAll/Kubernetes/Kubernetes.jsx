@@ -29,7 +29,9 @@ const Kubernetes = ({ deploy, plugin, content }) => {
             <Card title={plugin.name}>
               <ul className={css.LeftInfos}>
                 <li>
-                  <Stats resources={content.resources} />
+                  {content.resources.length > 0 && (
+                    <Stats resources={content.resources} />
+                  )}
                 </li>
                 <li>
                   {content.resources.map((k) => {

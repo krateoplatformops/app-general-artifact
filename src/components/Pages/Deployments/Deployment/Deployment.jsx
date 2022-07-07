@@ -5,12 +5,10 @@ import { useParams } from 'react-router-dom'
 
 import Loader from '../../../UI/Loader/Loader'
 import Error from '../../../UI/Error/Error'
-import { socketSubscribe, socketUnsubscribe } from '../../../../redux/actions'
 
 import Menu from './Menu/Menu'
 
 import css from './Deployment.module.scss'
-import SocketSpinner from '../../../UI/SocketSpinner/SocketSpinner'
 import PageLoader from '../../../UI/PageLoader/PageLoader'
 import SubMenu from './SubMenu/SubMenu'
 
@@ -21,21 +19,9 @@ const OverviewLazy = lazy(() => import('./Overview/Overview'))
 const CatchAllLazy = lazy(() => import('./CatchAll/CatchAll'))
 
 const Deployment = ({ deployment, socket }) => {
-  const dispatch = useDispatch()
   const params = useParams()
 
   const deploy = (deployment.list || []).find((x) => x._id === params.id)
-
-  useEffect(() => {
-    if (!socket.error && socket.init) {
-      dispatch(socketSubscribe(params.id))
-    }
-    return () => {
-      if (!socket.error) {
-        dispatch(socketUnsubscribe(params.id))
-      }
-    }
-  }, [dispatch, params.id, socket.error, socket.init])
 
   if (!deploy) {
     if (deployment.loading) {
@@ -49,11 +35,6 @@ const Deployment = ({ deployment, socket }) => {
         <div className={css.Title}>{deploy.claim.metadata.name}</div>
         <SubMenu deploy={deploy} />
         <Menu deploy={deploy} />
-        {socket.subscriptions.indexOf(params.id) > -1 && (
-          <div className={css.SocketActive}>
-            <SocketSpinner />
-          </div>
-        )}
         <div>
           <Suspense fallback={<PageLoader />}>
             <Routes>

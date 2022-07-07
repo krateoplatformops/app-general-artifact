@@ -88,6 +88,39 @@ const AddSecret = ({ closeModal, addSecret, list, catalog }) => {
     return null
   }
 
+  const renderInputs = (f) => {
+    switch (f.type) {
+      case 'password':
+        return (
+          <InputPassword
+            register={register}
+            placeholder={f.placeholder}
+            name={f.name}
+          />
+        )
+      case 'textarea':
+        return (
+          <textarea
+            {...register(f.name, {
+              required: true
+            })}
+            placeholder={f.placeholder}
+            name={f.name}
+          />
+        )
+      default:
+        return (
+          <input
+            type={f.type}
+            placeholder={f.placeholder}
+            {...register(f.name, {
+              required: true
+            })}
+          />
+        )
+    }
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Modal
@@ -141,16 +174,7 @@ const AddSecret = ({ closeModal, addSecret, list, catalog }) => {
               .find((x) => x.name === getValues().type)
               .secret.map((f) => (
                 <Label key={f.name} title={f.name} description={f.description}>
-                  {f.type === 'password' ? (
-                    <InputPassword register={register} name={f.name} />
-                  ) : (
-                    <input
-                      type={f.type}
-                      {...register(f.name, {
-                        required: true
-                      })}
-                    />
-                  )}
+                  {renderInputs(f)}
                 </Label>
               ))
           : headers.map((h) => (

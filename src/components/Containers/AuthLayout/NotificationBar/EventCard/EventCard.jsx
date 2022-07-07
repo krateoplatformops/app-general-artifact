@@ -55,7 +55,7 @@ const EventCard = ({ e, toggleNotification }) => {
       <div className={css.Spacer}>
         <ul>
           <li className={`${css.Icon} ${i.css}`}>
-            <i class={i.icon}></i>
+            <i className={i.icon}></i>
           </li>
           <li className={css.Content}>
             {e.message}

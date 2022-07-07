@@ -51,26 +51,27 @@ export function* socketSubscribeSaga(action) {
     while (true) {
       const event = yield take(listener)
 
-      if (event.deploymentId) {
-        // refresh logs
-        yield put(
-          logFetch({ key: event.deploymentId, params: event, silent: true })
-        )
+      if (event.ref.deploymentId) {
         // refresh deployment
         yield put(
-          deploymentSingleLoad({ _id: event.deploymentId, silent: true })
+          deploymentSingleLoad({ _id: event.ref.deploymentId, silent: true })
         )
-      } else {
-        // this is a general event
-        yield put(
-          socketEvent({
-            ...event,
-            read: false,
-            id: securityHelper.guid(),
-            time: timeHelper.currentTime()
-          })
-        )
+        // refresh logs if i'm in the same deployment
+        const l = window.location.href
+        if (l.endsWith('/deployments/' + event.ref.deploymentId + '/events')) {
+          yield put(
+            logFetch({ key: event.deploymentId, params: event, silent: true })
+          )
+        }
       }
+      yield put(
+        socketEvent({
+          ...event,
+          read: false,
+          id: securityHelper.guid(),
+          time: timeHelper.currentTime()
+        })
+      )
     }
   } catch (error) {
     yield put(
