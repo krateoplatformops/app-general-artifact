@@ -9,7 +9,7 @@ import {
   socketUnsubscribe,
   socketEventSetAllRead
 } from '../../../../redux/actions'
-import { timeHelper } from '../../../../helpers'
+import EventCard from './EventCard/EventCard'
 
 const Notification = ({ socket }) => {
   const dispatch = useDispatch()
@@ -41,8 +41,7 @@ const Notification = ({ socket }) => {
       <ul className={css.UlEvent}>
         {socket.events.map((e) => (
           <li key={e.id}>
-            <span>{timeHelper.fromNow(e.time)}</span>
-            {e.message}
+            <EventCard e={e} toggleNotification={toggleNotification} />
           </li>
         ))}
       </ul>

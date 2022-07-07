@@ -43,6 +43,11 @@ export default function socket(state = initialState, action) {
           return { ...n, read: true }
         })
       }
+    case socketConstants.SOCKET_EVENT_REMOVE:
+      return {
+        ...state,
+        events: state.events.filter((n) => n.id !== action.payload)
+      }
     default:
       return state
   }

@@ -22,7 +22,6 @@
 
 .SideBar {
   position: fixed;
-  top: 0;
   height: 100%;
   background: var(--nav);
   z-index: $zi-user-menu;
@@ -65,8 +64,8 @@
 
 .Body {
   @extend .bsbb;
-  padding: 20px;
   overflow: auto;
+  // padding: 20px 0;
   @include calc('height', '100% - 60px');
 }
 

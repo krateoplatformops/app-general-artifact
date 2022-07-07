@@ -38,3 +38,10 @@ export const socketEventSetAllRead = () => {
     type: socketConstants.SOCKET_EVENT_SET_ALL_READ
   }
 }
+
+export const socketEventRemove = (payload) => {
+  return {
+    type: socketConstants.SOCKET_EVENT_REMOVE,
+    payload
+  }
+}

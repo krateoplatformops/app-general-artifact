@@ -4,18 +4,11 @@
 .UlEvent {
   @extend .display-flex;
   @extend .flex-direction-column;
-  li {
-    @extend .display-flex;
-    @extend .flex-direction-column;
-    span {
-      color: var(--text-color-secondary);
-      font-size: 0.8em;
-      margin-bottom: 5px;
-    }
-    &:not(:last-of-type) {
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-    }
-  }
+  // > li {
+  //   &:not(:last-of-type) {
+  //     margin-bottom: 10px;
+  //     padding-bottom: 10px;
+  //     border-bottom: 1px solid var(--border);
+  //   }
+  // }
 }

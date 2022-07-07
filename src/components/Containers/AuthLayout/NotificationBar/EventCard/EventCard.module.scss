@@ -1,0 +1,89 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.Event {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .bsbb;
+  padding: 0 20px 0 20px;
+  // margin: 2px 0;
+}
+
+.Spacer {
+  border-bottom: 1px solid rgba($blue, 0.2);
+  width: 100%;
+  ul {
+    width: 100%;
+    padding: 10px 0;
+    @extend .bsbb;
+    @extend .display-flex;
+    @extend .flex-direction-row;
+  }
+}
+
+.Icon {
+  @extend .display-flex;
+  @extend .flex-center;
+  margin-right: 10px;
+  min-width: 40px;
+  width: 40px;
+  i {
+    @extend .display-flex;
+    @extend .flex-center;
+    @include border-radius(50%);
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.Default {
+  i {
+    background: $blue;
+    color: $white;
+  }
+}
+
+.Violet {
+  i {
+    background: $violet;
+    color: $white;
+  }
+}
+
+.Content {
+  width: 100%;
+}
+
+.Close {
+  min-width: 20px;
+  width: 20px;
+  margin-left: 10px;
+  @extend .display-flex;
+  @extend .flex-center;
+  button {
+    color: var(--text-color-secondary);
+    @extend .display-flex;
+    @extend .flex-center;
+    font-size: 0.8em;
+    min-width: 20px;
+    min-height: 20px;
+    &:hover {
+      color: var(--color-text);
+    }
+  }
+}
+
+.Time {
+  color: var(--text-color-secondary);
+  font-size: 0.8em;
+  margin-top: 5px;
+  display: block;
+  text-align: right;
+}
+
+.CallToAction {
+  cursor: pointer;
+  &:hover {
+    background: rgba($blue, 0.1);
+  }
+}
