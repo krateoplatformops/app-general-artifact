@@ -33,6 +33,7 @@ export function* socketInitSaga() {
       }
     }
   } catch (error) {
+    // console.log(error)
     yield put(
       addNotification(JSON.stringify(error), uiConstants.notification.error)
     )
@@ -51,16 +52,20 @@ export function* socketSubscribeSaga(action) {
     while (true) {
       const event = yield take(listener)
 
-      if (event.ref.deploymentId) {
+      if (event.deploymentId) {
         // refresh deployment
         yield put(
-          deploymentSingleLoad({ _id: event.ref.deploymentId, silent: true })
+          deploymentSingleLoad({ _id: event.deploymentId, silent: true })
         )
         // refresh logs if i'm in the same deployment
         const l = window.location.href
-        if (l.endsWith('/deployments/' + event.ref.deploymentId + '/events')) {
+        if (l.endsWith('/deployments/' + event.deploymentId + '/events')) {
           yield put(
-            logFetch({ key: event.deploymentId, params: event, silent: true })
+            logFetch({
+              key: event.deploymentId,
+              params: { deploymentId: event.deploymentId },
+              silent: true
+            })
           )
         }
       }
@@ -74,6 +79,7 @@ export function* socketSubscribeSaga(action) {
       )
     }
   } catch (error) {
+    // console.log(error)
     yield put(
       addNotification(JSON.stringify(error), uiConstants.notification.error)
     )

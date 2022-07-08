@@ -15,6 +15,11 @@ const Notification = ({ socket }) => {
   const dispatch = useDispatch()
   const { toggleNotification, notificationOpen } = useContext(UserContext)
 
+  const closeNotificationHandler = () => {
+    dispatch(socketEventSetAllRead())
+    toggleNotification()
+  }
+
   useEffect(() => {
     if (!socket.error && socket.init) {
       dispatch(socketSubscribe('notifications'))
@@ -26,22 +31,19 @@ const Notification = ({ socket }) => {
     }
   }, [dispatch, socket.error, socket.init])
 
-  useEffect(() => {
-    if (socket.events.filter((x) => !x.read).length > 0 && notificationOpen) {
-      dispatch(socketEventSetAllRead())
-    }
-  }, [dispatch, notificationOpen, socket.events])
-
   return (
     <SideBar
-      closeSidebar={toggleNotification}
+      closeSidebar={closeNotificationHandler}
       title={'Notifications'}
       isOpen={notificationOpen}
     >
       <ul className={css.UlEvent}>
         {socket.events.map((e) => (
           <li key={e.id}>
-            <EventCard e={e} toggleNotification={toggleNotification} />
+            <EventCard
+              e={e}
+              closeNotificationHandler={closeNotificationHandler}
+            />
           </li>
         ))}
       </ul>

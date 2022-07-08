@@ -1,28 +1,28 @@
 @import '../../../../../styles/colors';
 @import '../../../../../styles/mixin';
+@import '../../../../../styles/common';
 
 .Event {
   @extend .display-flex;
-  @extend .flex-direction-row;
+  @extend .flex-direction-column;
   @extend .bsbb;
-  padding: 0 20px 0 20px;
-}
-
-.Spacer {
+  padding: 20px;
   border-bottom: 1px solid rgba($blue, 0.2);
-  width: 100%;
+  position: relative;
   ul {
     width: 100%;
-    padding: 10px 0;
     @extend .bsbb;
     @extend .display-flex;
     @extend .flex-direction-row;
   }
 }
 
+.Spacer {
+  width: 100%;
+}
+
 .Icon {
   @extend .display-flex;
-  @extend .flex-center;
   margin-right: 10px;
   min-width: 40px;
   width: 40px;
@@ -32,20 +32,6 @@
     @include border-radius(50%);
     width: 40px;
     height: 40px;
-  }
-}
-
-.Default {
-  i {
-    background: $blue;
-    color: $white;
-  }
-}
-
-.Violet {
-  i {
-    background: $violet;
-    color: $white;
   }
 }
 
@@ -74,15 +60,49 @@
 
 .Time {
   color: var(--text-color-secondary);
-  font-size: 0.8em;
-  margin-top: 5px;
+  font-size: 0.7em;
+  margin: 5px 0 0 0;
   display: block;
-  text-align: right;
 }
+
+.Source {
+  @extend .Time;
+  margin: 0 0 5px 0;
+}
+
+@mixin npt($name, $color) {
+  .#{$name} {
+    i {
+      background: rgba($color, 0.1);
+      color: $color;
+      border: 1px solid rgba($color, 0.2);
+      @extend .bsbb;
+    }
+  }
+}
+
+@include npt('Info', $green);
+@include npt('Warning', $orange);
+@include npt('Error', $red);
+@include npt('Debug', $blue);
 
 .CallToAction {
   cursor: pointer;
   &:hover {
     background: rgba($blue, 0.1);
+  }
+}
+
+.Unread {
+  &::after {
+    content: '';
+    position: absolute;
+    @include border-radius(50%);
+    right: 7px;
+    top: 7px;
+    display: block;
+    width: 7px;
+    height: 7px;
+    background-color: $red;
   }
 }
