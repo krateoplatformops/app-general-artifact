@@ -16,18 +16,44 @@ let socket //= socketIOClient(uris.socket)
 
 export function* socketInitSaga() {
   try {
-    try {
-      socket = socketIOClient(uris.socket)
-    } catch {}
     const listener = eventChannel((emit) => {
-      socket.io.on('error', () => {
-        emit({ type: 'error' })
-      })
+      try {
+        socket = socketIOClient(uris.socket, {
+          withCredentials: true
+        })
+          .on('disconnect', () => {
+            emit({ type: 'disconnected' })
+          })
+          .on('error', () => {
+            emit({ type: 'error' })
+          })
+          .on('reconnect_error', () => {
+            emit({ type: 'error' })
+          })
+          .on('reconnect_failed', () => {
+            emit({ type: 'error' })
+          })
+          .on('connect_timeout', () => {
+            emit({ type: 'error' })
+          })
+          .on('connect_error', () => {
+            emit({ type: 'error' })
+          })
+          .on('connect_failed', () => {
+            emit({ type: 'error' })
+          })
+          .on('reconnect_error', () => {
+            emit({ type: 'error' })
+          })
+          .on('reconnect_failed', () => {
+            emit({ type: 'error' })
+          })
+      } catch {}
       return () => socket.close()
     })
     while (true) {
       const event = yield take(listener)
-      if (event.type === 'error') {
+      if (event.type === 'error' || event.type === 'disconnected') {
         socket.disconnect()
         yield put(socketInitError())
       }
