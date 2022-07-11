@@ -239,6 +239,17 @@ export const uiConstants = {
           description: 'Jenkins username'
         }
       ]
+    },
+    {
+      type: 'typeform',
+      category: 'delivery',
+      fields: [
+        {
+          name: 'token',
+          type: 'password',
+          description: 'Typeform token'
+        }
+      ]
     }
   ],
   CHART_COLORS: {
