@@ -79,7 +79,7 @@ const Fields = ({
           name={i.id}
           required={i.required}
           register={register}
-          placeholder={i.title}
+          placeholder={i.placeholder || i.title}
         />
       )
     }
@@ -87,7 +87,7 @@ const Fields = ({
     if (i.type === 'textarea') {
       return (
         <textarea
-          placeholder={i.title}
+          placeholder={i.placeholder || i.title}
           defaultValue={i.default}
           {...register(i.id, {
             required: i.required
@@ -100,7 +100,7 @@ const Fields = ({
       return (
         <input
           type='url'
-          placeholder={i.title}
+          placeholder={i.placeholder || i.title}
           defaultValue={i.default}
           {...register(i.id, {
             required: i.required,
@@ -115,7 +115,7 @@ const Fields = ({
     return (
       <input
         type={i.type ? i.type : 'text'}
-        placeholder={i.title}
+        placeholder={i.placeholder || i.title}
         defaultValue={i.default}
         {...register(i.id, {
           required: i.required
