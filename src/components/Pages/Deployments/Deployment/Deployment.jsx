@@ -1,6 +1,6 @@
-import React, { useEffect, Suspense, lazy } from 'react'
+import React, { Suspense, lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import Loader from '../../../UI/Loader/Loader'

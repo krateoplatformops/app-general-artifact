@@ -80,7 +80,10 @@ const ArgoCD = ({
           title={`${currentResource.kind} - ${currentResource.name}`}
           closeButtonHandler={closeModalHandler}
         >
-          <YamlView yaml={yaml.dump(JSON.parse(detailsContent.manifest))} />
+          <YamlView
+            yaml={yaml.dump(JSON.parse(detailsContent.manifest))}
+            fileName={detailsContent.manifest?.metadata?.name}
+          />
         </Modal>
       )}
     </React.Fragment>

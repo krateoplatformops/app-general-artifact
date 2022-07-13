@@ -13,6 +13,11 @@
   position: absolute;
   top: 0;
   right: 0;
+  button {
+    &:not(:first-of-type) {
+      margin-top: 10px;
+    }
+  }
 }
 
 .Line {
@@ -39,6 +44,7 @@
 
 .Prop {
   color: $blue;
+  word-break: keep-all;
 }
 
 .String {

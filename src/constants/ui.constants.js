@@ -139,7 +139,8 @@ export const uiConstants = {
     update_package_error: 'Update package error',
     login_failure: 'Login failed',
     package_delete_success: 'Package deleted successfully',
-    copied: 'Copied to clipboard'
+    copied: 'Copied to clipboard',
+    downloaded: 'File downloaded successfully'
   },
   themes: {
     light: 'light',

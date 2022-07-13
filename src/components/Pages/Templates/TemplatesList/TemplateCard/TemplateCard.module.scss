@@ -87,3 +87,7 @@
   @extend .display-flex;
   @extend .flex-direction-row;
 }
+
+.DisabledLink {
+  pointer-events: none;
+}

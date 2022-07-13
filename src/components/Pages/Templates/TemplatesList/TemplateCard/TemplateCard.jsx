@@ -17,7 +17,12 @@ const TemplateGrid = ({ t, openModal, refreshButtonHandler }) => {
 
   return (
     <div className={css.TemplateCard}>
-      <Link to={`/templates/${t._id}`} className={css.UseLink}>
+      <Link
+        to={`/templates/${t._id}`}
+        className={`${css.UseLink} ${
+          (t.spec?.widgets || []).length === 0 ? css.DisabledLink : ''
+        }`}
+      >
         <ul className={css.UlHeader}>
           <li className={css.LiIcon}>
             <i className={t.metadata.annotations.icon}></i>
@@ -28,10 +33,10 @@ const TemplateGrid = ({ t, openModal, refreshButtonHandler }) => {
           {t.metadata.annotations.description}
         </div>
         <div className={css.Tags}>
-          {t.metadata.labels.tags.map((tag) => (
+          {(t.metadata?.labels?.tags || []).map((tag) => (
             <Tag key={tag} tag={tag} />
           ))}
-          <Tag tag={`${t.spec.widgets.length} widgets`} />
+          <Tag tag={`${(t.spec?.widgets || []).length} widgets`} />
         </div>
       </Link>
       <div className={css.Links}>

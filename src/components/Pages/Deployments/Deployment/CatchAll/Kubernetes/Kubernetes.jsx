@@ -67,7 +67,10 @@ const Kubernetes = ({ deploy, plugin, content }) => {
           title={`${currentResource.kind} - ${currentResource.manifest.metadata.name}`}
           closeButtonHandler={closeModalHandler}
         >
-          <YamlView yaml={yaml.dump(currentResource.manifest)} />
+          <YamlView
+            yaml={yaml.dump(currentResource.manifest)}
+            fileName={currentResource.manifest?.metadata?.name}
+          />
         </Modal>
       )}
     </React.Fragment>

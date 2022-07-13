@@ -8,7 +8,7 @@ const Values = ({ deploy }) => {
   return (
     <React.Fragment>
       <Card title={'claim.yaml'}>
-        <YamlView yaml={yaml.dump(deploy.claim)} />
+        <YamlView yaml={yaml.dump(deploy.claim)} fileName='claim' />
       </Card>
     </React.Fragment>
   )

@@ -10,6 +10,7 @@ import Pipelines from './Pipelines/Pipelines'
 import Kubernetes from './Kubernetes/Kubernetes'
 import Keptn from './Keptn/Keptn'
 import Codequality from './Codequality/Codequality'
+import Capi from './Capi/Capi'
 import ErrorBoundary from '../../../../Containers/ErrorBoundary/ErrorBoundary'
 import { pluginHelper } from '../../../../../helpers'
 
@@ -120,6 +121,8 @@ const CatchAll = ({ deploy, params, plugin }) => {
             content={plugin.data[pKey]}
           />
         )
+      case 'capi':
+        return <Capi content={plugin.data[pKey]} deploy={deploy} />
       default:
         return <Error message={`Unsupported plugin type: ${pp.type}`} />
     }

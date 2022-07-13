@@ -115,7 +115,10 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
           <StageCard key={s.stageName} s={s} />
         ))}
         <Card title='Shipyard' anchor='shipyard'>
-          <YamlView yaml={content.shipyard} />
+          <YamlView
+            yaml={content.shipyard}
+            fileName={`${deploy._id}-shipyard`}
+          />
         </Card>
       </li>
     </ul>

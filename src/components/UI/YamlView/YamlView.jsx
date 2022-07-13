@@ -1,9 +1,10 @@
 import React from 'react'
 import CopyClipboard from '../CopyClipboard/CopyClipboard'
+import DownloadFile from '../DownloadFile/DownloadFile'
 
 import css from './YamlView.module.scss'
 
-const YamlView = ({ yaml }) => {
+const YamlView = ({ yaml, fileName }) => {
   const parseLine = (line) => {
     const s = line.split(/(\s+)/)
     let inString = false
@@ -60,6 +61,9 @@ const YamlView = ({ yaml }) => {
     <div className={css.Container}>
       <div className={css.CopyContainer}>
         <CopyClipboard text={yaml} />
+        {fileName && (
+          <DownloadFile content={yaml} fileName={`${fileName}.yaml`} />
+        )}
       </div>
       {yaml
         .split('\n')
