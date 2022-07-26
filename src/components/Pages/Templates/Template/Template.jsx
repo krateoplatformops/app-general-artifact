@@ -111,7 +111,7 @@ const Template = (props) => {
       })
 
     const onSubmit = (metadata) => {
-      const payload = { ...metadata }
+      const payload = { ...metadata, owner: props.user.profile.id }
       Object.keys(metadata).forEach((x) => {
         if (Array.isArray(metadata[x])) {
           payload[x] = metadata[x].join(',')
