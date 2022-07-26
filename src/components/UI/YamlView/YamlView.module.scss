@@ -11,46 +11,11 @@
 
 .CopyContainer {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
   button {
     &:not(:first-of-type) {
       margin-top: 10px;
     }
   }
-}
-
-.Line {
-  @extend .display-flex;
-  @extend .flex-direction-row;
-  @extend .flex-center-start;
-  font-family: 'Source Code Pro', monospace;
-  padding: 2px 0;
-}
-
-.LineNumber {
-  margin-right: 10px;
-  word-break: keep-all;
-  color: var(--text-color-secondary);
-}
-
-.Space {
-  @extend .display-flex;
-  @extend .flex-center;
-  margin: 0 2px;
-  font-size: 0.8em;
-  color: rgba($blue, 0.1);
-}
-
-.Prop {
-  color: $blue;
-  word-break: keep-all;
-}
-
-.String {
-  color: $green;
-}
-
-.Number {
-  color: $orange;
 }

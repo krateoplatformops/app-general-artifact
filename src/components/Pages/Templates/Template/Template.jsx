@@ -9,9 +9,10 @@ import Fields from './Fields/Fields'
 import Summary from './Summary/Summary'
 import Loader from '../../../UI/Loader/Loader'
 import Error from '../../../UI/Error/Error'
-import { deploymentCreate } from '../../../../redux/actions'
+import { deploymentCreate, addNotification } from '../../../../redux/actions'
 import Follower from '../../../UI/Follower/Follower'
 import { uriHelper } from '../../../../helpers'
+import { uiConstants } from '../../../../constants'
 
 const Template = (props) => {
   const params = useParams()
@@ -119,7 +120,34 @@ const Template = (props) => {
           delete payload[x]
         }
       })
-      dispatch(deploymentCreate({ metadata, templateId: template._id }))
+
+      if (template.spec.defaults) {
+        Object.keys(template.spec.defaults).forEach((x) => {
+          if (!payload[x]) {
+            payload[x] = template.spec.defaults[x].formatUnicorn(payload)
+          }
+        })
+      }
+
+      if (!payload.repositoryName || payload.repositoryName === '') {
+        dispatch(
+          addNotification(
+            uiConstants.messages.repository_name_is_required,
+            uiConstants.notification.error
+          )
+        )
+      }
+      if (!payload.organizationName || payload.organizationName === '') {
+        dispatch(
+          addNotification(
+            uiConstants.messages.repository_name_is_required,
+            uiConstants.notification.error
+          )
+        )
+      }
+      dispatch(
+        deploymentCreate({ metadata: payload, templateId: template._id })
+      )
     }
 
     const changeStepHandler = (step) => {

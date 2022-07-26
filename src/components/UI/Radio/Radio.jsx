@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import css from './Radio.module.scss'
 
-const Radio = ({ i, register, setValue }) => {
+const Radio = ({ i, register, setValue, disabled }) => {
   useEffect(() => {
     if (i.default) {
       setValue(i.id, i.default.toString())
@@ -23,7 +23,7 @@ const Radio = ({ i, register, setValue }) => {
   }
 
   return (
-    <ul className={css.Wrapper}>
+    <ul className={css.Wrapper} disabled={disabled}>
       {i.values.map((x) => {
         const isObj = typeof x === 'object'
         const key = isObj ? x.value : x
@@ -32,6 +32,7 @@ const Radio = ({ i, register, setValue }) => {
             <div>
               <input
                 type='radio'
+                disabled={disabled}
                 id={key}
                 {...register(i.id, {
                   required: i.required

@@ -1,0 +1,42 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.Line {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-center-start;
+  font-family: 'Source Code Pro', monospace;
+  padding: 2px 0;
+}
+
+.LineNumber {
+  margin-right: 10px;
+  text-align: right;
+  word-break: keep-all;
+  color: var(--text-color-secondary);
+}
+
+.Space {
+  @extend .display-flex;
+  @extend .flex-center;
+  margin: 0 2px;
+  font-size: 0.8em;
+  color: rgba($blue, 0.1);
+}
+
+.Prop {
+  color: $blue;
+  word-break: keep-all;
+}
+
+.Url {
+  color: $green;
+}
+
+.Number {
+  color: $orange;
+}
+
+.Boolean {
+  color: $violet;
+}

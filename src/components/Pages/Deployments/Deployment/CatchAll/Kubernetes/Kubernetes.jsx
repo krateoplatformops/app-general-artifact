@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import yaml from 'js-yaml'
 
 import Card from '../../../../../UI/Card/Card'
 import Follower from '../../../../../UI/Follower/Follower'
@@ -68,7 +67,7 @@ const Kubernetes = ({ deploy, plugin, content }) => {
           closeButtonHandler={closeModalHandler}
         >
           <YamlView
-            yaml={yaml.dump(currentResource.manifest)}
+            data={currentResource.manifest}
             fileName={currentResource.manifest?.metadata?.name}
           />
         </Modal>

@@ -41,6 +41,11 @@
     />
     <!-- runtime config -->
     <script src="%PUBLIC_URL%/runtime-config.js"></script>
+    <script>
+      if (window.runConfig.title && window.runConfig.title !== '') {
+        document.title = window.runConfig.title
+      }
+    </script>
     <!-- fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

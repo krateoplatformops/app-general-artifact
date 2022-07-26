@@ -27,6 +27,12 @@
       transform: translateX(16px);
     }
   }
+  &[disabled] {
+    @include opacity(0.5);
+    span {
+      cursor: not-allowed;
+    }
+  }
 }
 
 .Slider {

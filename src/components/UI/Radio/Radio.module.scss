@@ -10,6 +10,18 @@
   @media screen and (min-width: 768px) {
     @include flex-direction-row;
   }
+  &[disabled] {
+    cursor: not-allowed;
+    @include opacity(0.5);
+    li {
+      label {
+        cursor: not-allowed;
+        &:hover {
+          border: 1px solid var(--input-bkg);
+        }
+      }
+    }
+  }
 
   li {
     @extend .display-flex;

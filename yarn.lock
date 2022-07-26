@@ -4928,6 +4928,11 @@
     "combined-stream" "^1.0.6"
     "mime-types" "^2.1.12"
 
+"format-unicorn@^1.1.1":
+  "integrity" "sha512-MEjmrLmOsxswQC+TLVgGRZTRw+QSwMTQ0aqnkWPMAw1jKcO710mET0GMwoxrm0GxN0nSSBSUVaxC4MNYyrDXHQ=="
+  "resolved" "https://registry.npmjs.org/format-unicorn/-/format-unicorn-1.1.1.tgz"
+  "version" "1.1.1"
+
 "forwarded@0.2.0":
   "integrity" "sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow=="
   "resolved" "https://registry.npmjs.org/forwarded/-/forwarded-0.2.0.tgz"

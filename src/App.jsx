@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react'
 
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import 'format-unicorn'
 
 import history from './history'
 import { store } from './redux/store'

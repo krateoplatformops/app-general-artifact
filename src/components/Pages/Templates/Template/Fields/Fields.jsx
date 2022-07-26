@@ -33,7 +33,13 @@ const Fields = ({
       switch (i.type) {
         case 'radio':
           return (
-            <Radio key={i.id} i={i} register={register} setValue={setValue} />
+            <Radio
+              key={i.id}
+              i={i}
+              register={register}
+              setValue={setValue}
+              disabled={i.disabled || false}
+            />
           )
         case 'multiple':
           return (
@@ -42,6 +48,7 @@ const Fields = ({
               i={i}
               register={register}
               setValue={setValue}
+              disabled={i.disabled || false}
             />
           )
         default:
@@ -51,6 +58,7 @@ const Fields = ({
                 required: i.required
               })}
               defaultValue={i.default}
+              disabled={i.disabled || false}
             >
               {i.values.map((x) =>
                 typeof x === 'string' ? (
@@ -69,7 +77,15 @@ const Fields = ({
     }
 
     if (i.type === 'toggle') {
-      return <Toggle key={i.id} i={i} register={register} setValue={setValue} />
+      return (
+        <Toggle
+          key={i.id}
+          i={i}
+          register={register}
+          setValue={setValue}
+          disabled={i.disabled || false}
+        />
+      )
     }
 
     if (i.type === 'password') {
@@ -80,6 +96,7 @@ const Fields = ({
           required={i.required}
           register={register}
           placeholder={i.placeholder || i.title}
+          disabled={i.disabled || false}
         />
       )
     }
@@ -89,6 +106,7 @@ const Fields = ({
         <textarea
           placeholder={i.placeholder || i.title}
           defaultValue={i.default}
+          disabled={i.disabled || false}
           {...register(i.id, {
             required: i.required
           })}
@@ -100,6 +118,7 @@ const Fields = ({
       return (
         <input
           type='url'
+          disabled={i.disabled || false}
           placeholder={i.placeholder || i.title}
           defaultValue={i.default}
           {...register(i.id, {
@@ -117,6 +136,7 @@ const Fields = ({
         type={i.type ? i.type : 'text'}
         placeholder={i.placeholder || i.title}
         defaultValue={i.default}
+        disabled={i.disabled || false}
         {...register(i.id, {
           required: i.required
         })}

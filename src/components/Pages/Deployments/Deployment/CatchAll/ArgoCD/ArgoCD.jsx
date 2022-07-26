@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import ReactFlow, { Controls } from 'react-flow-renderer'
-import yaml from 'js-yaml'
 
 import YamlView from '../../../../../UI/YamlView/YamlView'
 import css from './ArgoCD.module.scss'
@@ -81,7 +80,7 @@ const ArgoCD = ({
           closeButtonHandler={closeModalHandler}
         >
           <YamlView
-            yaml={yaml.dump(JSON.parse(detailsContent.manifest))}
+            data={JSON.parse(detailsContent.manifest)}
             fileName={detailsContent.manifest?.metadata?.name}
           />
         </Modal>

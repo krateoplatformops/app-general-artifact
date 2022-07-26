@@ -11,7 +11,7 @@ const Overview = ({ deploy }) => {
       </li>
       <li>
         <Card title='Links'>
-          {deploy.claim.spec.dashboard.links.map((link) => (
+          {(deploy.claim.spec.dashboard.links || []).map((link) => (
             <a
               key={link.url}
               href={link.url}

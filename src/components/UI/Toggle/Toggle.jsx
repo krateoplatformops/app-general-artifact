@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import css from './Toggle.module.scss'
 
-const Toggle = ({ i, register, setValue }) => {
+const Toggle = ({ i, register, setValue, disabled }) => {
   useEffect(() => {
     if (i.default) {
       setValue(i.id, i.default)
@@ -13,9 +13,10 @@ const Toggle = ({ i, register, setValue }) => {
 
   return (
     <div className={css.Container}>
-      <label className={css.Switch}>
+      <label className={css.Switch} disabled={disabled}>
         <input
           type='checkbox'
+          disabled={disabled}
           {...register(i.id, {
             required: i.required
           })}

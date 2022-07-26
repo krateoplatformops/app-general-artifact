@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import css from './Checkbox.module.scss'
 
-const Checkbox = ({ i, register, setValue }) => {
+const Checkbox = ({ i, register, setValue, disabled }) => {
   useEffect(() => {
     if (i.default) {
       setValue(i.id, i.default.split(','))
@@ -37,6 +37,7 @@ const Checkbox = ({ i, register, setValue }) => {
                   required: i.required
                 })}
                 value={key.toString()}
+                disabled={disabled}
               />
               <label htmlFor={key}>{renderLabel(x)}</label>
             </div>

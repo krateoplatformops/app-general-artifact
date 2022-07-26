@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import css from './InputPassword.module.scss'
 
-const InputPassword = ({ register, name, required, placeholder }) => {
+const InputPassword = ({ register, name, required, placeholder, disabled }) => {
   const [inputType, setInputType] = useState('password')
 
   const handleClick = () => {
@@ -14,6 +14,7 @@ const InputPassword = ({ register, name, required, placeholder }) => {
       <li>
         <input
           type={inputType}
+          disabled={disabled}
           placeholder={placeholder || ''}
           {...register(name, {
             required: required || true
