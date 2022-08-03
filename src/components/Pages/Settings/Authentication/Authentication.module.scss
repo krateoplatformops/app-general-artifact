@@ -1,0 +1,13 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.UlCards {
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  > li {
+    width: 100%;
+    &:not(:last-of-type) {
+      margin-bottom: 20px;
+    }
+  }
+}

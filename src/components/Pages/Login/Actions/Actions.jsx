@@ -1,20 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { strategiesConstants } from '../../../../constants'
+import { strategyUIConstants } from '../../../../constants'
 import uris from '../../../../uris'
 import css from './Actions.module.scss'
 
 const Actions = ({ provider }) => {
   const s =
-    strategiesConstants.list.find((x) => x.strategy === provider.strategy) ||
-    strategiesConstants.guest
+    strategyUIConstants.types.find((x) => x.strategy === provider.strategy) ||
+    strategyUIConstants.types.find((x) => x.strategy === 'guest')
 
   const href = () => {
     if (provider.type === 'redirect') {
-      return `${uris.apiBase}${uris.auth}/${provider.strategy}?id=${provider._id}&redirect=${window.location.href}dashboard`
+      return `${uris.apiBase}${uris.auth}/${provider.strategy}?id=${provider.metadata.uid}&redirect=${window.location.href}dashboard`
     }
-    return `auth/${provider.strategy}/${provider._id}`
+    return `auth/${provider.strategy}/${provider.metadata.uid}`
   }
 
   const content = () => {

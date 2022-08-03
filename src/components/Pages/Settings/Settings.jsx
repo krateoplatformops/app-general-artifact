@@ -8,6 +8,7 @@ import Follower from '../../UI/Follower/Follower'
 import ErrorBoundary from '../../Containers/ErrorBoundary/ErrorBoundary'
 import Components from './Components/Components'
 import Secrets from './Secrets/Secrets'
+import Authentication from './Authentication/Authentication'
 
 const Settings = () => (
   <ul className='ul-double-view mt'>
@@ -48,6 +49,14 @@ const Settings = () => (
             element={
               <ErrorBoundary>
                 <Secrets />
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path='authentication'
+            element={
+              <ErrorBoundary>
+                <Authentication />
               </ErrorBoundary>
             }
           />

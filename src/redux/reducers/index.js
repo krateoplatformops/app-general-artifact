@@ -18,6 +18,7 @@ import pkg from './pkg.reducer'
 import component from './component.reducer'
 import secret from './secret.reducer'
 import catalog from './catalog.reducer'
+import strategy from './strategy.reducer'
 
 const rootReducer = combineReducers({
   notify,
@@ -37,7 +38,8 @@ const rootReducer = combineReducers({
   pkg,
   component,
   secret,
-  catalog
+  catalog,
+  strategy
 })
 
 export default rootReducer

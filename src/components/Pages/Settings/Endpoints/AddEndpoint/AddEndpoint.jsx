@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form'
 import Label from '../../../../UI/Label/Label'
 import Modal from '../../../../UI/Modal/Modal'
 import IconSelector from '../../../../UI/IconSelector/IconSelector'
-import { uiConstants } from '../../../../../constants'
-import InputPassword from '../../../../UI/InputPassword/InputPassword'
+import { endpointUIConstants } from '../../../../../constants'
+import SettingsForm from '../../../../UI/SettingsForm/SettingsForm'
 
 const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
   const prevTypeRef = useRef()
@@ -25,7 +25,7 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
       name: data.name,
       type: data.type,
       target: data.target,
-      category: uiConstants.endpointTypes.find((x) => x.type === data.type)
+      category: endpointUIConstants.types.find((x) => x.type === data.type)
         .category,
       secret: {}
     }
@@ -44,7 +44,7 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
     const subscription = watch((value, { name }) => {
       if (name === 'type') {
         if (prevTypeRef.current) {
-          uiConstants.endpointTypes
+          endpointUIConstants.types
             .find((t) => t.type === prevTypeRef.current)
             .fields.forEach((f) => {
               unregister(f.name)
@@ -60,12 +60,14 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
     const name = getValues().name
     const url = getValues().url
     if (name !== '') {
-      if (list.filter((x) => x.name === name).length > 0) {
+      if ((list || []).filter((x) => x.name === name).length > 0) {
         return 'An endpoint with this name already exists'
       }
     }
     if (name !== '' && url !== '') {
-      if (list.filter((x) => x.name === name && x.url === url).length > 0) {
+      if (
+        (list || []).filter((x) => x.name === name && x.url === url).length > 0
+      ) {
         return 'An endpoint with this name and url already exists'
       }
     }
@@ -121,31 +123,26 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
             })}
           >
             <option value=''></option>
-            {uiConstants.endpointTypes.map((e) => (
-              <option key={e.type} value={e.type}>
-                {e.type}
-              </option>
-            ))}
+            {endpointUIConstants.types
+              .sort((a, b) => (a.type > b.type ? 1 : b.type > a.type ? -1 : 0))
+              .map((e) => (
+                <option key={e.type} value={e.type}>
+                  {e.type}
+                </option>
+              ))}
           </select>
         </Label>
 
-        {getValues().type &&
-          uiConstants.endpointTypes
-            .find((x) => x.type === getValues().type)
-            .fields.map((f) => (
-              <Label key={f.name} title={f.name} description={f.description}>
-                {f.type === 'password' ? (
-                  <InputPassword register={register} name={f.name} />
-                ) : (
-                  <input
-                    type={f.type}
-                    {...register(f.name, {
-                      required: true
-                    })}
-                  />
-                )}
-              </Label>
-            ))}
+        {getValues().type && (
+          <SettingsForm
+            fields={
+              endpointUIConstants.types.find((x) => x.type === getValues().type)
+                .fields
+            }
+            register={register}
+            setValue={setValue}
+          />
+        )}
       </Modal>
     </form>
   )

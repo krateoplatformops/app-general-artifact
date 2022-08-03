@@ -4,7 +4,7 @@ const uris = {
     (window.runConfig.apiBaseUrl[window.runConfig.apiBaseUrl.length - 1] === '/'
       ? ''
       : '/'),
-  auth: 'auth',
+  auth: 'http://localhost:8093/auth',
   config: 'config',
   user: 'user',
   logout: 'auth/logout',
@@ -24,7 +24,8 @@ const uris = {
   component: 'component',
   secret: 'secret',
   catalog:
-    'https://raw.githubusercontent.com/krateoplatformops/catalog/main/index.json'
+    'https://raw.githubusercontent.com/krateoplatformops/catalog/main/index.json',
+  strategy: 'http://localhost:8093/strategy'
 }
 
 export default uris

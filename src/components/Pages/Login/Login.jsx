@@ -1,24 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 
 import packageJson from '../../../../package.json'
 import css from './Login.module.scss'
-import { configLoad } from '../../../redux/actions'
 import Actions from './Actions/Actions'
 import KrateoLogo from '../../UI/KrateoLogo/KrateoLogo'
 import Social from './Social/Social'
 import Logo from '../../../assets/krateo/dark/logo_vertical.svg'
 import Auth from './Auth/Auth'
 
-const Login = ({ config }) => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    if (!config.init) {
-      dispatch(configLoad())
-    }
-  }, [dispatch, config.init])
+const Login = ({ strategy }) => {
+  console.log(strategy)
 
   return (
     <ul className={css.UlBody}>
@@ -36,8 +29,8 @@ const Login = ({ config }) => {
                 index
                 element={
                   <ul className={css.UlProviders}>
-                    {(config.settings?.providers || []).map((p) => (
-                      <li key={p._id}>
+                    {(strategy.list || []).map((p) => (
+                      <li key={p.metadata.uid}>
                         <Actions provider={p} />
                       </li>
                     ))}
@@ -46,7 +39,7 @@ const Login = ({ config }) => {
               />
               <Route
                 path='/*'
-                element={<Auth providers={config.settings?.providers} />}
+                element={<Auth providers={strategy.list || []} />}
               />
             </Route>
           </Routes>

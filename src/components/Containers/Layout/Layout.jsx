@@ -5,6 +5,7 @@ import NotificationQueue from '../../UI/NotificationQueue/NotificationQueue'
 import CheckUser from './CheckUser/CheckUser'
 import Navigator from './Navigator/Navigator'
 import ReduxLoader from './ReduxLoader/ReduxLoader'
+import LoadComponents from './LoadComponents/LoadComponents'
 
 const Layout = () => {
   let location = useLocation()
@@ -16,6 +17,7 @@ const Layout = () => {
   return (
     <Fragment>
       <CheckUser />
+      <LoadComponents />
       <Navigator />
       <Outlet />
       <NotificationQueue />

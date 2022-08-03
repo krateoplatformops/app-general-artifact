@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
-import { uiConstants } from '../../../constants'
+import { iconUIConstants } from '../../../constants'
 import Label from '../Label/Label'
 import css from './IconSelector.module.scss'
 
@@ -9,8 +9,8 @@ const IconSelector = ({ watch, register, setValue, getValues }) => {
   const [showList, setShowList] = useState(false)
 
   const randomIcon = () => {
-    return uiConstants.icons[
-      Math.floor(Math.random() * uiConstants.icons.length)
+    return iconUIConstants.icons[
+      Math.floor(Math.random() * iconUIConstants.icons.length)
     ]
   }
 
@@ -89,7 +89,7 @@ const IconSelector = ({ watch, register, setValue, getValues }) => {
 
           <div className={`${css.IconList} ${showList ? css.Visible : ''}`}>
             <ul className={css.IconContainer}>
-              {uiConstants.icons
+              {iconUIConstants.icons
                 .filter((x) => x.indexOf(search.toLowerCase()) !== -1)
                 .map((c) => (
                   <li key={c}>
