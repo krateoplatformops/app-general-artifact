@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import Label from '../../../../UI/Label/Label'
 import Modal from '../../../../UI/Modal/Modal'
 import IconSelector from '../../../../UI/IconSelector/IconSelector'
+import ColorSelector from '../../../../UI/ColorSelector/ColorSelector'
 import { strategyUIConstants } from '../../../../../constants'
 import SettingsForm from '../../../../UI/SettingsForm/SettingsForm'
 
@@ -22,14 +23,21 @@ const AddStrategy = ({ closeModal, addStrategy, list }) => {
   const onSubmit = (data) => {
     const payload = {
       icon: data.icon,
-      name: data.name,
+      name: data.name.trim(),
       strategy: data.strategy,
+      color: data.color,
       type: strategyUIConstants.types.find((x) => x.strategy === data.strategy)
         .type,
       config: {}
     }
     Object.keys(data)
-      .filter((key) => key !== 'icon' && key !== 'name' && key !== 'strategy')
+      .filter(
+        (key) =>
+          key !== 'icon' &&
+          key !== 'name' &&
+          key !== 'strategy' &&
+          key !== 'color'
+      )
       .forEach((key) => {
         payload.config[key] = data[key]
       })
@@ -74,6 +82,12 @@ const AddStrategy = ({ closeModal, addStrategy, list }) => {
         footerMessage={footerMessage()}
       >
         <IconSelector
+          watch={watch}
+          setValue={setValue}
+          getValues={getValues}
+          register={register}
+        />
+        <ColorSelector
           watch={watch}
           setValue={setValue}
           getValues={getValues}

@@ -32,7 +32,7 @@ const Auth = ({ providers }) => {
     )
   }
 
-  const s = (providers || []).find((x) => x._id === p[1])
+  const s = (providers || []).find((x) => x.metadata.uid === p[1])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

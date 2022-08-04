@@ -22,7 +22,7 @@ export default function strategy(state = initialState, action) {
       return {
         ...state,
         result: true,
-        list: action.payload,
+        list: action.payload.strategies,
         skeletonLoading: false
       }
     case strategyConstants.STRATEGY_LOAD_FAILURE:
@@ -52,7 +52,9 @@ export default function strategy(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        list: state.list.filter((x) => x._id !== action.payload)
+        list: state.list.filter(
+          (x) => x.metadata.uid !== action.payload.metadata.uid
+        )
       }
     case strategyConstants.STRATEGY_RESET:
       return {

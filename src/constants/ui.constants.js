@@ -147,7 +147,9 @@ export const uiConstants = {
     copied: 'Copied to clipboard',
     downloaded: 'File downloaded successfully',
     repository_name_is_required: 'Repository name is required',
-    organization_name_is_required: 'Organization name is required'
+    organization_name_is_required: 'Organization name is required',
+    strategy_delete_success: 'Strategy deleted successfully',
+    strategy_create_success: 'Strategy created successfully'
   },
   themes: {
     light: 'light',
@@ -252,5 +254,6 @@ export const uiConstants = {
       kind: 'customresourcedefinition',
       icon: 'crd'
     }
-  ]
+  ],
+  colors: ['green', 'orange', 'red', 'yellow', 'blue', 'violet', 'black']
 }

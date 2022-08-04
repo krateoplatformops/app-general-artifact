@@ -44,7 +44,7 @@ const Authentication = ({ strategy }) => {
 
   const deleteStrategyHandler = () => {
     setShowDeleteModal(false)
-    dispatch(strategyDelete(currentStrategy._id))
+    dispatch(strategyDelete(currentStrategy))
   }
 
   const addStrategyHandler = (data) => {
@@ -100,7 +100,7 @@ const Authentication = ({ strategy }) => {
       {showDeleteModal && (
         <DangerZone
           title={'Delete strategy'}
-          name={currentStrategy.name}
+          name={currentStrategy.metadata.name}
           closeModal={closeDeleteModalHandler}
           deleteButtonHandler={deleteStrategyHandler}
         />

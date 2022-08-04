@@ -1,0 +1,68 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.UlColor {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+}
+
+.LiList {
+  width: 100%;
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  > div {
+    margin: 0 5px;
+    &:first-of-type {
+      margin: 0 5px 0 0;
+    }
+    &:last-of-type {
+      margin: 0 0 0 5px;
+    }
+  }
+}
+
+.LiShuffle {
+  @extend .display-flex;
+  @extend .flex-center;
+  min-width: 42px;
+  margin-left: 10px;
+  button {
+    @extend .display-flex;
+    @extend .flex-center;
+    height: 42px;
+    width: 42px;
+    border: 1px solid var(--border);
+    @include border-radius($border-radius / 2);
+    &:hover {
+      border: 1px solid var(--text-color);
+      color: var(--text-color);
+    }
+  }
+}
+
+// .BaseColor {
+//   @extend .display-flex;
+//   @extend .flex-center;
+//   color: $white;
+//   width: 40px;
+//   height: 40px;
+//   border: 1px solid transparent;
+//   cursor: pointer;
+//   @include border-radius($border-radius / 2);
+//   // @include border-radius(50%);
+// }
+
+// @mixin link($name, $color) {
+//   .#{$name} {
+//     @extend .BaseColor;
+//     background-color: $color;
+//   }
+// }
+
+// @include link('green', $green);
+// @include link('orange', $orange);
+// @include link('red', $red);
+// @include link('yellow', $yellow);
+// @include link('blue', $blue);
+// @include link('violet', $violet);
+// @include link('black', $text-color-light);

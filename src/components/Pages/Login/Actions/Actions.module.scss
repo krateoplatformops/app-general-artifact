@@ -40,6 +40,7 @@
           background-size: 200%;
           transition: 0.5s ease-out;
           color: $color;
+          font-weight: 600;
         }
       }
       &:hover {
@@ -54,8 +55,10 @@
   }
 }
 
-@include link('Guest', $blue);
-@include link('Microsoft', $windows);
-@include link('Github', $github);
-@include link('Ldap', $violet);
-@include link('Basic', $spotify);
+@include link('green', $green);
+@include link('orange', $orange);
+@include link('red', $red);
+@include link('yellow', $yellow);
+@include link('blue', $blue);
+@include link('violet', $violet);
+@include link('black', $text-color-light);

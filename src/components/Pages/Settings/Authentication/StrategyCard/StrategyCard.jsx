@@ -1,11 +1,37 @@
 import React from 'react'
 
-const StrategyCard = ({ s, openModal }) => {
-  // const deleteHandler = () => {
-  //   openModal(s)
-  // }
+import css from './StrategyCard.module.scss'
+import Label from '../../../../UI/Label/Label'
 
-  return <div></div>
+const StrategyCard = ({ s, openModal }) => {
+  const deleteHandler = () => {
+    openModal(s)
+  }
+
+  return (
+    <div className={css.Container}>
+      <ul className={css.UlEndpoint}>
+        <li className={css.LiIcon}>
+          <i className={s.icon}></i>
+        </li>
+        <li className={css.LiInfo}>
+          <Label title='Name'>
+            <div className={css.Name}>{s.name}</div>
+          </Label>
+          <ul className={css.UlLabels}>
+            <li>
+              <Label title={'Strategy'}>{s.strategy}</Label>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div className={css.Footer}>
+        <button className={css.DeleteBtn} onClick={(e) => deleteHandler(e)}>
+          <i className='fa-solid fa-trash-can'></i>
+        </button>
+      </div>
+    </div>
+  )
 }
 
 export default StrategyCard
