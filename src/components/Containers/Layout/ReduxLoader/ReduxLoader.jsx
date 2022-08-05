@@ -17,7 +17,8 @@ const ReduxLoader = (props) => {
     props.catalog.loading ||
     props.log.loading ||
     props.pkg.loading ||
-    props.dashboard.loading ? (
+    props.dashboard.loading ||
+    props.strategy.loading ? (
     <PageLoader />
   ) : (
     <React.Fragment />

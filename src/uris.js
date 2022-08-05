@@ -25,7 +25,7 @@ const uris = {
   secret: 'secret',
   catalog:
     'https://raw.githubusercontent.com/krateoplatformops/catalog/main/index.json',
-  strategy: 'http://localhost:8093/strategy'
+  strategy: '/auth/strategy'
 }
 
 export default uris
