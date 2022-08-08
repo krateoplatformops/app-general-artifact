@@ -44,7 +44,7 @@ const Secrets = ({ secret, catalog }) => {
 
   const deleteSecretHandler = () => {
     setShowDeleteModal(false)
-    dispatch(secretDelete(currentSecret._id))
+    dispatch(secretDelete(currentSecret.metadata.name))
   }
 
   const addSecretHandler = (data) => {
@@ -71,8 +71,6 @@ const Secrets = ({ secret, catalog }) => {
         />
       </LocalSearch>
 
-      {/* <pre>{JSON.stringify(secret.list, null, 2)}</pre> */}
-
       <ul className={css.UlCards}>
         {secret.skeletonLoading
           ? [...Array(8)].map((s, key) => (
@@ -95,15 +93,15 @@ const Secrets = ({ secret, catalog }) => {
         <AddSecret
           closeModal={closeAddModalHandler}
           addSecret={addSecretHandler}
-          list={secret.list}
-          catalog={catalog.list}
+          list={secret.list || []}
+          catalog={catalog.list || []}
         />
       )}
 
       {showDeleteModal && (
         <DangerZone
           title={'Delete secret'}
-          name={currentSecret.name}
+          name={currentSecret.metadata.name}
           closeModal={closeDeleteModalHandler}
           deleteButtonHandler={deleteSecretHandler}
         />

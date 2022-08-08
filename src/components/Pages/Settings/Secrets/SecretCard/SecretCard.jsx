@@ -12,18 +12,18 @@ const SecretCard = ({ h, openModal }) => {
     <div className={css.Container}>
       <ul className={css.UlSecret}>
         <li className={css.LiIcon}>
-          <i className={h.icon}></i>
+          <i className={h.metadata.icon}></i>
         </li>
         <li className={css.LiInfo}>
           <Label title='Name'>
-            <div className={css.Name}>{h.name}</div>
+            <div className={css.Name}>{h.metadata.name}</div>
           </Label>
           <ul className={css.UlLabels}>
             <li>
-              <Label title={'Type'}>{h.type}</Label>
+              <Label title={'Type'}>{h.metadata.type}</Label>
             </li>
             <li>
-              <Label title={'Namespace'}>{h.namespace}</Label>
+              <Label title={'Namespace'}>{h.metadata.namespace}</Label>
             </li>
           </ul>
         </li>
