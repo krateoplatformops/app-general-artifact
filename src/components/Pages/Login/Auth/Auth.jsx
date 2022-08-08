@@ -26,13 +26,13 @@ const Auth = ({ providers }) => {
     dispatch(
       login({
         title: p[0],
-        id: p[1],
+        name: p[1],
         data
       })
     )
   }
 
-  const s = (providers || []).find((x) => x.metadata.uid === p[1])
+  const s = (providers || []).find((x) => x.metadata.name === p[1])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -46,7 +46,7 @@ const Auth = ({ providers }) => {
       )}
       <Routes>
         <Route
-          path='ldap/:id'
+          path='ldap/:name'
           element={
             <ErrorBoundary>
               <Ldap register={register} />
@@ -54,7 +54,7 @@ const Auth = ({ providers }) => {
           }
         />
         <Route
-          path='basic/:id'
+          path='basic/:name'
           element={
             <ErrorBoundary>
               <Basic register={register} />

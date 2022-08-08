@@ -22,7 +22,7 @@ export default function strategy(state = initialState, action) {
       return {
         ...state,
         result: true,
-        list: action.payload.strategies,
+        list: action.payload.list,
         skeletonLoading: false
       }
     case strategyConstants.STRATEGY_LOAD_FAILURE:
