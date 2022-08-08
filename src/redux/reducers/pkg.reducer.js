@@ -22,7 +22,7 @@ export default function pkg(state = initialState, action) {
       return {
         ...state,
         result: true,
-        list: action.payload.items,
+        list: action.payload.list,
         skeletonLoading: false,
         loading: false
       }

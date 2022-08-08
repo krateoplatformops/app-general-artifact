@@ -9,7 +9,7 @@ const uris = {
   auth: process.env.REACT_APP_AUTH || 'auth/auth',
   config: 'config',
   user: process.env.REACT_APP_USER || 'auth/user',
-  logout: 'auth/logout',
+  logout: process.env.REACT_APP_LOGOUT || 'auth/logout',
   register: 'register',
   template: 'template',
   deployment: 'deployment',
