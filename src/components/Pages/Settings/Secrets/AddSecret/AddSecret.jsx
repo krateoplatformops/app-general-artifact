@@ -81,7 +81,7 @@ const AddSecret = ({ closeModal, addSecret, list, catalog }) => {
   const footerMessage = () => {
     const name = getValues().name
     if (name !== '') {
-      if (list.filter((x) => x.name === name).length > 0) {
+      if (list.filter((x) => x.metadata.name === name).length > 0) {
         return 'An secret with this name already exists'
       }
     }
