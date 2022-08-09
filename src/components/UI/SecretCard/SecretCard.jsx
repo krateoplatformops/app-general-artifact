@@ -1,7 +1,7 @@
 import React from 'react'
 
 import css from './SecretCard.module.scss'
-import Label from '../../../../UI/Label/Label'
+import Label from '../Label/Label'
 
 const SecretCard = ({ h, openModal }) => {
   const deleteHandler = () => {
@@ -16,20 +16,25 @@ const SecretCard = ({ h, openModal }) => {
         </li>
         <li className={css.LiInfo}>
           <Label title='Name'>
-            <div className={css.Name}>{h.metadata.name}</div>
+            <div className={css.Name}>{h.friendlyName}</div>
           </Label>
           <ul className={css.UlLabels}>
             <li>
-              <Label title={'Type'}>{h.metadata.type}</Label>
-            </li>
-            <li>
               <Label title={'Namespace'}>{h.metadata.namespace}</Label>
             </li>
+            <li>
+              <Label title={'Type'}>{h.metadata.type}</Label>
+            </li>
+            {h.target && (
+              <li>
+                <Label title={'Target'}>{h.target}</Label>
+              </li>
+            )}
           </ul>
         </li>
       </ul>
       <div className={css.Footer}>
-        <button className={css.DeleteBtn} onClick={(e) => deleteHandler(e)}>
+        <button className={css.DeleteBtn} onClick={(e) => deleteHandler()}>
           <i className='fa-solid fa-trash-can'></i>
         </button>
       </div>

@@ -23,7 +23,7 @@ const Codequality = ({ deploy, plugin, content }) => {
             </Label>
             <div className={css.Tags}>
               {content.component.tags.map((t) => (
-                <Tag tag={t} />
+                <Tag tag={t} key={t} />
               ))}
             </div>
 

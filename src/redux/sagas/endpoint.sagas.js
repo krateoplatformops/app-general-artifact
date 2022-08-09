@@ -15,7 +15,7 @@ import { uiHelper } from '../../helpers'
 
 export function* endpointLoadSaga() {
   try {
-    const result = yield axios.get(uris.endpoint)
+    const result = yield axios.get(`${uris.secret}/endpoint`)
     yield put(endpointLoadSuccess(result.data))
   } catch (error) {
     yield put(endpointLoadFailure(error))
@@ -30,7 +30,7 @@ export function* endpointLoadSaga() {
 
 export function* endpointCreateSaga(action) {
   try {
-    const doc = yield axios.post(uris.endpoint, action.payload)
+    const doc = yield axios.post(`${uris.secret}/endpoint`, action.payload)
     yield put(endpointCreateSuccess(doc.data))
     yield put(
       addNotification(
@@ -51,7 +51,7 @@ export function* endpointCreateSaga(action) {
 
 export function* endpointDeleteSaga(action) {
   try {
-    yield axios.delete(`${uris.endpoint}/${action.payload}`)
+    yield axios.delete(`${uris.secret}/endpoint/${action.payload}`)
     yield put(endpointDeleteSuccess(action.payload))
     yield put(
       addNotification(

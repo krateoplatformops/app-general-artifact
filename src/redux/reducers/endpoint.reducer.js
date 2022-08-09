@@ -22,7 +22,7 @@ export default function endpoint(state = initialState, action) {
       return {
         ...state,
         result: true,
-        list: action.payload,
+        list: action.payload.list,
         skeletonLoading: false
       }
     case endpointConstants.ENDPOINT_LOAD_FAILURE:
@@ -52,7 +52,7 @@ export default function endpoint(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        list: state.list.filter((x) => x._id !== action.payload)
+        list: state.list.filter((x) => x.friendlyName !== action.payload)
       }
     case endpointConstants.ENDPOINT_RESET:
       return {

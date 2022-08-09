@@ -15,7 +15,7 @@ import { uiHelper } from '../../helpers'
 
 export function* secretLoadSaga() {
   try {
-    const result = yield axios.get(uris.secret)
+    const result = yield axios.get(`${uris.secret}/secret`)
     yield put(secretLoadSuccess(result.data))
   } catch (error) {
     yield put(secretLoadFailure(error))
@@ -30,7 +30,7 @@ export function* secretLoadSaga() {
 
 export function* secretCreateSaga(action) {
   try {
-    const doc = yield axios.post(uris.secret, action.payload)
+    const doc = yield axios.post(`${uris.secret}/secret`, action.payload)
     yield put(secretCreateSuccess(doc.data))
     yield put(
       addNotification(
@@ -51,7 +51,7 @@ export function* secretCreateSaga(action) {
 
 export function* secretDeleteSaga(action) {
   try {
-    yield axios.delete(`${uris.secret}/${action.payload}`)
+    yield axios.delete(`${uris.secret}/secret/${action.payload}`)
     yield put(secretDeleteSuccess(action.payload))
     yield put(
       addNotification(

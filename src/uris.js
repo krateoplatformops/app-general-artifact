@@ -1,15 +1,13 @@
 const uris = {
   apiBase:
-    process.env.REACT_APP_API_BASE ||
     window.runConfig.apiBaseUrl +
-      (window.runConfig.apiBaseUrl[window.runConfig.apiBaseUrl.length - 1] ===
-      '/'
-        ? ''
-        : '/'),
-  auth: process.env.REACT_APP_AUTH || 'auth/auth',
+    (window.runConfig.apiBaseUrl[window.runConfig.apiBaseUrl.length - 1] === '/'
+      ? ''
+      : '/'),
+  auth: 'auth/auth',
   config: 'config',
-  user: process.env.REACT_APP_USER || 'auth/user',
-  logout: process.env.REACT_APP_LOGOUT || 'auth/auth/logout',
+  user: 'auth/user',
+  logout: 'auth/auth/logout',
   register: 'register',
   template: 'template',
   deployment: 'deployment',
@@ -19,12 +17,11 @@ const uris = {
       ? ''
       : '/'),
   proxy: 'proxy',
-  endpoint: 'endpoint',
   log: 'log',
   dashboard: 'dashboard',
   package: 'package',
   component: 'component',
-  secret: process.env.REACT_APP_SECRET || 'secret',
+  secret: 'secret',
   catalog:
     'https://raw.githubusercontent.com/krateoplatformops/catalog/main/index.json',
   strategy: 'auth/strategy'

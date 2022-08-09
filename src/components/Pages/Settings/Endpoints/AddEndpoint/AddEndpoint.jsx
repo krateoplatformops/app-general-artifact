@@ -60,13 +60,14 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
     const name = getValues().name
     const url = getValues().url
     if (name !== '') {
-      if ((list || []).filter((x) => x.name === name).length > 0) {
+      if ((list || []).filter((x) => x.friendlyName === name).length > 0) {
         return 'An endpoint with this name already exists'
       }
     }
     if (name !== '' && url !== '') {
       if (
-        (list || []).filter((x) => x.name === name && x.url === url).length > 0
+        (list || []).filter((x) => x.friendlyName === name && x.url === url)
+          .length > 0
       ) {
         return 'An endpoint with this name and url already exists'
       }

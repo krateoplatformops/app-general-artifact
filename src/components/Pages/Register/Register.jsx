@@ -23,9 +23,9 @@ const Register = ({ endpoint }) => {
 
   useEffect(() => {
     if (endpoint.list && endpoint.list.length > 0) {
-      const e = endpoint.list.filter((x) => x.category === 'git')
+      const e = endpoint.list.filter((x) => x.metadata.category === 'git')
       if (e.length > 0) {
-        setValue('endpointName', e[0].name)
+        setValue('endpointName', e[0].metadata.name)
       }
     }
   }, [endpoint.list, setValue])

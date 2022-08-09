@@ -52,7 +52,7 @@ export default function secret(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        list: state.list.filter((x) => x.metadata.name !== action.payload)
+        list: state.list.filter((x) => x.friendlyName !== action.payload)
       }
     case secretConstants.SECRET_RESET:
       return {

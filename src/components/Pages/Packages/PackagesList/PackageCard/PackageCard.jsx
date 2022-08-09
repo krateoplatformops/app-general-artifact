@@ -72,7 +72,7 @@ const PackageCard = ({ p, catalog, openUpdateModal, openDeleteModal }) => {
                 {info.version} <i className='fa-solid fa-upload'></i>
               </button>
             )}
-          <button className={css.DeleteBtn} onClick={(e) => deleteHandler(e)}>
+          <button className={css.DeleteBtn} onClick={() => deleteHandler()}>
             <i className='fa-solid fa-trash-can'></i>
           </button>
         </li>

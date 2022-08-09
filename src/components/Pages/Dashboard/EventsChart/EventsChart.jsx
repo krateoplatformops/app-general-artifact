@@ -49,8 +49,8 @@ const options = {
 
 const EventsChart = ({ data }) => {
   const chartData = {
-    labels: data.labels.map((x) => timeHelper.dateToDayFormat(x)),
-    datasets: data.datasets.map((x) => {
+    labels: (data?.labels || []).map((x) => timeHelper.dateToDayFormat(x)),
+    datasets: (data?.datasets || []).map((x) => {
       return {
         label: x.label,
         data: x.data,

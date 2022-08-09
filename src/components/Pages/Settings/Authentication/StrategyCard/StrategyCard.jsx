@@ -26,7 +26,7 @@ const StrategyCard = ({ s, openModal }) => {
         </li>
       </ul>
       <div className={css.Footer}>
-        <button className={css.DeleteBtn} onClick={(e) => deleteHandler(e)}>
+        <button className={css.DeleteBtn} onClick={() => deleteHandler()}>
           <i className='fa-solid fa-trash-can'></i>
         </button>
       </div>

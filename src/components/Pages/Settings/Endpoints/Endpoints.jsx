@@ -9,10 +9,10 @@ import {
   endpointDelete
 } from '../../../../redux/actions'
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
-import EndpointCard from './EndpointCard/EndpointCard'
 import DangerZone from '../../../UI/DangerZone/DangerZone'
 import AddEndpoint from './AddEndpoint/AddEndpoint'
 import css from './Endpoints.module.scss'
+import SecretCard from '../../../UI/SecretCard/SecretCard'
 
 const Endpoints = ({ endpoint }) => {
   const dispatch = useDispatch()
@@ -44,7 +44,7 @@ const Endpoints = ({ endpoint }) => {
 
   const deleteEndpointHandler = () => {
     setShowDeleteModal(false)
-    dispatch(endpointDelete(currentEndpoint._id))
+    dispatch(endpointDelete(currentEndpoint.friendlyName))
   }
 
   const addEndpointHandler = (data) => {
@@ -83,8 +83,8 @@ const Endpoints = ({ endpoint }) => {
                 return JSON.stringify(x).toLowerCase().indexOf(search) > -1
               })
               .map((h) => (
-                <li key={h._id}>
-                  <EndpointCard h={h} openModal={openDeleteModalHandler} />
+                <li key={h.metadata.uid}>
+                  <SecretCard h={h} openModal={openDeleteModalHandler} />
                 </li>
               ))}
       </ul>
@@ -100,7 +100,7 @@ const Endpoints = ({ endpoint }) => {
       {showDeleteModal && (
         <DangerZone
           title={'Delete endpoint'}
-          name={currentEndpoint.secretName}
+          name={currentEndpoint.friendlyName}
           closeModal={closeDeleteModalHandler}
           deleteButtonHandler={deleteEndpointHandler}
         />

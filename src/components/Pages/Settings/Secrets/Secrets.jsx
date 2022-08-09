@@ -11,7 +11,7 @@ import {
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
 import AddSecret from './AddSecret/AddSecret'
 import DangerZone from '../../../UI/DangerZone/DangerZone'
-import SecretCard from './SecretCard/SecretCard'
+import SecretCard from '../../../UI/SecretCard/SecretCard'
 import css from './Secrets.module.scss'
 
 const Secrets = ({ secret, catalog }) => {
@@ -44,7 +44,7 @@ const Secrets = ({ secret, catalog }) => {
 
   const deleteSecretHandler = () => {
     setShowDeleteModal(false)
-    dispatch(secretDelete(currentSecret.metadata.name))
+    dispatch(secretDelete(currentSecret.friendlyName))
   }
 
   const addSecretHandler = (data) => {
@@ -83,7 +83,7 @@ const Secrets = ({ secret, catalog }) => {
                 return JSON.stringify(x).toLowerCase().indexOf(search) > -1
               })
               .map((h) => (
-                <li key={h._id}>
+                <li key={h.metadata.uid}>
                   <SecretCard h={h} openModal={openDeleteModalHandler} />
                 </li>
               ))}
@@ -101,7 +101,7 @@ const Secrets = ({ secret, catalog }) => {
       {showDeleteModal && (
         <DangerZone
           title={'Delete secret'}
-          name={currentSecret.metadata.name}
+          name={currentSecret.friendlyName}
           closeModal={closeDeleteModalHandler}
           deleteButtonHandler={deleteSecretHandler}
         />
