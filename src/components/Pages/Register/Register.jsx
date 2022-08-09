@@ -25,7 +25,7 @@ const Register = ({ endpoint }) => {
     if (endpoint.list && endpoint.list.length > 0) {
       const e = endpoint.list.filter((x) => x.metadata.category === 'git')
       if (e.length > 0) {
-        setValue('endpointName', e[0].metadata.name)
+        setValue('endpointName', e[0].friendlyName)
       }
     }
   }, [endpoint.list, setValue])
@@ -40,10 +40,10 @@ const Register = ({ endpoint }) => {
             })}
           >
             {(endpoint.list || [])
-              .filter((x) => x.category === 'git')
+              .filter((x) => x.metadata.category === 'git')
               .map((e) => (
-                <option key={e._id} value={e.name}>
-                  {e.name}
+                <option key={e.metadata.name} value={e.friendlyName}>
+                  {e.friendlyName}
                 </option>
               ))}
           </select>
