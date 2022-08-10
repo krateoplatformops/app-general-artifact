@@ -28,12 +28,12 @@ const Kubernetes = ({ deploy, plugin, content }) => {
             <Card title={plugin.name}>
               <ul className={css.LeftInfos}>
                 <li>
-                  {content.resources.length > 0 && (
-                    <Stats resources={content.resources} />
+                  {content.list.length > 0 && (
+                    <Stats resources={content.list} />
                   )}
                 </li>
                 <li>
-                  {content.resources.map((k) => {
+                  {content.list.map((k) => {
                     const icon = require(`../../../../../../assets/kubernetes/${k.icon}.svg`)
                     return (
                       <a
@@ -52,7 +52,7 @@ const Kubernetes = ({ deploy, plugin, content }) => {
           </Follower>
         </li>
         <li className='li-content'>
-          {content.resources.map((k) => (
+          {content.list.map((k) => (
             <Resources
               key={k.kind}
               k={k}
