@@ -11,14 +11,16 @@ const Actions = ({ endpoint, template, deployment }) => (
   <div className={css.Container}>
     <div className={css.Title}>action needed</div>
     <ul className={css.UlList}>
-      <li {...((endpoint.list || []).length > 1 && { 'data-completed': true })}>
+      <li
+        {...((endpoint.list || []).length >= 1 && { 'data-completed': true })}
+      >
         <img src={Endpoint} alt='Add Endpoint' />
         <Link to='/settings/endpoints' className={css.Link}>
           add endpoint
         </Link>
       </li>
       <li
-        {...((endpoint.list || []).length <= 1 && { disabled: true })}
+        {...((endpoint.list || []).length < 1 && { disabled: true })}
         {...((template.list || []).length > 0 && { 'data-completed': true })}
       >
         <img src={Template} alt='Import Template' />

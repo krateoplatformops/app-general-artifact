@@ -52,11 +52,11 @@ const CatchAll = ({ deploy, params, plugin }) => {
       !plugin.data[pKey] &&
       dispatch(
         pluginFetch({
-          url: pluginHelper.createCallUrl(deploy, pp),
+          url: pluginHelper.createCallUrl(pp),
           key: pKey
         })
       )
-  }, [deploy, dispatch, pKey, plugin.data, pp])
+  }, [dispatch, pKey, plugin.data, pp])
 
   useEffect(() => {
     return () =>
