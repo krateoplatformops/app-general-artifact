@@ -7,7 +7,7 @@ const createCallUrl = (plugin) => {
     url += `/${encodeURIComponent(plugin.endpointName)}`
   }
   if (plugin.value) {
-    url += `/${encodeURIComponent(plugin.value)})`
+    url += `/${encodeURIComponent(plugin.value)}`
   } else if (plugin.values) {
     url += `/${encodeURIComponent(plugin.values)}`
   }
