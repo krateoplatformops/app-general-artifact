@@ -1,15 +1,18 @@
 import uris from '../uris'
 
 const createCallUrl = (plugin) => {
-  let url = `${uris.apiBase}${plugin.type}/`
+  let url = `${uris.apiBase}${plugin.type}`
 
   if (plugin.endpointName) {
-    url += `${encodeURIComponent(`${plugin.endpointName}`)}/`
+    url += `/${encodeURIComponent(plugin.endpointName)}`
   }
   if (plugin.value) {
-    url += encodeURIComponent(`${plugin.value}`)
+    url += `/${encodeURIComponent(plugin.value)})`
   } else if (plugin.values) {
-    url += encodeURIComponent(`${plugin.values}`)
+    url += `/${encodeURIComponent(plugin.values)}`
+  }
+  if (plugin.params) {
+    url += `/${encodeURIComponent(JSON.stringify(plugin.params))}`
   }
 
   return url
