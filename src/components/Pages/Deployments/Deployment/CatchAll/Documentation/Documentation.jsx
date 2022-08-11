@@ -4,6 +4,7 @@ import gfm from 'remark-gfm'
 
 import Card from '../../../../../UI/Card/Card'
 import Follower from '../../../../../UI/Follower/Follower'
+import { pluginHelper } from '../../../../../../helpers'
 
 const Documentation = ({ plugin, content }) => {
   return (
@@ -24,10 +25,12 @@ const Documentation = ({ plugin, content }) => {
         </Follower>
       </li>
       <li className='li-content'>
-        {content.map((x) => (
-          <Card title={x.key} key={x.key} anchor={x.key.replace(/\s/g, '-')}>
+        {content.list.map((x) => (
+          <Card title={x.name} key={x.name} anchor={x.name.replace(/\s/g, '-')}>
             <div className='markdown-body'>
-              <ReactMarkdown remarkPlugins={[gfm]}>{x.value}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[gfm]}>
+                {pluginHelper.b64toAscii(x.content)}
+              </ReactMarkdown>
             </div>
           </Card>
         ))}
