@@ -10,7 +10,7 @@ const Pipelines = ({ plugin, content }) => {
       <li className='li-menu'>
         <Follower>
           <Card title={plugin.name}>
-            {content.map((c) => {
+            {content.list.map((c) => {
               const p = c.value.pipeline
               return (
                 <a href={`#${p.id}`} key={p.id} className='common-lnk'>
@@ -23,7 +23,7 @@ const Pipelines = ({ plugin, content }) => {
         </Follower>
       </li>
       <li className='li-content'>
-        {content.map((c) => (
+        {content.list.map((c) => (
           <Pipeline
             key={c.value.pipeline.id}
             pipeline={c.value.pipeline}
