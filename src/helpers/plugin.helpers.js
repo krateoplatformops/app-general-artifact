@@ -1,18 +1,26 @@
 import uris from '../uris'
 
-const createCallUrl = (plugin) => {
+window.Buffer = window.Buffer || require('buffer').Buffer
+
+const createCallUrl = (plugin, deploymentId) => {
   let url = `${uris.apiBase}${plugin.type}`
 
-  if (plugin.endpointName) {
-    url += `/${encodeURIComponent(plugin.endpointName)}`
-  }
-  if (plugin.value) {
-    url += `/${encodeURIComponent(plugin.value)}`
-  } else if (plugin.values) {
-    url += `/${encodeURIComponent(plugin.values)}`
-  }
-  if (plugin.params) {
-    url += `/${encodeURIComponent(JSON.stringify(plugin.params))}`
+  switch (plugin.type) {
+    case 'capi':
+      url += `/${deploymentId}/kubeconfig`
+      break
+    default:
+      if (plugin.endpointName) {
+        url += `/${encodeURIComponent(plugin.endpointName)}`
+      }
+      if (plugin.value) {
+        url += `/${encodeURIComponent(plugin.value)}`
+      } else if (plugin.values) {
+        url += `/${encodeURIComponent(plugin.values)}`
+      }
+      if (plugin.params) {
+        url += `/${encodeURIComponent(JSON.stringify(plugin.params))}`
+      }
   }
 
   return url
