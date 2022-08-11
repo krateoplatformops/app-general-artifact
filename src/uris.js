@@ -34,7 +34,8 @@ if (process.env.REACT_APP_NODE_ENV === 'development') {
   uris.auth = 'auth'
   uris.user = 'user'
   uris.secret = ''
-  uris.deployment = ''
+  uris.deployment = 'http://localhost:8085/'
+  uris.pipeline = 'http://localhost:8089'
 }
 
 export default uris
