@@ -17,8 +17,8 @@ import { uiHelper } from '../../helpers'
 
 export function* loginSaga(action) {
   try {
-    const { title, data, id } = action.payload
-    const result = yield axios.post(`${uris.auth}/${title}?id=${id}`, data)
+    const { title, data, name } = action.payload
+    const result = yield axios.post(`${uris.auth}/${title}?name=${name}`, data)
     yield put(loginSuccess())
     yield put(userLoadProfileSuccess(result.data))
   } catch (error) {

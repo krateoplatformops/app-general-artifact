@@ -28,14 +28,7 @@ const uris = {
 }
 
 if (process.env.REACT_APP_NODE_ENV === 'development') {
-  uris.apiBase = 'http://localhost:8085/'
-  uris.strategy = 'strategy'
-  uris.logout = 'logout'
-  uris.auth = 'auth'
-  uris.user = 'user'
-  uris.secret = ''
-  uris.deployment = 'http://localhost:8085/'
-  uris.pipeline = 'http://localhost:8089'
+  uris.apiBase = process.env.REACT_APP_API_URL
 }
 
 export default uris
