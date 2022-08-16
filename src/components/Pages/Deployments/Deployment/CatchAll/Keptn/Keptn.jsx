@@ -33,7 +33,7 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
       }
     }
     detailsCallHandler({
-      url: pluginHelper.createCallUrl(plugin),
+      url: pluginHelper.createCallUrl(plugin, deploy),
       method: 'post',
       data,
       message: 'Sequence triggered successfully'

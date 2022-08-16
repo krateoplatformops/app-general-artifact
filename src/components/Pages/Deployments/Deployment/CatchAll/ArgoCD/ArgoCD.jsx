@@ -28,7 +28,7 @@ const ArgoCD = ({
   }
 
   const resourceDetailsHandler = (data) => {
-    let url = new URL(pluginHelper.createCallUrl(plugin))
+    let url = new URL(pluginHelper.createCallUrl(plugin, deploy))
     if (data.name) {
       url.searchParams.append('name', data.name)
       url.searchParams.append('resourceName', data.name)

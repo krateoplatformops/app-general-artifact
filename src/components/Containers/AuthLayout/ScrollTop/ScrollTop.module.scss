@@ -15,7 +15,7 @@
   z-index: $zi-scroll-top;
   cursor: pointer;
   @include box-shadow(0, 0, 5px, 0, rgba($black, 0.5));
-  svg {
+  i {
     animation: MoveUpDown 3s linear infinite;
   }
 }
