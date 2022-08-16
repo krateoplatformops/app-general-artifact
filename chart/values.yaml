@@ -5,7 +5,7 @@ title: Krateo PlatformOps
 
 uris:
   api: https://api.krateo.site
-  notification: https://notification.krateo.site/
+  notification: https://api.krateo.site/
 
 replicaCount: 1
 
