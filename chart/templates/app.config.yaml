@@ -6,6 +6,6 @@ data:
   runtime-config.js: |
     window['runConfig'] = {
       apiBaseUrl: '{{ .Values.uris.api }}',
-      socketUrl: '{{ .Values.uris.socket }}',
+      notificationUrl: '{{ .Values.uris.notification }}',
       title: '{{ .Values.title }}'
     }

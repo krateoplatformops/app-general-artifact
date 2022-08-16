@@ -1,5 +1,5 @@
 window.runConfig = {
   apiBaseUrl: 'http://localhost:8080/',
-  socketUrl: 'http://localhost:4000',
+  notificationUrl: 'http://localhost:4000',
   title: 'Krateo PlatformOps'
 }

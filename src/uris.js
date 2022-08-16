@@ -11,9 +11,11 @@ const uris = {
   register: 'register',
   template: 'template',
   deployment: 'deployment',
-  socket:
-    window.runConfig.socketUrl +
-    (window.runConfig.socketUrl[window.runConfig.socketUrl.length - 1] === '/'
+  notification:
+    window.runConfig.notificationUrl +
+    (window.runConfig.notificationUrl[
+      window.runConfig.notificationUrl.length - 1
+    ] === '/'
       ? ''
       : '/'),
   proxy: 'proxy',

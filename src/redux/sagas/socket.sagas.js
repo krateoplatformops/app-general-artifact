@@ -18,7 +18,7 @@ export function* socketInitSaga() {
   try {
     const listener = eventChannel((emit) => {
       try {
-        socket = socketIOClient(uris.socket, {
+        socket = socketIOClient(uris.notification, {
           withCredentials: true
         })
           .on('disconnect', () => {
