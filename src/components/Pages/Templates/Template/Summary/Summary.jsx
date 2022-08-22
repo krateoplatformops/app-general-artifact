@@ -9,7 +9,7 @@ const Summary = ({ fieldValues, isValid, fieldsList }) => {
   const cost = () => {
     return fieldValues
       .map((x) => {
-        const f = fieldsList.find((y) => y.label === x.name)
+        const f = fieldsList.find((y) => y.key === x.name)
 
         if (x.value && f.cost) {
           return parseFloat(f.cost)
@@ -40,7 +40,7 @@ const Summary = ({ fieldValues, isValid, fieldsList }) => {
   const totalCost = cost()
 
   const payloadValues = fieldValues.map((x) => {
-    const f = fieldsList.find((y) => y.label === x.name)
+    const f = fieldsList.find((y) => y.key === x.name)
     return {
       name: x.name,
       value: f.type === 'password' ? x.value.replace(/./g, '*') : x.value,

@@ -5,9 +5,9 @@ import css from './Checkbox.module.scss'
 const Checkbox = ({ i, register, setValue, disabled }) => {
   useEffect(() => {
     if (i.default) {
-      setValue(i.id, i.default.split(','))
+      setValue(i.key, i.default.split(','))
     }
-  }, [i.default, i.id, setValue])
+  }, [i.default, i.key, setValue])
 
   const renderLabel = (x) => {
     if (typeof x !== 'object') {
@@ -26,17 +26,18 @@ const Checkbox = ({ i, register, setValue, disabled }) => {
     <ul className={css.Wrapper}>
       {i.values.map((x) => {
         const isObj = typeof x === 'object'
-        const key = isObj ? x.value : x
+        const key = `${i.key}-${isObj ? x.value : x}`
+        const val = isObj ? x.value : x
         return (
           <li key={key}>
             <div>
               <input
                 type='checkbox'
                 id={key}
-                {...register(i.id, {
+                {...register(i.key, {
                   required: i.required
                 })}
-                value={key.toString()}
+                value={val.toString()}
                 disabled={disabled}
               />
               <label htmlFor={key}>{renderLabel(x)}</label>

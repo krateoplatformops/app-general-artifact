@@ -17,135 +17,143 @@ const Fields = ({
   register,
   currentStep,
   setValue,
-  errors
+  errors,
+  id
 }) => {
-  const boxStyle = () => {
-    if (!widget.boxStyle) return css.Default
+  const boxStyle = (b) => {
+    if (!b.style) return css.Default
 
-    const f = styles.find((x) => x === widget.boxStyle.toLowerCase())
+    const f = styles.find((x) => x === b.style.toLowerCase())
 
     if (f) return css[f.toLowerCase().replace(/./, (c) => c.toUpperCase())]
     return css.Default
   }
 
-  const renderInput = (i) => {
-    if (i.values) {
-      switch (i.type) {
-        case 'radio':
-          return (
-            <Radio
-              key={i.id}
-              i={i}
-              register={register}
-              setValue={setValue}
-              disabled={i.disabled || false}
-            />
-          )
-        case 'multiple':
-          return (
-            <Checkbox
-              key={i.id}
-              i={i}
-              register={register}
-              setValue={setValue}
-              disabled={i.disabled || false}
-            />
-          )
-        default:
-          return (
-            <select
-              {...register(i.id, {
-                required: i.required
-              })}
-              defaultValue={i.default}
-              disabled={i.disabled || false}
-            >
-              {i.values.map((x) =>
-                typeof x === 'string' ? (
-                  <option key={x} value={x}>
-                    {x}
-                  </option>
-                ) : (
-                  <option key={x.value} value={x.value}>
-                    {x.title}
-                  </option>
-                )
-              )}
-            </select>
-          )
-      }
-    }
+  const box = () => {
+    const b = widget.properties.find((x) => x.type === 'box')
 
-    if (i.type === 'toggle') {
-      return (
-        <Toggle
-          key={i.id}
-          i={i}
-          register={register}
-          setValue={setValue}
-          disabled={i.disabled || false}
-        />
-      )
-    }
-
-    if (i.type === 'password') {
-      return (
-        <InputPassword
-          key={i.id}
-          name={i.id}
-          required={i.required}
-          register={register}
-          placeholder={i.placeholder || i.title}
-          disabled={i.disabled || false}
-        />
-      )
-    }
-
-    if (i.type === 'textarea') {
-      return (
-        <textarea
-          placeholder={i.placeholder || i.title}
-          defaultValue={i.default}
-          disabled={i.disabled || false}
-          {...register(i.id, {
-            required: i.required
-          })}
-        />
-      )
-    }
-
-    if (i.type === 'url') {
-      return (
-        <input
-          type='url'
-          disabled={i.disabled || false}
-          placeholder={i.placeholder || i.title}
-          defaultValue={i.default}
-          {...register(i.id, {
-            required: i.required,
-            validate: (value) => {
-              return uriHelper.valid(value)
-            }
-          })}
-        />
-      )
-    }
+    if (!b) return null
 
     return (
-      <input
-        type={i.type ? i.type : 'text'}
-        placeholder={i.placeholder || i.title}
-        defaultValue={i.default}
-        disabled={i.disabled || false}
-        {...register(i.id, {
-          required: i.required
-        })}
-      />
+      <li className={css.LiBox}>
+        <div className={boxStyle(b)}>
+          {b.value.split('\\n').map((x, i) => (
+            <p key={i}>{x}</p>
+          ))}
+        </div>
+      </li>
     )
   }
 
+  const renderInput = (i) => {
+    switch (i.type) {
+      case 'radio':
+        return (
+          <Radio
+            key={i.id}
+            i={i}
+            register={register}
+            setValue={setValue}
+            disabled={i.disabled || false}
+          />
+        )
+      case 'multiple':
+        return (
+          <Checkbox
+            key={i.id}
+            i={i}
+            register={register}
+            setValue={setValue}
+            disabled={i.disabled || false}
+          />
+        )
+      case 'select':
+        return (
+          <select
+            {...register(i.key, {
+              required: i.required
+            })}
+            defaultValue={i.default}
+            disabled={i.disabled || false}
+          >
+            <option value=''></option>
+            {i.values.map((x) =>
+              typeof x === 'string' ? (
+                <option key={x} value={x}>
+                  {x}
+                </option>
+              ) : (
+                <option key={x.value} value={x.value}>
+                  {x.title}
+                </option>
+              )
+            )}
+          </select>
+        )
+      case 'toggle':
+        return (
+          <Toggle
+            key={i.key}
+            i={i}
+            register={register}
+            setValue={setValue}
+            disabled={i.disabled || false}
+          />
+        )
+      case 'textarea':
+        return (
+          <textarea
+            placeholder={i.placeholder || i.title}
+            defaultValue={i.default}
+            disabled={i.disabled || false}
+            {...register(i.key, {
+              required: i.required
+            })}
+          />
+        )
+      case 'url':
+        return (
+          <input
+            type='url'
+            disabled={i.disabled || false}
+            placeholder={i.placeholder || i.title}
+            defaultValue={i.default}
+            {...register(i.key, {
+              required: i.required,
+              validate: (value) => {
+                return uriHelper.valid(value)
+              }
+            })}
+          />
+        )
+      case 'password':
+        return (
+          <InputPassword
+            key={i.key}
+            name={i.key}
+            required={i.required}
+            register={register}
+            placeholder={i.placeholder || i.title}
+            disabled={i.disabled || false}
+          />
+        )
+      default:
+        return (
+          <input
+            type={i.type || 'text'}
+            placeholder={i.placeholder || i.title}
+            defaultValue={i.default}
+            disabled={i.disabled || false}
+            {...register(i.key, {
+              required: i.required || false
+            })}
+          />
+        )
+    }
+  }
+
   return (
-    <div className={widget._id !== currentStep ? css.Hidden : ''}>
+    <div className={id !== currentStep ? css.Hidden : ''}>
       <Card title={widget.title}>
         {widget.description && (
           <div className={css.Description}>
@@ -156,27 +164,21 @@ const Fields = ({
         )}
         <ul className={css.UlContainer}>
           <li className={css.LiFields}>
-            {(inputs || []).map((i) => (
-              <Label
-                title={i.title}
-                required={i.required}
-                description={i.description}
-                key={i.id}
-                error={errors[i.id]}
-              >
-                {renderInput(i)}
-              </Label>
-            ))}
+            {(inputs || [])
+              .filter((x) => x.type !== 'box')
+              .map((i, key) => (
+                <Label
+                  title={i.title}
+                  required={i.required}
+                  description={i.description}
+                  key={key}
+                  error={errors[i.id]}
+                >
+                  {renderInput(i)}
+                </Label>
+              ))}
           </li>
-          {widget.box && (
-            <li className={css.LiBox}>
-              <div className={boxStyle()}>
-                {widget.box.split('\\n').map((x, i) => (
-                  <p key={i}>{x}</p>
-                ))}
-              </div>
-            </li>
-          )}
+          {box()}
         </ul>
       </Card>
     </div>

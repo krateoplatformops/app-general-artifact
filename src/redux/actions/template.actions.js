@@ -54,3 +54,24 @@ export const templateDeleteFailure = (payload) => {
     payload
   }
 }
+
+export const templateCreate = (payload) => {
+  return {
+    type: templateConstants.TEMPLATE_CREATE,
+    payload
+  }
+}
+
+export const templateCreateSuccess = (payload) => {
+  return {
+    type: templateConstants.TEMPLATE_CREATE_SUCCESS,
+    payload
+  }
+}
+
+export const templateCreateFailure = (payload) => {
+  return {
+    type: templateConstants.TEMPLATE_CREATE_FAILURE,
+    payload
+  }
+}

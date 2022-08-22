@@ -5,9 +5,9 @@ import css from './Radio.module.scss'
 const Radio = ({ i, register, setValue, disabled }) => {
   useEffect(() => {
     if (i.default) {
-      setValue(i.id, i.default.toString())
+      setValue(i.key, i.default.toString())
     }
-  }, [i.default, i.id, setValue])
+  }, [i.default, i.key, setValue])
 
   const renderLabel = (x) => {
     if (typeof x !== 'object') {
@@ -26,7 +26,8 @@ const Radio = ({ i, register, setValue, disabled }) => {
     <ul className={css.Wrapper} disabled={disabled}>
       {i.values.map((x) => {
         const isObj = typeof x === 'object'
-        const key = isObj ? x.value : x
+        const key = `${i.key}-${isObj ? x.value : x}`
+        const val = isObj ? x.value : x
         return (
           <li key={key}>
             <div>
@@ -34,10 +35,10 @@ const Radio = ({ i, register, setValue, disabled }) => {
                 type='radio'
                 disabled={disabled}
                 id={key}
-                {...register(i.id, {
+                {...register(i.key, {
                   required: i.required
                 })}
-                value={key.toString()}
+                value={val.toString()}
               />
               <label htmlFor={key}>{renderLabel(x)}</label>
             </div>

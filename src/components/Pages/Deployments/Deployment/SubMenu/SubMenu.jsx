@@ -8,7 +8,7 @@ import {
   deploymentSingleLoad,
   logFetch,
   pluginFetch,
-  registerImport
+  deploymentCreate
 } from '../../../../../redux/actions'
 import { pluginHelper } from '../../../../../helpers'
 
@@ -19,8 +19,8 @@ const SubMenu = ({ deploy }) => {
 
   const repoSyncHandler = () => {
     dispatch(
-      registerImport({
-        url: `${deploy.repository}/claim.yaml`,
+      deploymentCreate({
+        url: deploy.url,
         endpointName: deploy.endpointName
       })
     )

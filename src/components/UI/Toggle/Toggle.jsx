@@ -5,11 +5,11 @@ import css from './Toggle.module.scss'
 const Toggle = ({ i, register, setValue, disabled }) => {
   useEffect(() => {
     if (i.default) {
-      setValue(i.id, i.default)
+      setValue(i.key, i.default)
     } else {
-      setValue(i.id, false)
+      setValue(i.key, false)
     }
-  }, [i.default, i.id, setValue])
+  }, [i.default, i.key, setValue])
 
   return (
     <div className={css.Container}>
@@ -17,7 +17,7 @@ const Toggle = ({ i, register, setValue, disabled }) => {
         <input
           type='checkbox'
           disabled={disabled}
-          {...register(i.id, {
+          {...register(i.key, {
             required: i.required
           })}
         />

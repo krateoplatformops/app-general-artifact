@@ -4,8 +4,12 @@ import { useForm } from 'react-hook-form'
 
 import Card from '../../UI/Card/Card'
 import Label from '../../UI/Label/Label'
-import { registerImport } from '../../../redux/actions'
-// import css from './Register.module.scss'
+import {
+  templateCreate,
+  addNotification,
+  deploymentCreate
+} from '../../../redux/actions'
+import { uiConstants } from '../../../constants'
 
 const Register = ({ endpoint }) => {
   const dispatch = useDispatch()
@@ -18,7 +22,38 @@ const Register = ({ endpoint }) => {
   } = useForm({ mode: 'onChange' })
 
   const onSubmit = (data) => {
-    dispatch(registerImport(data))
+    console.log(data)
+
+    try {
+      const fileName = data.url
+        .substring(data.url.lastIndexOf('/') + 1)
+        .split('.')[0]
+        .toLowerCase()
+      switch (fileName) {
+        case 'template':
+          dispatch(templateCreate(data))
+          break
+        case 'claim':
+          dispatch(deploymentCreate(data))
+          break
+        default:
+          dispatch(
+            addNotification(
+              uiConstants.messages.unsupported_file,
+              uiConstants.notification.error
+            )
+          )
+      }
+    } catch {
+      dispatch(
+        addNotification(
+          uiConstants.messages.unsupported_url,
+          uiConstants.notification.error
+        )
+      )
+    }
+
+    // dispatch(registerImport(data))
   }
 
   useEffect(() => {

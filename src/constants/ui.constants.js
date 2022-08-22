@@ -149,7 +149,9 @@ export const uiConstants = {
     repository_name_is_required: 'Repository name is required',
     organization_name_is_required: 'Organization name is required',
     strategy_delete_success: 'Strategy deleted successfully',
-    strategy_create_success: 'Strategy created successfully'
+    strategy_create_success: 'Strategy created successfully',
+    unsupported_file: 'Unsupported file',
+    unsupported_url: 'Unsupported URL'
   },
   themes: {
     light: 'light',

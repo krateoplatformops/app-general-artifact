@@ -29,25 +29,24 @@ const Template = (props) => {
     formState: { isValid, errors }
   } = useForm({ mode: 'onChange' })
 
-  const template = (props.template.list || []).find((x) => x._id === params.id)
+  const template = (props.template.list || []).find(
+    (x) => x.metadata.uid === params.id
+  )
 
   const updateStepStatus = useCallback(() => {
     if (template) {
-      const p = template.spec.widgets.find(
-        (x) => x._id === currentStep
-      ).properties
-
-      const valid = Object.keys(p)
+      const p = template.spec.widgets[currentStep]
+      const valid = p.properties
+        .filter((x) => x.type !== 'box')
         .map((x) => {
-          const v = getValues()[x]
-          return (!v && p[x].required) ||
-            (p[x].required && v === '') ||
-            (p[x].type === 'url' && !uriHelper.valid(v))
+          const v = getValues()[x.key]
+          return (!v && x.required) ||
+            (x.required && v === '') ||
+            (x.type === 'url' && !uriHelper.valid(v))
             ? false
             : true
         })
         .reduce((a, b) => a && b)
-
       setStepsStatus(
         stepsStatus.map((x) => (x.id === currentStep ? { ...x, valid } : x))
       )
@@ -56,17 +55,20 @@ const Template = (props) => {
 
   useEffect(() => {
     if (template) {
-      setCurrentStep(template.spec.widgets[0]._id)
+      setCurrentStep(0)
       setStepsStatus(
-        template.spec.widgets.map((x) => {
-          const p = Object.keys(x.properties || []).filter((key) => {
-            const f = x.properties[key]
-            if ((f.required && f.default) || !f.required) {
-              return false
-            }
-            return true
+        template.spec.widgets.map((x, key) => {
+          const p = (x.properties || []).filter((f) => {
+            return !(
+              f.type === 'box' ||
+              (f.required && f.default) ||
+              !f.required
+            )
           })
-          return { id: x._id, valid: p.length === 0 ? true : 'unknown' }
+          return {
+            id: key,
+            valid: p.length === 0 ? true : 'unknown'
+          }
         })
       )
     }
@@ -94,18 +96,23 @@ const Template = (props) => {
   } else {
     const fieldsList = template.spec.widgets
       .map((x) =>
-        Object.keys(x.properties || []).map((y) => {
-          return { ...x.properties[y], label: y }
-        })
+        x.properties
+          .filter((y) => y.type !== 'box')
+          .map((y) => {
+            return {
+              ...y,
+              label: y.title
+            }
+          })
       )
       .flat()
 
     const fieldValues = Object.keys(watch())
-      .filter((x) => getValues()[x] !== '')
+      .filter((x) => getValues()[x] !== '' && x !== 'undefined')
       .map((x) => {
         return {
           name: x,
-          title: fieldsList.find((f) => f.label === x).title,
+          title: fieldsList.find((f) => f.key === x).title,
           value: getValues()[x]
         }
       })
@@ -146,7 +153,10 @@ const Template = (props) => {
         )
       }
       dispatch(
-        deploymentCreate({ metadata: payload, templateId: template._id })
+        deploymentCreate({
+          metadata: payload,
+          templateId: template.metadata.uid
+        })
       )
     }
 
@@ -171,15 +181,14 @@ const Template = (props) => {
               </Follower>
             </li>
             <li className={css.LiForm}>
-              {template.spec.widgets.map((w) => (
+              {template.spec.widgets.map((w, key) => (
                 <Fields
-                  key={w._id}
+                  key={key}
+                  id={key}
                   widget={w}
                   register={register}
                   currentStep={currentStep}
-                  inputs={Object.keys(w.properties || []).map((x) => {
-                    return { id: x, ...w.properties[x] }
-                  })}
+                  inputs={w.properties.filter((x) => x.style !== 'box')}
                   setValue={setValue}
                   errors={errors}
                 />

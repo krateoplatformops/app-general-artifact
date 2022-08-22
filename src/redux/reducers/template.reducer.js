@@ -22,11 +22,12 @@ export default function template(state = initialState, action) {
       return {
         ...state,
         result: true,
-        list: action.payload,
+        list: action.payload.list,
         skeletonLoading: false
       }
     case templateConstants.TEMPLATE_LOAD_FAILURE:
     case templateConstants.TEMPLATE_DELETE_FAILURE:
+    case templateConstants.TEMPLATE_CREATE_FAILURE:
       return {
         ...state,
         loading: false,
@@ -35,8 +36,10 @@ export default function template(state = initialState, action) {
         error: action.payload
       }
     case templateConstants.TEMPLATE_UPDATE:
+    case templateConstants.TEMPLATE_CREATE_SUCCESS:
       return {
         ...state,
+        loading: false,
         list:
           state.list === null
             ? [action.payload]
@@ -51,6 +54,7 @@ export default function template(state = initialState, action) {
         ...initialState
       }
     case templateConstants.TEMPLATE_DELETE:
+    case templateConstants.TEMPLATE_CREATE:
       return {
         ...state,
         loading: true

@@ -28,7 +28,11 @@ import {
   socketSubscribeSaga,
   socketUnsubscribeSaga
 } from './socket.sagas'
-import { templateLoadSaga, templateDeleteSaga } from './template.sagas'
+import {
+  templateLoadSaga,
+  templateDeleteSaga,
+  templateCreateSaga
+} from './template.sagas'
 import {
   deploymentLoadSaga,
   deploymentCreateSaga,
@@ -89,6 +93,7 @@ export function* watchSocket() {
 export function* watchTemplate() {
   yield takeEvery(templateConstants.TEMPLATE_LOAD, templateLoadSaga)
   yield takeEvery(templateConstants.TEMPLATE_DELETE, templateDeleteSaga)
+  yield takeEvery(templateConstants.TEMPLATE_CREATE, templateCreateSaga)
 }
 
 export function* watchDeployment() {

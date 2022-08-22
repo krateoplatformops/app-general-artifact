@@ -6,7 +6,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import {
   templateLoad,
   templateDelete,
-  registerImport
+  templateCreate
 } from '../../../../redux/actions'
 import LocalSearch from '../../../UI/LocalSearch/LocalSearch'
 import TemplateCard from './TemplateCard/TemplateCard'
@@ -38,7 +38,7 @@ const TemplatesList = ({ template }) => {
   }
 
   const refreshTemplateHandler = (t) => {
-    dispatch(registerImport({ url: t.url, endpointName: t.endpointName }))
+    dispatch(templateCreate({ url: t.url, endpointName: t.endpointName }))
   }
 
   return (
@@ -71,8 +71,8 @@ const TemplatesList = ({ template }) => {
               .filter((x) => {
                 return JSON.stringify(x).toLowerCase().indexOf(search) > -1
               })
-              .map((t) => (
-                <li key={t._id}>
+              .map((t, key) => (
+                <li key={key}>
                   <TemplateCard
                     t={t}
                     openModal={openDeleteModal}
