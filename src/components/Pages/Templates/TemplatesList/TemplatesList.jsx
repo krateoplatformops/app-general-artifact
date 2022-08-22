@@ -34,11 +34,13 @@ const TemplatesList = ({ template }) => {
 
   const deleteTemplateHandler = () => {
     setShowModal(false)
-    dispatch(templateDelete(currentTemplate._id))
+    dispatch(templateDelete(currentTemplate.metadata.name))
   }
 
   const refreshTemplateHandler = (t) => {
-    dispatch(templateCreate({ url: t.url, endpointName: t.endpointName }))
+    dispatch(
+      templateCreate({ url: t.spec.url, endpointName: t.spec.endpointName })
+    )
   }
 
   return (

@@ -63,7 +63,7 @@ export default function template(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        list: state.list.filter((x) => x._id !== action.payload)
+        list: state.list.filter((x) => x.metadata.name !== action.payload)
       }
     default:
       return state

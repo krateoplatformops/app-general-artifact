@@ -31,7 +31,7 @@ export function* templateLoadSaga() {
 
 export function* templateDeleteSaga(action) {
   try {
-    yield axios.delete(`${uris.template}/${action.payload}`)
+    yield axios.delete(`${uris.template}/name/${action.payload}`)
     yield put(templateDeleteSuccess(action.payload))
     yield put(
       addNotification(

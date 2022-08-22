@@ -40,11 +40,11 @@ const Template = (props) => {
         .filter((x) => x.type !== 'box')
         .map((x) => {
           const v = getValues()[x.key]
-          return (!v && x.required) ||
+          return !(
+            (!v && x.required) ||
             (x.required && v === '') ||
             (x.type === 'url' && !uriHelper.valid(v))
-            ? false
-            : true
+          )
         })
         .reduce((a, b) => a && b)
       setStepsStatus(

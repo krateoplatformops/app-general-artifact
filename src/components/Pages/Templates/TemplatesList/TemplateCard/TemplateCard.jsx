@@ -40,7 +40,7 @@ const TemplateGrid = ({ t, openModal, refreshButtonHandler }) => {
       <div className={css.Links}>
         <a
           target='_blank'
-          href={t.url}
+          href={t.spec.url}
           rel='noreferrer'
           onClick={(e) => e.stopPropagation()}
           className={css.Link}
