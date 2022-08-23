@@ -41,7 +41,7 @@ const Auth = ({ providers }) => {
       </div>
       {s && (
         <div className={css.AuthTitle}>
-          Authentication name: <b>{s.name}</b>
+          Authentication name: <b>{s.spec.name}</b>
         </div>
       )}
       <Routes>

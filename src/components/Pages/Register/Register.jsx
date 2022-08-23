@@ -22,8 +22,6 @@ const Register = ({ endpoint }) => {
   } = useForm({ mode: 'onChange' })
 
   const onSubmit = (data) => {
-    console.log(data)
-
     try {
       const fileName = data.url
         .substring(data.url.lastIndexOf('/') + 1)

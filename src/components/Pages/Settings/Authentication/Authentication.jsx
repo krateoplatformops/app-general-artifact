@@ -84,7 +84,7 @@ const Authentication = ({ strategy }) => {
               })
               .map((s) => (
                 <li key={s.metadata.uid}>
-                  <StrategyCard s={s} openModal={openDeleteModalHandler} />
+                  <StrategyCard s={s.spec} openModal={openDeleteModalHandler} />
                 </li>
               ))}
       </ul>
