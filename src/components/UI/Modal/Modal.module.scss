@@ -101,10 +101,18 @@
 }
 
 .FooterMessage {
-  width: 100%;
   text-align: right;
   @extend .bsbb;
   padding: 0 10px;
   color: $red;
   font-size: 0.8em;
+}
+
+.LiRight {
+  @extend .display-flex;
+  @extend .flex-direction-row;
+  @extend .flex-center-end;
+  button {
+    white-space: nowrap;
+  }
 }

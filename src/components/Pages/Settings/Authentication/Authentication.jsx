@@ -100,7 +100,7 @@ const Authentication = ({ strategy }) => {
       {showDeleteModal && (
         <DangerZone
           title={'Delete strategy'}
-          name={currentStrategy.metadata.name}
+          name={currentStrategy.name}
           closeModal={closeDeleteModalHandler}
           deleteButtonHandler={deleteStrategyHandler}
         />

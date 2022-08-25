@@ -62,8 +62,8 @@ const AddStrategy = ({ closeModal, addStrategy, list }) => {
 
   const footerMessage = () => {
     const name = getValues().name
-    if (name !== '') {
-      if ((list || []).filter((x) => x.name === name).length > 0) {
+    if (name && name !== '') {
+      if ((list || []).filter((x) => x.spec.name === name).length > 0) {
         return 'An strategy with this name already exists'
       }
     }

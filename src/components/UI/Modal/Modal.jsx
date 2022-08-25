@@ -46,11 +46,14 @@ const Modal = (props) => {
               close
             </button>
           </li>
-          {props.footerMessage && (
+          {/* {props.footerMessage && (
             <li className={css.FooterMessage}>{props.footerMessage}</li>
-          )}
+          )} */}
           {props.confirmButtonHandler && (
-            <li>
+            <li className={css.LiRight}>
+              {props.footerMessage && (
+                <span className={css.FooterMessage}>{props.footerMessage}</span>
+              )}
               <button
                 disabled={props.confirmDisabled}
                 type={props.isTypeSubmit ? 'submit' : 'button'}

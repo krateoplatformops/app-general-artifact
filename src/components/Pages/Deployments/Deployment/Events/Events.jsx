@@ -38,8 +38,8 @@ const Events = ({ deploy, log }) => {
           )
         })
         .sort((a, b) => b.time - a.time)
-        .map((log) => (
-          <Log key={log._id} log={log} />
+        .map((log, key) => (
+          <Log key={key} log={log} />
         ))}
     </React.Fragment>
   )

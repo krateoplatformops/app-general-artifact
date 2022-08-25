@@ -53,7 +53,8 @@
   white-space: nowrap;
 }
 
-.info {
+.info,
+.normal {
   @extend .LevelBase;
   background: rgba($green, 0.1);
   color: $green;
