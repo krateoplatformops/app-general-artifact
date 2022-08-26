@@ -13,37 +13,37 @@ const Dashboard = (props) => {
       <ul className={css.UlCards}>
         <li>
           <CounterCard
-            title='Templates'
+            title="Templates"
             counter={props.template.list?.length || 0}
-            icon='fa-solid fa-puzzle-piece'
-            color='Red'
-            to='/templates'
+            icon="fa-solid fa-puzzle-piece"
+            color="Red"
+            to="/templates"
           />
         </li>
         <li>
           <CounterCard
-            title='Deployments'
-            to='/deployments'
+            title="Deployments"
+            to="/deployments"
             counter={props.deployment.list?.length || 0}
-            icon='fa-solid fa-rocket'
-            color='Violet'
+            icon="fa-solid fa-rocket"
+            color="Violet"
           />
         </li>
         <li>
           <CounterCard
-            title='Users'
+            title="Users"
             counter={0}
-            icon='fa-solid fa-user'
-            color='Green'
+            icon="fa-solid fa-user"
+            color="Green"
           />
         </li>
         <li>
           <CounterCard
-            title='Endpoints'
+            title="Endpoints"
             counter={props.endpoint.list?.length || 0}
-            icon='fa-solid fa-landmark'
-            color='Orange'
-            to='/settings/endpoints'
+            icon="fa-solid fa-landmark"
+            color="Orange"
+            to="/settings/endpoints"
           />
         </li>
       </ul>

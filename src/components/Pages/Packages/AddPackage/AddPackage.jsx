@@ -86,8 +86,8 @@ const AddPackage = ({ pkg, catalog }) => {
         ]}
       >
         <input
-          type='text'
-          placeholder='Search'
+          type="text"
+          placeholder="Search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -119,12 +119,12 @@ const AddPackage = ({ pkg, catalog }) => {
                       <span>{p.name}</span>
                     </li>
                     <li className={css.Footer}>
-                      <a href={p.source} target='_blank' rel='noreferrer'>
-                        <i className='fa-brands fa-git'></i>
+                      <a href={p.source} target="_blank" rel="noreferrer">
+                        <i className="fa-brands fa-git"></i>
                       </a>
                       {p.package && (
                         <button onClick={() => openUpdateModal(p)}>
-                          <i className='fa-solid fa-download'></i>
+                          <i className="fa-solid fa-download"></i>
                         </button>
                       )}
                     </li>
@@ -146,7 +146,7 @@ const AddPackage = ({ pkg, catalog }) => {
             <OfficialPackage p={currentPackage} />
           ) : (
             <textarea
-              placeholder='Paste yaml code'
+              placeholder="Paste yaml code"
               onChange={(e) => setCustom(e.target.value)}
               value={custom}
             ></textarea>

@@ -22,8 +22,8 @@ const Kubernetes = ({ deploy, plugin, content }) => {
 
   return (
     <React.Fragment>
-      <ul className='ul-fourty-sixty-view'>
-        <li className='li-menu'>
+      <ul className="ul-fourty-sixty-view">
+        <li className="li-menu">
           <Follower>
             <Card title={plugin.name}>
               <ul className={css.LeftInfos}>
@@ -51,7 +51,7 @@ const Kubernetes = ({ deploy, plugin, content }) => {
             </Card>
           </Follower>
         </li>
-        <li className='li-content'>
+        <li className="li-content">
           {content.list.map((k) => (
             <Resources
               key={k.kind}

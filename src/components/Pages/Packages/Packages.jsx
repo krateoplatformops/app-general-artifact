@@ -7,7 +7,7 @@ import PackagesList from './PackagesList/PackagesList'
 const Packages = () => {
   return (
     <Routes>
-      <Route path='/'>
+      <Route path="/">
         <Route
           index
           element={
@@ -17,7 +17,7 @@ const Packages = () => {
           }
         />
         <Route
-          path='/new'
+          path="/new"
           element={
             <ErrorBoundary>
               <AddPackage />

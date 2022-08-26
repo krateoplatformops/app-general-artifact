@@ -7,6 +7,7 @@ const initialState = {
 }
 
 export default function log(state = initialState, action) {
+  const data = { ...state.data }
   switch (action.type) {
     case logConstants.LOG_FETCH:
       return {
@@ -15,11 +16,10 @@ export default function log(state = initialState, action) {
         error: null
       }
     case logConstants.LOG_FETCH_SUCCESS:
-      const dataLoadSuccess = { ...state.data }
-      dataLoadSuccess[action.payload.key] = action.payload.value
+      data[action.payload.key] = action.payload.value
       return {
         ...state,
-        data: dataLoadSuccess,
+        data: data,
         loading: false
       }
     case logConstants.LOG_FETCH_FAILURE:
@@ -29,11 +29,10 @@ export default function log(state = initialState, action) {
         error: action.payload
       }
     case logConstants.LOG_DELETE_KEY:
-      const dataDelete = { ...state.data }
-      delete dataDelete[action.payload.key]
+      delete data[action.payload.key]
       return {
         ...state,
-        data: dataDelete
+        data: data
       }
     case logConstants.LOG_RESET:
       return {

@@ -11,14 +11,14 @@ import Metric from './Metric/Metric'
 
 const Codequality = ({ deploy, plugin, content }) => {
   return (
-    <ul className='ul-double-view'>
-      <li className='li-menu'>
+    <ul className="ul-double-view">
+      <li className="li-menu">
         <Follower>
           <Card title={plugin.name}>
-            <Label title='organization'>{content.component.organization}</Label>
-            <Label title='name'>{content.component.name}</Label>
-            <Label title='version'>{content.component.version}</Label>
-            <Label title='analysis Date'>
+            <Label title="organization">{content.component.organization}</Label>
+            <Label title="name">{content.component.name}</Label>
+            <Label title="version">{content.component.version}</Label>
+            <Label title="analysis Date">
               {timeHelper.dateGenToFormat(content.component.analysisDate)}
             </Label>
             <div className={css.Tags}>
@@ -30,16 +30,16 @@ const Codequality = ({ deploy, plugin, content }) => {
             <a
               href={content.link}
               className={css.ExtLink}
-              target='_blank'
-              rel='noopener noreferrer'
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <i className='fa-solid fa-up-right-from-square'></i>
+              <i className="fa-solid fa-up-right-from-square"></i>
               view more
             </a>
           </Card>
         </Follower>
       </li>
-      <li className='li-content'>
+      <li className="li-content">
         <div className={css.MetricTitle}>alerts</div>
         <ul className={css.UlMetrics}>
           {content.metrics

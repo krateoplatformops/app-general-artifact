@@ -76,7 +76,7 @@ const Fields = ({
             defaultValue={i.default}
             disabled={i.disabled || false}
           >
-            <option value=''></option>
+            <option value=""></option>
             {i.values.map((x) =>
               typeof x === 'string' ? (
                 <option key={x} value={x}>
@@ -114,7 +114,7 @@ const Fields = ({
       case 'url':
         return (
           <input
-            type='url'
+            type="url"
             disabled={i.disabled || false}
             placeholder={i.placeholder || i.title}
             defaultValue={i.default}

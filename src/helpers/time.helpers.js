@@ -30,9 +30,9 @@ const dateToDayFormat = (date) => {
 }
 
 const duration = (duration) => {
-  var hh = Math.floor(duration / 3600)
-  var mm = Math.floor(duration / 60)
-  var ss = duration % 60
+  const hh = Math.floor(duration / 3600)
+  const mm = Math.floor(duration / 60)
+  const ss = duration % 60
   let res = ''
   if (hh > 0) res += `${hh}h`
   if (mm > 0) {

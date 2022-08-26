@@ -19,7 +19,7 @@ const TopNav = ({ socket }) => {
             {socket.events.filter((x) => !x.read).length > 0 && (
               <span className={css.Unread}></span>
             )}
-            <i className='fa-solid fa-bell'></i>
+            <i className="fa-solid fa-bell"></i>
           </button>
         </div>
       )}

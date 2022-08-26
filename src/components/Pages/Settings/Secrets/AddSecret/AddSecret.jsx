@@ -157,7 +157,7 @@ const AddSecret = ({ closeModal, addSecret, list, catalog }) => {
               required: true
             })}
           >
-            <option value=''></option>
+            <option value=""></option>
             {(catalog || [])
               .filter((x) => x.package && x.secret)
               .map((e) => (
@@ -165,7 +165,7 @@ const AddSecret = ({ closeModal, addSecret, list, catalog }) => {
                   {e.name}
                 </option>
               ))}
-            <option value='custom'>[custom]</option>
+            <option value="custom">[custom]</option>
           </select>
         </Label>
 
@@ -199,7 +199,7 @@ const AddSecret = ({ closeModal, addSecret, list, catalog }) => {
                 </li>
                 <li className={css.LiBtn}>
                   <button onClick={() => removeHeaderHandler(h)}>
-                    <i className='fa-solid fa-trash-can'></i>
+                    <i className="fa-solid fa-trash-can"></i>
                   </button>
                 </li>
               </ul>
@@ -207,7 +207,7 @@ const AddSecret = ({ closeModal, addSecret, list, catalog }) => {
 
         {typeValue === 'custom' && (
           <button className={css.AddKeyBtn} onClick={() => addHeaderHandler()}>
-            <i className='fa-solid fa-plus'></i> Add key/value
+            <i className="fa-solid fa-plus"></i> Add key/value
           </button>
         )}
       </Modal>

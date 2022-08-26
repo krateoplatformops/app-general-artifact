@@ -11,15 +11,15 @@ import Secrets from './Secrets/Secrets'
 import Authentication from './Authentication/Authentication'
 
 const Settings = () => (
-  <ul className='ul-double-view mt'>
-    <li className='li-menu'>
+  <ul className="ul-double-view mt">
+    <li className="li-menu">
       <Follower>
         <Menu />
       </Follower>
     </li>
-    <li className='li-content'>
+    <li className="li-content">
       <Routes>
-        <Route path='/*'>
+        <Route path="/*">
           <Route
             index
             element={
@@ -29,7 +29,7 @@ const Settings = () => (
             }
           />
           <Route
-            path='endpoints'
+            path="endpoints"
             element={
               <ErrorBoundary>
                 <Endpoints />
@@ -37,7 +37,7 @@ const Settings = () => (
             }
           />
           <Route
-            path='components'
+            path="components"
             element={
               <ErrorBoundary>
                 <Components />
@@ -45,7 +45,7 @@ const Settings = () => (
             }
           />
           <Route
-            path='secrets'
+            path="secrets"
             element={
               <ErrorBoundary>
                 <Secrets />
@@ -53,7 +53,7 @@ const Settings = () => (
             }
           />
           <Route
-            path='authentication'
+            path="authentication"
             element={
               <ErrorBoundary>
                 <Authentication />

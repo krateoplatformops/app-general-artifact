@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDispatch } from 'react-redux'
 import { saveAs } from 'file-saver'
 
@@ -25,7 +24,7 @@ const DownloadFile = ({ content, fileName }) => {
 
   return (
     <button className={css.Btn} onClick={btnHandler} title={fileName}>
-      <i className='fa-solid fa-file-arrow-down'></i>
+      <i className="fa-solid fa-file-arrow-down"></i>
     </button>
   )
 }

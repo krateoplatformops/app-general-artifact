@@ -14,8 +14,8 @@ const Actions = ({ endpoint, template, deployment }) => (
       <li
         {...((endpoint.list || []).length >= 1 && { 'data-completed': true })}
       >
-        <img src={Endpoint} alt='Add Endpoint' />
-        <Link to='/settings/endpoints' className={css.Link}>
+        <img src={Endpoint} alt="Add Endpoint" />
+        <Link to="/settings/endpoints" className={css.Link}>
           add endpoint
         </Link>
       </li>
@@ -23,8 +23,8 @@ const Actions = ({ endpoint, template, deployment }) => (
         {...((endpoint.list || []).length < 1 && { disabled: true })}
         {...((template.list || []).length > 0 && { 'data-completed': true })}
       >
-        <img src={Template} alt='Import Template' />
-        <Link to='/register' className={css.Link}>
+        <img src={Template} alt="Import Template" />
+        <Link to="/register" className={css.Link}>
           import template
         </Link>
       </li>
@@ -34,8 +34,8 @@ const Actions = ({ endpoint, template, deployment }) => (
           'data-completed': true
         })}
       >
-        <img src={Deployment} alt='Add Deployment' />
-        <Link to='/templates' className={css.Link}>
+        <img src={Deployment} alt="Add Deployment" />
+        <Link to="/templates" className={css.Link}>
           publish first deployment
         </Link>
       </li>

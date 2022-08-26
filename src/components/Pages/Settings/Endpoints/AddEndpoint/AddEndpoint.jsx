@@ -123,7 +123,7 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
               required: true
             })}
           >
-            <option value=''></option>
+            <option value=""></option>
             {endpointUIConstants.types
               .sort((a, b) => (a.type > b.type ? 1 : b.type > a.type ? -1 : 0))
               .map((e) => (

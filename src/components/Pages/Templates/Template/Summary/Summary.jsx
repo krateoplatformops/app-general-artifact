@@ -49,7 +49,7 @@ const Summary = ({ fieldValues, isValid, fieldsList }) => {
   })
 
   return (
-    <Card title='Summary'>
+    <Card title="Summary">
       <PayloadViewer payload={payloadValues} />
 
       {totalCost > 0 && (
@@ -60,13 +60,13 @@ const Summary = ({ fieldValues, isValid, fieldsList }) => {
       )}
       <ul className={css.UlBtns}>
         <li>
-          <Link to='/templates' className='default-button'>
+          <Link to="/templates" className="default-button">
             Back
           </Link>
         </li>
         <li>
           <input
-            type='submit'
+            type="submit"
             disabled={!isValid}
             className={'primary-button'}
             value={'Deploy'}

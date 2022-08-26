@@ -10,7 +10,7 @@ import { uiConstants } from '../../../../../constants'
 const Brand = () => (
   <div className={css.Brand}>
     <NavLink
-      to='/dashboard'
+      to="/dashboard"
       title={`Krateo - ${packageJson.version}`}
       className={css.Link}
     >

@@ -48,7 +48,9 @@ export function* socketInitSaga() {
           .on('reconnect_failed', () => {
             emit({ type: 'error' })
           })
-      } catch {}
+      } catch {
+        console.log('socket error')
+      }
       return () => socket.close()
     })
     while (true) {

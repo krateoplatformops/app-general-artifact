@@ -69,7 +69,7 @@ const CatchAll = ({ deploy, params, plugin }) => {
   }, [dispatch, pKey])
 
   if (!pKey) {
-    return <Error message='Plugin not found' />
+    return <Error message="Plugin not found" />
   }
 
   if (

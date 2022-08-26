@@ -1,5 +1,3 @@
-import React from 'react'
-
 import css from './PayloadViewer.module.scss'
 
 const PayloadViewer = ({ payload }) => (

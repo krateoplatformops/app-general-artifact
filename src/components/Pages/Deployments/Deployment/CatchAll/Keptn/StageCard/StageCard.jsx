@@ -9,7 +9,7 @@ const StageCard = ({ s }) => (
   <Card title={s.stageName} anchor={s.stageName}>
     {s.services.map((svc) => (
       <React.Fragment key={svc.creationDate}>
-        <Label title='Creation Date'>
+        <Label title="Creation Date">
           {timeHelper.nanoToFormat(svc.creationDate)}
         </Label>
         <ul className={css.UlEventList}>

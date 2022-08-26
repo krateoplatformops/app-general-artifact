@@ -9,7 +9,7 @@ const UpdatePackage = ({ pkg }) => (
     <ul className={css.UlFrom}>
       <li className={css.LiCurrent}>{pkg.current.version}</li>
       <li>
-        <i className='fa-solid fa-angles-right'></i>
+        <i className="fa-solid fa-angles-right"></i>
       </li>
       <li className={css.LiFuture}>{pkg.future.version}</li>
     </ul>

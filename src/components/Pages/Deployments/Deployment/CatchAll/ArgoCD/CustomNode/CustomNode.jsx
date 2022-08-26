@@ -18,9 +18,9 @@ const CustomNode = ({ id, data, isConnectable }) => {
   return (
     <React.Fragment>
       <Handle
-        type='target'
-        position='left'
-        id='a'
+        type="target"
+        position="left"
+        id="a"
         style={{ background: 'var(--border)' }}
         isConnectable={isConnectable}
       />
@@ -37,9 +37,9 @@ const CustomNode = ({ id, data, isConnectable }) => {
         <li className={css.LiName}>{data.name}</li>
       </ul>
       <Handle
-        type='source'
-        position='right'
-        id='b'
+        type="source"
+        position="right"
+        id="b"
         style={{ background: 'var(--border)' }}
         isConnectable={isConnectable}
       />

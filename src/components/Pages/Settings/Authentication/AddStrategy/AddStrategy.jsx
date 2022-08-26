@@ -108,7 +108,7 @@ const AddStrategy = ({ closeModal, addStrategy, list }) => {
               required: true
             })}
           >
-            <option value=''></option>
+            <option value=""></option>
             {strategyUIConstants.types
               .sort((a, b) =>
                 a.strategy > b.strategy ? 1 : b.strategy > a.strategy ? -1 : 0

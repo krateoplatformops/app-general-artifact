@@ -38,16 +38,16 @@ const Deployment = ({ deployment, socket }) => {
         <div>
           <Suspense fallback={<PageLoader />}>
             <Routes>
-              <Route path='/*'>
+              <Route path="/*">
                 <Route index element={<OverviewLazy deploy={deploy} />} />
-                <Route path='events' element={<EventsLazy deploy={deploy} />} />
-                <Route path='values' element={<ValuesLazy deploy={deploy} />} />
+                <Route path="events" element={<EventsLazy deploy={deploy} />} />
+                <Route path="values" element={<ValuesLazy deploy={deploy} />} />
                 <Route
-                  path='settings'
+                  path="settings"
                   element={<SettingsLazy deploy={deploy} />}
                 />
                 <Route
-                  path='*'
+                  path="*"
                   element={<CatchAllLazy deploy={deploy} params={params} />}
                 />
               </Route>

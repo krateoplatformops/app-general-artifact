@@ -15,7 +15,7 @@ const StrategyCard = ({ s, openModal }) => {
           <i className={s.icon}></i>
         </li>
         <li className={css.LiInfo}>
-          <Label title='Name'>
+          <Label title="Name">
             <div className={css.Name}>{s.name}</div>
           </Label>
           <ul className={css.UlLabels}>
@@ -27,7 +27,7 @@ const StrategyCard = ({ s, openModal }) => {
       </ul>
       <div className={css.Footer}>
         <button className={css.DeleteBtn} onClick={() => deleteHandler()}>
-          <i className='fa-solid fa-trash-can'></i>
+          <i className="fa-solid fa-trash-can"></i>
         </button>
       </div>
     </div>

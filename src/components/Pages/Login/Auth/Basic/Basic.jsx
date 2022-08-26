@@ -5,20 +5,20 @@ import InputPassword from '../../../../UI/InputPassword/InputPassword'
 
 const Basic = ({ register }) => (
   <React.Fragment>
-    <Label title='username'>
+    <Label title="username">
       <input
-        type='text'
-        placeholder='Username'
+        type="text"
+        placeholder="Username"
         {...register('username', {
           required: true
         })}
       />
     </Label>
-    <Label title='password'>
+    <Label title="password">
       <InputPassword
         register={register}
-        name='password'
-        placeholder='Password'
+        name="password"
+        placeholder="Password"
       />
     </Label>
   </React.Fragment>

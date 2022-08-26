@@ -46,7 +46,7 @@ const Auth = ({ providers }) => {
       )}
       <Routes>
         <Route
-          path='ldap/:name'
+          path="ldap/:name"
           element={
             <ErrorBoundary>
               <Ldap register={register} />
@@ -54,7 +54,7 @@ const Auth = ({ providers }) => {
           }
         />
         <Route
-          path='basic/:name'
+          path="basic/:name"
           element={
             <ErrorBoundary>
               <Basic register={register} />
@@ -63,10 +63,10 @@ const Auth = ({ providers }) => {
         />
       </Routes>
       <div className={css.Btns}>
-        <Link to='/' className='minimal-button'>
+        <Link to="/" className="minimal-button">
           back
         </Link>
-        <button className='primary-button' disabled={!isValid} type='submit'>
+        <button className="primary-button" disabled={!isValid} type="submit">
           login
         </button>
       </div>

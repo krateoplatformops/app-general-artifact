@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { iconUIConstants } from '../../../constants'
 import Label from '../Label/Label'
@@ -64,7 +64,7 @@ const IconSelector = ({ watch, register, setValue, getValues }) => {
   }, [handleClick])
 
   return (
-    <Label title='Icon'>
+    <Label title="Icon">
       <ul className={css.UlIcon}>
         <li className={css.LiIcon}>
           <span>
@@ -73,7 +73,7 @@ const IconSelector = ({ watch, register, setValue, getValues }) => {
         </li>
         <li className={css.LiSelectIcon}>
           <input
-            type='text'
+            type="text"
             {...register('icon', {
               required: true
             })}
@@ -81,7 +81,7 @@ const IconSelector = ({ watch, register, setValue, getValues }) => {
           />
 
           <input
-            type='text'
+            type="text"
             data-viewer={true}
             value={search}
             onChange={(e) => searchChangeHandler(e)}
@@ -93,7 +93,7 @@ const IconSelector = ({ watch, register, setValue, getValues }) => {
                 .filter((x) => x.indexOf(search.toLowerCase()) !== -1)
                 .map((c) => (
                   <li key={c}>
-                    <button type='button' onClick={() => setIconHandler(c)}>
+                    <button type="button" onClick={() => setIconHandler(c)}>
                       <i className={c} data-hider={true}></i>
                     </button>
                   </li>
@@ -102,8 +102,8 @@ const IconSelector = ({ watch, register, setValue, getValues }) => {
           </div>
         </li>
         <li className={css.LiShuffle}>
-          <button type='button' onClick={() => shuffleIconHandler()}>
-            <i className='fa-solid fa-shuffle'></i>
+          <button type="button" onClick={() => shuffleIconHandler()}>
+            <i className="fa-solid fa-shuffle"></i>
           </button>
         </li>
       </ul>

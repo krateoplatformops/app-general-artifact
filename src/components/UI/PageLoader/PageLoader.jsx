@@ -1,5 +1,3 @@
-import React from 'react'
-
 import css from './PageLoader.module.scss'
 import KrateoLogo from '../KrateoLogo/KrateoLogo'
 

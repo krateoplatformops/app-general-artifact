@@ -14,7 +14,7 @@ const NotFound = ({ history }) => {
 
   return (
     <div className={css.NotFound}>
-      <KrateoLogo alt='Not Found' />
+      <KrateoLogo alt="Not Found" />
       <p className={css.Title}>Not Found</p>
       <p className={css.SubTitle}>
         We are not there yet, but we are working on it.

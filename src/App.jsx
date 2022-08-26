@@ -41,32 +41,32 @@ function App() {
           <UserProvider>
             <Routes>
               <Route element={<Layout />}>
-                <Route path='/*' element={<LoginLazy />} />
-                <Route path='auth/*' element={<LoginLazy />} />
+                <Route path="/*" element={<LoginLazy />} />
+                <Route path="auth/*" element={<LoginLazy />} />
                 <Route element={<AuthLayout />}>
                   <Route
-                    path='dashboard'
+                    path="dashboard"
                     element={
                       <ErrorBoundary>
                         <DashboardLazy />
                       </ErrorBoundary>
                     }
                   />
-                  <Route path='deployments/*' element={<DeploymentsLazy />} />
-                  <Route path='templates/*' element={<TemplatesLazy />} />
-                  <Route path='packages/*' element={<PackagesLazy />} />
+                  <Route path="deployments/*" element={<DeploymentsLazy />} />
+                  <Route path="templates/*" element={<TemplatesLazy />} />
+                  <Route path="packages/*" element={<PackagesLazy />} />
                   <Route
-                    path='register'
+                    path="register"
                     element={
                       <ErrorBoundary>
                         <RegisterLazy />
                       </ErrorBoundary>
                     }
                   />
-                  <Route path='settings/*' element={<SettingsLazy />} />
-                  <Route path='search/*' element={<SearchLazy />} />
+                  <Route path="settings/*" element={<SettingsLazy />} />
+                  <Route path="search/*" element={<SearchLazy />} />
                 </Route>
-                <Route path='*' element={<NotFoundLazy history={history} />} />
+                <Route path="*" element={<NotFoundLazy history={history} />} />
               </Route>
             </Routes>
           </UserProvider>

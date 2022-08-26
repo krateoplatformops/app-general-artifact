@@ -39,20 +39,20 @@ const TemplateGrid = ({ t, openModal, refreshButtonHandler }) => {
       </Link>
       <div className={css.Links}>
         <a
-          target='_blank'
+          target="_blank"
           href={t.spec.url}
-          rel='noreferrer'
+          rel="noreferrer"
           onClick={(e) => e.stopPropagation()}
           className={css.Link}
         >
-          <i className='fa-brands fa-git'></i>
+          <i className="fa-brands fa-git"></i>
         </a>
         <span className={css.SpanButtons} onClick={(e) => refreshHandler(e)}>
-          <button className={css.SyncBtn} title='Refresh template'>
-            <i className='fa-solid fa-rotate'></i>
+          <button className={css.SyncBtn} title="Refresh template">
+            <i className="fa-solid fa-rotate"></i>
           </button>
           <button className={css.DeleteBtn} onClick={(e) => deleteHandler(e)}>
-            <i className='fa-solid fa-trash-can'></i>
+            <i className="fa-solid fa-trash-can"></i>
           </button>
         </span>
       </div>

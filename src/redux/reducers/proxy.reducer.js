@@ -7,22 +7,20 @@ const initialState = {
 }
 
 export default function proxy(state = initialState, action) {
+  const data = { ...state.data }
   switch (action.type) {
     case proxyConstants.PROXY_FETCH:
-      const dataLoad = { ...state.data }
-      delete dataLoad[action.payload.key]
+      delete data[action.payload.key]
       return {
         ...state,
-        data: dataLoad,
         loading: true,
         error: null
       }
     case proxyConstants.PROXY_FETCH_SUCCESS:
-      const dataLoadSuccess = { ...state.data }
-      dataLoadSuccess[action.payload.key] = action.payload.value
+      data[action.payload.key] = action.payload.value
       return {
         ...state,
-        data: dataLoadSuccess,
+        data: data,
         loading: false
       }
     case proxyConstants.PROXY_FETCH_FAILURE:
@@ -32,11 +30,10 @@ export default function proxy(state = initialState, action) {
         error: action.payload
       }
     case proxyConstants.PROXY_DELETE_KEY:
-      const dataDelete = { ...state.data }
-      delete dataDelete[action.payload.key]
+      delete data[action.payload.key]
       return {
         ...state,
-        data: dataDelete
+        data: data
       }
     case proxyConstants.PROXY_RESET:
       return {

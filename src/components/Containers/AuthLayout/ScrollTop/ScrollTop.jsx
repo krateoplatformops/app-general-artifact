@@ -28,7 +28,7 @@ const ScrollTop = () => {
     <React.Fragment>
       {show && (
         <button className={css.ScrollTop} onClick={goToTop}>
-          <i className='fa-solid fa-chevron-up'></i>
+          <i className="fa-solid fa-chevron-up"></i>
         </button>
       )}
     </React.Fragment>

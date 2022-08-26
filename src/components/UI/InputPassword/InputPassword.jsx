@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import css from './InputPassword.module.scss'
 
@@ -22,11 +22,11 @@ const InputPassword = ({ register, name, required, placeholder, disabled }) => {
         />
       </li>
       <li>
-        <button type='button' onClick={handleClick} className={css.Switch}>
+        <button type="button" onClick={handleClick} className={css.Switch}>
           {inputType === 'password' ? (
-            <i className='fa-regular fa-eye'></i>
+            <i className="fa-regular fa-eye"></i>
           ) : (
-            <i className='fa-regular fa-eye-slash'></i>
+            <i className="fa-regular fa-eye-slash"></i>
           )}
         </button>
       </li>

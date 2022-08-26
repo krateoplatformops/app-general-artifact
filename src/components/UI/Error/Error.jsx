@@ -1,10 +1,8 @@
-import React from 'react'
-
 import css from './Error.module.scss'
 
 const Error = ({ message, stack }) => (
   <div className={css.ErrorContainer}>
-    <div className={css.Glitch} data-content='Oops!'>
+    <div className={css.Glitch} data-content="Oops!">
       Oops!
     </div>
     <span

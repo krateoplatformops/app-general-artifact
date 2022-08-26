@@ -13,7 +13,7 @@ import Auth from './Auth/Auth'
 const Login = ({ strategy }) => (
   <ul className={css.UlBody}>
     <li className={css.LiLogo}>
-      <img src={Logo} alt='Krateo' />
+      <img src={Logo} alt="Krateo" />
     </li>
     <li className={css.LiActions}>
       <Social />
@@ -21,7 +21,7 @@ const Login = ({ strategy }) => (
       <span className={css.Title}>{window.runConfig.title}</span>
       <div className={css.Card}>
         <Routes>
-          <Route path='/'>
+          <Route path="/">
             <Route
               index
               element={
@@ -35,7 +35,7 @@ const Login = ({ strategy }) => (
               }
             />
             <Route
-              path='/*'
+              path="/*"
               element={<Auth providers={strategy.list || []} />}
             />
           </Route>

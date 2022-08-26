@@ -11,8 +11,8 @@ const Social = () => {
           <a
             href={s.target}
             className={css.Link}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <i className={s.icon}></i>
           </a>

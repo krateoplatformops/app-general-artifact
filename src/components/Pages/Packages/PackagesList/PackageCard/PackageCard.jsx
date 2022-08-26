@@ -39,7 +39,7 @@ const PackageCard = ({ p, catalog, openUpdateModal, openDeleteModal }) => {
             {source && (
               <li>
                 <b>source</b>
-                <a href={source} target='_blank' rel='noreferrer'>
+                <a href={source} target="_blank" rel="noreferrer">
                   {source}
                 </a>
               </li>
@@ -69,11 +69,11 @@ const PackageCard = ({ p, catalog, openUpdateModal, openDeleteModal }) => {
             p.version !== 'latest' &&
             info.package && (
               <button className={css.BtnUpdate} onClick={updateHandler}>
-                {info.version} <i className='fa-solid fa-upload'></i>
+                {info.version} <i className="fa-solid fa-upload"></i>
               </button>
             )}
           <button className={css.DeleteBtn} onClick={() => deleteHandler()}>
-            <i className='fa-solid fa-trash-can'></i>
+            <i className="fa-solid fa-trash-can"></i>
           </button>
         </li>
       </ul>

@@ -14,14 +14,14 @@ const DarkLight = () => {
           theme === uiConstants.themes.dark ? css.AnimateSun : ''
         }`}
       >
-        <i className='fas fa-sun'></i>
+        <i className="fas fa-sun"></i>
       </div>
       <div
         className={`${css.Moon} ${css.MoonLogo} ${
           theme === uiConstants.themes.dark ? css.AnimateMoon : ''
         }`}
       >
-        <i className='fas fa-moon'></i>
+        <i className="fas fa-moon"></i>
       </div>
     </div>
   )

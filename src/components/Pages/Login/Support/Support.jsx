@@ -11,8 +11,8 @@ const Support = () => {
           <a
             href={s.target}
             className={css.Link}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {s.label}
           </a>

@@ -32,7 +32,7 @@ const Checkbox = ({ i, register, setValue, disabled }) => {
           <li key={key}>
             <div>
               <input
-                type='checkbox'
+                type="checkbox"
                 id={key}
                 {...register(i.key, {
                   required: i.required

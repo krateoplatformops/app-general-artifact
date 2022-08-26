@@ -23,7 +23,7 @@ const ColorSelector = ({ watch, register, setValue, getValues }) => {
   }, [getValues, shuffleColorHandler])
 
   return (
-    <Label title='Color'>
+    <Label title="Color">
       <ul className={css.UlColor}>
         <li className={css.LiList}>
           <select
@@ -41,8 +41,8 @@ const ColorSelector = ({ watch, register, setValue, getValues }) => {
           </select>
         </li>
         <li className={css.LiShuffle}>
-          <button type='button' onClick={() => shuffleColorHandler()}>
-            <i className='fa-solid fa-shuffle'></i>
+          <button type="button" onClick={() => shuffleColorHandler()}>
+            <i className="fa-solid fa-shuffle"></i>
           </button>
         </li>
       </ul>

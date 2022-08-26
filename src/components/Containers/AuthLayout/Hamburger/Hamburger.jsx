@@ -9,7 +9,7 @@ const Hamburger = () => {
   return (
     <div className={css.Container}>
       <button onClick={toggleMenu} className={css.Hamburger}>
-        <i className='fa-solid fa-bars'></i>
+        <i className="fa-solid fa-bars"></i>
       </button>
     </div>
   )

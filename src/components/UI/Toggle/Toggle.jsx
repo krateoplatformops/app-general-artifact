@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 import css from './Toggle.module.scss'
 
@@ -15,7 +15,7 @@ const Toggle = ({ i, register, setValue, disabled }) => {
     <div className={css.Container}>
       <label className={css.Switch} disabled={disabled}>
         <input
-          type='checkbox'
+          type="checkbox"
           disabled={disabled}
           {...register(i.key, {
             required: i.required
@@ -26,11 +26,11 @@ const Toggle = ({ i, register, setValue, disabled }) => {
       {i.info && (
         <a
           href={i.info}
-          target='_blank'
-          rel='noopener noreferrer'
+          target="_blank"
+          rel="noopener noreferrer"
           className={css.Info}
         >
-          <i className='fa-solid fa-arrow-up-right-from-square'></i>
+          <i className="fa-solid fa-arrow-up-right-from-square"></i>
           info
         </a>
       )}

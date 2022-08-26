@@ -74,20 +74,20 @@ const SubMenu = ({ deploy }) => {
   return (
     <React.Fragment>
       <button
-        type='button'
+        type="button"
         className={css.Button}
         onClick={() => setShow(!show)}
         data-viewer={true}
       >
-        <i className='fa-solid fa-ellipsis-vertical' data-viewer={true}></i>
+        <i className="fa-solid fa-ellipsis-vertical" data-viewer={true}></i>
       </button>
       {show && (
         <div className={css.SubMenu}>
           <button data-viewer={true} onClick={syncHandler}>
-            <i className='fa-solid fa-sync-alt' data-viewer={true}></i> refresh
+            <i className="fa-solid fa-sync-alt" data-viewer={true}></i> refresh
           </button>
           <button data-viewer={true} onClick={repoSyncHandler}>
-            <i className='fa-solid fa-download' data-viewer={true}></i>
+            <i className="fa-solid fa-download" data-viewer={true}></i>
             sync with repository
           </button>
           <Link to={`/settings/endpoints`} data-viewer={true}>

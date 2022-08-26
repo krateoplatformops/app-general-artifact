@@ -45,7 +45,7 @@ const DangerZone = ({ closeModal, deleteButtonHandler, name, title }) => {
       confirmDisabled={inputDelete !== name}
       title={title}
     >
-      <span className='span-warning'>This action cannot be undone.</span>
+      <span className="span-warning">This action cannot be undone.</span>
       <div className={css.Please}>
         Please type
         <span
@@ -58,7 +58,7 @@ const DangerZone = ({ closeModal, deleteButtonHandler, name, title }) => {
         to confirm.
       </div>
       <input
-        type='text'
+        type="text"
         placeholder={name}
         value={inputDelete}
         onChange={(e) => setInputDelete(e.target.value)}

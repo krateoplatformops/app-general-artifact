@@ -32,7 +32,7 @@ const Radio = ({ i, register, setValue, disabled }) => {
           <li key={key}>
             <div>
               <input
-                type='radio'
+                type="radio"
                 disabled={disabled}
                 id={key}
                 {...register(i.key, {

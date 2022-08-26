@@ -1,5 +1,3 @@
-import React from 'react'
-
 import css from './SecretCard.module.scss'
 import Label from '../Label/Label'
 
@@ -15,7 +13,7 @@ const SecretCard = ({ h, openModal }) => {
           <i className={h.metadata.icon}></i>
         </li>
         <li className={css.LiInfo}>
-          <Label title='Name'>
+          <Label title="Name">
             <div className={css.Name}>{h.friendlyName}</div>
           </Label>
           <ul className={css.UlLabels}>
@@ -34,8 +32,8 @@ const SecretCard = ({ h, openModal }) => {
         </li>
       </ul>
       <div className={css.Footer}>
-        <button className={css.DeleteBtn} onClick={(e) => deleteHandler()}>
-          <i className='fa-solid fa-trash-can'></i>
+        <button className={css.DeleteBtn} onClick={() => deleteHandler()}>
+          <i className="fa-solid fa-trash-can"></i>
         </button>
       </div>
     </div>

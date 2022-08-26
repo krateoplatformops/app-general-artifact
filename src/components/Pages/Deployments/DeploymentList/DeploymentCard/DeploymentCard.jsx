@@ -29,19 +29,19 @@ const DeploymentCard = ({ d }) => (
           className={css.SpanSecurityIssues}
           {...(d.securityIssues > 0 && { active: 'true' })}
         >
-          {d.securityIssues} <i className='fa-solid fa-shield'></i>
+          {d.securityIssues} <i className="fa-solid fa-shield"></i>
         </span>
         <span
           className={css.SpanCodeIssues}
           {...(d.codeIssues > 0 && { active: 'true' })}
         >
-          {d.codeIssues} <i className='fa-solid fa-triangle-exclamation'></i>
+          {d.codeIssues} <i className="fa-solid fa-triangle-exclamation"></i>
         </span>
         <span
           className={css.SpanCodeRequests}
           {...(d.codeRequests > 0 && { active: 'true' })}
         >
-          {d.codeRequests} <i className='fa-solid fa-code-pull-request'></i>
+          {d.codeRequests} <i className="fa-solid fa-code-pull-request"></i>
         </span>
         {/* <span
             className={css.SpanBudget}

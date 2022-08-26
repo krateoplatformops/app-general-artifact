@@ -57,27 +57,27 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
   }
 
   return (
-    <ul className='ul-double-view'>
-      <li className='li-menu'>
+    <ul className="ul-double-view">
+      <li className="li-menu">
         <Follower>
           <Card title={plugin.value}>
             {content.stages.map((s) => (
               <a
                 href={`#${s.stageName}`}
                 key={s.stageName}
-                className='common-lnk'
+                className="common-lnk"
               >
                 {s.stageName}
               </a>
             ))}
             <hr />
-            <a href='#shipyard' className='common-lnk'>
+            <a href="#shipyard" className="common-lnk">
               shipyard
             </a>
-            <h2 className='mt'>Trigger a new sequence</h2>
-            <Label title='stage'>
+            <h2 className="mt">Trigger a new sequence</h2>
+            <Label title="stage">
               <select value={stage} onChange={(e) => stageChangeHandler(e)}>
-                <option value=''></option>
+                <option value=""></option>
                 {content.stages.map((s) => (
                   <option key={s.stageName} value={s.stageName}>
                     {s.stageName}
@@ -85,13 +85,13 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
                 ))}
               </select>
             </Label>
-            <Label title='sequence'>
+            <Label title="sequence">
               <select
                 value={sequence}
                 onChange={(e) => setSequence(e.target.value)}
                 disabled={stage === ''}
               >
-                <option value=''></option>
+                <option value=""></option>
                 {sequenceList().map((s) => (
                   <option key={s} value={s}>
                     {s}
@@ -100,8 +100,8 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
               </select>
             </Label>
             <button
-              type='button'
-              className='primary-button'
+              type="button"
+              className="primary-button"
               onClick={buttonHandler}
               disabled={stage === '' || sequence === ''}
             >
@@ -110,11 +110,11 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
           </Card>
         </Follower>
       </li>
-      <li className='li-content'>
+      <li className="li-content">
         {content.stages.map((s) => (
           <StageCard key={s.stageName} s={s} />
         ))}
-        <Card title='Shipyard' anchor='shipyard'>
+        <Card title="Shipyard" anchor="shipyard">
           <YamlView
             data={content.shipyard}
             fileName={`${deploy._id}-shipyard`}

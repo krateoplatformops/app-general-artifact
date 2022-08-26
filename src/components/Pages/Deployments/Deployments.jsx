@@ -7,7 +7,7 @@ import ErrorBoundary from '../../Containers/ErrorBoundary/ErrorBoundary'
 
 const Deployments = () => (
   <Routes>
-    <Route path='/'>
+    <Route path="/">
       <Route
         index
         element={
@@ -17,7 +17,7 @@ const Deployments = () => (
         }
       />
       <Route
-        path=':id/*'
+        path=":id/*"
         element={
           <ErrorBoundary>
             <Deployment />

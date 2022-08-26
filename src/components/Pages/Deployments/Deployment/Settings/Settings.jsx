@@ -19,7 +19,7 @@ const Settings = ({ deploy }) => {
     <Card title={'Delete deployment'}>
       <button
         onClick={() => setShowDangerZone(true)}
-        className='primary-button'
+        className="primary-button"
       >
         delete deployment
       </button>

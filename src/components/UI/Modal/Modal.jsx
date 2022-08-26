@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import css from './Modal.module.scss'
 
@@ -29,9 +29,9 @@ const Modal = (props) => {
             <button
               className={css.CloseCross}
               onClick={props.closeButtonHandler}
-              type='button'
+              type="button"
             >
-              <i className='fa-solid fa-xmark'></i>
+              <i className="fa-solid fa-xmark"></i>
             </button>
           </div>
           <div className={css.Content}>{props.children}</div>
@@ -39,7 +39,7 @@ const Modal = (props) => {
         <ul className={css.UlBtns}>
           <li>
             <button
-              type='button'
+              type="button"
               onClick={props.closeButtonHandler}
               className={css.BtnClose}
             >

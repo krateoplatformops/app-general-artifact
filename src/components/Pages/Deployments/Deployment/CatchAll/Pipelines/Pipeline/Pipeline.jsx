@@ -19,13 +19,13 @@ const Pipeline = ({ pipeline, runs }) => (
             <li key={r.id}>
               <a
                 href={r.url}
-                target='_blank'
-                rel='noreferrer'
+                target="_blank"
+                rel="noreferrer"
                 className={css.PipeLink}
               >
                 <ul className={css.UlRun}>
                   <li style={{ color: uiHelper.colorByStatus(r.status) }}>
-                    <i className='fa-solid fa-circle'></i>
+                    <i className="fa-solid fa-circle"></i>
                   </li>
                   <li className={css.LiRunInfo}>
                     <ul className={css.InfoHeader}>
@@ -50,8 +50,8 @@ const Pipeline = ({ pipeline, runs }) => (
 
     <a
       href={pipeline.link}
-      target='_blank'
-      rel='noreferrer'
+      target="_blank"
+      rel="noreferrer"
       className={css.FooterLnk}
     >
       {pipeline.link}

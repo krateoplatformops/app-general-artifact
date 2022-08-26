@@ -65,8 +65,8 @@ const Register = ({ endpoint }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Card title='Register component'>
-        <Label title='Endpoint name'>
+      <Card title="Register component">
+        <Label title="Endpoint name">
           <select
             {...register('endpointName', {
               required: true
@@ -86,8 +86,8 @@ const Register = ({ endpoint }) => {
           description={'Enter the full path of the file you want to register.'}
         >
           <input
-            type='url'
-            placeholder='Full Url'
+            type="url"
+            placeholder="Full Url"
             {...register('url', {
               required: true,
               pattern: new RegExp(
@@ -97,8 +97,8 @@ const Register = ({ endpoint }) => {
             })}
           />
         </Label>
-        <div className='submit-single-container'>
-          <button className='primary-button' disabled={!isValid} type='submit'>
+        <div className="submit-single-container">
+          <button className="primary-button" disabled={!isValid} type="submit">
             register
           </button>
         </div>

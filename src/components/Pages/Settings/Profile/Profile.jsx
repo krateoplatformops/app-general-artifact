@@ -36,7 +36,7 @@ const Profile = ({ user }) => {
         </ul>
       </Card>
       <Card title={'Logout'}>
-        <button onClick={logoutHandler} className='primary-button'>
+        <button onClick={logoutHandler} className="primary-button">
           logout
         </button>
       </Card>

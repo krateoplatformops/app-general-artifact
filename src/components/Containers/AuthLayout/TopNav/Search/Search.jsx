@@ -30,14 +30,14 @@ const Search = () => {
     <form onSubmit={handleSubmit(onSubmit)} className={css.Form}>
       <div className={css.SearchContainer}>
         <input
-          type='text'
+          type="text"
           className={css.Search}
           placeholder={uiConstants.placeholder.search}
           {...register('search', {
             required: true
           })}
         />
-        <i className='fa-solid fa-magnifying-glass'></i>
+        <i className="fa-solid fa-magnifying-glass"></i>
       </div>
     </form>
   )

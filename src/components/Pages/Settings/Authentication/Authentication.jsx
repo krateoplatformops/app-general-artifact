@@ -64,8 +64,8 @@ const Authentication = ({ strategy }) => {
         ]}
       >
         <input
-          type='text'
-          placeholder='Search'
+          type="text"
+          placeholder="Search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />

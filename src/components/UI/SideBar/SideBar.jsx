@@ -13,7 +13,7 @@ const SideBar = ({ closeSidebar, children, title, isOpen }) => (
         <li>{title}</li>
         <li>
           <button onClick={closeSidebar} className={css.CloseBtn}>
-            <i className='fa-solid fa-xmark'></i>
+            <i className="fa-solid fa-xmark"></i>
           </button>
         </li>
       </ul>
