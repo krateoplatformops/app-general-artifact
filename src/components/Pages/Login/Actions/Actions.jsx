@@ -23,7 +23,7 @@ const Actions = ({ provider }) => {
     )
   }
 
-  return provider.type === 'redirect' ? (
+  return provider.spec.type === 'redirect' ? (
     <a href={href()} className={`${css.Link} ${css[provider.spec.color]}`}>
       {content()}
     </a>

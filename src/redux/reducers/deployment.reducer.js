@@ -5,6 +5,7 @@ const initialState = {
   skeletonLoading: false,
   error: null,
   list: null,
+  count: null,
   result: false,
   resources: null
 }
@@ -17,6 +18,7 @@ export default function deployment(state = initialState, action) {
         skeletonLoading: true,
         result: false,
         list: null,
+        count: null,
         error: null
       }
     case deploymentConstants.DEPLOYMENT_SINGLE_LOAD:
@@ -28,7 +30,8 @@ export default function deployment(state = initialState, action) {
       return {
         ...state,
         result: true,
-        list: action.payload,
+        list: action.payload.list,
+        count: action.payload.count,
         skeletonLoading: false
       }
     case deploymentConstants.DEPLOYMENT_LOAD_FAILURE:
@@ -64,7 +67,8 @@ export default function deployment(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        list: state.list.filter((x) => x._id !== action.payload)
+        list: state.list.filter((x) => x._id !== action.payload),
+        count: state.count - 1
       }
     case deploymentConstants.DEPLOYMENT_RESET:
       return {

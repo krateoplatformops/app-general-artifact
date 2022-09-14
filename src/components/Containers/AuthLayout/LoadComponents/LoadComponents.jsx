@@ -5,7 +5,7 @@ import {
   templateLoad,
   deploymentLoad,
   endpointLoad,
-  dashboardLoad,
+  // dashboardLoad,
   pkgLoad,
   socketInit,
   secretLoad,
@@ -51,15 +51,15 @@ const LoadComponents = (props) => {
     }
   }, [dispatch, props.endpoint, props.user.profile])
 
-  useEffect(() => {
-    if (
-      !props.dashboard.result &&
-      !props.dashboard.loading &&
-      props.user.profile
-    ) {
-      dispatch(dashboardLoad())
-    }
-  }, [dispatch, props.dashboard, props.user.profile])
+  // useEffect(() => {
+  //   if (
+  //     !props.dashboard.result &&
+  //     !props.dashboard.loading &&
+  //     props.user.profile
+  //   ) {
+  //     dispatch(dashboardLoad())
+  //   }
+  // }, [dispatch, props.dashboard, props.user.profile])
 
   useEffect(() => {
     if (!props.pkg.result && !props.pkg.skeletonLoading && props.user.profile) {

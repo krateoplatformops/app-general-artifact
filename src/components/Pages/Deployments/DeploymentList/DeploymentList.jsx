@@ -50,7 +50,7 @@ const DeploymentList = ({ deployment }) => {
                 return JSON.stringify(x).toLowerCase().indexOf(search) > -1
               })
               .map((d) => (
-                <li key={d._id}>
+                <li key={d.metadata.uid}>
                   <DeploymentCard d={d} />
                 </li>
               ))}

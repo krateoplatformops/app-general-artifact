@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 import CounterCard from './CounterCard/CounterCard'
 import css from './Dashboard.module.scss'
-import EventsChart from './EventsChart/EventsChart'
-import Loader from '../../UI/Loader/Loader'
+// import EventsChart from './EventsChart/EventsChart'
+// import Loader from '../../UI/Loader/Loader'
 import Actions from './Actions/Actions'
 
 const Dashboard = (props) => {
@@ -48,7 +48,7 @@ const Dashboard = (props) => {
         </li>
       </ul>
       <Actions />
-      {!props.dashboard.list ? (
+      {/* {!props.dashboard.list ? (
         <div className={css.LoaderContainer}>
           <Loader />
         </div>
@@ -58,7 +58,7 @@ const Dashboard = (props) => {
             <EventsChart data={(props.dashboard.list || []).events} />
           </li>
         </ul>
-      )}
+      )} */}
     </React.Fragment>
   )
 }

@@ -7,19 +7,21 @@ import { timeHelper } from '../../../../../helpers'
 import Tag from '../../../../UI/Tag/Tag'
 
 const DeploymentCard = ({ d }) => (
-  <Link to={`/deployments/${d._id}`} className={css.Link}>
+  <Link to={`/deployments/${d.metadata.uid}`} className={css.Link}>
     <ul className={css.UlDeployment}>
-      <li className={css.LiIcon}>
+      {/* <li className={css.LiIcon}>
         <i className={d.claim.spec.dashboard.icon}></i>
-      </li>
+      </li> */}
       <li className={css.LiInfo}>
-        <b>{d.claim.metadata.name}</b>
-        <span>{d.claim.spec.dashboard.description}</span>
+        <b>{d.metadata.name}</b>
+        {/* <span>{d.claim.spec.dashboard.description}</span> */}
       </li>
-      <li className={css.LiDate}>{timeHelper.dateToFormat(d.createdAt)}</li>
+      <li className={css.LiDate}>
+        {timeHelper.dateGenToFormat(d.metadata.creationTimestamp)}
+      </li>
     </ul>
     <ul className={css.UlStatus}>
-      <li className={css.LiTags}>
+      {/* <li className={css.LiTags}>
         {(d.claim.spec.dashboard.tags || []).map((t) => (
           <Tag key={t} tag={t} />
         ))}
@@ -42,14 +44,14 @@ const DeploymentCard = ({ d }) => (
           {...(d.codeRequests > 0 && { active: 'true' })}
         >
           {d.codeRequests} <i className="fa-solid fa-code-pull-request"></i>
-        </span>
-        {/* <span
+        </span> */}
+      {/* <span
             className={css.SpanBudget}
             {...(d.budget > 0 && { active: 'true' })}
           >
             {d.budget} <i className='fa-solid fa-sack-dollar'></i>
           </span> */}
-      </li>
+      {/* </li> */}
     </ul>
   </Link>
 )
