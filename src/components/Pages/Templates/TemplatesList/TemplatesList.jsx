@@ -34,7 +34,12 @@ const TemplatesList = ({ template }) => {
 
   const deleteTemplateHandler = () => {
     setShowModal(false)
-    dispatch(templateDelete(currentTemplate.metadata.name))
+    dispatch(
+      templateDelete({
+        name: currentTemplate.metadata.name,
+        uid: currentTemplate.metadata.uid
+      })
+    )
   }
 
   const refreshTemplateHandler = (t) => {

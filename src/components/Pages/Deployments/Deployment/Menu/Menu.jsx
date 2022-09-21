@@ -10,7 +10,7 @@ const Menu = ({ deploy }) => {
   const mergedMenu = () => {
     const menu = [...uiConstants.deploymentNav]
 
-    deploy.claim.spec.dashboard.plugins.forEach((x) => {
+    deploy.spec.plugins.forEach((x) => {
       if (!menu.find((m) => m.to === x.name)) {
         menu.push({
           to: x.name,

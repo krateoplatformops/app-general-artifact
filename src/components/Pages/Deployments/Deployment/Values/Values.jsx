@@ -6,8 +6,11 @@ import YamlView from '../../../../UI/YamlView/YamlView'
 const Values = ({ deploy }) => {
   return (
     <React.Fragment>
-      <Card title={'claim.yaml'}>
-        <YamlView data={deploy.claim} fileName="claim" />
+      <Card title={'deployment.yaml'}>
+        <YamlView
+          data={deploy}
+          fileName={`deployment-${deploy.metadata.uid}`}
+        />
       </Card>
     </React.Fragment>
   )

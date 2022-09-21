@@ -77,17 +77,11 @@ const Fields = ({
             disabled={i.disabled || false}
           >
             <option value=""></option>
-            {i.values.map((x) =>
-              typeof x === 'string' ? (
-                <option key={x} value={x}>
-                  {x}
-                </option>
-              ) : (
-                <option key={x.value} value={x.value}>
-                  {x.title}
-                </option>
-              )
-            )}
+            {i.options.map((x) => (
+              <option key={x.value} value={x.value}>
+                {x.title}
+              </option>
+            ))}
           </select>
         )
       case 'toggle':
@@ -173,6 +167,8 @@ const Fields = ({
                   description={i.description}
                   key={key}
                   error={errors[i.id]}
+                  {...(i.hidden && { hidden: true })}
+                  {...(i.readOnly && { readOnly: true })}
                 >
                   {renderInput(i)}
                 </Label>

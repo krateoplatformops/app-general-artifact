@@ -9,24 +9,24 @@ import Tag from '../../../../UI/Tag/Tag'
 const DeploymentCard = ({ d }) => (
   <Link to={`/deployments/${d.metadata.uid}`} className={css.Link}>
     <ul className={css.UlDeployment}>
-      {/* <li className={css.LiIcon}>
-        <i className={d.claim.spec.dashboard.icon}></i>
-      </li> */}
+      <li className={css.LiIcon}>
+        <i className={d.spec.icon}></i>
+      </li>
       <li className={css.LiInfo}>
         <b>{d.metadata.name}</b>
-        {/* <span>{d.claim.spec.dashboard.description}</span> */}
+        <span>{d.spec.description}</span>
       </li>
       <li className={css.LiDate}>
         {timeHelper.dateGenToFormat(d.metadata.creationTimestamp)}
       </li>
     </ul>
     <ul className={css.UlStatus}>
-      {/* <li className={css.LiTags}>
-        {(d.claim.spec.dashboard.tags || []).map((t) => (
+      <li className={css.LiTags}>
+        {(d.spec.tags || []).map((t) => (
           <Tag key={t} tag={t} />
         ))}
       </li>
-      <li className={css.LiStats}>
+      {/* <li className={css.LiStats}>
         <span
           className={css.SpanSecurityIssues}
           {...(d.securityIssues > 0 && { active: 'true' })}

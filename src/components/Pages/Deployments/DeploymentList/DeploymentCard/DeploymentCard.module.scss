@@ -46,7 +46,7 @@
 
 .LiInfo {
   @extend .display-flex;
-  @extend .flex-center;
+  @extend .flex-start;
   @extend .flex-direction-column;
   width: 100%;
 
@@ -72,7 +72,7 @@
 
 .LiDate {
   @extend .display-flex;
-  @extend .flex-center-end;
+  @extend .flex-end-top;
   font-size: 0.8em;
   min-width: 130px;
   text-align: right;

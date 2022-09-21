@@ -117,6 +117,15 @@ const AddEndpoint = ({ closeModal, addEndpoint, list }) => {
             })}
           />
         </Label>
+        <Label title={'Domain'} description={'Domain'}>
+          <input
+            type={'text'}
+            placeholder={'Domain'}
+            {...register('domain', {
+              required: true
+            })}
+          />
+        </Label>
         <Label title={'Endpoint Type'} description={'Endpoint Type'}>
           <select
             {...register('type', {

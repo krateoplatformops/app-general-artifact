@@ -7,10 +7,10 @@ const createCallUrl = (plugin, d) => {
 
   switch (plugin.type) {
     case 'capi':
-      url += `/${d._id}/kubeconfig`
+      url += `/${d.metadata.uid}/kubeconfig`
       break
     case 'doc':
-      const t = d.claim.spec.toRepo
+      const t = d.spec.values.toRepoRepositoryName
       url += `/${encodeURIComponent(plugin.endpointName)}`
       url += `/${encodeURIComponent(
         plugin.values.map(

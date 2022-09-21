@@ -136,22 +136,6 @@ const Template = (props) => {
         })
       }
 
-      if (!payload.repositoryName || payload.repositoryName === '') {
-        dispatch(
-          addNotification(
-            uiConstants.messages.repository_name_is_required,
-            uiConstants.notification.error
-          )
-        )
-      }
-      if (!payload.organizationName || payload.organizationName === '') {
-        dispatch(
-          addNotification(
-            uiConstants.messages.repository_name_is_required,
-            uiConstants.notification.error
-          )
-        )
-      }
       dispatch(
         deploymentCreate({
           metadata: payload,
@@ -167,7 +151,7 @@ const Template = (props) => {
 
     return (
       <React.Fragment>
-        <h1>{template.metadata.annotations.title}</h1>
+        <h1>{template.spec.title}</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <ul className={css.UlWidgets}>
             <li className={css.LiWidgets}>

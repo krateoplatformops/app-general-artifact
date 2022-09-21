@@ -21,7 +21,9 @@ const CatchAllLazy = lazy(() => import('./CatchAll/CatchAll'))
 const Deployment = ({ deployment, socket }) => {
   const params = useParams()
 
-  const deploy = (deployment.list || []).find((x) => x._id === params.id)
+  const deploy = (deployment.list || []).find(
+    (x) => x.metadata.uid === params.id
+  )
 
   if (!deploy) {
     if (deployment.loading) {
@@ -32,7 +34,7 @@ const Deployment = ({ deployment, socket }) => {
   } else {
     return (
       <React.Fragment>
-        <div className={css.Title}>{deploy.claim.metadata.name}</div>
+        <div className={css.Title}>{deploy.metadata.name}</div>
         <SubMenu deploy={deploy} />
         <Menu deploy={deploy} />
         <div>
@@ -40,8 +42,8 @@ const Deployment = ({ deployment, socket }) => {
             <Routes>
               <Route path="/*">
                 <Route index element={<OverviewLazy deploy={deploy} />} />
-                <Route path="events" element={<EventsLazy deploy={deploy} />} />
                 <Route path="values" element={<ValuesLazy deploy={deploy} />} />
+                <Route path="events" element={<EventsLazy deploy={deploy} />} />
                 <Route
                   path="settings"
                   element={<SettingsLazy deploy={deploy} />}

@@ -7,11 +7,11 @@ const Overview = ({ deploy }) => {
   return (
     <ul className={css.UlOverview}>
       <li>
-        <Card title="Overview">{deploy.claim.spec.dashboard.description}</Card>
+        <Card title="Overview">{deploy.spec.description}</Card>
       </li>
       <li>
         <Card title="Links">
-          {(deploy.claim.spec.dashboard.links || []).map((link) => (
+          {(deploy.spec.links || []).map((link) => (
             <a
               key={link.url}
               href={link.url}

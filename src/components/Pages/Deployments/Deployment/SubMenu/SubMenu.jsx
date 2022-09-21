@@ -7,8 +7,8 @@ import { uiConstants } from '../../../../../constants'
 import {
   deploymentSingleLoad,
   logFetch,
-  pluginFetch,
-  deploymentCreate
+  pluginFetch
+  // deploymentCreate
 } from '../../../../../redux/actions'
 import { pluginHelper } from '../../../../../helpers'
 
@@ -17,15 +17,15 @@ const SubMenu = ({ deploy }) => {
   const params = useParams()
   const [show, setShow] = useState(false)
 
-  const repoSyncHandler = () => {
-    dispatch(
-      deploymentCreate({
-        url: deploy.url,
-        endpointName: deploy.endpointName
-      })
-    )
-    setShow(false)
-  }
+  // const repoSyncHandler = () => {
+  //   dispatch(
+  //     deploymentCreate({
+  //       url: deploy.url,
+  //       endpointName: deploy.spec.endpointName
+  //     })
+  //   )
+  //   setShow(false)
+  // }
 
   const syncHandler = () => {
     const std = uiConstants.deploymentNav.find((x) => x.to === params['*'])
@@ -36,7 +36,12 @@ const SubMenu = ({ deploy }) => {
           logFetch({ key: params.id, params: { deploymentId: params.id } })
         )
       } else {
-        dispatch(deploymentSingleLoad({ _id: params.id }))
+        dispatch(
+          deploymentSingleLoad({
+            kind: deploy.kind,
+            uid: params.id
+          })
+        )
       }
     } else {
       const pp = deploy.claim.spec.dashboard.plugins.find(
@@ -86,10 +91,10 @@ const SubMenu = ({ deploy }) => {
           <button data-viewer={true} onClick={syncHandler}>
             <i className="fa-solid fa-sync-alt" data-viewer={true}></i> refresh
           </button>
-          <button data-viewer={true} onClick={repoSyncHandler}>
+          {/* <button data-viewer={true} onClick={repoSyncHandler}>
             <i className="fa-solid fa-download" data-viewer={true}></i>
             sync with repository
-          </button>
+          </button> */}
           <Link to={`/settings/endpoints`} data-viewer={true}>
             <i
               className={

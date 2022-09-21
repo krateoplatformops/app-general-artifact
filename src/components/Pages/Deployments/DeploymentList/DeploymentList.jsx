@@ -40,7 +40,7 @@ const DeploymentList = ({ deployment }) => {
 
       <ul className={css.UlCards}>
         {deployment.skeletonLoading
-          ? [...Array(4)].map((s, key) => (
+          ? [...Array(4)].map((_, key) => (
               <li key={key}>
                 <Skeleton height={115} />
               </li>

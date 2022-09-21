@@ -18,7 +18,7 @@ const CatchAll = ({ deploy, params, plugin }) => {
   const dispatch = useDispatch()
   const [detailsKey, setDetailsKey] = useState('')
 
-  const pp = deploy.claim.spec.dashboard.plugins.find(
+  const pp = deploy.spec.plugins.find(
     (x) => x.name.replace(/\s/g, '-') === params['*']
   )
 

@@ -1,9 +1,22 @@
 import css from './Label.module.scss'
 
-const Label = ({ title, description, children, required, error }) => (
-  <div className={css.Label}>
+const Label = ({
+  title,
+  description,
+  children,
+  required,
+  error,
+  hidden,
+  readOnly
+}) => (
+  <div
+    className={`${css.Label} ${hidden ? css.Hidden : ''} ${
+      readOnly ? css.ReadOnly : ''
+    }`}
+  >
     <span className={css.Title}>
-      {title} {required && '(*)'}{' '}
+      {title} {required && '(*)'}
+      {readOnly && ' (!)'}{' '}
       {error && <i className="fa-solid fa-triangle-exclamation"></i>}
     </span>
     {children}

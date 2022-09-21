@@ -25,3 +25,11 @@
   font-size: 0.7em;
   color: var(--text-color-secondary);
 }
+
+.Hidden {
+  display: none;
+}
+
+.ReadOnly {
+  pointer-events: none;
+}

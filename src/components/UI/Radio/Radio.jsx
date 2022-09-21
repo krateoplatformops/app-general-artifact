@@ -10,9 +10,9 @@ const Radio = ({ i, register, setValue, disabled }) => {
   }, [i.default, i.key, setValue])
 
   const renderLabel = (x) => {
-    if (typeof x !== 'object') {
-      return x
-    }
+    // if (typeof x !== 'object') {
+    //   return x
+    // }
     return (
       <React.Fragment>
         <span className={x.description ? css.Emphasis : ''}>{x.title}</span>
@@ -24,23 +24,23 @@ const Radio = ({ i, register, setValue, disabled }) => {
 
   return (
     <ul className={css.Wrapper} disabled={disabled}>
-      {i.values.map((x) => {
-        const isObj = typeof x === 'object'
-        const key = `${i.key}-${isObj ? x.value : x}`
-        const val = isObj ? x.value : x
+      {i.options.map((x) => {
+        // const isObj = typeof x === 'object'
+        // const key = `${i.key}-${isObj ? x.value : x}`
+        // const val = isObj ? x.value : x
         return (
-          <li key={key}>
+          <li key={x.value}>
             <div>
               <input
                 type="radio"
                 disabled={disabled}
-                id={key}
+                id={x.value}
                 {...register(i.key, {
                   required: i.required
                 })}
-                value={val.toString()}
+                value={x.value.toString()}
               />
-              <label htmlFor={key}>{renderLabel(x)}</label>
+              <label htmlFor={x.value}>{renderLabel(x)}</label>
             </div>
           </li>
         )

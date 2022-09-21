@@ -33,7 +33,9 @@ export function* deploymentLoadSaga() {
 
 export function* deploymentSingleLoadSaga(action) {
   try {
-    const result = yield axios.get(`${uris.deployment}/${action.payload._id}`)
+    const result = yield axios.get(
+      `${uris.deployment}/${action.payload.kind}/${action.payload.uid}`
+    )
     yield put(deploymentSingleLoadSuccess(result.data))
   } catch (error) {
     yield put(deploymentSingleLoadFailure(error))
@@ -56,7 +58,7 @@ export function* deploymentCreateSaga(action) {
         uiConstants.notification.success
       )
     )
-    yield put(redirect(`/deployments/${doc.data._id}/events`))
+    yield put(redirect(`/deployments/${doc.data.metadata.uid}/events`))
   } catch (error) {
     yield put(deploymentCreateFailure(error))
     yield put(
@@ -70,8 +72,8 @@ export function* deploymentCreateSaga(action) {
 
 export function* deploymentDeleteSaga(action) {
   try {
-    yield axios.delete(`${uris.deployment}/${action.payload}`)
-    yield put(deploymentDeleteSuccess(action.payload))
+    yield axios.delete(uris.deployment, { data: action.payload })
+    yield put(deploymentDeleteSuccess(action.payload.uid))
     yield put(
       addNotification(
         uiConstants.messages.deployment_delete_success,
