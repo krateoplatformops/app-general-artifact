@@ -10,11 +10,11 @@ const createCallUrl = (plugin, d) => {
       url += `/${d.metadata.uid}/kubeconfig`
       break
     case 'doc':
-      const t = d.spec.values.toRepoRepositoryName
+      const t = d.spec.values
       url += `/${encodeURIComponent(plugin.endpointName)}`
       url += `/${encodeURIComponent(
         plugin.values.map(
-          (x) => `[${t.organizationName}][${t.repositoryName}]${x}`
+          (x) => `[${t.toRepoOrganizationName}][${t.toRepoRepositoryName}]${x}`
         )
       )}`
       break
