@@ -13,9 +13,10 @@ const createCallUrl = (plugin, d) => {
       const t = d.spec.values
       url += `/${encodeURIComponent(plugin.endpointName)}`
       url += `/${encodeURIComponent(
-        plugin.values.map(
-          (x) => `[${t.toRepoOrganizationName}][${t.toRepoRepositoryName}]${x}`
-        )
+        plugin.values.map((x) => {
+          if (x.startsWith('[')) return x
+          return `[${t.toRepoOrganizationName}][${t.toRepoRepositoryName}]${x}`
+        })
       )}`
       break
     default:
