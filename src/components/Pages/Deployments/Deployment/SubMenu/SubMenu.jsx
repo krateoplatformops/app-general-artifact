@@ -44,7 +44,7 @@ const SubMenu = ({ deploy }) => {
         )
       }
     } else {
-      const pp = deploy.claim.spec.dashboard.plugins.find(
+      const pp = deploy.spec.plugins.find(
         (x) => x.name.replace(/\s/g, '-') === params['*']
       )
 

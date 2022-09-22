@@ -5,6 +5,7 @@ const initialState = {
   error: null,
   result: false,
   list: null,
+  count: null,
   skeletonLoading: false
 }
 
@@ -16,13 +17,15 @@ export default function component(state = initialState, action) {
         skeletonLoading: true,
         result: false,
         list: null,
+        count: null,
         error: null
       }
     case componentConstants.COMPONENT_LOAD_SUCCESS:
       return {
         ...state,
         result: true,
-        list: action.payload,
+        list: action.payload.list,
+        count: action.payload.count,
         skeletonLoading: false
       }
     case componentConstants.COMPONENT_LOAD_FAILURE:

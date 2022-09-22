@@ -4,13 +4,14 @@ window.Buffer = window.Buffer || require('buffer').Buffer
 
 const createCallUrl = (plugin, d) => {
   let url = `${uris.apiBase}${plugin.type}`
+  const t = d.spec.values
 
   switch (plugin.type) {
     case 'capi':
       url += `/${d.metadata.uid}/kubeconfig`
       break
+    case 'pipeline':
     case 'doc':
-      const t = d.spec.values
       url += `/${encodeURIComponent(plugin.endpointName)}`
       url += `/${encodeURIComponent(
         plugin.values.map((x) => {
@@ -18,6 +19,14 @@ const createCallUrl = (plugin, d) => {
           return `[${t.toRepoOrganizationName}][${t.toRepoRepositoryName}]${x}`
         })
       )}`
+      break
+    case 'kubernetes':
+      const id = d.metadata.uid
+      if (plugin.value === 'deploymentId') {
+        url += `/deploymentId=${id}`
+      } else {
+        url += '/' + plugin.value
+      }
       break
     default:
       if (plugin.endpointName) {
