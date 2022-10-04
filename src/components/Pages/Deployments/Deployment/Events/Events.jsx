@@ -11,12 +11,15 @@ const Events = ({ deploy, log }) => {
 
   useEffect(() => {
     dispatch(
-      logFetch({ key: deploy._id, params: { deploymentId: deploy._id } })
+      logFetch({
+        key: deploy.metadata.uid,
+        params: { deploymentId: deploy.metadata.uid }
+      })
     )
     return () => {
-      logDeleteKey({ key: deploy._id })
+      logDeleteKey({ key: deploy.metadata.uid })
     }
-  }, [deploy._id, dispatch])
+  }, [deploy.metadata.uid, dispatch])
 
   return (
     <React.Fragment>
@@ -25,7 +28,7 @@ const Events = ({ deploy, log }) => {
           type="text"
           placeholder="Search"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value.toLowerCase())}
         />
       </LocalSearch>
 

@@ -19,7 +19,7 @@ const uris = {
       ? ''
       : '/'),
   proxy: 'proxy',
-  log: 'log',
+  log: 'event',
   dashboard: 'dashboard',
   package: 'package',
   component: 'component',
