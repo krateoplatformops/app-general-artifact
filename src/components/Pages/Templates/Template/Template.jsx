@@ -9,10 +9,9 @@ import Fields from './Fields/Fields'
 import Summary from './Summary/Summary'
 import Loader from '../../../UI/Loader/Loader'
 import Error from '../../../UI/Error/Error'
-import { deploymentCreate, addNotification } from '../../../../redux/actions'
+import { deploymentCreate } from '../../../../redux/actions'
 import Follower from '../../../UI/Follower/Follower'
 import { uriHelper } from '../../../../helpers'
-import { uiConstants } from '../../../../constants'
 
 const Template = (props) => {
   const params = useParams()
@@ -128,14 +127,6 @@ const Template = (props) => {
         }
       })
 
-      if (template.spec.defaults) {
-        Object.keys(template.spec.defaults).forEach((x) => {
-          if (!payload[x]) {
-            payload[x] = template.spec.defaults[x].formatUnicorn(payload)
-          }
-        })
-      }
-
       dispatch(
         deploymentCreate({
           metadata: payload,
@@ -175,6 +166,7 @@ const Template = (props) => {
                   inputs={w.properties.filter((x) => x.style !== 'box')}
                   setValue={setValue}
                   errors={errors}
+                  endpoints={props.endpoint.list || []}
                 />
               ))}
               <Summary

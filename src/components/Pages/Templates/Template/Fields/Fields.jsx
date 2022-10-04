@@ -18,7 +18,8 @@ const Fields = ({
   currentStep,
   setValue,
   errors,
-  id
+  id,
+  endpoints
 }) => {
   const boxStyle = (b) => {
     if (!b.style) return css.Default
@@ -130,6 +131,23 @@ const Fields = ({
             placeholder={i.placeholder || i.title}
             disabled={i.disabled || false}
           />
+        )
+      case 'endpoint':
+        return (
+          <select
+            {...register(i.key, {
+              required: i.required
+            })}
+            defaultValue={i.default}
+            disabled={i.disabled || false}
+          >
+            <option value=""></option>
+            {endpoints.map((x) => (
+              <option key={x.friendlyName} value={x.friendlyName}>
+                {x.friendlyName}
+              </option>
+            ))}
+          </select>
         )
       default:
         return (
