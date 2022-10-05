@@ -7,14 +7,7 @@ import { uiHelper } from '../../helpers'
 
 export function* logFetchSaga(action) {
   try {
-    let url = uris.log + '?'
-    Object.keys(action.payload.params).forEach((key) => {
-      if (url[url.length - 1] !== '?') {
-        url += '&'
-      }
-      url += `${key}=${action.payload.params[key]}`
-    })
-    const result = yield axios.get(url)
+    const result = yield axios.get(`${uris.log}/${action.payload.key}`)
 
     yield put(logFetchSuccess({ value: result.data, key: action.payload.key }))
   } catch (error) {

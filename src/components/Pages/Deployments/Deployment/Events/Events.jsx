@@ -12,8 +12,7 @@ const Events = ({ deploy, log }) => {
   useEffect(() => {
     dispatch(
       logFetch({
-        key: deploy.metadata.uid,
-        params: { deploymentId: deploy.metadata.uid }
+        key: deploy.metadata.uid
       })
     )
     return () => {
