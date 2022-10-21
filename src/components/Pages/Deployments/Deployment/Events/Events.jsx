@@ -22,9 +22,6 @@ const Events = ({ deploy, log }) => {
     }
   }, [deploy.metadata.uid, dispatch])
 
-  console.log(log.data)
-  console.log(deploy)
-
   return (
     <React.Fragment>
       <LocalSearch>
