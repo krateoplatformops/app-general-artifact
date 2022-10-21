@@ -36,7 +36,7 @@ const Events = ({ deploy, log }) => {
         />
       </LocalSearch>
 
-      {(log.data[deploy.metadata.uid] || [])
+      {(log.data[deploy.metadata.uid].list || [])
         .filter((x) => {
           return (
             x.message.toLowerCase().indexOf(search) > -1 ||
