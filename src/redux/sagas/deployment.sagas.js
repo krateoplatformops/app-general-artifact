@@ -43,12 +43,6 @@ export function* deploymentSingleLoadSaga(action) {
     yield put(deploymentSingleLoadSuccess(result.data))
   } catch (error) {
     yield put(deploymentSingleLoadFailure(error))
-    yield put(
-      addNotification(
-        uiHelper.errorMessage(error),
-        uiConstants.notification.error
-      )
-    )
   }
 }
 
