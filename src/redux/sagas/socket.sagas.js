@@ -83,7 +83,7 @@ export function* socketSubscribeSaga(action) {
       if (event.deploymentId) {
         // refresh deployment
         yield put(
-          deploymentSingleLoad({ _id: event.deploymentId, silent: true })
+          deploymentSingleLoad({ uid: event.deploymentId, silent: true })
         )
         // refresh logs if i'm in the same deployment
         const l = window.location.href

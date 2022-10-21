@@ -17,12 +17,12 @@ const Search = (props) => {
         })
         .map((x) => (
           <SearchResult
-            key={x._id}
+            key={x.metadata.uid}
             r={{
               name: x.claim.metadata.name,
               description: x.claim.spec.dashboard.description,
               kind: 'deployment',
-              to: `/deployments/${x._id}`,
+              to: `/deployments/${x.metadata.uid}`,
               icon: x.claim.spec.dashboard.icon,
               tags: x.claim.spec.dashboard.tags,
               kindIcon: uiConstants.nav.find((x) => x.label === 'deployments')
@@ -37,12 +37,12 @@ const Search = (props) => {
         })
         .map((x) => (
           <SearchResult
-            key={x._id}
+            key={x.metadata.uid}
             r={{
               name: x.metadata.name,
               description: x.metadata.annotations.description,
               kind: 'template',
-              to: `/templates/${x._id}`,
+              to: `/templates/${x.metadata.uid}`,
               icon: x.metadata.annotations.icon,
               tags: x.metadata.labels.tags,
               kindIcon: uiConstants.nav.find((x) => x.label === 'templates')

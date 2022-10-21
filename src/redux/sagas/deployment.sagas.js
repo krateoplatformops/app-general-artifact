@@ -33,9 +33,13 @@ export function* deploymentLoadSaga() {
 
 export function* deploymentSingleLoadSaga(action) {
   try {
-    const result = yield axios.get(
-      `${uris.deployment}/${action.payload.kind}/${action.payload.uid}`
-    )
+    let url = `${uris.deployment}/`
+    if (action.payload.kind) {
+      url += `${action.payload.kind}/`
+    }
+    url += `${action.payload.uid}`
+
+    const result = yield axios.get(url)
     yield put(deploymentSingleLoadSuccess(result.data))
   } catch (error) {
     yield put(deploymentSingleLoadFailure(error))

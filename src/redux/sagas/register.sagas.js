@@ -26,7 +26,7 @@ export function* registerImportSaga(action) {
             uiConstants.notification.success
           )
         )
-        yield put(redirect(`/deployments/${doc.data._id}`))
+        yield put(redirect(`/deployments/${doc.data.metadata.uid}`))
         break
       default:
         yield put(templateUpdate(doc.data))

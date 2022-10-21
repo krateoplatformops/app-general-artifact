@@ -8,7 +8,7 @@ const Capi = ({ content, deploy }) => (
   <Card>
     <YamlView
       data={pluginHelper.b64toAscii(content.content)}
-      fileName={`${deploy._id}-${content.name}`}
+      fileName={`${deploy.metadata.uid}-${content.name}`}
     />
   </Card>
 )
