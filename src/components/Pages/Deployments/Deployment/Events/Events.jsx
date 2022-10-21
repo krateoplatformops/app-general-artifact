@@ -10,11 +10,13 @@ const Events = ({ deploy, log }) => {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    dispatch(
-      logFetch({
-        key: deploy.metadata.uid
-      })
-    )
+    if (deploy.metadata.uid) {
+      dispatch(
+        logFetch({
+          key: deploy.metadata.uid
+        })
+      )
+    }
     return () => {
       logDeleteKey({ key: deploy.metadata.uid })
     }
