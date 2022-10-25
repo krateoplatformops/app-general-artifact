@@ -1,4 +1,3 @@
 ---
 {{ include "helm-chart-library.service" . }}
 ---
-{{ include "helm-chart-library.ingress" . }}

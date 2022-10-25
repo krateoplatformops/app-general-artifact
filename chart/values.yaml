@@ -1,12 +1,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-title: Krateo PlatformOps
-
-uris:
-  api: https://api.krateo.site
-  notification: https://api.krateo.site/
-
 replicaCount: 1
 
 image:
@@ -71,7 +65,7 @@ podEnvFrom:
 podEnv: {}
 
 ingress:
-  enabled: true
+  enabled: false
   annotations:
     kubernetes.io/ingress.class: kong
   host: app.krateo.site
