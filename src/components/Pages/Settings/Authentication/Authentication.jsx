@@ -84,7 +84,11 @@ const Authentication = ({ strategy }) => {
               })
               .map((s) => (
                 <li key={s.metadata.uid}>
-                  <StrategyCard s={s.spec} openModal={openDeleteModalHandler} />
+                  <StrategyCard
+                    s={s.spec}
+                    name={s.metadata.name}
+                    openModal={openDeleteModalHandler}
+                  />
                 </li>
               ))}
       </ul>
@@ -100,7 +104,7 @@ const Authentication = ({ strategy }) => {
       {showDeleteModal && (
         <DangerZone
           title={'Delete strategy'}
-          name={currentStrategy.name}
+          name={currentStrategy}
           closeModal={closeDeleteModalHandler}
           deleteButtonHandler={deleteStrategyHandler}
         />

@@ -51,7 +51,7 @@ export function* strategyCreateSaga(action) {
 
 export function* strategyDeleteSaga(action) {
   try {
-    yield axios.delete(`${uris.strategy}/${action.payload.metadata.name}`)
+    yield axios.delete(`${uris.strategy}/${action.payload}`)
     yield put(strategyDeleteSuccess(action.payload))
     yield put(
       addNotification(

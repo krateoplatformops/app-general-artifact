@@ -3,9 +3,9 @@ import React from 'react'
 import css from './StrategyCard.module.scss'
 import Label from '../../../../UI/Label/Label'
 
-const StrategyCard = ({ s, openModal }) => {
+const StrategyCard = ({ s, name, openModal }) => {
   const deleteHandler = () => {
-    openModal(s)
+    openModal(name)
   }
 
   return (

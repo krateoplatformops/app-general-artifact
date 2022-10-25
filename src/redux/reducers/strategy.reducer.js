@@ -52,9 +52,7 @@ export default function strategy(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        list: state.list.filter(
-          (x) => x.metadata.uid !== action.payload.metadata.uid
-        )
+        list: state.list.filter((x) => x.metadata.name !== action.payload)
       }
     case strategyConstants.STRATEGY_RESET:
       return {
