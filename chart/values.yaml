@@ -3,6 +3,9 @@
 
 replicaCount: 1
 
+labels:
+  component: app
+
 image:
   repository: ghcr.io/krateoplatformops/app
   pullPolicy: IfNotPresent
