@@ -1,6 +1,6 @@
 import { put } from 'redux-saga/effects'
-import axios from '../../axios-conf'
 import * as axiosBase from 'axios'
+import axios from '../../axios-conf'
 import uris from '../../uris'
 import {
   pkgLoadSuccess,
@@ -37,7 +37,7 @@ export function* pkgLoadSaga() {
 export function* pkgUpdateSaga(action) {
   try {
     // get file
-    const file = yield axiosBase.get(action.payload.package)
+    const file = yield axiosBase.Axios.get(action.payload.package)
 
     try {
       // substitute version
@@ -79,7 +79,7 @@ export function* pkgAddSaga(action) {
   try {
     let y = null
     if (action.payload.package) {
-      const file = yield axiosBase.get(action.payload.package)
+      const file = yield axiosBase.Axios.get(action.payload.package)
       // substitute version
       const regex = /[:].*/g
       y = yaml.load(file.data)

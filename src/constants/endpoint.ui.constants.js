@@ -111,6 +111,19 @@ export const endpointUIConstants = {
           required: true
         }
       ]
+    },
+    {
+      type: 'azuredevops',
+      category: 'git',
+      fields: [
+        {
+          title: 'Azure DevOps token',
+          name: 'token',
+          type: 'password',
+          description: 'Azure DevOps token',
+          required: true
+        }
+      ]
     }
   ]
 }
