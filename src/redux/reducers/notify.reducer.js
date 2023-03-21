@@ -12,7 +12,9 @@ export default function notify(state = initialState, action) {
       }
       return {
         ...state,
-        notificationQueue: state.notificationQueue.concat(action.payload)
+        notificationQueue: state.notificationQueue
+          .filter((x) => x.message !== action.payload.message)
+          .concat(action.payload)
       }
     case notifyConstants.REMOVE_NOTIFICATION:
       return {
