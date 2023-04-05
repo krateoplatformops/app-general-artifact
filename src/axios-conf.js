@@ -8,7 +8,7 @@ const axiosInstance = axios.create()
 
 axiosInstance.defaults.baseURL = uris.apiBase
 axiosInstance.defaults.withCredentials = true
-axiosInstance.defaults.timeout = 30000
+axiosInstance.defaults.timeout = 90000
 
 axiosInstance.interceptors.request.use(
   (config) => {
