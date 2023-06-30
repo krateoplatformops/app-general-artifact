@@ -1,0 +1,44 @@
+@import '../../../../../../../styles/colors';
+@import '../../../../../../../styles/mixin';
+
+.Container {
+  width: 100%;
+  overflow-y: auto;
+  // height: 310px;
+  @include calc('height', '100vh - 350px');
+  @extend .display-flex;
+  flex-direction: column-reverse;
+}
+
+.Line {
+  width: 100%;
+  @extend .display-flex;
+  @extend .flex-direction-column;
+  @extend .bsbb;
+  padding: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: left;
+  &:not(:last-of-type) {
+    border-top: 1px solid $border-light;
+  }
+  pre {
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 5px;
+    color: $white;
+    &:empty {
+      display: none;
+    }
+  }
+}
+
+.Command {
+  padding-right: 10px;
+  color: $pink-300;
+}
+
+.Ready {
+  color: $white;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: left;
+  width: 100%;
+}

@@ -12,6 +12,7 @@ import Keptn from './Keptn/Keptn'
 import Codequality from './Codequality/Codequality'
 import Capi from './Capi/Capi'
 import ErrorBoundary from '../../../../Containers/ErrorBoundary/ErrorBoundary'
+import Terminal from './Terminal/Terminal'
 import { pluginHelper } from '../../../../../helpers'
 
 const CatchAll = ({ deploy, params, plugin }) => {
@@ -29,6 +30,7 @@ const CatchAll = ({ deploy, params, plugin }) => {
       if (key) {
         setDetailsKey(key)
       }
+      if (pKey.startsWith('terminal')) return
       dispatch(
         pluginFetch({
           method: method || 'get',
@@ -39,7 +41,7 @@ const CatchAll = ({ deploy, params, plugin }) => {
         })
       )
     },
-    [dispatch]
+    [dispatch, pKey]
   )
 
   const detailsClearHandler = () => {
@@ -48,6 +50,7 @@ const CatchAll = ({ deploy, params, plugin }) => {
   }
 
   useEffect(() => {
+    if (pKey.startsWith('terminal')) return
     pKey &&
       !plugin.data[pKey] &&
       dispatch(
@@ -73,13 +76,14 @@ const CatchAll = ({ deploy, params, plugin }) => {
   }
 
   if (
-    (!plugin.data[pKey] && plugin.loading) ||
-    (!plugin.data[pKey] && !plugin.loading && !plugin.error)
+    ((!plugin.data[pKey] && plugin.loading) ||
+      (!plugin.data[pKey] && !plugin.loading && !plugin.error)) &&
+    pp.type !== 'terminal'
   ) {
     return <Loader />
   }
 
-  if (!plugin.data[pKey]) {
+  if (!plugin.data[pKey] && pp.type !== 'terminal') {
     return <Error message={plugin?.error?.response?.data?.message} />
   }
 
@@ -123,6 +127,10 @@ const CatchAll = ({ deploy, params, plugin }) => {
         )
       case 'capi':
         return <Capi content={plugin.data[pKey]} deploy={deploy} />
+      case 'terminal':
+        return (
+          <Terminal plugin={pp} deploy={deploy} content={plugin.data[pKey]} />
+        )
       default:
         return <Error message={`Unsupported plugin type: ${pp.type}`} />
     }

@@ -124,6 +124,19 @@ export const endpointUIConstants = {
           required: true
         }
       ]
+    },
+    {
+      type: 'gitlab',
+      category: 'git',
+      fields: [
+        {
+          title: 'GitLab token',
+          name: 'token',
+          type: 'password',
+          description: 'GitLab token',
+          required: true
+        }
+      ]
     }
   ]
 }
