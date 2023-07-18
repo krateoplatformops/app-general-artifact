@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import CommandsOutput from './CommandsOutput/CommandsOutput'
 import css from './Terminal.module.scss'
 import socketIOClient from 'socket.io-client'
+import jwt from 'jsonwebtoken';
 
 const commands = null
 
@@ -19,7 +20,12 @@ const Terminal = ({ plugin, deploy, content }) => {
   const nodeRef = useRef(deploy.metadata.uid)
 
   useEffect(() => {
-    const newSocket = socketIOClient(remoteRef.current)
+    const newSocket = socketIOClient(remoteRef.current, {
+      auth: {
+        token: generateJwtToken(process.env.NODE_ID, process.env.REMOTE_HOST)
+      }
+    });
+
     setSocket(newSocket)
     return () => newSocket.close()
   }, [])
@@ -126,6 +132,15 @@ const Terminal = ({ plugin, deploy, content }) => {
       refInput.current.focus()
     }
   }, [waiting])
+
+  // Function to generate a JWT token
+  function generateJwtToken(username, password) {
+    const payload = { username, password };
+    const secretKey = process.env.JWT_SECRET_KEY;
+    const options = { expiresIn: '1h' };
+    return jwt.sign(payload, secretKey, options);
+  }
+
 
   return (
     <React.Fragment>
