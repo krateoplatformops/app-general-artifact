@@ -35,7 +35,8 @@
     "remark-gfm": "^3.0.1",
     "socket.io-client": "^4.5.1",
     "use-local-storage": "^2.3.6",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "jsonwebtoken": "^8.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
