@@ -67,6 +67,9 @@
       "last 1 safari version"
     ]
   },
+  "resolutions": {
+    "stream": "0.0.2"
+  },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^8.0.1",
