@@ -22,7 +22,7 @@ const Terminal = ({ plugin, deploy, content }) => {
   useEffect(() => {
     const newSocket = socketIOClient(remoteRef.current, {
       auth: {
-        token: generateJwtToken(deploy.metadata.uid, process.env.REMOTE_HOST)
+        token: generateJwtToken(deploy.metadata.uid, remoteRef.current)
       }
     });
 
