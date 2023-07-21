@@ -1,7 +1,7 @@
 // config-overrides.js
 const { override, addWebpackAlias, addWebpackPlugin } = require('customize-cra');
 const path = require('path');
-const webpack = require('webpack');
+const { EnvironmentPlugin } = require('webpack');
 
 module.exports = override(
   addWebpackAlias({
@@ -9,8 +9,8 @@ module.exports = override(
     stream: require.resolve('stream-browserify'),
   }),
   addWebpackPlugin(
-    new webpack.DefinePlugin({
-      'process.env.JWT_SECRET_KEY': JSON.stringify(process.env.JWT_SECRET_KEY),
+    new EnvironmentPlugin({
+      JWT_SECRET_KEY: 'JWT_SECRET_KEY'
     })
   )
 );
