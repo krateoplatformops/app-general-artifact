@@ -60,12 +60,17 @@ podContainerPorts:
     containerPort: 8080
     protocol: TCP
 
+
+podEnv:
+  - name: REMOTE_HOST
+    value: 'https://krateo-remote-server.domain.io'
+
 # put your env variables here
 podEnvFrom:
   - configMapRef:
       name: krateo-config
-
-podEnv: {}
+  - configMapRef:
+      name: jwt-secret-key
 
 ingress:
   enabled: false
