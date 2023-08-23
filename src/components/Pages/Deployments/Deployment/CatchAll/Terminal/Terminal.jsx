@@ -5,7 +5,7 @@ import css from './Terminal.module.scss'
 import socketIOClient from 'socket.io-client'
 // import jwt from 'jsonwebtoken';
 
-const commands = null
+// const commands = null
 
 const Terminal = ({ plugin, deploy, content }) => {
   const [socket, setSocket] = useState(null)
@@ -18,7 +18,7 @@ const Terminal = ({ plugin, deploy, content }) => {
   const refInput = useRef(null)
   const remoteRef = useRef(plugin.value)
   const nodeRef = useRef(deploy.metadata.uid)
-  commands = useRef(plugin.commands)
+  const commands = useRef(plugin.commands)
 
   useEffect(() => {
     const newSocket = socketIOClient(remoteRef.current)
