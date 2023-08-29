@@ -20,6 +20,10 @@ const Terminal = ({ plugin, deploy, content }) => {
   const nodeRef = useRef(deploy.metadata.uid)
   const commands = useRef(plugin.commands)
 
+  console.log("Content of commands:", commands);
+  console.log("Content of commands.current:", commands.current);
+
+
   useEffect(() => {
     const newSocket = socketIOClient(remoteRef.current)
     // const newSocket = socketIOClient(remoteRef.current, {
