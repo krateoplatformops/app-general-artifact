@@ -18,7 +18,7 @@ const Terminal = ({ plugin, deploy, content }) => {
   const refInput = useRef(null)
   const remoteRef = useRef(plugin.value)
   const nodeRef = useRef(deploy.metadata.uid)
-  const commands = useRef(plugin.commands)
+  const commands = useRef(plugin.commands.current)
 
   console.log("Content of commands 1", commands);
 
