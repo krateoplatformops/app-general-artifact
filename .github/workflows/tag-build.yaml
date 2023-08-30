@@ -48,8 +48,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-
-    steps:
       - name: Extract latest App Version
         uses: tdemin/find-latest-tag@v1
         id: app_version
@@ -85,4 +83,4 @@ jobs:
           charts_url: https://charts.krateo.io
           owner: krateoplatformops
           repository: helm-charts
-          branch: gh-pages
+          branch: gh-pa
