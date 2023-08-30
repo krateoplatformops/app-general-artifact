@@ -18,7 +18,7 @@ const Terminal = ({ plugin, deploy, content }) => {
   const refInput = useRef(null)
   const remoteRef = useRef(plugin.value)
   const nodeRef = useRef(deploy.metadata.uid)
-  const commands = useRef(plugin.commands.current)
+  const commands = useRef(plugin.commands)
 
   console.log("Content of commands 1", commands);
 
@@ -167,7 +167,7 @@ const Terminal = ({ plugin, deploy, content }) => {
             disabled={!ready || waiting}
             onFocus={() => setShowDefaults(false)}
           />
-          {commands && (
+          {commands.current && (
             <React.Fragment>
               <button
                 className={css.DefaultCommandsButton}
@@ -178,7 +178,7 @@ const Terminal = ({ plugin, deploy, content }) => {
               </button>
               {showDefaults && (
                 <div className={css.DefaultsContainer}>
-                  {commands.map((cmd, index) => (
+                  {commands.current.map((cmd, index) => (
                     <button
                       key={index}
                       className={css.Command}
