@@ -12,6 +12,7 @@ import { pluginHelper } from '../../../../../../helpers'
 const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
   const [stage, setStage] = useState('')
   const [sequence, setSequence] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
 
   const buttonHandler = () => {
     const regex = /\[(.*?)\]/gim
@@ -20,11 +21,16 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
     const data = {
       contenttype: 'application/json',
       type: `sh.keptn.event.${stage}.${sequence}.triggered`,
-      source: 'bridge',
+      source: 'Krateo PlatformOps',
       data: {
         project: v[1],
-        stage,
-        service: plugin.value.replace(regex, '')
+        stage: `${stage}`,
+        service: plugin.value.replace(regex, ''),
+        configurationChange: {
+          values: {
+            image: `${imageUrl}`
+          }
+        },
       }
     }
     if (sequence === 'evaluation') {
@@ -40,11 +46,13 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
     })
     setStage('')
     setSequence('')
+    setImageUrl('')
   }
 
   const stageChangeHandler = (e) => {
     setStage(e.target.value)
     setSequence('')
+    setImageUrl('')
   }
 
   const sequenceList = () => {
@@ -98,6 +106,14 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
                   </option>
                 ))}
               </select>
+            </Label>
+            <Label title="image">
+              <input
+                type="text"
+                placeholder="Image URL"
+                onChange={(e) => setImageUrl(e.target.value)}
+                disabled={stage === ''}
+              />
             </Label>
             <button
               type="button"
