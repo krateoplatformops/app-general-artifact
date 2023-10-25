@@ -110,7 +110,7 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
             <Label title="image">
               <input
                 type="text"
-                placeholder="Image URL"
+                placeholder="registry/imageName:imageTag"
                 onChange={(e) => setImageUrl(e.target.value)}
                 disabled={stage === ''}
               />
