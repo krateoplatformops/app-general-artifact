@@ -12,6 +12,9 @@ const StageCard = ({ s }) => (
         <Label title="Creation Date">
           {timeHelper.nanoToFormat(svc.creationDate)}
         </Label>
+        <Label title="Deployed Image">
+          {svc.deployedImage}
+        </Label>
         <ul className={css.UlEventList}>
           {svc.lastEventTypes &&
             Object.keys(svc.lastEventTypes)
