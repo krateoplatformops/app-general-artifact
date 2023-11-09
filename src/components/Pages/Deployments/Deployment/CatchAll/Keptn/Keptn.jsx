@@ -12,7 +12,7 @@ import { pluginHelper } from '../../../../../../helpers'
 const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
   const [stage, setStage] = useState('')
   const [sequence, setSequence] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
+  const [releaseUrl, setReleaseUrl] = useState('')
 
   const buttonHandler = () => {
     const regex = /\[(.*?)\]/gim
@@ -28,7 +28,7 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
         service: plugin.value.replace(regex, ''),
         configurationChange: {
           values: {
-            image: `${imageUrl}`
+            releaseURL: `${releaseUrl}`
           }
         },
       }
@@ -46,13 +46,13 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
     })
     setStage('')
     setSequence('')
-    setImageUrl('')
+    setReleaseUrl('')
   }
 
   const stageChangeHandler = (e) => {
     setStage(e.target.value)
     setSequence('')
-    setImageUrl('')
+    setReleaseUrl('')
   }
 
   const sequenceList = () => {
@@ -107,11 +107,11 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
                 ))}
               </select>
             </Label>
-            <Label title="image">
+            <Label title="Release URL">
               <input
                 type="text"
-                placeholder="registry/imageName:imageTag"
-                onChange={(e) => setImageUrl(e.target.value)}
+                placeholder="https://repository/release/tag"
+                onChange={(e) => setReleaseUrl(e.target.value)}
                 disabled={stage === ''}
               />
             </Label>
