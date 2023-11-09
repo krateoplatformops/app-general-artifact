@@ -1,5 +1,5 @@
 apiVersion: v2
-name: app
+name: app-generic-artifact
 description: Krateo PlatformOps App
 type: application
 icon: "https://github.com/krateoplatformops/community/blob/main/logos/black/icon.svg"

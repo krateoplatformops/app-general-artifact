@@ -7,7 +7,7 @@ labels:
   component: app
 
 image:
-  repository: ghcr.io/krateoplatformops/app
+  repository: ghcr.io/krateoplatformops/app-generic-artifact
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
