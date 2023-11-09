@@ -82,7 +82,7 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
             <a href="#shipyard" className="common-lnk">
               shipyard
             </a>
-            <h2 className="mt">Trigger a new sequence</h2>
+            <h2 className="mt">Trigger a new deploy</h2>
             <Label title="stage">
               <select value={stage} onChange={(e) => stageChangeHandler(e)}>
                 <option value=""></option>
@@ -121,7 +121,7 @@ const Keptn = ({ deploy, plugin, content, detailsCallHandler }) => {
               onClick={buttonHandler}
               disabled={stage === '' || sequence === ''}
             >
-              trigger sequence
+              trigger deploy
             </button>
           </Card>
         </Follower>
